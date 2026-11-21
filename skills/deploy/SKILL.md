@@ -11,6 +11,8 @@ This skill extends the **W5 Publicar y git** workflow.
 
 Layer 3 prepares the deploy; the owner approves the target and version. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T2 prepares and verifies; never below T2 for production. See [model-routing.md](../../docs/model-routing.md).
+
 1. Read the deployment source the user gave. If none was given, ask for it.
 2. Confirm the target environment and the exact version (commit SHA or tag). Deploy only after the user confirms both, since a deploy is outward-facing.
 3. Run `verify-and-fix` checks on that exact version first.

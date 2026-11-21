@@ -11,6 +11,8 @@ This skill covers the **W6 Correr y probar en local** workflow.
 
 Layer 4 starts the project; Layer 5 (Ego Lite) can take over the browser check. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+
 1. Use the project's documented start command. Do not guess one.
 2. Wait until the server answers. Then open the URL in the browser (`ego-browser` or the built-in browser).
 3. Check the main path and the console for errors.

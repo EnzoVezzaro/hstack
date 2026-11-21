@@ -11,6 +11,8 @@ This skill covers the **W4 Investigar y explicar** workflow.
 
 Layer 4 gathers evidence; Layer 3 decides on the recommendation. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 gathers sources; T2 makes the recommendation. See [model-routing.md](../../docs/model-routing.md).
+
 1. State the question in one sentence.
 2. Search the web and GitHub (for example `gh search repos` and `gh search code`). Compare the top candidates on fit, activity, license, and maintenance.
 3. Read the source, not only the README, for anything you recommend.

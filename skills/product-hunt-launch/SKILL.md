@@ -11,6 +11,8 @@ This skill extends the **W7 Contenido, productos y docs** workflow.
 
 Layer 3 drafts the listing; the owner approves before anything is posted. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 drafts; T2 edits; the owner approves. See [model-routing.md](../../docs/model-routing.md).
+
 1. Read the product's README, landing page, and current status. Note what is real today and what is planned.
 2. Draft the tagline (under 60 characters), description, first comment, maker intro, and gallery list. Apply `antislop-copywriting` and `humanize` to the drafts.
 3. Check the assets: logo, thumbnail, screenshots at the required sizes. Create missing ones with `motion-graphic` or `ui-design` only if asked.

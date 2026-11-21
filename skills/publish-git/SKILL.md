@@ -11,6 +11,8 @@ This skill covers the **W5 Publicar y git** workflow.
 
 Layer 3 prepares the change; the owner approves every push and merge. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 prepares the commit; T2 checks it before the owner approves. See [model-routing.md](../../docs/model-routing.md).
+
 1. Check git status, the current branch, and what will be included. Make sure no secrets are staged.
 2. Run `verify-and-fix` first so the checks pass before anything is committed.
 3. Commit with a conventional message: `type: description`.

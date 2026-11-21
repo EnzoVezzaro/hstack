@@ -11,6 +11,8 @@ This skill extends the **W2 Verificar y arreglar** workflow.
 
 Layer 5 (computer use) operates the desktop app; Layer 3 decides what counts as a failure. Ego Lite covers websites; this skill covers everything outside the browser. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 drives the app; T2 judges unclear failures. See [model-routing.md](../../docs/model-routing.md).
+
 1. Prefer a programmatic path first: a CLI, an API, logs, or the app's own test runner. Use computer use only for what needs the real GUI.
 2. Pick the tool that is available: `orca-computer-use` (`orca computer`) inside Orca, Codex Computer Use from Codex, or computer use in the Claude desktop app. Check which one is running before starting.
 3. Install or relaunch the exact build under test. Close older copies of the app first so you do not test the wrong version.

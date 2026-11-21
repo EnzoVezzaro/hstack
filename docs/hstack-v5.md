@@ -32,6 +32,20 @@ Principles from the post:
 - Humans stay in control.
 - More agents is not more intelligence. The goal is to share context, coordinate decisions, delegate, verify, and stay within token budgets.
 
+## Escalating and downgrading
+
+Every skill starts at the cheapest tier that can do the work and moves up one tier only on repeated failure or high stakes, then hands execution back down. The tiers, defaults, and rules are in [model-routing.md](model-routing.md); `/setup-hstack` writes your own map.
+
+## Own products in the stack
+
+| Product | What it adds | Skill |
+| --- | --- | --- |
+| [ACC](https://github.com/EnzoVezzaro/agents-code-context) | Repos that explain themselves to agents (`AGENTS.md` + `.acc/`), focused context, durable memory | `acc-context` |
+| [Repo Shield](https://github.com/EnzoVezzaro/repo-shield) | License, AI-training notice, policy, and a weekly watch | `protect-repo` |
+| [reposell](https://github.com/EnzoVezzaro/reposell) | Signed paid releases and listings with Stripe Payment Links | `reposell-release` |
+| [ProAgents](https://github.com/EnzoVezzaro/proagents) | Professional profiles that make a cheap worker act like a specialist | `proagent-equip` |
+| [ACE](https://github.com/EnzoVezzaro/ace-proagents) | Crew workspaces: governor, supervisors, workers, budget | `ace-workspace` |
+
 ## Economics (from the post)
 
 | Item | Cost |
@@ -52,7 +66,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 
 | Skill | Command | Layer that runs it | Decision owner |
 | --- | --- | --- | --- |
-| [enzo-coding-playbook](../skills/enzo-coding-playbook/SKILL.md) | "use my stack" | 1 routes | Owner |
+| [hstack](../skills/hstack/SKILL.md) | `/hstack` | 1 routes | Owner |
 | [a-new-day](../skills/a-new-day/SKILL.md) | `/a-new-day` | 1 | Owner |
 | [plan-horizon](../skills/plan-horizon/SKILL.md) | `/plan-day`, `/plan-week`, `/plan-month` | 1 | Owner |
 | [wrap-day](../skills/wrap-day/SKILL.md) | `/wrap-day` | 1 | Owner |
@@ -86,8 +100,20 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [publish-git](../skills/publish-git/SKILL.md) | `/publish-git` | 3 | Owner approves push and merge |
 | [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves target and version |
 | [security-backend](../skills/security-backend/SKILL.md) | `/security-backend` | 3 | Owner |
+| [break-it-down](../skills/break-it-down/SKILL.md) | `/break-it-down` | 3 | Layer 3 |
+| [horizon](../skills/horizon/SKILL.md) | `/horizon` | 1 designs, 2 or Codex runs | Owner activates the schedule |
+| [horizon-loop](../skills/horizon-loop/SKILL.md) | `/horizon-loop` | 4 | Layer 3 |
+| [horizon-loop-test](../skills/horizon-loop-test/SKILL.md) | `/horizon-loop-test` | 4 | Layer 3 |
+| [horizon-loop-ego-lite](../skills/horizon-loop-ego-lite/SKILL.md) | `/horizon-loop-ego-lite` | 5 with 4 | Layer 3 |
+| [release](../skills/release/SKILL.md) | `/release` | 3 | Owner approves the tag |
+| [check-github](../skills/check-github/SKILL.md) | `/check-github` | 4 | Layer 3 |
+| [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
+| [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |
+| [protect-repo](../skills/protect-repo/SKILL.md) | `/protect-repo` | 4 | Owner merges the PR |
+| [reposell-release](../skills/reposell-release/SKILL.md) | `/reposell-release` | 4 with 3 | Owner approves publishing |
+| [proagent-equip](../skills/proagent-equip/SKILL.md) | `/proagent-equip` | 3 picks, 4 runs | Layer 3 |
+| [ace-workspace](../skills/ace-workspace/SKILL.md) | `/ace-workspace` | 2 with 3 | Owner confirms setup |
 | [skill-workbench](../skills/skill-workbench/SKILL.md) | `/skill-workbench` | 1 with 3 | Owner |
-| [general-tasks](../skills/general-tasks/SKILL.md) | `/general-tasks` | 1 classifies, hands to the skill | Owner |
 
 ## Tools
 

@@ -11,6 +11,8 @@ This skill extends the **W7 Contenido, productos y docs** workflow.
 
 Layer 3 ranks the issues; Layer 4 applies the agreed fixes. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 collects; T2 ranks. See [model-routing.md](../../docs/model-routing.md).
+
 1. Crawl or read the pages in scope: titles, meta descriptions, canonical tags, headings, and internal links.
 2. Check robots.txt, the sitemap, structured data validity, and indexability.
 3. Check Core Web Vitals on the main pages when a measurement is available. Say when it is not.

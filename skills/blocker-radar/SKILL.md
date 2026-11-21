@@ -9,6 +9,8 @@ description: "Retro signal scanner for stuck work. Use when Enzo says /any-block
 
 Layer 1 finds the blockers; Layer 2 (Orca) shows owners and live state. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 finds blockers; T2 when a blocker needs a decision. See [model-routing.md](../../docs/model-routing.md).
+
 Codex is the personal assistant. Inspect live Orca agent and worktree state plus recent project messages. Silence is not evidence of a blocker.
 
 ## Scan

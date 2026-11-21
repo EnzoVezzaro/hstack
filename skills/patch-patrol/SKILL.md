@@ -9,6 +9,8 @@ description: "Retro night watch for changes. Use when Enzo says /patch-patrol, b
 
 Layer 3 reviews a diff independently, separate from the worker who wrote it. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T2 reviews, using a different model from the author. See [model-routing.md](../../docs/model-routing.md).
+
 New H Stack composition. Source skills: `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
 
 ## Fix the target

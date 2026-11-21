@@ -11,6 +11,8 @@ This skill covers the **W11 Seguridad, datos y backend** workflow.
 
 Layer 3 reviews, because findings need judgment; the owner approves any destructive change. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T3 for auth and secrets, T2 otherwise. Never T0 alone. See [model-routing.md](../../docs/model-routing.md).
+
 1. Review auth, permissions, and input validation on every changed endpoint.
 2. Check that no secret is in code, logs, or chat. If one was exposed, say so and recommend rotation.
 3. Review database migrations before they run. Confirm a backup exists for destructive changes.

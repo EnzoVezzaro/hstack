@@ -1,0 +1,25 @@
+---
+name: proagent-equip
+description: "Use when the user asks to equip an agent with a professional profile, run proagent, or before dispatching a worker to specialist work such as security, staff-level review, or developer experience. Gives the worker a ProAgents profile so a cheaper model works like a specialist."
+---
+
+# Equip a worker with ProAgents
+
+Uses [ProAgents](https://github.com/EnzoVezzaro/proagents), which gives an existing coding agent a profession: expertise, methods, rules, tools, and verification practices.
+
+## HStack V5 role
+
+Layer 3 picks the profile; Layer 4 runs equipped at T0 or T1. A good profile is often cheaper than escalating to a bigger model; try it before moving up a tier.
+
+**Model tier:** T2 picks the profile; the equipped worker runs at T0 or T1. See [model-routing.md](../../docs/model-routing.md).
+
+1. Install if missing: `npm install -g @reposell/proagent`.
+2. Run `proagent detect` to see which harness is present, and `proagent list` for available profiles.
+3. Pick the profile that matches the task, for example `security-engineer`, `staff-engineer`, or `developer-experience-engineer`. Combine two when needed: `proagent equip staff-engineer security-engineer`.
+4. Check it with `proagent inspect <profile>` and `proagent validate`.
+5. Equip the worker: `proagent equip <profile>`, or `proagent compile <profile> --target claude-code` for a specific harness.
+6. Dispatch the task as usual. The verifier is still a different agent.
+
+## Report
+
+Profile used, harness, validation result, and the worker it was given to.
