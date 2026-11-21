@@ -1,0 +1,29 @@
+---
+name: save-point
+description: "Retro rewind cartridge for regressions. Use when Enzo says /save-point, reports a feature that used to work, asks what changed, or considers a rollback. Synthesized from observed user behavior in project work; it is not an installed global skill and does not assume a single historic incident."
+---
+
+# Save point · rewind to the last good signal
+
+This workflow was **synthesized from observed user behavior** — repeated instructions to compare with a previously working version, restore the configured behavior, and verify the real user action. It is a new HStack composition, not a historic installed skill. Evidence and its limits are in `docs/skill-usage.md`.
+
+## Find the regression boundary
+
+1. Restate the behavior that used to work and the behavior observed now. The user's own settings and real path are the acceptance contract.
+2. Find the last known-good tag, commit, build, or artifact and verify its identity. Do not rely on memory or an agent's summary.
+3. Compare the smallest relevant code, configuration, permission, packaging, and runtime changes between that baseline and the current revision.
+4. Reproduce the failure on the current revision where possible. Separate a source-level cause from a stale build, environment, permission, or unsupported platform.
+
+## Repair at the source
+
+- Prefer restoring the earlier working path or fixing the cause; remove newly introduced setup steps that are not essential to the requested behavior.
+- Respect the settings the user selected. Do not force a different product behavior to hide a defect.
+- Preserve unrelated files and in-flight worker edits.
+- Treat a rollback as an option only after stating what it would revert and which valid fixes it would discard.
+
+## Verify the real action
+
+- Re-run the same user action on the repaired revision, including activation and release/restore behavior.
+- Test independent triggers and modes separately, then together.
+- Use live browser, audio, or device evidence when the claim depends on it. A unit test or successful build alone cannot prove the real behavior works.
+- Report the previous/current version comparison, the changed cause, the repair, the evidence, and any remaining platform limits.

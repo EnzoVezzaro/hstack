@@ -1,0 +1,26 @@
+---
+name: a-new-day
+description: "Retro morning boot sequence. Use when Enzo says /a-new-day, asks for a morning project brief, or wants to resume the day across projects. Checks live Orca projects, yesterday's completed work, current state, and today's next steps."
+---
+
+# A new day · morning boot sequence
+
+Codex is the coordinator in this routine. Live Orca state comes first; chat history is context, not current status.
+
+## Gather
+
+1. Resolve today's date and local timezone. Use Orca's repo, worktree, and agent listings to identify current project work.
+2. For each active or recently active project, inspect the newest director or supervisor report and current agent states. Use the session index for the previous local calendar day only; do not mix old sessions into yesterday's work.
+3. Extract completed work, active work, explicit blockers, and the next stated action. Confirm important claims against the current worktree or source state when available.
+4. Mark stale sessions and agent-reported outcomes as stale or reported until current evidence confirms them.
+
+## Present
+
+A compact project-by-project brief:
+
+- **Yesterday:** completed work and evidence.
+- **Now:** live agent and worktree state.
+- **Next today:** the stated next step and its owner.
+- **Needs Enzo:** only decisions or approvals genuinely waiting.
+
+End with a short proposed focus order. Do not create tasks, send instructions, merge, publish, deploy, or change priorities without an explicit request.
