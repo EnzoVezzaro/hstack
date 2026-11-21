@@ -18,4 +18,4 @@ H Stack's workflows are small operating procedures. A useful change makes a real
 
 ## Changing the artwork
 
-The README uses a static pixel/voxel fallback at `assets/h-stack-banner.png` and an original light-only loop at `assets/h-stack-loop.gif`, shown through a `<picture>` element that falls back to the still image for reduced-motion viewers. Keep both at the same framing, keep the code/AI/gaming cues prominent, and keep the High/cannabis cue subtle. Do not restore the old rejected animation.
+The README uses a static fallback image at `assets/h-stack-banner.png` and an original light-only loop at `assets/h-stack-loop.gif`, shown through a `<picture>` element that falls back to the still image for reduced-motion viewers. Keep both at the same framing, keep the code/AI/gaming cues prominent, and keep the High/cannabis cue subtle. Do not restore the old rejected animation.

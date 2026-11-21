@@ -23,7 +23,7 @@ New H Stack composition. Source skills: `review`, `review-bugbot`, `review-secur
 
 - Choose the smallest test, build, browser, or device check that proves the requested behavior.
 - Run it on the reviewed revision; report actual commands and results, or clearly mark reported results you could not reproduce.
-- For visual or interactive behavior, hand off to [pixel-check](../pixel-check/SKILL.md) for the post-integration pass.
+- For visual or interactive behavior, hand off to [interface-check](../interface-check/SKILL.md) for the post-integration pass.
 
 ## PR follow-through
 

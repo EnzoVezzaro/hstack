@@ -10,7 +10,7 @@ Pick one workflow and read only that workflow plus the source skills it names. I
 | Switch | Trigger | Reach for it when… | Workflow |
 | --- | --- | --- | --- |
 | **RELAY-ROOM** | `/relay-room` | an Orca project team, a director brief, or a worker wave | [relay-room](../relay-room/SKILL.md) |
-| **PIXEL-CHECK** | `/pixel-check` | a screen, page, or native app needs an evidence-based UI pass | [pixel-check](../pixel-check/SKILL.md) |
+| **INTERFACE-CHECK** | `/interface-check` | a screen, page, or native app needs an evidence-based UI pass | [interface-check](../interface-check/SKILL.md) |
 | **PATCH-PATROL** | `/patch-patrol` | a diff needs independent review or a PR needs follow-through | [patch-patrol](../patch-patrol/SKILL.md) |
 | **SAVE-POINT** | `/save-point` | behavior that used to work broke and the last good version matters | [save-point](../save-point/SKILL.md) |
 | **SKILL-WORKBENCH** | `/skill-workbench` | a repeated task deserves its own portable skill | [skill-workbench](../skill-workbench/SKILL.md) |

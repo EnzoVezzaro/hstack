@@ -1,9 +1,9 @@
 ---
-name: pixel-check
-description: "Retro inspection bay for user-facing interfaces. Use when Enzo says /pixel-check, reports visual disorder, broken UI, responsive defects, inaccessible interaction, or asks for a real browser or app review. Composes impeccable, antislop-ui, antislop-human, orca-computer-use and orchestrated-visual-remediation; a diff alone never counts as a visual pass."
+name: interface-check
+description: "Retro inspection bay for user-facing interfaces. Use when Enzo says /interface-check, reports visual disorder, broken UI, responsive defects, inaccessible interaction, or asks for a real browser or app review. Composes impeccable, antislop-ui, antislop-human, orca-computer-use and orchestrated-visual-remediation; a diff alone never counts as a visual pass."
 ---
 
-# Pixel check · inspection bay
+# Interface check · inspection bay
 
 New H Stack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 

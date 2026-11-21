@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/h-stack-banner.png">
-  <img src="assets/h-stack-loop.gif" alt="Pixel-voxel H Stack banner: a voxel H with code, AI, and gaming glyphs and a small leaf">
+  <img src="assets/h-stack-loop.gif" alt="H Stack banner: code, AI, and gaming glyphs on a stacked-block H with a small leaf">
 </picture>
 
 # H Stack
@@ -15,7 +15,7 @@ H Stack (read "High Stack") is a set of local agent skills for the multi-agent s
 | --- | --- | --- |
 | [Enzo Coding Playbook](skills/enzo-coding-playbook/SKILL.md) | "use my stack" | Routes an engineering task to one of the workflows below. |
 | [Relay Room](skills/relay-room/SKILL.md) | `/relay-room` | Finds the live Orca project and owner, then hands off a bounded task. |
-| [Pixel Check](skills/pixel-check/SKILL.md) | `/pixel-check` | Inspects a real screen or app, fixes observed issues, and retests. |
+| [Interface Check](skills/interface-check/SKILL.md) | `/interface-check` | Inspects a real screen or app, fixes observed issues, and retests. |
 | [Patch Patrol](skills/patch-patrol/SKILL.md) | `/patch-patrol` | Reviews a diff independently and verifies the requested behavior. |
 | [Save Point](skills/save-point/SKILL.md) | `/save-point` | Compares current behavior with the last known-good version and repairs the cause. |
 | [Skill Workbench](skills/skill-workbench/SKILL.md) | `/skill-workbench` | Turns a repeated, evidenced task into a portable skill. |
@@ -27,7 +27,7 @@ H Stack (read "High Stack") is a set of local agent skills for the multi-agent s
 Some workflows call other skills. Install the ones they need too:
 
 - **Relay Room** — `activate-project-director`, `orca-cli`, `orchestration`.
-- **Pixel Check** — `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
+- **Interface Check** — `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 - **Patch Patrol** — `review`, `review-bugbot`, `review-security`, and optionally `autopilot`.
 - **Skill Workbench** — `skill-creator`.
 - **Save Point**, **A New Day**, **Plan Horizon**, **Wrap Day**, and **Blocker Radar** need no installed source skill.
@@ -59,7 +59,7 @@ Restart the agent session if it does not discover newly added skills. Keep the `
 
 ```text
 use my stack: reproduce the reported regression, fix the cause, and verify the same path.
-/pixel-check review the settings page at desktop and mobile widths; report findings before repairing.
+/interface-check review the settings page at desktop and mobile widths; report findings before repairing.
 /any-blockers check active Orca projects and name the smallest next action for each blocker.
 ```
 
