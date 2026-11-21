@@ -1,22 +1,19 @@
 ---
 name: enzo-coding-playbook
-description: "Front console for the Enzo Coding Playbook. Use when Enzo says \"use my stack\", continue Orca work, review a change, repair a regression, improve a UI, turn a repeated task into a skill, or run a day/horizon routine. Routes to HStack's twelve workflows; Orca stays the source of truth for live sessions and roles."
+description: "Front console for the Enzo Coding Playbook. Use when Enzo says \"use my stack\", continue Orca work, review a change, repair a regression, improve a UI, turn a repeated task into a skill, or run a day/horizon routine. Routes to the H Stack workflows listed here; Orca stays the source of truth for live sessions and roles."
 ---
 
 # Enzo Coding Playbook · front console
 
-Pick one cartridge and read only that workflow plus the source skills it names. Invoke this router with **“use my stack”**, or name a trigger below. The switchboard is in `docs/source-skills.md`; what the history actually proves is in `docs/skill-usage.md`.
+Pick one workflow and read only that workflow plus the source skills it names. Invoke this router with **“use my stack”**, or name a trigger below. The switchboard is in `docs/source-skills.md`; what the history actually proves is in `docs/skill-usage.md`.
 
-| Switch | Trigger | Reach for it when… | Cartridge |
+| Switch | Trigger | Reach for it when… | Workflow |
 | --- | --- | --- | --- |
 | **RELAY-ROOM** | `/relay-room` | an Orca project team, a director brief, or a worker wave | [relay-room](../relay-room/SKILL.md) |
 | **PIXEL-CHECK** | `/pixel-check` | a screen, page, or native app needs an evidence-based UI pass | [pixel-check](../pixel-check/SKILL.md) |
 | **PATCH-PATROL** | `/patch-patrol` | a diff needs independent review or a PR needs follow-through | [patch-patrol](../patch-patrol/SKILL.md) |
 | **SAVE-POINT** | `/save-point` | behavior that used to work broke and the last good version matters | [save-point](../save-point/SKILL.md) |
 | **SKILL-WORKBENCH** | `/skill-workbench` | a repeated task deserves its own portable skill | [skill-workbench](../skill-workbench/SKILL.md) |
-| **FIELD-NOTES** | `/field-notes` | a question, research task, or source-led draft needs evidence | [field-notes](../field-notes/SKILL.md) |
-| **LAUNCH-RUNWAY** | `/launch-runway` | a release, deployment, publication, or launch needs proof | [launch-runway](../launch-runway/SKILL.md) |
-| **PORTFOLIO-RADIO** | `/portfolio-radio` | status or priorities need reconciling across projects | [portfolio-radio](../portfolio-radio/SKILL.md) |
 | **A-NEW-DAY** | `/a-new-day` | starting the day across live projects | [a-new-day](../a-new-day/SKILL.md) |
 | **PLAN-HORIZON** | `/plan-day`, `/plan-week`, `/plan-month` | turning current priorities into a feasible plan | [plan-horizon](../plan-horizon/SKILL.md) |
 | **WRAP-DAY** | `/wrap-day` | closing the shift with an honest status log | [wrap-day](../wrap-day/SKILL.md) |
@@ -39,4 +36,4 @@ Pick one cartridge and read only that workflow plus the source skills it names. 
 - What remains unverified or blocked.
 - The next concrete action, only if one is needed.
 
-HStack's named routes are **new HStack compositions**, not historic installed skill names. The evidence and limits behind them are recorded in `docs/skill-usage.md` and `docs/workflow-map.md`.
+H Stack's named routes are **new H Stack compositions**, not historic installed skill names. The evidence and limits behind them are recorded in `docs/skill-usage.md` and `docs/workflow-map.md`.

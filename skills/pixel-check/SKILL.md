@@ -5,7 +5,7 @@ description: "Retro inspection bay for user-facing interfaces. Use when Enzo say
 
 # Pixel check · inspection bay
 
-New HStack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
+New H Stack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 
 ## Inspect before editing
 

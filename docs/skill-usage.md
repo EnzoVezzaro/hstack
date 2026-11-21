@@ -1,7 +1,7 @@
 # Skill usage · last month
 
 **Window:** 2026-10-21 → 2026-11-21 (UTC).
-**Question answered:** which installed skills and behaviors justify the HStack cartridges, and how strong is each signal?
+**Question answered:** which installed skills and behaviors justify the H Stack workflows, and how strong is each signal?
 
 ## Evidence key
 
@@ -54,13 +54,13 @@ Excluded as false positives: `error-handling` (one generic phrase, "error-handli
 
 ## Thread-only names — no historic usage
 
-`relay-room`, `pixel-check`, `patch-patrol`, `save-point`, `skill-workbench`, `field-notes`, `launch-runway`, `portfolio-radio`, `a-new-day`, `plan-horizon`, `wrap-day`, `blocker-radar`, and the slash forms `/plan-day`, `/plan-week`, `/plan-month`, `/any-blockers` produced **zero** matches in the searched transcripts and local command configs. The original routes were specified in the current Orca thread and adjacent reference playbook (reference only, not the target); Field Notes, Launch Runway, and Portfolio Radio are new compositions from the recurring activity patterns summarized here. These are new HStack compositions, not recovered historic skills.
+`relay-room`, `pixel-check`, `patch-patrol`, `save-point`, `skill-workbench`, `a-new-day`, `plan-horizon`, `wrap-day`, `blocker-radar`, and the slash forms `/plan-day`, `/plan-week`, `/plan-month`, `/any-blockers` produced **zero** matches in the searched transcripts and local command configs. The routes were specified in the current Orca thread and adjacent reference playbook (reference only, not the target). These are new H Stack compositions, not recovered historic skills.
 
 The adjacent reference also lists larger counts such as `impeccable` 62 and `orca-cli` 35; those are exact-name conversation matches, not invocation counts, and are deliberately not reused here.
 
-## Why these cartridges anyway
+## Why these workflows anyway
 
-The engineering cartridges are justified by the **combination** of invoked source skills and strongly inferred coordination behavior, not by claims that their new names were used before. Field Notes, Launch Runway, and Portfolio Radio cover recurring research/editorial, release/launch, and portfolio-reporting tasks in the activity record; they are new compositions. The four daily cartridges are user-specified routines over live Orca state; their authority comes from the current request.
+The engineering workflows are justified by the **combination** of invoked source skills and inferred behavior, not by claims that their new names were used before. Save Point and Skill Workbench rest on inferred user behavior only. The four daily workflows are user-specified routines over live Orca state; their authority comes from the current request. The earlier draft also proposed `field-notes`, `launch-runway`, and `portfolio-radio` over recurring activity patterns; with no invoked, mentioned, or inferred tier behind them, they were removed rather than kept to reach a skill count.
 
 ## Evidence gaps
 

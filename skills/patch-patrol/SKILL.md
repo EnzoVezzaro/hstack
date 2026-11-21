@@ -5,7 +5,7 @@ description: "Retro night watch for changes. Use when Enzo says /patch-patrol, b
 
 # Patch patrol · walk the diff with a flashlight
 
-New HStack composition. Source skills: `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
+New H Stack composition. Source skills: `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
 
 ## Fix the target
 

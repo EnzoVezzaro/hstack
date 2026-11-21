@@ -1,6 +1,6 @@
-# Contributing to HStack
+# Contributing to H Stack
 
-HStack's workflows are small operating procedures. A useful change makes a real repeated task easier to start, safer to complete, or easier to verify.
+H Stack's workflows are small operating procedures. A useful change makes a real repeated task easier to start, safer to complete, or easier to verify.
 
 ## Before editing
 
@@ -18,11 +18,4 @@ HStack's workflows are small operating procedures. A useful change makes a real 
 
 ## Changing the artwork
 
-The README animation is generated with Python and Pillow:
-
-```bash
-python3 -m pip install Pillow
-python3 scripts/generate_readme_gif.py
-```
-
-Keep it legible at a 384-pixel width, low-noise, and small enough to load quickly in the README.
+The README uses a static pixel/voxel fallback at `assets/h-stack-banner.png` and an original light-only loop at `assets/h-stack-loop.gif`, shown through a `<picture>` element that falls back to the still image for reduced-motion viewers. Keep both at the same framing, keep the code/AI/gaming cues prominent, and keep the High/cannabis cue subtle. Do not restore the old rejected animation.

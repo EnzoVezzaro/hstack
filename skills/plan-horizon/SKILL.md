@@ -5,7 +5,7 @@ description: "Retro roadmap reel. Use for /plan-day, /plan-week, /plan-month, or
 
 # Plan horizon · roadmap reel
 
-Codex is the planning coordinator. The horizon arrives through `/plan-day`, `/plan-week`, or `/plan-month`; these are invocation names in this playbook, not historic installed skills.
+Codex is the personal assistant for planning. The horizon arrives through `/plan-day`, `/plan-week`, or `/plan-month`; these are invocation names in this playbook, not historic installed skills.
 
 ## Build the input picture
 

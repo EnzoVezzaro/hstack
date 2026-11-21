@@ -5,7 +5,7 @@ description: "Retro morning boot sequence. Use when Enzo says /a-new-day, asks f
 
 # A new day · morning boot sequence
 
-Codex is the coordinator in this routine. Live Orca state comes first; chat history is context, not current status.
+Codex is the personal assistant in this routine. Live Orca state comes first; chat history is context, not current status.
 
 ## Gather
 

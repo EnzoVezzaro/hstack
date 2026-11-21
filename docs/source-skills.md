@@ -1,8 +1,8 @@
 # Source skills
 
-HStack workflows **compose** installed skills; they are not those skills and were not pre-existing installed skill names. Paths below were located on this Mac on 2026-11-21 and may move. Read each source's current instructions before relying on it, and name any guidance that could not be loaded.
+H Stack workflows **compose** installed skills; they are not those skills and were not pre-existing installed skill names. Paths below were located on this Mac on 2026-11-21 and may move. Read each source's current instructions before relying on it, and name any guidance that could not be loaded.
 
-| HStack cartridge | Installed source skill | Local source (verified) | What it contributes |
+| H Stack workflow | Installed source skill | Local source (verified) | What it contributes |
 | --- | --- | --- | --- |
 | relay-room | `activate-project-director` | `~/.codex/skills/activate-project-director/SKILL.md` | Find and brief the established director; verify receipt. |
 | relay-room | `orca-cli` | `~/.claude/skills/orca-cli/SKILL.md` | Worktrees, agents, terminals, sessions, Orca browser. |
@@ -18,10 +18,5 @@ HStack workflows **compose** installed skills; they are not those skills and wer
 | patch-patrol | `autopilot` | `~/.agents/skills/autopilot/SKILL.md` | Optional PR/CI follow-through only when asked. |
 | skill-workbench | `skill-creator` | `~/.claude/skills/synced/*/skill-creator/SKILL.md` | Portable skill authoring from repeated evidence. |
 | save-point | — | — | Synthesized from observed user behavior; no installed source skill. |
-| field-notes | — | — | HStack's source-first research and editorial routine; no installed source skill is required. |
-| launch-runway | `orca-cli` | `~/.claude/skills/orca-cli/SKILL.md` | Release verification and Orca evidence where the target is an Orca project. |
-| portfolio-radio | `orca-cli` | `~/.claude/skills/orca-cli/SKILL.md` | Live multi-project status where Orca is the source of truth. |
 
-The daily cartridges (`a-new-day`, `plan-horizon`, `wrap-day`, `blocker-radar`) are HStack routines over live Orca state, not wrappers around an installed skill. Their trigger names — `/a-new-day`, `/plan-day`, `/plan-week`, `/plan-month`, `/wrap-day`, `/any-blockers` — are specified in the current Orca thread; no historic invocation was found for them. See `skill-usage.md`.
-
-`launch-runway`, `portfolio-radio`, and `field-notes` are also HStack compositions. Their source is the recurring work patterns in the monthly activity analysis, not a claim that one installed skill was invoked for each task. Only use the `orca-cli` source when an Orca target is involved.
+The daily workflows (`a-new-day`, `plan-horizon`, `wrap-day`, `blocker-radar`) are H Stack routines over live Orca state, not wrappers around an installed skill. Their trigger names — `/a-new-day`, `/plan-day`, `/plan-week`, `/plan-month`, `/wrap-day`, `/any-blockers` — are specified in the current Orca thread; no historic invocation was found for them. See `skill-usage.md`.

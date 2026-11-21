@@ -5,7 +5,7 @@ description: "Retro switchboard for Orca project work. Use when Enzo says /relay
 
 # Relay room · switchboard for a live project
 
-New HStack composition. Source skills: `activate-project-director`, `orca-cli`, `orchestration`.
+New H Stack composition. Source skills: `activate-project-director`, `orca-cli`, `orchestration`.
 
 ## 1. Find the live line
 

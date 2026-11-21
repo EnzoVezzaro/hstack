@@ -1,11 +1,11 @@
 ---
 name: save-point
-description: "Retro rewind cartridge for regressions. Use when Enzo says /save-point, reports a feature that used to work, asks what changed, or considers a rollback. Synthesized from observed user behavior in project work; it is not an installed global skill and does not assume a single historic incident."
+description: "Retro rewind workflow for regressions. Use when Enzo says /save-point, reports a feature that used to work, asks what changed, or considers a rollback. Synthesized from observed user behavior in project work; it is not an installed global skill and does not assume a single historic incident."
 ---
 
 # Save point · rewind to the last good signal
 
-This workflow was **synthesized from observed user behavior** — repeated instructions to compare with a previously working version, restore the configured behavior, and verify the real user action. It is a new HStack composition, not a historic installed skill. Evidence and its limits are in `docs/skill-usage.md`.
+This workflow was **synthesized from observed user behavior** — repeated instructions to compare with a previously working version, restore the configured behavior, and verify the real user action. It is a new H Stack composition, not a historic installed skill. Evidence and its limits are in `docs/skill-usage.md`.
 
 ## Find the regression boundary
 

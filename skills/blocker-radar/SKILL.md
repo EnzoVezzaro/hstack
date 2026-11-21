@@ -5,7 +5,7 @@ description: "Retro signal scanner for stuck work. Use when Enzo says /any-block
 
 # Blocker radar · signal scanner
 
-Codex is the coordinator. Inspect live Orca agent and worktree state plus recent project messages. Silence is not evidence of a blocker.
+Codex is the personal assistant. Inspect live Orca agent and worktree state plus recent project messages. Silence is not evidence of a blocker.
 
 ## Scan
 

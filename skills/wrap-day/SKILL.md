@@ -5,7 +5,7 @@ description: "Retro end-of-shift logbook. Use when Enzo says /wrap-day or asks f
 
 # Wrap day · end-of-shift logbook
 
-Codex is the coordinator. Check Orca and the local worktree; a planned task is not a completed task.
+Codex is the personal assistant. Check Orca and the local worktree; a planned task is not a completed task.
 
 ## Reconcile the shift
 
