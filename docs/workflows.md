@@ -26,6 +26,7 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | Skill | Command | Extends |
 |---|---|---|
 | `visual-test-ego-lite` | `/visual-test-ego-lite` | W2 Verificar y arreglar |
+| `visual-test-computer-use` | `/visual-test-computer-use` | W2 Verificar y arreglar |
 | `product-hunt-launch` | `/product-hunt-launch` | W7 Contenido, productos y docs |
 | `fix-ci` | `/fix-ci` | W5 Publicar y git |
 | `deploy` | `/deploy` | W5 Publicar y git |

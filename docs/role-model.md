@@ -13,6 +13,7 @@ This document records the user's V5 multi-agent setup. It describes intended res
 | Directors | Claude Code, Codex | Frame project work, make technical and product decisions, and define acceptance criteria. |
 | Supervisors and workers | OpenCode, Freebuff, Claude Code, Codex | Own bounded implementation tasks, delegate when useful, verify results, and report back. |
 | Browser operator | Ego Lite | Perform browser-based work when the task requires it. |
+| Computer operator | Computer use (Orca, Codex, Claude desktop) | Operate native desktop apps and windows that browser tools cannot reach. |
 
 ## Operating principles
 
