@@ -1,87 +1,181 @@
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f6b5c,100:5fd0b8&height=180&section=header&text=HSTACK&fontSize=72&fontColor=ffffff&animation=fadeIn&desc=High%20Stack%20·%2035%20skills%20for%20AI%20agent%20teams&descAlignY=72&descSize=18" alt="HSTACK: High Stack, 35 skills for AI agent teams" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/EnzoVezzaro/hstack"><img alt="35 skills" src="https://img.shields.io/badge/skills-35-0f6b5c?style=for-the-badge"></a>
+  <img alt="4 layers" src="https://img.shields.io/badge/layers-5-5fd0b8?style=for-the-badge">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-1d2320?style=for-the-badge"></a>
+</p>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=24&duration=3200&pause=900&color=5FD0B8&center=true&vCenter=true&width=760&lines=Expensive+intelligence+makes+decisions.;Cheap+intelligence+does+the+work.;Agents+delegate%2C+verify%2C+report+back.;You+stay+in+control.+%F0%9F%A4%9A" alt="Typing animation: expensive intelligence makes decisions; cheap intelligence does the work; agents delegate, verify, report back; you stay in control">
+</p>
+
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/h-stack-banner.png">
-  <img src="assets/h-stack-loop.gif" alt="H Stack banner: code, AI, and gaming glyphs on a stacked-block H with a small leaf">
+  <img src="assets/h-stack-loop.gif" alt="HSTACK banner: an H built from stacked blocks, with code, agent, terminal, task, and game panels">
 </picture>
 
-# H Stack
+## 👋 What is this?
 
-H Stack (read "High Stack") is a set of local agent skills for the multi-agent setup recorded in [the operating model](docs/role-model.md). Each skill is a `SKILL.md` file; the repository is not a plugin and ships no bundled agents or automations.
+**HSTACK** (High Stack) is a box of **35 local agent skills** for running a team of AI agents without babysitting every terminal.
 
-**Enzo Coding Playbook** is the main router. Invoke it to route a task, or invoke a workflow directly.
+You talk to one assistant. It hands work to a director, the director hands bounded tasks to cheap workers, the workers verify and report back. You only step in for the decisions that matter.
 
-## Skills
+Each skill is a plain `SKILL.md` file. No plugin, no daemon, no hidden agents.
+
+> **Start here:** say **"use my stack"** to the **Enzo Coding Playbook**, the router that picks the right skill for your task.
+
+## 🧭 The stack (V5)
+
+```mermaid
+flowchart LR
+    U(["🎙️ You"]) --> A["🧠 Codex / ChatGPT<br/>personal assistant"]
+    A --> O["🐋 ORCA<br/>orchestrator"]
+    O --> D["🎯 Claude Code / Codex<br/>directors"]
+    D --> W["⚙️ OpenCode · Freebuff · Claude Code · Codex<br/>supervisors & workers"]
+    W --> B["🌐 Ego Lite<br/>browser operator"]
+    B -. reports back .-> D
+    W -. verifies .-> D
+    D -. reports .-> A
+    classDef human fill:#fff,stroke:#0f6b5c,color:#1d2320;
+    class U human;
+```
+
+| Layer | Who | Does |
+| --- | --- | --- |
+| 1 | Codex / ChatGPT | Talks with you, plans, tracks everything |
+| 2 | ORCA | Routes sessions and context |
+| 3 | Claude Code / Codex | Decides, designs, accepts the work |
+| 4 | OpenCode / Freebuff / Claude Code / Codex | Codes, debugs, tests, researches |
+| 5 | Ego Lite | Clicks through real websites and apps |
+
+Full detail, economics, and the principles: **[docs/hstack-v5.md](docs/hstack-v5.md)**.
+
+## 🧰 Skills
+
+Pick a shelf. Every skill has a **Say** phrase you can type in your agent.
+
+<details open>
+<summary><b>🌅 Daily rhythm</b> (4)</summary>
 
 | Skill | Say | What it does |
 | --- | --- | --- |
-| [Enzo Coding Playbook](skills/enzo-coding-playbook/SKILL.md) | "use my stack" | Routes an engineering task to one of the workflows below. |
-| [Relay Room](skills/relay-room/SKILL.md) | `/relay-room` | Finds the live Orca project and owner, then hands off a bounded task. |
-| [Interface Check](skills/interface-check/SKILL.md) | `/interface-check` | Inspects a real screen or app, fixes observed issues, and retests. |
-| [Patch Patrol](skills/patch-patrol/SKILL.md) | `/patch-patrol` | Reviews a diff independently and verifies the requested behavior. |
-| [Save Point](skills/save-point/SKILL.md) | `/save-point` | Compares current behavior with the last known-good version and repairs the cause. |
-| [Skill Workbench](skills/skill-workbench/SKILL.md) | `/skill-workbench` | Turns a repeated, evidenced task into a portable skill. |
-| [A New Day](skills/a-new-day/SKILL.md) | `/a-new-day` | Opens the day from live Orca state, recent work, and the next action. |
-| [Plan Horizon](skills/plan-horizon/SKILL.md) | `/plan-day`, `/plan-week`, `/plan-month` | Turns current priorities into a feasible plan for one horizon. |
-| [Wrap Day](skills/wrap-day/SKILL.md) | `/wrap-day` | Closes the day with verified progress, blockers, and the next step. |
-| [Blocker Radar](skills/blocker-radar/SKILL.md) | `/any-blockers` | Finds what is stuck, who owns it, and the smallest next action. |
+| [a-new-day](skills/a-new-day/SKILL.md) | `/a-new-day` | Opens the day from live Orca state and the next action. |
+| [plan-horizon](skills/plan-horizon/SKILL.md) | `/plan-day`, `/plan-week`, `/plan-month` | Turns priorities into a plan that fits the horizon. |
+| [wrap-day](skills/wrap-day/SKILL.md) | `/wrap-day` | Closes the day with verified progress and tomorrow's first step. |
+| [blocker-radar](skills/blocker-radar/SKILL.md) | `/any-blockers` | Finds what is stuck, who owns it, and the smallest next move. |
 
-Some workflows call other skills. Install the ones they need too:
+</details>
 
-- **Relay Room** — `activate-project-director`, `orca-cli`, `orchestration`.
-- **Interface Check** — `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
-- **Patch Patrol** — `review`, `review-bugbot`, `review-security`, and optionally `autopilot`.
-- **Skill Workbench** — `skill-creator`.
-- **Save Point**, **A New Day**, **Plan Horizon**, **Wrap Day**, and **Blocker Radar** need no installed source skill.
+<details open>
+<summary><b>🎛️ Coordination</b> (6)</summary>
 
-The H Stack names are new compositions, not historic installed skill names; none was recorded as invoked in the evidence window. [Skill usage](docs/skill-usage.md) records the evidence tier for each signal, [source skills](docs/source-skills.md) lists the dependencies, and [workflow map](docs/workflow-map.md) shows how the workflows group.
+| Skill | Say | What it does |
+| --- | --- | --- |
+| [enzo-coding-playbook](skills/enzo-coding-playbook/SKILL.md) | "use my stack" | The router. Sends a task to the right workflow. |
+| [relay-room](skills/relay-room/SKILL.md) | `/relay-room` | Finds the live Orca project and owner, then hands off a bounded task. |
+| [coordinate-agents](skills/coordinate-agents/SKILL.md) | `/coordinate-agents` | Dispatches bounded tasks and checks each report against evidence. |
+| [handoff](skills/handoff/SKILL.md) | `/handoff` | Writes a self-contained brief so another agent can pick it up cold. |
+| [resume-work](skills/resume-work/SKILL.md) | `/resume-work` | "Continue where you left off", verified first. |
+| [general-tasks](skills/general-tasks/SKILL.md) | `/general-tasks` | Splits a messy request into ordered steps and routes each one. |
 
-## Install
+</details>
+
+<details>
+<summary><b>🛠️ Build & verify</b> (11)</summary>
+
+| Skill | Say | What it does |
+| --- | --- | --- |
+| [implement-feature](skills/implement-feature/SKILL.md) | `/implement-feature` | Writes the acceptance check first, then the smallest change. |
+| [verify-and-fix](skills/verify-and-fix/SKILL.md) | `/verify-and-fix` | Reproduces, fixes the cause, reruns the same path. |
+| [patch-patrol](skills/patch-patrol/SKILL.md) | `/patch-patrol` | Independent review of a diff, against the requested behavior. |
+| [save-point](skills/save-point/SKILL.md) | `/save-point` | Compares with the last known-good version and repairs the cause. |
+| [research-explain](skills/research-explain/SKILL.md) | `/research-explain` | Searches the web and GitHub, reads the source, explains with evidence. |
+| [run-local](skills/run-local/SKILL.md) | `/run-local` | Starts the app, checks the main path, reports the URL. |
+| [visual-test-ego-lite](skills/visual-test-ego-lite/SKILL.md) | `/visual-test-ego-lite` | Clicks through the app in Ego Lite the way a person would. |
+| [interface-check](skills/interface-check/SKILL.md) | `/interface-check` | Inspects a real screen at desktop and phone widths, then retests. |
+| [fix-ci](skills/fix-ci/SKILL.md) | `/fix-ci` | Reads the failing logs, fixes the cause, reruns the checks. |
+| [setup-install](skills/setup-install/SKILL.md) | `/setup-install` | Installs from the lockfile and configures without leaking secrets. |
+| [cleanup-refactor](skills/cleanup-refactor/SKILL.md) | `/cleanup-refactor` | Removes dead code in small steps, tests after each one. |
+
+</details>
+
+<details>
+<summary><b>🚢 Ship</b> (5)</summary>
+
+| Skill | Say | What it does |
+| --- | --- | --- |
+| [publish-git](skills/publish-git/SKILL.md) | `/publish-git` | Commit, push, merge to main. Nothing outward-facing without approval. |
+| [deploy](skills/deploy/SKILL.md) | `/deploy <deployment-source>` | Confirms the target and version, deploys, verifies the live result. |
+| [product-hunt-launch](skills/product-hunt-launch/SKILL.md) | `/product-hunt-launch` | Drafts the listing and assets. Posts only after you say so. |
+| [cleanup-worktrees-branches](skills/cleanup-worktrees-branches/SKILL.md) | `/cleanup-worktrees-branches` | Merges to main, then clears merged worktrees and branches. |
+| [cleanup-disk-space](skills/cleanup-disk-space/SKILL.md) | `/cleanup-disk-space` | Finds what eats the disk, deletes only what you approve. |
+
+</details>
+
+<details>
+<summary><b>✍️ Content, design & quality</b> (9)</summary>
+
+| Skill | Say | What it does |
+| --- | --- | --- |
+| [ui-design](skills/ui-design/SKILL.md) | `/ui-design` | Designs or adjusts UI, landing pages, styles, and logos. |
+| [antislop-review](skills/antislop-review/SKILL.md) | `/antislop-review` | Flags generic AI patterns in UI, copy, or code. |
+| [motion-graphic](skills/motion-graphic/SKILL.md) | `/motion-graphic` | Builds motion graphics and short videos with HyperFrames. |
+| [docs-content](skills/docs-content/SKILL.md) | `/docs-content` | Updates docs, product data, and links, verifying every fact. |
+| [humanize](skills/humanize/SKILL.md) | `/humanize` | Rewrites AI-sounding text. Keeps every fact. |
+| [write-readme-opensource](skills/write-readme-opensource/SKILL.md) | `/write-readme-opensource` | Writes a README and CONTRIBUTING from the real code. |
+| [seo-audit](skills/seo-audit/SKILL.md) | `/seo-audit` | Technical SEO audit, ranked by impact. |
+| [security-backend](skills/security-backend/SKILL.md) | `/security-backend` | Reviews auth, endpoints, migrations, and exposed keys. |
+| [skill-workbench](skills/skill-workbench/SKILL.md) | `/skill-workbench` | Turns a repeated, evidenced task into a new skill. |
+
+</details>
+
+## ⚡ Install in 30 seconds
 
 ```bash
 git clone https://github.com/EnzoVezzaro/hstack.git
-cp -R hstack/skills/* ~/.codex/skills/   # Codex
-cp -R hstack/skills/* ~/.claude/skills/  # Claude Code
+cp -R hstack/skills/* ~/.codex/skills/     # Codex
+cp -R hstack/skills/* ~/.claude/skills/    # Claude Code
 ```
 
-Restart the agent session if it does not discover newly added skills. Keep the `docs/` folder with the skills: the router and workflow files link to it.
+Restart your agent session so it finds the new skills.
 
-## Requirements
-
-- An agent harness that reads local `SKILL.md` files. Trigger names are invocation phrases, not commands registered with every tool.
-- The installed source skills listed above, for the workflows that use them. A missing source is reported, not replaced with invented behavior.
-- Orca for Relay Room and the daily workflows, which read live sessions, worktrees, and agents. Orca is the source of truth for what is actually running.
-- Ego Lite for browser work assigned in the operating model.
-
-## Get started
-
-1. Name **Enzo Coding Playbook** for non-trivial engineering work, or name the workflow you already need.
-2. Confirm the real repository, worktree, and existing changes before work begins.
-3. Each workflow states its own stop conditions and report format; follow that rather than a fixed sequence across all of them.
+Then try one:
 
 ```text
 use my stack: reproduce the reported regression, fix the cause, and verify the same path.
-/interface-check review the settings page at desktop and mobile widths; report findings before repairing.
-/any-blockers check active Orca projects and name the smallest next action for each blocker.
+/visual-test-ego-lite walk the signup flow on mobile and tell me where a person gets stuck.
+/any-blockers check the active Orca projects and name the smallest next move for each blocker.
 ```
 
-## Roles and principles
+## 🧩 Requirements
 
-The V5 setup these skills assume is documented in [the operating model](docs/role-model.md): Codex / ChatGPT is the personal assistant, Orca the orchestrator, Claude Code and Codex the directors, OpenCode / Freebuff / Claude Code / Codex the supervisors and workers, and Ego Lite the browser operator.
+- An agent harness that reads local `SKILL.md` files.
+- The source skills some workflows call. Each dependency is listed in [source-skills.md](docs/source-skills.md).
+- **Orca** for the coordination and daily skills. Orca is the source of truth for what is actually running.
+- **Ego Lite** for browser work.
 
-- Agents delegate bounded work, verify the result, and report evidence to the owner.
-- The human keeps control of product decisions and external actions.
-- Prefer free models for routine work; use paid intelligence when the task warrants it.
-- Share context and coordinate decisions; manage token budgets rather than adding agents.
+## 🛠️ Make them yours
 
-## Relationship to the references
+These are starting points. Put your own settings, such as which agents you run and which deploy targets exist, in your `CLAUDE.md` or `AGENTS.md`. Then update the skills without losing your setup.
 
-[P-Stack](https://github.com/cursor/plugins/tree/main/pstack) is the direct reference. H Stack adopts its named entry router, skills table, install and get-started sections, "make it yours" section, and MIT license. H Stack omits its `.cursor-plugin/` and `plugin.json`, Cursor plugin commands, `agents/` subagents, `automations/`, model-configuration skill, playbook and principle catalogs, and generated harness trees: this repository has no Cursor integration, bundled agents, automations, or model-configuration skill.
+## 📚 Docs
 
-[T-Stack](https://github.com/t3dotgg/tstack) is a structural reference. H Stack adopts its compact skill table with a "Say" column, the explicit "some skills call others" dependency note, plain `git clone` + `cp` install, a Requirements section, and "Make them yours" pointing to local config. H Stack omits its GitHub-CLI and PR-centred skills because no such workflow is part of this stack.
+- [HSTACK V5 reference](docs/hstack-v5.md): roles, economics, and the skill-to-layer map.
+- [Workflows](docs/workflows.md): the twelve core workflows and the added commands.
+- [Operating model](docs/role-model.md): the short version of the roles.
+- [Workflow map](docs/workflow-map.md) and [skill usage](docs/skill-usage.md): evidence behind the shelves.
 
-## Make them yours
+## 🙏 Relationship to the references
 
-These are starting points. Edit a workflow to match your tools and approval rules, and keep personal settings in your agent's `AGENTS.md` or `CLAUDE.md` so they survive skill updates. When behavior changes, update the router, workflow map, source-skill map, and evidence notes together; see [CONTRIBUTING.md](CONTRIBUTING.md).
+[P-Stack](https://github.com/cursor/plugins/tree/main/pstack) is the direct reference. HSTACK adopts its named entry router, skills table, install and get-started sections, "make it yours" section, and MIT license. HSTACK omits its `.cursor-plugin/` and `plugin.json`, Cursor plugin commands, `agents/` subagents, `automations/`, model-configuration skill, playbook and principle catalogs, and generated harness trees: this repository has no Cursor integration, bundled agents, automations, or model-configuration skill.
 
-## License
+[T-Stack](https://github.com/t3dotgg/tstack) is a structural reference. HSTACK adopts its compact skill table with a "Say" column, the explicit "some skills call others" dependency note, plain `git clone` + `cp` install, a Requirements section, and "Make them yours" pointing to local config. HSTACK omits its GitHub-CLI and PR-centred skills because no such workflow is part of this stack.
 
-MIT. See [LICENSE](LICENSE).
+---
+
+<p align="center">
+  <sub>Built for people who want to manage software, not every terminal. MIT licensed.</sub>
+</p>

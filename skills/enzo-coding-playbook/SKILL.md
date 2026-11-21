@@ -5,6 +5,10 @@ description: "Front console for the Enzo Coding Playbook. Use when Enzo says \"u
 
 # Enzo Coding Playbook · front console
 
+## HStack V5 role
+
+Layer 1 (assistant) routes each task to one workflow; the owner keeps product decisions. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 Pick one workflow and read only that workflow plus the source skills it names. Invoke this router with **“use my stack”**, or name a trigger below. The switchboard is in `docs/source-skills.md`; what the history actually proves is in `docs/skill-usage.md`.
 
 | Switch | Trigger | Reach for it when… | Workflow |

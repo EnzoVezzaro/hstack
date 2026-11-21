@@ -5,6 +5,10 @@ description: "Retro burn bay for turning a repeated run into a portable workflow
 
 # Skill workbench · burn a new workflow
 
+## HStack V5 role
+
+Layer 1 (assistant) turns a repeated, evidenced task into a skill; Layer 3 reviews it. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 New H Stack composition. Source skill: `skill-creator`.
 
 ## Collect evidence first

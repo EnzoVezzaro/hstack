@@ -5,6 +5,10 @@ description: "Retro night watch for changes. Use when Enzo says /patch-patrol, b
 
 # Patch patrol · walk the diff with a flashlight
 
+## HStack V5 role
+
+Layer 3 reviews a diff independently, separate from the worker who wrote it. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 New H Stack composition. Source skills: `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
 
 ## Fix the target

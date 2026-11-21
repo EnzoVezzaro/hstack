@@ -5,6 +5,10 @@ description: "Retro inspection bay for user-facing interfaces. Use when Enzo say
 
 # Interface check · inspection bay
 
+## HStack V5 role
+
+Layer 5 (Ego Lite or computer use) inspects the real screen; Layer 3 decides the fixes. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 New H Stack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 
 ## Inspect before editing

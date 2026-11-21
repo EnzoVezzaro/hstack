@@ -1,0 +1,22 @@
+---
+name: implement-feature
+description: "Use when the user asks to build or change a feature. Writes the acceptance check first, implements the smallest change, then hands verification to verify-and-fix."
+---
+
+# Implement a feature
+
+This skill covers the **W1 Implementar funcionalidad** workflow.
+
+## HStack V5 role
+
+Layer 4 worker writes the change; Layer 3 approves the acceptance check. Routine work goes to free models. See [hstack-v5.md](../../docs/hstack-v5.md).
+
+1. Confirm the repo, branch or worktree, and any uncommitted changes. Do not overwrite work in progress.
+2. Write the acceptance check first: a test, or an observable behavior you can run. If the spec is ambiguous, ask one question before coding.
+3. Implement the smallest change that passes the check. Keep unrelated edits out.
+4. Run the check and the existing suite.
+5. Hand off to `verify-and-fix` before anything is committed.
+
+## Report
+
+Changed files, the acceptance check and its result, and what is not done yet.
