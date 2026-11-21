@@ -9,6 +9,8 @@ description: "Retro rewind workflow for regressions. Use when Enzo says /save-po
 
 Layer 4 compares with the last good version; Layer 3 decides the repair. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T1. Escalate to T2 when the cause spans several releases. See [model-routing.md](../../docs/model-routing.md).
+
 This workflow was **synthesized from observed user behavior** — repeated instructions to compare with a previously working version, restore the configured behavior, and verify the real user action. It is a new H Stack composition, not a historic installed skill. Evidence and its limits are in `docs/skill-usage.md`.
 
 ## Find the regression boundary

@@ -11,6 +11,9 @@ This skill covers the **W1 Implementar funcionalidad** workflow.
 
 Layer 4 worker writes the change; Layer 3 approves the acceptance check. Routine work goes to free models. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 for routine changes, T1 for multi-file work. Escalate to T2 after two failed verifications or when the change crosses an architecture boundary. See [model-routing.md](../../docs/model-routing.md).
+
+0. If the repo has `.acc/`, pull focused context with `acc-context` first.
 1. Confirm the repo, branch or worktree, and any uncommitted changes. Do not overwrite work in progress.
 2. Write the acceptance check first: a test, or an observable behavior you can run. If the spec is ambiguous, ask one question before coding.
 3. Implement the smallest change that passes the check. Keep unrelated edits out.

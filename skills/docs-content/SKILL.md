@@ -11,6 +11,8 @@ This skill covers the **W7 Contenido, productos y docs** workflow.
 
 Layer 4 drafts and edits; Layer 1 checks facts with the owner before anything is published. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+
 1. Read the current README, docs, or product data first.
 2. Update only what changed. Keep the existing structure and tone.
 3. Verify every fact, price, and link. Open affiliate and product links before publishing them.

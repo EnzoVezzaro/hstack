@@ -11,6 +11,8 @@ This skill covers the **W10 Diseño UI / landing** workflow.
 
 Layer 3 sets the direction; Layer 4 implements; Layer 5 checks the real screen. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T2 sets direction; T0 or T1 implements. See [model-routing.md](../../docs/model-routing.md).
+
 1. Inspect the actual screen at desktop and phone widths with `interface-check`.
 2. Use the project's existing tokens and components. Do not invent new ones.
 3. Check contrast, focus states, and responsive layout.

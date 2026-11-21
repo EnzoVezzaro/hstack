@@ -11,6 +11,8 @@ This skill extends the **W9 Limpieza y refactor** workflow.
 
 Layer 4 measures; the owner confirms every deletion. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+
 1. Measure first: find the largest folders in the user's home and the project, and the size of caches, node_modules, build outputs, Docker images, and simulator data.
 2. Group the findings into safe (caches, build outputs that can be rebuilt) and needs approval (images, data, anything without a clear rebuild path).
 3. Show the list with sizes and ask for confirmation before deleting anything.

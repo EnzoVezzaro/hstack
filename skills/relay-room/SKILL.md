@@ -9,6 +9,8 @@ description: "Retro switchboard for Orca project work. Use when Enzo says /relay
 
 Layer 2 (Orca) finds the live project and owner before a bounded handoff. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T2 writes the brief; workers start at T0. See [model-routing.md](../../docs/model-routing.md).
+
 New H Stack composition. Source skills: `activate-project-director`, `orca-cli`, `orchestration`.
 
 ## 1. Find the live line

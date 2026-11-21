@@ -11,6 +11,8 @@ This skill covers the **W9 Limpieza y refactor** workflow.
 
 Layer 4 does the refactor in small steps; Layer 3 reviews any behavior change. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 deletes; T1 refactors; T2 reviews any behavior change. See [model-routing.md](../../docs/model-routing.md).
+
 1. Find unused code and files by searching for references. Use a dead-code tool if the project has one.
 2. Propose the list before deleting.
 3. Delete in small steps. Run the tests after each one.

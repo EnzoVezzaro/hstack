@@ -11,6 +11,8 @@ This skill extends the **W10 Diseño UI / landing** workflow.
 
 Layer 4 builds the composition; Layer 1 confirms the message and format with the owner. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T1 builds; T2 checks the message. See [model-routing.md](../../docs/model-routing.md).
+
 1. Define the message, duration, aspect ratio, and the output file. Ask once if any is missing.
 2. Load `hyperframes` for the workflow, then `hyperframes-core` for the composition contract and `hyperframes-animation` for motion.
 3. Use `hyperframes-registry` before building a named effect by hand.

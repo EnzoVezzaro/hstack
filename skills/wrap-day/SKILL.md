@@ -9,6 +9,8 @@ description: "Retro end-of-shift logbook. Use when Enzo says /wrap-day or asks f
 
 Layer 1 (assistant) closes the day with verified progress and the next step. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+
 Codex is the personal assistant. Check Orca and the local worktree; a planned task is not a completed task.
 
 ## Reconcile the shift

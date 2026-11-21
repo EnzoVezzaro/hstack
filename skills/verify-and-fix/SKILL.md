@@ -11,6 +11,8 @@ This skill covers the **W2 Verificar y arreglar** workflow.
 
 Layer 4 supervisor reproduces, fixes, and verifies; Layer 3 reviews anything large. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T1 reproduces and fixes. Escalate to T2 after two failed fixes; verify with a different model than the author. See [model-routing.md](../../docs/model-routing.md).
+
 1. Reproduce the reported behavior exactly as described. If you cannot reproduce it, report what you tried and stop.
 2. Find the cause, not the symptom. Fix it at that point.
 3. Rerun the same path that failed, then the full test suite.

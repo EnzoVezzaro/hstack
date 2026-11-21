@@ -19,7 +19,7 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `cleanup-refactor` | `/cleanup-refactor` | W9 Limpieza y refactor |
 | `ui-design` | `/ui-design` | W10 Diseño UI / landing |
 | `security-backend` | `/security-backend` | W11 Seguridad, datos y backend |
-| `general-tasks` | `/general-tasks` | W12 Otros / general |
+| `hstack` | `/hstack` | W12 Otros / general (entry point and router) |
 
 ## Added commands
 
@@ -39,10 +39,23 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `cleanup-disk-space` | `/cleanup-disk-space` | W9 Limpieza y refactor |
 | `resume-work` | `/resume-work` | W3 Coordinar agentes |
 | `handoff` | `/handoff` | W3 Coordinar agentes |
+| `break-it-down` | `/break-it-down` | W3 Coordinar agentes |
+| `horizon` | `/horizon` | Long-horizon scheduling |
+| `horizon-loop` | `/horizon-loop` | Long-horizon loops |
+| `horizon-loop-test` | `/horizon-loop-test` | W2 Verificar y arreglar |
+| `horizon-loop-ego-lite` | `/horizon-loop-ego-lite` | W2 Verificar y arreglar |
+| `release` | `/release` | W5 Publicar y git |
+| `check-github` | `/check-github` | W4 Investigar y explicar |
+| `setup-hstack` | `/setup-hstack` | Model routing |
+| `acc-context` | `/acc-context` | W4 Investigar y explicar |
+| `protect-repo` | `/protect-repo` | W5 Publicar y git |
+| `reposell-release` | `/reposell-release` | W5 Publicar y git |
+| `proagent-equip` | `/proagent-equip` | W3 Coordinar agentes |
+| `ace-workspace` | `/ace-workspace` | W3 Coordinar agentes |
 
 ## Routing
 
-- Not sure which one applies? Use `general-tasks`. It classifies the work and hands each step to the right skill.
+- Not sure which one applies? Use `/hstack`. It classifies the work and hands each step to the right skill.
 - `coordinate-agents` coordinates; it hands verification to `verify-and-fix` and publishing to `publish-git`.
 - Nothing is committed, merged, published, deployed, or deleted outside the code unless the owner asks.
 

@@ -11,6 +11,8 @@ This skill extends the **W2 Verificar y arreglar** workflow.
 
 Layer 5 (Ego Lite) operates the browser; Layer 3 decides what counts as a failure. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0 drives the browser; T2 judges unclear failures. See [model-routing.md](../../docs/model-routing.md).
+
 1. Start from a running app. If none is running, use `run-local` first.
 2. Load the `ego-browser` skill and open the app in ego-lite. Use the user's logged-in sessions only when the task needs them.
 3. Follow each main flow as a user would: click, type, navigate. Note every step that fails or looks wrong.

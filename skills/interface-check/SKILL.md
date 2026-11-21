@@ -9,6 +9,8 @@ description: "Retro inspection bay for user-facing interfaces. Use when Enzo say
 
 Layer 5 (Ego Lite or computer use) inspects the real screen; Layer 3 decides the fixes. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T1 inspects; T2 decides design fixes. See [model-routing.md](../../docs/model-routing.md).
+
 New H Stack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 
 ## Inspect before editing

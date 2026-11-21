@@ -6,13 +6,13 @@ H Stack groups the recurring work into three shelves. The map separates behavior
 
 | Shelf | Work seen in the activity record | H Stack routes | Evidence status |
 | --- | --- | --- | --- |
-| Build and coordinate | Existing Orca teams, bounded worker tasks, integration, review, and skill authoring | Enzo Coding Playbook, Relay Room, Patch Patrol, Skill Workbench | `orchestration` and `orca-cli` were invoked; coordination and review are inferred from that activity. Authoring is inferred from one observed authoring session. All H Stack route names are thread-only. |
+| Build and coordinate | Existing Orca teams, bounded worker tasks, integration, review, and skill authoring | HSTACK (`/hstack`), Relay Room, Patch Patrol, Skill Workbench | `orchestration` and `orca-cli` were invoked; coordination and review are inferred from that activity. Authoring is inferred from one observed authoring session. All H Stack route names are thread-only. |
 | Experience and recovery | Visual reviews, responsive and accessibility checks, regression recovery | Interface Check, Save Point | Visual-review sources (`impeccable`, `antislop-ui`, `orca-computer-use`) were invoked; Save Point is inferred from repeated user corrections. Both route names are thread-only. |
 | Daily operations | Morning briefings, day/week/month planning, end-of-day reports, blockers | A New Day, Plan Horizon, Wrap Day, Blocker Radar | User-specified routines over live Orca state; no historic invocation was found. |
 
 ## Routing rules
 
-- For a code change, start at **Enzo Coding Playbook**. It routes to project coordination, interface work, regression recovery, independent review, or skill authoring.
+- For a code change, start at **HSTACK (`/hstack`)**. It routes to project coordination, interface work, regression recovery, independent review, or skill authoring.
 - For a repeated task worth capturing, use **Skill Workbench**. It builds a skill from recorded evidence rather than from assumed preferences.
 - For personal daily operations, choose the smallest fit: **A New Day**, **Plan Horizon**, **Wrap Day**, or **Blocker Radar**.
 

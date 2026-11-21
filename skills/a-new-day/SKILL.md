@@ -9,6 +9,8 @@ description: "Retro morning boot sequence. Use when Enzo says /a-new-day, asks f
 
 Layer 1 (assistant) opens the day from live state; the owner decides the priorities. See [hstack-v5.md](../../docs/hstack-v5.md).
 
+**Model tier:** T0. Escalate to T2 only for a priority conflict the owner must decide. See [model-routing.md](../../docs/model-routing.md).
+
 Codex is the personal assistant in this routine. Live Orca state comes first; chat history is context, not current status.
 
 ## Gather
