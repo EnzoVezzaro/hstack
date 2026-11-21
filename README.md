@@ -1,33 +1,48 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f6b5c,100:5fd0b8&height=180&section=header&text=HSTACK&fontSize=72&fontColor=ffffff&animation=fadeIn&desc=High%20Stack%20·%2035%20skills%20for%20AI%20agent%20teams&descAlignY=72&descSize=18" alt="HSTACK: High Stack, 35 skills for AI agent teams" width="100%">
-</p>
-
-<p align="center">
-  <a href="https://github.com/EnzoVezzaro/hstack"><img alt="35 skills" src="https://img.shields.io/badge/skills-35-0f6b5c?style=for-the-badge"></a>
-  <img alt="4 layers" src="https://img.shields.io/badge/layers-5-5fd0b8?style=for-the-badge">
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-1d2320?style=for-the-badge"></a>
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=24&duration=3200&pause=900&color=5FD0B8&center=true&vCenter=true&width=760&lines=Expensive+intelligence+makes+decisions.;Cheap+intelligence+does+the+work.;Agents+delegate%2C+verify%2C+report+back.;You+stay+in+control.+%F0%9F%A4%9A" alt="Typing animation: expensive intelligence makes decisions; cheap intelligence does the work; agents delegate, verify, report back; you stay in control">
-</p>
-
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/h-stack-banner.png">
-  <img src="assets/h-stack-loop.gif" alt="HSTACK banner: an H built from stacked blocks, with code, agent, terminal, task, and game panels">
+  <img src="assets/h-stack-loop.gif" alt="H Stack banner: a camo voxel H with code, notes, brain, and game panels, gold nodes pulsing along the bridge, and a small leaf">
 </picture>
 
-## 👋 What is this?
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=24&duration=3000&pause=900&color=FFC44A&center=true&vCenter=true&width=760&lines=Coding+with+AI%2C+coffee%2C+and+a+little+weed.;Expensive+intelligence+makes+decisions.;Cheap+intelligence+does+the+work.;Agents+delegate%2C+verify%2C+report+back.;You+stay+in+control." alt="Typing animation: coding with AI, coffee, and a little weed; expensive intelligence makes decisions; cheap intelligence does the work; agents delegate, verify, report back; you stay in control">
+</p>
 
-**HSTACK** (High Stack) is a box of **35 local agent skills** for running a team of AI agents without babysitting every terminal.
+<p align="center">
+  <a href="https://github.com/EnzoVezzaro/hstack"><img alt="36 skills" src="https://img.shields.io/badge/skills-36-3b5336?style=for-the-badge"></a>
+  <img alt="5 layers" src="https://img.shields.io/badge/layers-5-ffc44a?style=for-the-badge&labelColor=0e1413">
+  <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
+</p>
 
-You talk to one assistant. It hands work to a director, the director hands bounded tasks to cheap workers, the workers verify and report back. You only step in for the decisions that matter.
+# HSTACK
 
-Each skill is a plain `SKILL.md` file. No plugin, no daemon, no hidden agents.
+**HSTACK** (read "High Stack") is a box of **36 local agent skills** for running a crew of AI agents without babysitting every terminal.
 
-> **Start here:** say **"use my stack"** to the **Enzo Coding Playbook**, the router that picks the right skill for your task.
+You talk to one assistant. It hands the work down the stack, cheap workers do the heavy lifting, and everything comes back verified. You only step in for the calls that matter.
+
+Every skill is a plain `SKILL.md` file. No plugin, no daemon, no hidden agents. Just blocks you stack.
+
+> **Start here:** say **"use my stack"** to the **Enzo Coding Playbook**. It picks the right skill for your task.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/build-h.png">
+    <img src="assets/animations/build-h.gif" alt="A camo voxel H stacks itself layer by layer, then its code, notes, brain, and game panels light up" width="85%">
+  </picture>
+</p>
+
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
 ## 🧭 The stack (V5)
+
+One voice in, a whole crew out. Watch the gold pulse travel down the layers:
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/flow-v5.png">
+    <img src="assets/animations/flow-v5.gif" alt="Six camo voxel towers for the V5 layers: assistant, orchestrator, directors, workers, Ego Lite, and computer use. A gold pulse travels from one to the next" width="100%">
+  </picture>
+</p>
 
 ```mermaid
 flowchart LR
@@ -36,24 +51,34 @@ flowchart LR
     O --> D["🎯 Claude Code / Codex<br/>directors"]
     D --> W["⚙️ OpenCode · Freebuff · Claude Code · Codex<br/>supervisors & workers"]
     W --> B["🌐 Ego Lite<br/>browser operator"]
+    W --> C["🖥️ Computer use<br/>desktop apps"]
     B -. reports back .-> D
+    C -. reports back .-> D
     W -. verifies .-> D
     D -. reports .-> A
-    classDef human fill:#fff,stroke:#0f6b5c,color:#1d2320;
-    class U human;
 ```
 
 | Layer | Who | Does |
 | --- | --- | --- |
-| 1 | Codex / ChatGPT | Talks with you, plans, tracks everything |
-| 2 | ORCA | Routes sessions and context |
-| 3 | Claude Code / Codex | Decides, designs, accepts the work |
-| 4 | OpenCode / Freebuff / Claude Code / Codex | Codes, debugs, tests, researches |
-| 5 | Ego Lite | Clicks through real websites and apps |
+| 🧠 1 | Codex / ChatGPT | Talks with you, plans, keeps track of everything |
+| 🐋 2 | ORCA | Routes sessions and context |
+| 🎯 3 | Claude Code / Codex | Decides, designs, accepts the work |
+| ⚙️ 4 | OpenCode / Freebuff / Claude Code / Codex | Codes, debugs, tests, researches |
+| 🌐 5 | Ego Lite | Clicks through real websites and web apps |
+| 🖥️ 5 | Computer use | Drives native desktop apps (Orca, Codex, or Claude desktop) |
 
-Full detail, economics, and the principles: **[docs/hstack-v5.md](docs/hstack-v5.md)**.
+**$40/month** for the whole crew: two $20 subscriptions, everything else open source or free. Details, economics, and the principles live in **[docs/hstack-v5.md](docs/hstack-v5.md)**.
+
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
 ## 🧰 Skills
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/coordinate-bots.png">
+    <img src="assets/animations/coordinate-bots.gif" alt="Three voxel worker bots walk between glowing gold stations on a camo platform" width="85%">
+  </picture>
+</p>
 
 Pick a shelf. Every skill has a **Say** phrase you can type in your agent.
 
@@ -84,7 +109,7 @@ Pick a shelf. Every skill has a **Say** phrase you can type in your agent.
 </details>
 
 <details>
-<summary><b>🛠️ Build & verify</b> (11)</summary>
+<summary><b>🛠️ Build & verify</b> (12)</summary>
 
 | Skill | Say | What it does |
 | --- | --- | --- |
@@ -95,6 +120,7 @@ Pick a shelf. Every skill has a **Say** phrase you can type in your agent.
 | [research-explain](skills/research-explain/SKILL.md) | `/research-explain` | Searches the web and GitHub, reads the source, explains with evidence. |
 | [run-local](skills/run-local/SKILL.md) | `/run-local` | Starts the app, checks the main path, reports the URL. |
 | [visual-test-ego-lite](skills/visual-test-ego-lite/SKILL.md) | `/visual-test-ego-lite` | Clicks through the app in Ego Lite the way a person would. |
+| [visual-test-computer-use](skills/visual-test-computer-use/SKILL.md) | `/visual-test-computer-use` | Tests native desktop apps with computer use when a browser can't reach them. |
 | [interface-check](skills/interface-check/SKILL.md) | `/interface-check` | Inspects a real screen at desktop and phone widths, then retests. |
 | [fix-ci](skills/fix-ci/SKILL.md) | `/fix-ci` | Reads the failing logs, fixes the cause, reruns the checks. |
 | [setup-install](skills/setup-install/SKILL.md) | `/setup-install` | Installs from the lockfile and configures without leaking secrets. |
@@ -132,7 +158,16 @@ Pick a shelf. Every skill has a **Say** phrase you can type in your agent.
 
 </details>
 
-## ⚡ Install in 30 seconds
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
+
+## 🚀 Install in 30 seconds
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/ship-launch.png">
+    <img src="assets/animations/ship-launch.gif" alt="A gold voxel rocket block lifts off a camo tower, leaving a trail of sparks" width="70%">
+  </picture>
+</p>
 
 ```bash
 git clone https://github.com/EnzoVezzaro/hstack.git
@@ -140,15 +175,16 @@ cp -R hstack/skills/* ~/.codex/skills/     # Codex
 cp -R hstack/skills/* ~/.claude/skills/    # Claude Code
 ```
 
-Restart your agent session so it finds the new skills.
-
-Then try one:
+Restart your agent session so it finds the new blocks. Then try one:
 
 ```text
 use my stack: reproduce the reported regression, fix the cause, and verify the same path.
 /visual-test-ego-lite walk the signup flow on mobile and tell me where a person gets stuck.
+/visual-test-computer-use relaunch the desktop app and check the settings window.
 /any-blockers check the active Orca projects and name the smallest next move for each blocker.
 ```
+
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
 ## 🧩 Requirements
 
@@ -156,8 +192,9 @@ use my stack: reproduce the reported regression, fix the cause, and verify the s
 - The source skills some workflows call. Each dependency is listed in [source-skills.md](docs/source-skills.md).
 - **Orca** for the coordination and daily skills. Orca is the source of truth for what is actually running.
 - **Ego Lite** for browser work.
+- **Computer use** for native desktop apps: `orca computer` inside Orca, Codex Computer Use, or Claude desktop.
 
-## 🛠️ Make them yours
+## 🎨 Make them yours
 
 These are starting points. Put your own settings, such as which agents you run and which deploy targets exist, in your `CLAUDE.md` or `AGENTS.md`. Then update the skills without losing your setup.
 
@@ -166,6 +203,7 @@ These are starting points. Put your own settings, such as which agents you run a
 - [HSTACK V5 reference](docs/hstack-v5.md): roles, economics, and the skill-to-layer map.
 - [Workflows](docs/workflows.md): the twelve core workflows and the added commands.
 - [Operating model](docs/role-model.md): the short version of the roles.
+- [Animations](scripts/generate_hstack_animations.py): regenerate the voxel GIFs with `python3 scripts/generate_hstack_animations.py`.
 - [Workflow map](docs/workflow-map.md) and [skill usage](docs/skill-usage.md): evidence behind the shelves.
 
 ## 🙏 Relationship to the references
@@ -177,5 +215,6 @@ These are starting points. Put your own settings, such as which agents you run a
 ---
 
 <p align="center">
-  <sub>Built for people who want to manage software, not every terminal. MIT licensed.</sub>
+  <img src="assets/animations/divider.gif" alt="" width="60%"><br>
+  <sub>Built with AI, coffee, and a little weed, for people who want to manage software, not every terminal. MIT licensed.</sub>
 </p>

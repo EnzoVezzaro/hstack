@@ -12,7 +12,7 @@ The skills in this repo are local `SKILL.md` files. Nothing here proves that a g
 | V2 | Herdr → Codex → OpenCode / Freebuff → Ego Lite |
 | V3 | ORCA → Herdr → Codex → OpenCode / Freebuff → Ego Lite |
 | V4 | ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite |
-| **V5** | **Codex → ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite** |
+| **V5** | **Codex → ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite + computer use** |
 
 ## Roles
 
@@ -22,7 +22,8 @@ The skills in this repo are local `SKILL.md` files. Nothing here proves that a g
 | 2 | Orca (open source) | Orchestrator | Agent sessions, context, routing, coordination, work allocation | Free (tool) |
 | 3 | Claude Code / Codex | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid |
 | 4 | OpenCode / Freebuff / Claude Code / Codex | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
-| 5 | Ego Lite (open source) | Browser operator | Navigate websites and apps, collect information, test real workflows | Free (tool) |
+| 5 | Ego Lite (open source) | Browser operator | Navigate websites and web apps, collect information, test real workflows | Free (tool) |
+| 5 | Computer use (Orca `orca computer`, Codex Computer Use, Claude desktop) | Computer operator | Drive native desktop apps and windows a browser tool cannot reach | Included with the tools above |
 
 Principles from the post:
 
@@ -67,6 +68,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [research-explain](../skills/research-explain/SKILL.md) | `/research-explain` | 4 researches, 3 decides | Layer 3 |
 | [run-local](../skills/run-local/SKILL.md) | `/run-local` | 4 | Layer 3 |
 | [visual-test-ego-lite](../skills/visual-test-ego-lite/SKILL.md) | `/visual-test-ego-lite` | 5 Ego Lite | Layer 3 |
+| [visual-test-computer-use](../skills/visual-test-computer-use/SKILL.md) | `/visual-test-computer-use` | 5 computer use | Layer 3 |
 | [interface-check](../skills/interface-check/SKILL.md) | `/interface-check` | 5 with 3 | Layer 3 |
 | [ui-design](../skills/ui-design/SKILL.md) | `/ui-design` | 3 designs, 4 implements | Layer 3 |
 | [antislop-review](../skills/antislop-review/SKILL.md) | `/antislop-review` | 4 | Layer 3 |
