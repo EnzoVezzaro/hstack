@@ -5,6 +5,10 @@ description: "Retro signal scanner for stuck work. Use when Enzo says /any-block
 
 # Blocker radar · signal scanner
 
+## HStack V5 role
+
+Layer 1 finds the blockers; Layer 2 (Orca) shows owners and live state. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 Codex is the personal assistant. Inspect live Orca agent and worktree state plus recent project messages. Silence is not evidence of a blocker.
 
 ## Scan

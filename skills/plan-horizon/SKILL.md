@@ -5,6 +5,10 @@ description: "Retro roadmap reel. Use for /plan-day, /plan-week, /plan-month, or
 
 # Plan horizon · roadmap reel
 
+## HStack V5 role
+
+Layer 1 (assistant) turns priorities into a feasible plan; the owner approves it. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 Codex is the personal assistant for planning. The horizon arrives through `/plan-day`, `/plan-week`, or `/plan-month`; these are invocation names in this playbook, not historic installed skills.
 
 ## Build the input picture

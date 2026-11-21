@@ -1,0 +1,21 @@
+---
+name: cleanup-disk-space
+description: "Use when the user asks to free disk space. Measures where the space is used, proposes safe deletions, and deletes only after confirmation."
+---
+
+# Clean up disk space
+
+This skill extends the **W9 Limpieza y refactor** workflow.
+
+## HStack V5 role
+
+Layer 4 measures; the owner confirms every deletion. See [hstack-v5.md](../../docs/hstack-v5.md).
+
+1. Measure first: find the largest folders in the user's home and the project, and the size of caches, node_modules, build outputs, Docker images, and simulator data.
+2. Group the findings into safe (caches, build outputs that can be rebuilt) and needs approval (images, data, anything without a clear rebuild path).
+3. Show the list with sizes and ask for confirmation before deleting anything.
+4. Delete the approved items. Measure free space again.
+
+## Report
+
+Space before and after, what was deleted, and what was kept and why. Never delete user files or data without explicit approval.

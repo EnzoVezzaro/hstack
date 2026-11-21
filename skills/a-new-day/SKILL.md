@@ -5,6 +5,10 @@ description: "Retro morning boot sequence. Use when Enzo says /a-new-day, asks f
 
 # A new day · morning boot sequence
 
+## HStack V5 role
+
+Layer 1 (assistant) opens the day from live state; the owner decides the priorities. See [hstack-v5.md](../../docs/hstack-v5.md).
+
 Codex is the personal assistant in this routine. Live Orca state comes first; chat history is context, not current status.
 
 ## Gather
