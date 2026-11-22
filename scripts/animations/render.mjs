@@ -19,7 +19,9 @@ export const SCENES = {
   'horizon-loop': { w: 1600, h: 1000, frames: 120, fps: 24, outW: 800 },
   'install-terminal': { w: 1600, h: 900, frames: 96, fps: 24, outW: 800 },
   'divider': { w: 1600, h: 160, frames: 48, fps: 24, outW: 800 },
-  'architecture': { w: 1600, h: 3620, frames: 72, fps: 24, outW: 800 },
+  'tier-pyramid': { w: 1600, h: 1200, frames: 96, fps: 24, outW: 800 },
+  'tier-pyramid-free': { w: 1600, h: 1560, frames: 96, fps: 24, outW: 800 },
+  'architecture': { w: 1600, h: 3558, frames: 72, fps: 24, outW: 800 },
 };
 
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
@@ -60,7 +62,7 @@ async function renderScene(browser, port, name, opts) {
   if (opts.still) return;
   const gif = path.join(outDir, `${name}.gif`);
   const stable = path.join(frameDir, 'stable');
-  execFileSync('python3', [path.join(here, 'stabilize.py'), frameDir, stable, String(cfg.stabilize ?? 9)]);
+  execFileSync('python3', [path.join(here, 'stabilize.py'), frameDir, stable, String(cfg.stabilize ?? 9)], { stdio: 'inherit' });
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(cfg.fps), '-i', path.join(stable, 'f%04d.png'),
     '-vf', `split[a][b];[a]palettegen=max_colors=${cfg.colors ?? 192}:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle`,
     '-loop', '0', gif]);

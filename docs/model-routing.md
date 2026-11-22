@@ -6,18 +6,47 @@ Your own map lives in your `AGENTS.md` (or `CLAUDE.md`) under a `## hstack model
 
 ## Tiers
 
-| Tier | Role | Default agents and models | Use it for |
-| --- | --- | --- | --- |
-| **T0 · free worker** | Layer 4 | OpenCode free models (`big-pickle`, `space-bunny-free`), NVIDIA free tier (`glm-5.3-flash`, `nemotron-3.5-lightning`), Freebuff (`mimo-v2.6-pro`, DeepSeek V4 Flash) | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts, mechanical edits |
-| **T1 · strong free worker** | Layer 4 supervisor | NVIDIA `glm-5.3`, `nemotron-3-ultra`, Freebuff DeepSeek V4 Pro or Kimi K2.7 Code | Debugging, multi-file changes, verifying a T0 worker's result |
-| **T2 · director** | Layer 3 | Codex (`gpt-6-luna`, medium effort), Claude Code (Sonnet) | Planning, acceptance criteria, reviews, decisions inside a project |
-| **T3 · top reasoning** | Layer 3, rare | Codex at high effort, Claude Code with Opus | Architecture, security, anything irreversible, and briefs that failed lower down |
+![The model pyramid: you and ChatGPT on top, then gods mode, directors, supervisors, and workers at the base](../assets/animations/tier-pyramid.gif)
 
-The models listed are the ones seen in this machine's history and config on 2026-11-21. Free models change often; `/setup-hstack` re-detects them.
+| Tier | Name | Anthropic | OpenAI | Others | Use it for |
+| --- | --- | --- | --- | --- | --- |
+| You | Owner | | | | Approve, decide, own the product. Nothing ships without you |
+| ChatGPT | Main coordinator and assistant | | | | Talks to you, plans the day, routes work down |
+| **T3** | Gods mode | Fable | Astra | | Architecture, security, anything irreversible, and briefs that failed lower down |
+| **T2** | Directors | Opus | GPT Sol | | Planning, acceptance criteria, reviews, decisions |
+| **T1** | Supervisors | Sonnet | Terra | OpenCode Go (optional) | Debugging, multi-file changes, checking the workers |
+| **T0** | Workers | Haiku | Luna | OpenCode Go, or free models | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts |
+
+These are the defaults. `/setup-hstack` detects which of them you actually have and writes your own map.
+
+### Any provider fits the same shape
+
+The tiers describe jobs, not brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider works the same way: the provider's strongest model goes in gods mode, its flagship in directors, a mid-size model in supervisors, and its fast or flash model in workers. Mixing providers is fine, as long as the model that checks a change is not the one that wrote it.
+
+### The zero-dollar version
+
+![The zero-dollar pyramid: only OpenCode and Freebuff, with you as gods mode](../assets/animations/tier-pyramid-free.gif)
+
+| Tier | Name | Models | Notes |
+| --- | --- | --- | --- |
+| **T3** | Gods mode | You | No free model gets the decisions you can't undo |
+| **T2** | Directors | Freebuff: DeepSeek V4 Pro, Kimi K2.7 Code | Freebuff full mode only |
+| **T1** | Supervisors | Freebuff: MiMo 2.5 Pro, MiniMax M3 | Freebuff full mode only |
+| **T0** | Workers | Freebuff: DeepSeek V4 Flash, MiMo 2.5; OpenCode free models (`big-pickle`, `space-bunny-free`) | Also in Freebuff's limited mode |
+
+Know the limits before you go free:
+
+- Free models come and go, and rate limits tend to hit in the middle of a task.
+- Freebuff runs on ads, and full mode is only available in some countries.
+- Limited mode gets DeepSeek V4 Flash and MiMo 2.5, and six one-hour sessions a day.
+- Some free models are labeled "Collects data for training". Read the label before you paste code.
+- Accounts can be suspended without warning. Mine is, right now; see the note in the README.
+
+Freebuff's model names follow its README, and versions move fast (this machine already had `mimo-v2.6-pro` configured).
 
 ## Start low
 
-Start every task at the lowest tier that can do it. Most HStack skills start at T0 or T1; each skill states its starting tier in its **HStack V5 role** section.
+Start every task at the lowest tier that can do it. Most HStack skills start with the workers (T0) or supervisors (T1); each skill states its starting tier in its **HStack V5 role** section.
 
 ## Escalate one tier when
 

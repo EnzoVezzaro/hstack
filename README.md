@@ -50,6 +50,14 @@ Restart your agent so it notices the new skills.
   </picture>
 </p>
 
+## What's new in v5.2.0
+
+- The model pyramid now starts with you and ChatGPT on top, then gods mode (Fable, Astra), directors (Opus, GPT Sol), supervisors (Sonnet, Terra, OpenCode Go), and workers (Haiku, Luna, OpenCode Go or free models).
+- A zero-dollar pyramid for OpenCode and Freebuff only, with its limits written out.
+- The routing doc, the map, and the elevator use the same tier names.
+
+Full notes, with the Freebuff suspension and the skill list: [release v5.2.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v5.2.0).
+
 ## Getting started
 
 Type `/hstack` and describe the job:
@@ -90,7 +98,7 @@ One voice goes in at the top, and a whole crew answers at the bottom:
 | 🧠 Assistant | Codex / ChatGPT | Talks with me, plans the day, remembers what I forgot | $20/mo |
 | 🐋 Orchestrator | ORCA | Routes sessions, context, and work between agents | Free, open source |
 | 🎯 Directors | Claude Code / Codex | Decide, design, and accept or reject the work | $20/mo |
-| ⚙️ Workers | OpenCode, Freebuff, Claude Code, Codex | Write code, debug, test, and research on free models | Free |
+| ⚙️ Workers | OpenCode, ~~Freebuff~~ ([benched](#a-note-to-the-freebuff-team)), Claude Code, Codex | Write code, debug, test, and research on cheap or free models | Included or free |
 | 🌐 Browser | Ego Lite | Clicks through real websites | Free, open source |
 | 🖥️ Desktop | Computer use (Orca, Codex, Claude desktop) | Drives native apps | Included |
 
@@ -103,6 +111,19 @@ The house rules:
 - Humans stay in control. Pushes, merges, deploys, launches, and deletes wait for a yes.
 - More agents is not more intelligence. A big crew that shares nothing is just a loud one.
 
+### A note to the Freebuff team
+
+@jahooma, @brandonkachen, @victorxheng, and everyone at @CodebuffAI: thank you, genuinely. Freebuff carried a big share of the free T0 work in this stack, and it was good at it. Ads and all, I was a fan.
+
+Then, right in the middle of the best agent run of my week, with the whole crew humming and the coffee still warm, you pulled the plug:
+
+```text
+This account is suspended. To appeal, visit https://freebuff.com/account?tab=standing.
+If this is a mistake, contact support@freebuff.com.
+```
+
+Great timing. I honestly don't know what my robots did; they're mostly polite. If it's a mistake, I'd love my workers back, because the bench is cold. Until then, Freebuff's share of the work goes to OpenCode's free models and NVIDIA's free tier, and the whole crew still costs $40 a month.
+
 ## The whole map
 
 <details open>
@@ -111,7 +132,7 @@ The house rules:
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
-    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, Freebuff, NVIDIA, MiMo, Gemini, DeepSeek, Kimi, and GLM as workers and their T0 and T1 models; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, and my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, and my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
   </picture>
 </p>
 
@@ -123,23 +144,54 @@ The house rules:
 
 <p align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-elevator.png">
-    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors labeled T0 to T3 and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the director on T2, and rides back down to T0 where it passes with a green check" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-pyramid.png">
+    <img src="assets/animations/tier-pyramid.gif" alt="The model pyramid, from the top: you as owner, ChatGPT as main coordinator and assistant, then four floating slabs: gods mode (Fable, Astra), napping, directors (Opus, GPT Sol), supervisors (Sonnet, Terra, OpenCode Go), and workers at the wide base (Haiku, Luna, OpenCode Go or free models). A task climbs when it fails and the plan drops back down to the workers" width="100%">
   </picture>
 </p>
 
-Every skill starts on the cheapest model that can do the job, and says which one in its `SKILL.md`:
+Every skill starts on the cheapest model that can do the job, and says which tier in its `SKILL.md`:
 
-| Tier | Who | Gets |
-|---|---|---|
-| T0 · free worker | OpenCode free models, NVIDIA free tier, Freebuff | Tests, docs, cleanup, setup, first drafts |
-| T1 · strong free worker | Bigger free models, such as GLM, Nemotron Ultra, or DeepSeek Pro | Debugging, multi-file changes, checking T0's work |
-| T2 · director | Codex, Claude Code | Plans, reviews, decisions |
-| T3 · top reasoning | Codex on high effort, Claude Opus | Architecture, security, anything you can't undo |
+| Tier | Name | Anthropic | OpenAI | Also works |
+|---|---|---|---|---|
+| You | Owner | | | Approve, decide, own the product |
+| ChatGPT | Main coordinator and assistant | | | Talks to you, plans the day, routes work down |
+| T3 | Gods mode | Fable | Astra | |
+| T2 | Directors | Opus | GPT Sol | |
+| T1 | Supervisors | Sonnet | Terra | OpenCode Go (optional) |
+| T0 | Workers | Haiku | Luna | OpenCode Go, or free models |
+
+The shape matters more than the brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider fits the same pyramid: their biggest model at the top, their fast one at the bottom.
 
 A job moves up one tier when the same brief fails twice, or when it touches architecture, security, money, or deleting things. Once the smarter model has written the plan, the job goes back down, because thinking is expensive and typing is cheap. Whoever checks the work is never the one who wrote it, since everybody grades their own homework an A.
 
-That is the whole animation above: a task fails twice on T0, rides up, fails again, gets a plan from the director, and comes back down to be finished on a free model. T3 sleeps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-elevator.png">
+    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors, T0 workers, T1 supervisors, T2 directors, and T3 gods mode, and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the directors on T2, and rides back down to T0 where it passes with a green check" width="100%">
+  </picture>
+</p>
+
+That's the rule in motion: a task fails twice with the workers, rides up, fails again, gets a plan from the directors, and comes back down to be finished by a worker. Gods mode naps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
+
+<details>
+<summary><b>The zero-dollar version: OpenCode and Freebuff only</b></summary>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-pyramid-free.png">
+    <img src="assets/animations/tier-pyramid-free.gif" alt="The zero-dollar pyramid: workers on Freebuff's DeepSeek V4 Flash and MiMo 2.5 plus OpenCode free models, supervisors on MiMo 2.5 Pro and MiniMax M3, directors on DeepSeek V4 Pro and Kimi K2.7 Code, and you as gods mode, above a box listing the limits" width="100%">
+  </picture>
+</p>
+
+It works, with fine print:
+
+- Free models come and go, and rate limits tend to hit in the middle of a task.
+- Freebuff runs on ads, and full mode is only available in some countries.
+- Limited mode gets DeepSeek V4 Flash and MiMo 2.5, and six one-hour sessions a day.
+- Some free models are labeled "Collects data for training". Read the label before you paste code.
+- Accounts can be suspended without warning. [Ask me how I know](#a-note-to-the-freebuff-team).
+
+</details>
 
 <p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
@@ -332,7 +384,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 bug:          /hstack The feed jumps every few seconds. Reproduce it first, then fix and verify.
 crew:         /coordinate-agents Check what the OpenCode workers did overnight and give them the next tasks.
 continue:     /resume-work
-handoff:      /handoff Give this branch to a Freebuff worker so they can finish the tests.
+handoff:      /handoff Give this branch to an OpenCode worker so they can finish the tests.
 stoner:       /stoner Work through every open PR. Don't merge anything into main without me.
 big task:     /break-it-down Migrate the store to the new API.
 long run:     /horizon Review the reposell backlog every morning until December 15. Stay quiet if nothing changed.

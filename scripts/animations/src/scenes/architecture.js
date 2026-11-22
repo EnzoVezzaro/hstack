@@ -4,13 +4,13 @@
 // Skill-to-layer mapping comes from docs/hstack-v5.md ("Layer that runs it").
 import {
   THREE, TAU, PAL, mat, glowMat, box, cyl, sphere, place, CanvasScreen, roundRect, hex,
-  robot, animateRobot,
+  robot, animateRobot, loadImg, svgImg, tile, standee,
 } from '../lib.js';
 
 // Section heights (screen units) follow each panel's content, so nothing floats in empty space.
 const PANEL_W = 7.8;
 const PX = 1150 / PANEL_W; // panel canvas pixels per unit
-const content = { you: 300, 1: 545, 2: 460, 3: 590, 4: 1040, 5: 372, out: 416 };
+const content = { you: 300, 1: 461, 2: 460, 3: 590, 4: 992, 5: 372, out: 416 };
 const minH = { you: 4.3, 1: 3.4, 2: 3.4, 3: 3.4, 4: 3.4, 5: 3.4, out: 3.4 };
 const ORDER = ['you', 1, 2, 3, 4, 5, 'out'];
 const TITLE_H = 2.1;
@@ -50,61 +50,6 @@ const SECTIONS = (() => {
 
 const PLATFORM_X = -3.85;
 const PANEL_X = 3.75;
-
-function loadImg(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`image failed: ${src}`));
-    img.src = src;
-  });
-}
-
-async function svgImg(name, color) {
-  const txt = await (await fetch(LOGO + name + '.svg')).text();
-  const sized = txt.replace('<svg', `<svg width="512" height="512" fill="${color}"`);
-  return loadImg('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(sized));
-}
-
-// Square logo tile: either an app icon (PNG), a brand mark (SVG) on a colored
-// tile, or a plain text chip for providers without a usable mark.
-function tile({ img, bg = '#101a15', ring = '#2a3b31', text = null, textColor = '#e8d6b4', full = false }) {
-  const s = new CanvasScreen(320, 320, (ctx, w, h) => {
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = bg;
-    roundRect(ctx, 6, 6, w - 12, h - 12, 64); ctx.fill();
-    ctx.strokeStyle = ring; ctx.lineWidth = 8; ctx.stroke();
-    if (img) {
-      const pad = full ? 18 : 62;
-      ctx.save();
-      roundRect(ctx, pad, pad, w - pad * 2, h - pad * 2, full ? 52 : 0);
-      ctx.clip();
-      ctx.drawImage(img, pad, pad, w - pad * 2, h - pad * 2);
-      ctx.restore();
-    } else if (text) {
-      ctx.fillStyle = textColor;
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      const size = text.length > 6 ? 58 : text.length > 3 ? 76 : 110;
-      ctx.font = `800 ${size}px Helvetica, Arial, sans-serif`;
-      ctx.fillText(text, w / 2, h / 2 + 4);
-    }
-  });
-  s.draw(0);
-  return s;
-}
-
-function standee(scene, tex, pos, size = 1.0, raise = 0.32) {
-  const g = new THREE.Group();
-  g.position.copy(pos);
-  g.rotation.y = Math.PI / 4;
-  g.add(place(box(0.55, raise, 0.3, mat(PAL.metalDark, { m: 0.5, r: 0.4 }), { r: 0.04 }), 0, raise / 2, 0));
-  g.add(place(box(size + 0.06, size + 0.06, 0.07, mat(PAL.rubber, { r: 0.4 }), { r: 0.06 }), 0, raise + 0.02 + size / 2, -0.02));
-  const face = new THREE.Mesh(new THREE.PlaneGeometry(size, size), new THREE.MeshStandardMaterial({ color: 0, map: tex.texture, emissive: 0xffffff, emissiveMap: tex.texture, emissiveIntensity: tex.glow ?? 0.85, transparent: true }));
-  face.position.set(0, raise + 0.02 + size / 2, 0.02);
-  g.add(face);
-  scene.add(g);
-  return g;
-}
 
 function platform(scene, pos, color, lx = 5.0, lz = 3.0) {
   const g = new THREE.Group();
@@ -195,12 +140,12 @@ export async function build({ scene, camera, sun, hemi }) {
     claude: tile({ img: claude, bg: '#d97757', ring: '#f0a585' }),
     anthropic: tile({ img: anthropic, bg: '#191919', ring: '#3a4640' }),
     opencode: tile({ img: opencode, full: true, bg: '#0a0a0a' }),
-    freebuff: tile({ img: freebuff, bg: '#2f7d4f', ring: '#57a873' }),
+    freebuff: tile({ img: freebuff, bg: '#2b302d', ring: '#ff5d5d', stamp: 'SUSPENDED' }),
     nvidia: tile({ img: nvidia, bg: '#76b900', ring: '#9bd43a' }),
-    mimo: tile({ img: xiaomi, bg: '#ff6900', ring: '#ff9447' }),
-    gemini: tile({ img: gemini, bg: '#3b6fe8', ring: '#7aa0f5' }),
-    deepseek: tile({ text: 'DeepSeek', bg: '#4d6bfe', ring: '#8197ff', textColor: '#ffffff' }),
-    kimi: tile({ text: 'Kimi', bg: '#111111', ring: '#3a4640', textColor: '#ffffff' }),
+    mimo: tile({ img: xiaomi, bg: '#3a3a3a', ring: '#555555', dim: true }),
+    gemini: tile({ img: gemini, bg: '#3a3a3a', ring: '#555555', dim: true }),
+    deepseek: tile({ text: 'DeepSeek', bg: '#2b302d', ring: '#555555', textColor: '#7f8a84' }),
+    kimi: tile({ text: 'Kimi', bg: '#2b302d', ring: '#555555', textColor: '#7f8a84' }),
     glm: tile({ text: 'GLM', bg: '#2d3e9e', ring: '#6074d6', textColor: '#ffffff' }),
     egolite: Object.assign(tile({ img: egolite, full: true, bg: '#ffffff' }), { glow: 0.5 }),
     computer: tile({ text: 'CU', bg: '#1d2a23', ring: '#fa866d', textColor: '#fa866d' }),
@@ -303,7 +248,6 @@ export async function build({ scene, camera, sun, hemi }) {
   layer(1, {
     tag: 'LAYER 1', titleText: 'Assistant', sub: 'ChatGPT and Codex talk with you · Oreja keeps the music polite',
     logos: [T.chatgpt, T.codex, T.oreja],
-    modelRows: [['T2', PAL.gold, 'gpt-6-luna (Codex) · ChatGPT']],
     robots: [['assistant', PAL.blue, 1.25, 'idle']],
   });
   layer(2, {
@@ -330,17 +274,16 @@ export async function build({ scene, camera, sun, hemi }) {
   layer(3, {
     tag: 'LAYER 3', titleText: 'Directors', sub: 'Claude Code and Codex decide, design, and accept the work',
     logos: [T.claude, T.anthropic, T.codex],
-    modelRows: [['T2', PAL.gold, 'gpt-6-luna (medium) · Claude Sonnet'], ['T3', PAL.coral, 'Codex on high effort · Claude Opus']],
+    modelRows: [['T3', PAL.coral, 'Gods mode: Fable · Astra'], ['T2', PAL.gold, 'Directors: Opus · GPT Sol']],
     robots: [['director', PAL.gold, -1.3, 'inspect'], ['director', PAL.gold, 1.3, 'idle']],
   });
   layer(4, {
-    tag: 'LAYER 4', titleText: 'Workers', sub: 'OpenCode, Freebuff, Claude Code, Codex · free models first',
+    tag: 'LAYER 4', titleText: 'Workers', sub: 'OpenCode, Claude Code, Codex · free models first · Freebuff benched',
     logos: [T.opencode, T.freebuff, T.nvidia, T.mimo, T.gemini],
     modelRows: [
-      ['T0', PAL.mint, 'big-pickle · space-bunny-free · glm-5.3-flash'],
-      ['T0', PAL.mint, 'nemotron-3.5-lightning · mimo-v2.6-pro'],
-      ['T0', PAL.mint, 'DeepSeek V4 Flash (Freebuff)'],
-      ['T1', PAL.blue, 'glm-5.3 · nemotron-3-ultra · DeepSeek V4 Pro · Kimi K2.7'],
+      ['T1', PAL.blue, 'Supervisors: Sonnet · Terra · OpenCode Go'],
+      ['T0', PAL.mint, 'Workers: Haiku · Luna · OpenCode Go or free'],
+      ['OFF', PAL.red, 'Freebuff (suspended): MiMo · DeepSeek V4 · Kimi K2.7'],
     ],
     extra: (pos) => {
       [T.deepseek, T.kimi, T.glm].forEach((tex, i) => {

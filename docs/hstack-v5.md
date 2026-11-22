@@ -23,7 +23,7 @@ The skills in this repo are local `SKILL.md` files. Nothing here proves that a g
 | 1 | Codex / ChatGPT Plus | Personal assistant | Voice commands, conversation, planning, project tracking, reports to the owner | Paid |
 | 2 | Orca (open source) | Orchestrator | Agent sessions, context, routing, coordination, work allocation | Free (tool) |
 | 3 | Claude Code / Codex | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid |
-| 4 | OpenCode / Freebuff / Claude Code / Codex | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
+| 4 | OpenCode / Claude Code / Codex (Freebuff suspended for now) | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
 | 5 | Ego Lite (open source) | Browser operator | Navigate websites and web apps, collect information, test real workflows | Free (tool) |
 | 5 | Computer use (Orca `orca computer`, Codex Computer Use, Claude desktop) | Computer operator | Drive native desktop apps and windows a browser tool cannot reach | Included with the tools above |
 
@@ -36,7 +36,7 @@ Principles from the post:
 
 ## Escalating and downgrading
 
-Every skill starts at the cheapest tier that can do the work and moves up one tier only on repeated failure or high stakes, then hands execution back down. The tiers, defaults, and rules are in [model-routing.md](model-routing.md); `/setup-hstack` writes your own map.
+Every skill starts at the cheapest of four tiers that can do the work (workers, supervisors, directors, gods mode) and moves up one tier only on repeated failure or high stakes, then hands execution back down. The tiers, defaults, and rules are in [model-routing.md](model-routing.md); `/setup-hstack` writes your own map.
 
 ## Own products in the stack
 
@@ -58,7 +58,7 @@ Every skill starts at the cheapest tier that can do the work and moves up one ti
 | ORCA | Open source |
 | Ego Lite | Open source |
 | OpenCode | Open source, with free models |
-| Freebuff | Free usage |
+| Freebuff | Account suspended for now ([the story](../README.md#a-note-to-the-freebuff-team)) |
 | **Total** | **$40/month** (subscription and free-tier limits apply; API costs, hosting, and extra usage are not included) |
 
 Prices are as stated in the post. Verify current pricing before relying on them.
@@ -132,7 +132,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 ## Tools
 
 - Orca (orchestrator): <https://github.com/stablyai/orca>
-- Freebuff: <https://freebuff.com> and the npm package `freebuff`
+- Freebuff: <https://freebuff.com> and the npm package `freebuff` (account suspended for now)
 - Codex: <https://github.com/openai/codex>
 
 Other tools (Claude Code, OpenCode, Ego Lite) are named in the post. Their links are in the list below.

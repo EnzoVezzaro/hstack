@@ -682,6 +682,77 @@ export function diorama(lx, lz, { tiles = true } = {}) {
   return g;
 }
 
+// ------------------------------------------------------------------- logos
+
+export function loadImg(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`image failed: ${src}`));
+    img.src = src;
+  });
+}
+
+export async function svgImg(name, color, dir = 'assets/logos/') {
+  const txt = await (await fetch(dir + name + '.svg')).text();
+  const sized = txt.replace('<svg', `<svg width="512" height="512" fill="${color}"`);
+  return loadImg('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(sized));
+}
+
+// Square logo tile: either an app icon (PNG), a brand mark (SVG) on a colored
+// tile, or a plain text chip for providers without a usable mark.
+export function tile({ img, bg = '#101a15', ring = '#2a3b31', text = null, textColor = '#e8d6b4', full = false, dim = false, stamp = null }) {
+  const s = new CanvasScreen(320, 320, (ctx, w, h) => {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = bg;
+    roundRect(ctx, 6, 6, w - 12, h - 12, 64); ctx.fill();
+    ctx.strokeStyle = ring; ctx.lineWidth = 8; ctx.stroke();
+    if (img) {
+      const pad = full ? 18 : 62;
+      ctx.save();
+      roundRect(ctx, pad, pad, w - pad * 2, h - pad * 2, full ? 52 : 0);
+      ctx.clip();
+      if (dim || stamp) ctx.filter = 'grayscale(1) brightness(0.55)';
+      ctx.drawImage(img, pad, pad, w - pad * 2, h - pad * 2);
+      ctx.filter = 'none';
+      ctx.restore();
+    } else if (text) {
+      ctx.fillStyle = textColor;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const size = text.length > 6 ? 58 : text.length > 3 ? 76 : 110;
+      ctx.font = `800 ${size}px Helvetica, Arial, sans-serif`;
+      ctx.fillText(text, w / 2, h / 2 + 4);
+    }
+    if (stamp) {
+      ctx.save();
+      ctx.translate(w / 2, h / 2);
+      ctx.rotate(-0.42);
+      ctx.strokeStyle = '#ff5d5d'; ctx.lineWidth = 10;
+      roundRect(ctx, -146, -44, 292, 88, 14); ctx.stroke();
+      ctx.fillStyle = '#ff5d5d'; ctx.font = '900 48px Helvetica, Arial, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(stamp, 0, 4);
+      ctx.restore();
+    }
+  });
+  s.draw(0);
+  return s;
+}
+
+export function standee(scene, tex, pos, size = 1.0, raise = 0.32) {
+  const g = new THREE.Group();
+  g.position.copy(pos);
+  g.rotation.y = Math.PI / 4;
+  g.add(place(box(0.55, raise, 0.3, mat(PAL.metalDark, { m: 0.5, r: 0.4 }), { r: 0.04 }), 0, raise / 2, 0));
+  g.add(place(box(size + 0.06, size + 0.06, 0.07, mat(PAL.rubber, { r: 0.4 }), { r: 0.06 }), 0, raise + 0.02 + size / 2, -0.02));
+  const face = new THREE.Mesh(new THREE.PlaneGeometry(size, size), new THREE.MeshStandardMaterial({ color: 0, map: tex.texture, emissive: 0xffffff, emissiveMap: tex.texture, emissiveIntensity: tex.glow ?? 0.85, transparent: true }));
+  face.position.set(0, raise + 0.02 + size / 2, 0.02);
+  g.add(face);
+  scene.add(g);
+  return g;
+}
+
+
 // --------------------------------------------------------------- the boot
 
 export async function boot(mod, width, height, outWidth = width) {
