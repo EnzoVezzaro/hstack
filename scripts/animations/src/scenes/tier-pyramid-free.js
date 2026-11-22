@@ -17,6 +17,7 @@ export async function build(ctx) {
     title: 'The zero-dollar pyramid',
     subtitle: 'Only OpenCode and Freebuff. It works, with fine print.',
     napTop: false,
+    noteX: -7.0,
     tiers: [
       {
         name: 'T0', title: 'Workers', color: PAL.mint, cost: 'Free',
@@ -41,7 +42,7 @@ export async function build(ctx) {
       {
         name: 'T3', title: 'High mode', color: PAL.coral, cost: 'Priceless',
         lines: [['You', 'no free model gets this job']],
-        use: "Anything you can't undo stays with you",
+        use: "For the times you need extra high powers",
         logos: [], crew: { kind: 'person' },
       },
     ],

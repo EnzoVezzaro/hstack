@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/h-stack-banner.png">
-  <img src="assets/h-stack-loop.gif" alt="H Stack banner: a camo voxel H with code, notes, brain, and game panels, gold nodes pulsing along the bridge, and a small leaf">
+  <img src="assets/h-stack-loop.gif" alt="H Stack banner: a camo block H with code, notes, brain, and game panels, gold nodes pulsing along the bridge, and a small leaf">
 </picture>
 
 <p align="center">
@@ -15,6 +15,11 @@
 </p>
 
 # HSTACK
+
+<p align="center">
+  <img src="assets/brand/hstack-avatar.png" alt="My avatar: a screaming cartoon baby with clenched fists on a red disc" width="112"><br>
+  <sub>by <a href="https://github.com/EnzoVezzaro">Enzo Vezzaro</a></sub>
+</p>
 
 I run a small crew of AI agents for $40 a month, or $50 with optional OpenCode Go for director work. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
@@ -46,7 +51,7 @@ Restart your agent so it notices the new skills.
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/install-terminal.png">
-    <img src="assets/animations/install-terminal.gif" alt="A floating terminal runs npx skills add EnzoVezzaro/hstack while skill cards fly out of the screen and slot into a shelf" width="90%">
+    <img src="assets/animations/install-terminal.gif" alt="A terminal set into a wall of camo blocks runs npx skills add EnzoVezzaro/hstack while skill cards fly out of the screen along a gold arc and settle on a block shelf" width="90%">
   </picture>
 </p>
 
@@ -62,6 +67,20 @@ Restart your agent so it notices the new skills.
 - The catalog audit records proposed future consolidation separately from shipped changes.
 
 Release notes: [v5.3.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v5.3.0).
+
+## Coming in v6 (in progress)
+
+I'm designing v6 with the agents, in the open: [draft PR #9](https://github.com/EnzoVezzaro/hstack/pull/9). It's an RFC for now, a document to argue with rather than code to install. V5 is still what ships, and nothing below changes how it behaves today.
+
+The idea: Orca becomes one way to run the crew, not the only way.
+
+- **Actors instead of sessions.** Each agent gets a portable identity, a role, and a policy. That identity is kept separate from whatever chat, bot, or process happens to be running it.
+- **Runtime adapters.** Orca stays a first-class, likely default adapter. Local processes and other providers plug in behind the same interface, and each adapter says what it can and can't do instead of faking it.
+- **Durable handoffs, events, and schedules.** Tasks get one owner, an idempotency key, and evidence links, so a restart picks up where it left off without spawning a second owner.
+- **Same guardrails as v5.** Bounded tasks, independent verification, and my yes before anything is merged, deployed, or deleted.
+- **The proof:** the same skill and task has to work with Orca and without it.
+
+Open questions, the phased plan, and the acceptance criteria are in the RFC. Feedback goes on the PR.
 
 ## The skill execution contract
 
@@ -98,7 +117,7 @@ So installing all 62 costs almost nothing until you use one.
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/stack-office.png">
-    <img src="assets/animations/stack-office.gif" alt="An isometric night office: an assistant robot with a headset at a desk with three monitors, an Orca server rack sending glowing packets along floor cables to worker robots at laptops, and a carrier robot bringing a crate to a gold director robot who approves it with a green check" width="100%">
+    <img src="assets/animations/stack-office.gif" alt="The crew as camo block towers with glowing glyph panels: my mascot talks to the assistant (headset and chat), gold floor traces carry packets on to Orca (whale and server) and three workers (laptop with code, notes, and terminal), and a crate rides up to the director, whose check lights green when it lands" width="100%">
   </picture>
 </p>
 
@@ -108,7 +127,8 @@ One voice goes in at the top, and a whole crew answers across your repositories.
 |---|---|---|---|
 | 🧠 Assistant | Codex / ChatGPT | Talks with me, plans the day, remembers what I forgot | $20/mo |
 | 🐋 Orchestrator | ORCA | Routes sessions, context, and work between agents | Free, open source |
-| 🎯 Directors | Claude Code / Codex; optional OpenCode Go | Decide, design, and accept or reject the work | $20/mo + optional $10/mo |
+| 🎯 Directors | Claude Code / Codex; optional OpenCode Go. Free mode can use capable OpenCode free models or Freebuff full mode (currently suspended) | Decide, design, and accept or reject the work | $20/mo + optional $10/mo |
+| 🧭 Supervisors | OpenCode Go, OpenCode free models, Claude Code, Codex; Freebuff free tiers ([benched](#a-note-to-the-freebuff-team)) | Split work into bounded tasks and check progress and evidence | Included or free |
 | ⚙️ Workers | OpenCode, ~~Freebuff~~ ([benched](#a-note-to-the-freebuff-team)), Claude Code, Codex | Write code, debug, test, and research on cheap or free models | Included or free |
 | 🌐 Browser | Ego Lite | Clicks through real websites | Free, open source |
 | 🖥️ Desktop | Computer use (Orca, Codex, Claude desktop) | Drives native apps | Included |
@@ -154,7 +174,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
-    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, my own tools, and deploy targets GitHub, Vercel, AWS, Google Cloud, and Cloudflare. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom, on camo block platforms: you (my mascot) at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, my own tools, and deploy targets GitHub, Vercel, AWS, Google Cloud, and Cloudflare. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
   </picture>
 </p>
 
@@ -167,7 +187,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-pyramid.png">
-    <img src="assets/animations/tier-pyramid.gif" alt="The model pyramid, from the top: you as owner, ChatGPT as main coordinator and assistant, then four floating slabs: high mode (Fable, Astra), napping, directors (Opus, GPT Sol, optional OpenCode Go), supervisors (Sonnet, Terra), and workers at the wide base (Haiku, Luna, free models). A task climbs when it fails and the plan drops back down to the workers" width="100%">
+    <img src="assets/animations/tier-pyramid.gif" alt="The model pyramid, from the top: you (my mascot) as owner, ChatGPT as main coordinator and assistant, then four floating slabs of camo blocks: high mode (Fable, Astra), napping, directors (Opus, GPT Sol, optional OpenCode Go), supervisors (Sonnet, Terra), and workers at the wide base (Haiku, Luna, OpenCode Go or free models). A task climbs when it fails and the plan drops back down to the workers" width="100%">
   </picture>
 </p>
 
@@ -180,9 +200,9 @@ Every skill starts on the cheapest model that can do the job, and says which tie
 | T3 | High mode | Fable | Astra | |
 | T2 | Directors | Opus | GPT Sol | OpenCode Go (optional) |
 | T1 | Supervisors | Sonnet | Terra | OpenCode Go (optional) |
-| T0 | Workers | Haiku | Luna | OpenCode free, other free models |
+| T0 | Workers | Haiku | Luna | OpenCode Go or free models |
 
-OpenCode Go is a director (or supervisor) model, not a worker model. In the free stack, Freebuff's full-mode models direct alongside a strong OpenCode model; workers stay on free tiers.
+OpenCode Go can work at any tier: director, supervisor or worker. Use the cheapest capable tier for the task. In the free stack, Freebuff's full-mode models direct alongside a strong OpenCode model, and workers use free tiers.
 
 The shape matters more than the brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider fits the same pyramid: their biggest model at the top, their fast one at the bottom.
 
@@ -191,7 +211,7 @@ A job moves up one tier when the same brief fails twice, or when it touches arch
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-elevator.png">
-    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors, T0 workers, T1 supervisors, T2 directors, and T3 high mode, and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the directors on T2, and rides back down to T0 where it passes with a green check" width="100%">
+    <img src="assets/animations/tier-elevator.gif" alt="Four stepped camo terraces, T0 workers, T1 supervisors, T2 directors, and T3 high mode, beside a lift on a gold rail: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the directors on T2, and rides back down to T0 where it passes with a green check" width="100%">
   </picture>
 </p>
 
@@ -223,6 +243,13 @@ It works, with fine print:
 
 Some days you want to point the crew at your repos and go do something else. [`/stoner`](skills/stoner/SKILL.md) is for those days. It scans every Orca repo, checks the open PRs on each one, ranks the work, and keeps agents on it until the queue is empty. Then it checks the PRs again, because by then someone has opened a new one.
 
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/stoner-mode.png">
+    <img src="assets/animations/stoner-mode.gif" alt="Animated Stoner mode loop, floating over a field of camo block towers: a pulse travels from Scan Orca to Check open PRs to Rank the queue, down to Work the queue with three workers, left to Rescan and back up; PR cards move through the queue, and a dashed arrow leads to an owner gate where merges, closes, deletions and deploys wait for a yes. A small leaf marks the laid-back theme." width="100%">
+  </picture>
+</p>
+
 ```mermaid
 flowchart LR
     A["🐋 Scan Orca repos"] --> B["🔀 Check open PRs"]
@@ -253,7 +280,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/ship-pipeline.png">
-    <img src="assets/animations/ship-pipeline.gif" alt="An isometric assembly line: code crates ride a conveyor through build, where a robot arm welds sparks, test, where a laser scanner turns green, review, where a director stamps a check, and release, where a v5.1.0 tag is printed, before leaving through a glowing portal toward a sign listing the destination platforms: GitHub, Vercel, AWS, Google Cloud, Cloudflare, and npm" width="100%">
+    <img src="assets/animations/ship-pipeline.gif" alt="Gold-lit crates ride a camo block bridge past commit, build, test, review, and release towers, pause at release for my yes, and reach a cloud tower tagged v5.1.0, with a card listing the destinations: GitHub, Vercel, AWS, npm, Google Cloud, and Cloudflare" width="100%">
   </picture>
 </p>
 
@@ -288,7 +315,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/horizon-loop.png">
-    <img src="assets/animations/horizon-loop.gif" alt="A floating island with a running track: a robot runs laps while a tower screen charts a Lighthouse score rising toward a goal of 95; when it crosses, a checkered flag rises and confetti falls" width="85%">
+    <img src="assets/animations/horizon-loop.gif" alt="A gold runner laps a ring of camo blocks around a tower with chart and gear glyphs, while a card charts a Lighthouse score rising one change per lap until it crosses the goal of 95" width="85%">
   </picture>
 </p>
 
@@ -390,7 +417,7 @@ Where it lands is a choice, not a built-in: GitHub releases, Vercel, AWS, Google
 | [`/get-stoned`](skills/get-stoned/SKILL.md) | You need new ideas or a strange way out of something stuck. Flips the assumptions, scores every idea, and picks a few worth prototyping. |
 | [`/haf`](skills/haf/SKILL.md) | You want unusual UI inspiration. Hunts Awwwards, Codrops, Dribbble, Pinterest, and CodePen, and comes back with annotated references. |
 | [`/puff-puff-pass`](skills/puff-puff-pass/SKILL.md) | You want it built on a cheap model and reviewed by a stronger, different one before it ships. |
-| [`/pineapple-express`](skills/pineapple-express/SKILL.md) | You're done for the day. Closes what can be closed, parks the rest with handoffs, and stops the processes your agents left running. |
+| [`/pineapple-express`](skills/pineapple-express/SKILL.md) | You're done for the day. Closes what can be closed, parks the rest with handoffs, and stops the processes your agents left running. So I can go to watch netflix and chill. |
 
 </details>
 

@@ -3,8 +3,8 @@
 // listing the models it uses. A task climbs when it fails; the plan comes back down.
 import {
   THREE, TAU, PAL, mat, glowMat, box, cyl, sphere, place, CanvasScreen, roundRect, hex,
-  robot, animateRobot, standee,
 } from '../lib.js';
+import { HERO, blocks, boxCells, tower, heroFloor, floorGlow, mascot } from '../kit.js';
 
 const COS = Math.cos(THREE.MathUtils.degToRad(30));
 const R = new THREE.Vector3(1, 0, -1).normalize();
@@ -25,34 +25,69 @@ const layerY = (i) => -5.45 + i * (LAYER_H + GAP);
 const smooth = (k) => k * k * (3 - 2 * k);
 const seg = (t, a, b) => smooth(Math.max(0, Math.min(1, (t - a) / (b - a))));
 
+function leaf(ctx, x, y, r, color) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(-0.55);
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.moveTo(0, -r);
+  ctx.quadraticCurveTo(r, -r * 0.2, 0, r);
+  ctx.quadraticCurveTo(-r, -r * 0.2, 0, -r);
+  ctx.fill();
+  ctx.strokeStyle = '#0a120e'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(0, -r); ctx.lineTo(0, r); ctx.stroke();
+  ctx.restore();
+}
+
 function flatPanel(scene, camera, canvasW, canvasH, worldW, pos) {
   const sc = new CanvasScreen(canvasW, canvasH, () => {});
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(worldW, (worldW * canvasH) / canvasW), new THREE.MeshStandardMaterial({ color: 0, map: sc.texture, emissive: 0xffffff, emissiveMap: sc.texture, emissiveIntensity: 1, transparent: true }));
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(worldW, (worldW * canvasH) / canvasW), new THREE.MeshStandardMaterial({ color: 0, map: sc.texture, emissive: 0xffffff, emissiveMap: sc.texture, emissiveIntensity: 1, transparent: true, depthTest: false }));
+  mesh.renderOrder = 10;
   mesh.position.copy(pos);
   mesh.quaternion.copy(camera.quaternion);
   scene.add(mesh);
   return sc;
 }
 
+// You: the mascot on a camo cube.
 function person(scene) {
-  const g = new THREE.Group();
-  g.add(place(cyl(0.2, 0.25, 0.6, mat(PAL.green2, { r: 0.8 }), 20), 0, 0.32, 0));
-  g.add(place(sphere(0.21, mat(PAL.green2, { r: 0.8 }), 16), 0, 0.62, 0));
-  g.add(place(sphere(0.19, mat(0xd9a77c, { r: 0.6 }), 20), 0, 0.92, 0));
-  const band = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.022, 8, 20, Math.PI), mat(PAL.rubber));
-  band.position.y = 0.94;
-  band.rotation.y = Math.PI / 2;
-  g.add(band);
-  g.rotation.y = Math.PI / 4;
+  const g = tower({ nx: 1, ny: 1, nz: 1, cell: 0.62, seed: 5, panels: [
+    { face: 'z', v: 0.31, image: mascot(), size: 0.56 },
+    { face: 'x', v: 0.31, image: mascot(), size: 0.56 },
+  ] });
+  scene.add(g);
+  return g;
+}
+
+// A provider logo on a camo cube, shown on both faces the camera sees.
+function logoCube(scene, tex, pos) {
+  const img = tex.canvas;
+  const g = tower({ nx: 1, ny: 1, nz: 1, cell: 0.5, seed: 9, panels: [
+    { face: 'z', v: 0.25, image: img, size: 0.44 },
+    { face: 'x', v: 0.25, image: img, size: 0.44 },
+  ] });
+  g.position.copy(pos);
+  scene.add(g);
+  return g;
+}
+
+// Crew member: a small camo cube with its role glyph in the tier colour.
+function crewCube(scene, icon, color, extra = null) {
+  const panels = [{ face: 'z', v: 0.17, icon, color, size: 0.3 }];
+  if (extra) panels.push({ face: 'x', v: 0.17, ...extra, size: 0.3 });
+  const g = tower({ nx: 1, ny: 1, nz: 1, cell: 0.34, seed: 13, panels });
   scene.add(g);
   return g;
 }
 
 export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
-  sun.intensity = 2.0;
-  hemi.intensity = 0.9;
   const updates = [];
   const screens = [];
+  // The banner's floor, well below the base slab.
+  const floorY = layerY(0) - LAYER_H - 1.1;
+  scene.add(heroFloor({ size: 60, tile: 0.62, y: floorY }));
+  const base = at(PYR_X, 0);
+  const pool = floorGlow(3.4, { opacity: 0.22 });
+  pool.position.set(base.x, floorY + 0.01, base.z);
+  scene.add(pool);
 
   // ---- title
   const title = flatPanel(scene, camera, 1500, 190, 13, front(0, cfg.head ? 8.6 : 6.05));
@@ -60,9 +95,9 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     const ctx = title.ctx;
     ctx.clearRect(0, 0, 1500, 190);
     ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffc44a'; ctx.font = '800 74px Helvetica, Arial, sans-serif';
+    ctx.fillStyle = '#ffc44a'; ctx.font = '400 74px "HStack Type", monospace';
     ctx.fillText(cfg.title, 750, 80);
-    ctx.fillStyle = '#9fb3a6'; ctx.font = '500 36px Helvetica, Arial, sans-serif';
+    ctx.fillStyle = '#9fb3a6'; ctx.font = '400 36px "HStack Type", monospace';
     ctx.fillText(cfg.subtitle, 750, 140);
     title.texture.needsUpdate = true;
   }
@@ -73,13 +108,17 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     const g = new THREE.Group();
     g.position.set(center.x, layerY(i), center.z);
     const s = SIZES[i];
-    g.add(place(box(s, LAYER_H, s, mat(PAL.strataA, { r: 0.85 }), { r: 0.08 }), 0, -LAYER_H / 2, 0));
-    g.add(place(box(s - 0.06, 0.05, s - 0.06, mat(PAL.floor, { r: 0.9 }), { r: 0.02 }), 0, 0.005, 0));
+    const n = Math.max(2, Math.round(s / LAYER_H));
+    const cell = s / n;
+    const slab = blocks(boxCells(0, 0, 0, n, 1, n), { cell, seed: 31 + i });
+    slab.children[0].scale.y = LAYER_H / cell;
+    slab.position.set((-n * cell) / 2, -LAYER_H, (-n * cell) / 2);
+    g.add(slab);
     g.add(place(box(s + 0.04, 0.06, 0.06, glowMat(tier.color, 1.8), { r: 0.02, shadow: false }), 0, -0.12, s / 2 + 0.01));
     g.add(place(box(0.06, 0.06, s + 0.04, glowMat(tier.color, 1.8), { r: 0.02, shadow: false }), s / 2 + 0.01, -0.12, 0));
     const tag = new CanvasScreen(512, 160, (ctx, w, h) => {
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = hex(tier.color); ctx.font = '900 112px Menlo, monospace';
+      ctx.fillStyle = hex(tier.color); ctx.font = '400 112px "HStack Type", monospace';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(tier.name, w / 2, h / 2 + 6);
     });
@@ -102,7 +141,7 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     logos.forEach((tex, k) => {
       const off = n === 1 ? 0 : -spread + (2 * spread * k) / (n - 1);
       const local = R.clone().multiplyScalar(off).add(TOWARD.clone().multiplyScalar(-s * 0.2));
-      const st = standee(scene, tex, slabs[i].position.clone().add(local), 0.52, 0.14);
+      const st = logoCube(scene, tex, slabs[i].position.clone().add(local));
       updates.push((t) => { st.position.copy(slabs[i].position).add(local); st.position.y += Math.sin((t * 2 + k * 0.2) * TAU) * 0.02; });
     });
     const c = tier.crew;
@@ -112,26 +151,33 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
       updates.push((t) => { p.position.copy(slabs[i].position).add(local); });
     } else if (c) {
       for (let k = 0; k < c.count; k++) {
-        const r = robot({ accent: tier.color, kind: c.kind, scale: c.scale });
+        const icon = i === 3 ? 'brain' : c.kind === 'director' ? 'crown' : 'laptop';
+        const r = crewCube(scene, icon, tier.color, i === 3 ? { icon: 'leaf', color: 0x7fa86a, glow: 0.8 } : null);
         const off = c.count === 1 ? -s * 0.24 : -s * 0.32 + (k * (s * 0.64)) / (c.count - 1);
         const local = R.clone().multiplyScalar(off).add(TOWARD.clone().multiplyScalar(s * 0.24));
-        r.rotation.y = Math.PI / 4;
-        scene.add(r);
-        updates.push((t) => { r.position.copy(slabs[i].position).add(local); animateRobot(r, t, { mode: c.mode, phase: k * 0.23 + i * 0.1 }); });
+        updates.push((t) => {
+          r.position.copy(slabs[i].position).add(local);
+          r.position.y += Math.abs(Math.sin((t * 4 + k * 0.23 + i * 0.1) * TAU)) * 0.04;
+        });
       }
     }
   });
 
   // ---- the top: a napping brain, or nothing
   if (cfg.napTop) {
-    const brain = new THREE.Mesh(new THREE.IcosahedronGeometry(0.26, 1), new THREE.MeshBasicMaterial({ color: new THREE.Color(PAL.coral).multiplyScalar(1.6), wireframe: true, toneMapped: false }));
+    const brain = tower({ nx: 1, ny: 1, nz: 1, cell: 0.4, seed: 17, panels: [
+      { face: 'z', v: 0.2, icon: 'brain', color: HERO.coral, size: 0.36 },
+      { face: 'x', v: 0.2, icon: 'brain', color: HERO.coral, size: 0.36 },
+    ] });
+    brain.children[0].position.y -= 0.2;
+    brain.userData.panels.forEach((pn) => { pn.position.y -= 0.2; });
     scene.add(brain);
     const halo = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.025, 8, 32), glowMat(PAL.gold, 2.6));
     halo.rotation.x = Math.PI / 2;
     scene.add(halo);
     const zz = new CanvasScreen(256, 128, (ctx, w, h, t) => {
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = '#fa866d'; ctx.font = '800 54px Menlo, monospace';
+      ctx.fillStyle = '#fa866d'; ctx.font = '400 54px "HStack Type", monospace';
       ctx.fillText('z'.repeat(1 + (Math.floor(t * 6) % 3)), 20, 86);
     });
     screens.push(zz);
@@ -191,26 +237,27 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     const ctx = sc.ctx;
     const w = 1100;
     ctx.clearRect(0, 0, w, hpx);
-    ctx.fillStyle = 'rgba(9,18,14,0.94)';
+    ctx.fillStyle = 'rgba(20,26,21,0.95)';
     roundRect(ctx, 6, 6, w - 12, hpx - 12, 30); ctx.fill();
     ctx.strokeStyle = hex(tier.color); ctx.globalAlpha = 0.8; ctx.lineWidth = 5; ctx.stroke(); ctx.globalAlpha = 1;
     ctx.fillStyle = hex(tier.color); roundRect(ctx, 36, 34, 96, 52, 14); ctx.fill();
-    ctx.fillStyle = '#0a120e'; ctx.font = '900 34px Menlo, monospace'; ctx.fillText(tier.name, 54, 72);
-    ctx.fillStyle = '#e8d6b4'; ctx.font = '800 50px Helvetica, Arial, sans-serif'; ctx.fillText(tier.title, 152, 76);
-    ctx.fillStyle = hex(tier.color); ctx.font = '700 32px Menlo, monospace';
+    ctx.fillStyle = '#0a120e'; ctx.font = '400 34px "HStack Type", monospace'; ctx.fillText(tier.name, 54, 72);
+    ctx.fillStyle = '#e8d6b4'; ctx.font = '400 50px "HStack Type", monospace'; ctx.fillText(tier.title, 152, 76);
+    if (tier.title.toLowerCase().includes('high')) leaf(ctx, 152 + ctx.measureText(tier.title).width + 44, 70, 25, '#7fae7a');
+    ctx.fillStyle = hex(tier.color); ctx.font = '400 32px "HStack Type", monospace';
     const cw = ctx.measureText(tier.cost).width;
     ctx.fillText(tier.cost, w - 40 - cw, 72);
     let y = 136;
     tier.lines.forEach(([who, models]) => {
-      ctx.fillStyle = '#9fb3a6'; ctx.font = '600 30px Helvetica, Arial, sans-serif'; ctx.fillText(who, 40, y);
-      ctx.fillStyle = '#e8d6b4'; ctx.font = '600 33px Menlo, monospace'; ctx.fillText(models, 245, y);
+      ctx.fillStyle = '#9fb3a6'; ctx.font = '400 30px "HStack Type", monospace'; ctx.fillText(who, 40, y);
+      ctx.fillStyle = '#e8d6b4'; ctx.font = '400 33px "HStack Type", monospace'; ctx.fillText(models, 245, y);
       y += 50;
     });
     if (tier.note) {
-      ctx.fillStyle = tier.noteColor || '#ff7b7b'; ctx.font = '600 29px Menlo, monospace'; ctx.fillText(tier.note, 40, y - 4);
+      ctx.fillStyle = tier.noteColor || '#ff7b7b'; ctx.font = '400 29px "HStack Type", monospace'; ctx.fillText(tier.note, 40, y - 4);
       y += 46;
     }
-    ctx.fillStyle = '#7f978a'; ctx.font = '500 30px Helvetica, Arial, sans-serif'; ctx.fillText(tier.use, 40, y + 6);
+    ctx.fillStyle = '#7f978a'; ctx.font = '400 30px "HStack Type", monospace'; ctx.fillText(tier.use, 40, y + 6);
     sc.texture.needsUpdate = true;
     // leader line from the slab's right corner to the panel
     const from = new THREE.Vector3(center.x, layerY(i) - 0.1, center.z).add(R.clone().multiplyScalar(SIZES[i] * 0.7071 + 0.1));
@@ -230,7 +277,7 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     const c0 = at(PYR_X, 0);
     const hy = layerY(3) + LAYER_H + GAP * 0.5;
     const chatTex = cfg.head.chatTex;
-    const chat = standee(scene, chatTex, new THREE.Vector3(c0.x, hy, c0.z).add(R.clone().multiplyScalar(-0.5)).add(TOWARD.clone().multiplyScalar(-0.2)), 0.62, 0.14);
+    const chat = logoCube(scene, chatTex, new THREE.Vector3(c0.x, hy, c0.z).add(R.clone().multiplyScalar(-0.5)).add(TOWARD.clone().multiplyScalar(-0.2)));
     const you = person(scene);
     you.position.set(c0.x, hy, c0.z);
     you.position.add(R.clone().multiplyScalar(0.55)).add(TOWARD.clone().multiplyScalar(0.1));
@@ -245,18 +292,18 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     const sc = flatPanel(scene, camera, 1100, hpx, PANEL_W, front(PANEL_X, hy2));
     const ctx = sc.ctx; const w = 1100;
     ctx.clearRect(0, 0, w, hpx);
-    ctx.fillStyle = 'rgba(9,18,14,0.94)'; roundRect(ctx, 6, 6, w - 12, hpx - 12, 30); ctx.fill();
+    ctx.fillStyle = 'rgba(20,26,21,0.95)'; roundRect(ctx, 6, 6, w - 12, hpx - 12, 30); ctx.fill();
     ctx.strokeStyle = '#e8d6b4'; ctx.globalAlpha = 0.8; ctx.lineWidth = 5; ctx.stroke(); ctx.globalAlpha = 1;
     ctx.fillStyle = '#e8d6b4'; roundRect(ctx, 36, 34, 96, 52, 14); ctx.fill();
-    ctx.fillStyle = '#0a120e'; ctx.font = '900 30px Menlo, monospace'; ctx.fillText('YOU', 54, 72);
-    ctx.fillStyle = '#e8d6b4'; ctx.font = '800 50px Helvetica, Arial, sans-serif'; ctx.fillText('Owner and coordinator', 152, 76);
+    ctx.fillStyle = '#0a120e'; ctx.font = '400 30px "HStack Type", monospace'; ctx.fillText('YOU', 54, 72);
+    ctx.fillStyle = '#e8d6b4'; ctx.font = '400 50px "HStack Type", monospace'; ctx.fillText('Owner and coordinator', 152, 76);
     let y = 136;
     rows.forEach(([who, what]) => {
-      ctx.fillStyle = '#9fb3a6'; ctx.font = '600 30px Helvetica, Arial, sans-serif'; ctx.fillText(who, 40, y);
-      ctx.fillStyle = '#e8d6b4'; ctx.font = '600 31px Menlo, monospace'; ctx.fillText(what, 245, y);
+      ctx.fillStyle = '#9fb3a6'; ctx.font = '400 30px "HStack Type", monospace'; ctx.fillText(who, 40, y);
+      ctx.fillStyle = '#e8d6b4'; ctx.font = '400 31px "HStack Type", monospace'; ctx.fillText(what, 245, y);
       y += 50;
     });
-    ctx.fillStyle = '#7f978a'; ctx.font = '500 30px Helvetica, Arial, sans-serif'; ctx.fillText(cfg.head.use, 40, y + 6);
+    ctx.fillStyle = '#7f978a'; ctx.font = '400 30px "HStack Type", monospace'; ctx.fillText(cfg.head.use, 40, y + 6);
     sc.texture.needsUpdate = true;
   }
 
@@ -264,12 +311,12 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
   const note = (text, color, sx, sy) => {
     const sc = flatPanel(scene, camera, 900, 110, 4.78, front(sx, sy));
     sc.ctx.clearRect(0, 0, 900, 110);
-    sc.ctx.fillStyle = hex(color); sc.ctx.font = '700 40px Menlo, monospace';
+    sc.ctx.fillStyle = hex(color); sc.ctx.font = '400 40px "HStack Type", monospace';
     sc.ctx.fillText(text, 10, 70);
     sc.texture.needsUpdate = true;
   };
-  note('↑ fails twice: go up', PAL.gold, -8.3, 1.9);
-  note('↓ plan written: go back down', PAL.mint, -8.3, 1.3);
+  note('↑ fails twice: go up', PAL.gold, cfg.noteX ?? -8.3, 1.9);
+  note('↓ plan written: go back down', PAL.mint, cfg.noteX ?? -8.3, 1.3);
 
   // ---- optional footer box (the free version's limits)
   if (cfg.footer) {
@@ -281,10 +328,10 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     ctx.fillStyle = 'rgba(30,12,12,0.92)';
     roundRect(ctx, 6, 6, 1788, fh - 12, 30); ctx.fill();
     ctx.strokeStyle = '#ff7b7b'; ctx.lineWidth = 5; ctx.stroke();
-    ctx.fillStyle = '#ff9b8a'; ctx.font = '800 48px Helvetica, Arial, sans-serif'; ctx.fillText(cfg.footer.title, 44, 76);
+    ctx.fillStyle = '#ff9b8a'; ctx.font = '400 48px "HStack Type", monospace'; ctx.fillText(cfg.footer.title, 44, 76);
     lines.forEach((ln, k) => {
       ctx.fillStyle = '#ff7b7b'; ctx.beginPath(); ctx.arc(56, 128 + k * 52, 8, 0, TAU); ctx.fill();
-      ctx.fillStyle = '#e8d6b4'; ctx.font = '500 34px Helvetica, Arial, sans-serif'; ctx.fillText(ln, 80, 140 + k * 52);
+      ctx.fillStyle = '#e8d6b4'; ctx.font = '400 34px "HStack Type", monospace'; ctx.fillText(ln, 80, 140 + k * 52);
     });
     sc.texture.needsUpdate = true;
   }

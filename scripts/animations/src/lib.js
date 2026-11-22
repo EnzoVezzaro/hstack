@@ -529,6 +529,35 @@ export function robot({ accent = PAL.mint, body = PAL.cream, scale = 1, kind = '
   return g;
 }
 
+// A small, subtle smoking prop for the "high mode" tier. Attached to the
+// robot's head so it follows the existing animation; returns a per-frame tick.
+export function addSmoking(r, plume = 1) {
+  // Positions are in the robot's own local units; the group scale is applied
+  // by the robot itself, so scaling here too would make the plume vanish.
+  const head = r.userData.parts.head;
+  const joint = place(cyl(0.014, 0.014, 0.17, mat(0xd9c39a, { r: 0.7 }), 8), 0.15, -0.13, 0.28);
+  joint.rotation.set(0.18, 0, -0.4);
+  head.add(joint);
+  const ember = place(sphere(0.032, glowMat(0xff8a4a, 4.2), 10), 0.21, -0.09, 0.34);
+  head.add(ember);
+  const puffs = [0, 1, 2, 3].map(() => {
+    const puff = sphere(0.26, new THREE.MeshBasicMaterial({
+      color: 0xc9e8d0, transparent: true, opacity: 0, depthWrite: false, toneMapped: false,
+    }), 10);
+    head.add(puff);
+    return puff;
+  });
+  return (t) => {
+    puffs.forEach((puff, k) => {
+      const life = (t * 0.4 + k / puffs.length) % 1;
+      puff.position.set(0.21 + life * 0.26 * plume, -0.04 + life * 0.95 * plume, 0.35 + life * 0.06);
+      puff.scale.setScalar((0.6 + life * 1.2) * plume);
+      puff.material.opacity = 0.34 * (1 - life);
+    });
+    ember.material.emissiveIntensity = 3.6 + Math.sin(t * TAU * 2.4) * 0.9;
+  };
+}
+
 export function animateRobot(r, t, { mode = 'idle', phase = 0, typeRate = 12 } = {}) {
   const p = r.userData.parts;
   const blink = ((t * 3 + phase) % 1) < 0.05 ? 0.15 : 1;
@@ -766,7 +795,7 @@ export async function boot(mod, width, height, outWidth = width) {
   document.body.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(PAL.bg);
+  scene.background = new THREE.Color(mod.background ?? 0x0f1513);
 
   const view = mod.view ?? { size: 6, target: [0, 1, 0], elevation: 30 };
   const aspect = width / height;
@@ -782,10 +811,11 @@ export async function boot(mod, width, height, outWidth = width) {
   );
   camera.lookAt(target);
 
-  const hemi = new THREE.HemisphereLight(0xd6f0dc, 0x0e1413, 0.55);
+  // Banner lighting: soft warm key from the front-left, dim cool fill.
+  const hemi = new THREE.HemisphereLight(0xe4f0d8, 0x0b100d, 0.42);
   scene.add(hemi);
-  const sun = new THREE.DirectionalLight(0xfff0d8, 1.7);
-  sun.position.set(target.x - 9, target.y + 16, target.z + 11);
+  const sun = new THREE.DirectionalLight(0xfff1d6, 2.1);
+  sun.position.set(target.x - 6, target.y + 17, target.z + 13);
   sun.target.position.copy(target);
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
@@ -795,7 +825,7 @@ export async function boot(mod, width, height, outWidth = width) {
   sun.shadow.bias = -0.00035;
   sun.shadow.normalBias = 0.025;
   scene.add(sun, sun.target);
-  const rim = new THREE.DirectionalLight(0x9cc8ff, 0.45);
+  const rim = new THREE.DirectionalLight(0xb8d4ff, 0.3);
   rim.position.set(target.x + 12, target.y + 6, target.z - 10);
   scene.add(rim);
 
@@ -816,10 +846,15 @@ export async function boot(mod, width, height, outWidth = width) {
   const octx = out.getContext('2d');
   octx.imageSmoothingEnabled = true;
   octx.imageSmoothingQuality = 'high';
+  // Banner-style vignette: corners fall off into the dark floor.
+  const vignette = octx.createRadialGradient(out.width / 2, out.height / 2, Math.min(out.width, out.height) * 0.35, out.width / 2, out.height / 2, Math.hypot(out.width, out.height) * 0.62);
+  vignette.addColorStop(0, 'rgba(8,12,10,0)');
+  vignette.addColorStop(1, `rgba(8,12,10,${mod.vignette ?? 0.55})`);
   window.__frame = (t) => {
     update(t);
     composer.render();
     octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
+    if (mod.vignette !== 0) { octx.fillStyle = vignette; octx.fillRect(0, 0, out.width, out.height); }
     return out.toDataURL('image/png');
   };
   window.__ready = true;

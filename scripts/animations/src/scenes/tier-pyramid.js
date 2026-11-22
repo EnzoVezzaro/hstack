@@ -1,6 +1,6 @@
 // The model pyramid: workers at the wide base, high mode at the narrow top.
 // Defaults are Anthropic and OpenAI. OpenCode Go directs or supervises; its
-// free models work at the base.
+// OpenCode Go can serve at any tier; free models work at the base too.
 import { PAL, loadImg, svgImg, tile } from '../lib.js';
 import { buildPyramid } from './pyramid-common.js';
 
@@ -28,7 +28,7 @@ export async function build(ctx) {
     tiers: [
       {
         name: 'T0', title: 'Workers', color: PAL.mint, cost: '$ or free',
-        lines: [['Anthropic', 'Haiku'], ['OpenAI', 'Luna'], ['OpenCode', 'free models']],
+        lines: [['Anthropic', 'Haiku'], ['OpenAI', 'Luna'], ['OpenCode', 'Go or free models']],
         use: 'Tests, docs, cleanup, setup, first drafts',
         logos: [claude, openai, opencode], crew: { count: 4, kind: 'worker', scale: 0.3, mode: 'type' },
       },
@@ -47,7 +47,7 @@ export async function build(ctx) {
       {
         name: 'T3', title: 'High mode', color: PAL.coral, cost: '$$$$',
         lines: [['Anthropic', 'Fable'], ['OpenAI', 'Astra']],
-        use: "Architecture, security, anything you can't undo",
+        use: "Architecture, security, for the times you need extra high powers",
         logos: [claude, openai], crew: { count: 1, kind: 'director', scale: 0.38, mode: 'idle' },
       },
     ],

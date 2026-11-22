@@ -1,16 +1,17 @@
 // H Stack's V1-to-V5 tool evolution and the paid/free model pyramid split.
 import * as THREE from 'three';
 import { CanvasScreen, PAL } from '../lib.js';
+import { heroBackdrop, flatOverlay } from '../kit.js';
 
-export const view = { size: 11, target: [0, 0, 0], elevation: 0, azimuth: 0 };
-export const bloom = { strength: 0.12, radius: 0.25, threshold: 0.92 };
-export const exposure = 1;
-export const shadowSize = 2;
+export const view = { size: 11, target: [0, 0, 0], elevation: 30, azimuth: 45 };
+export const bloom = { strength: 0.5, radius: 0.4, threshold: 0.84 };
+export const exposure = 1.15;
+export const shadowSize = 16;
 
 const W = 1600;
 const H = 2200;
 const C = {
-  bg: '#0e1413', panel: '#15211b', panel2: '#1a2921', line: '#34493a',
+  bg: '#0e1413', panel: '#181d18', panel2: '#1d241d', line: '#34493a',
   cream: '#e8d6b4', muted: '#a5b5a8', gold: '#ffc44a', mint: '#9ee68a',
   blue: '#79a9ed', coral: '#fa866d', violet: '#b59cff', red: '#ff766e',
 };
@@ -23,22 +24,22 @@ function round(ctx, x, y, w, h, r, fill, stroke = null, lineWidth = 2) {
 
 function label(ctx, text, x, y, size, color = C.cream, weight = 600, align = 'left', maxWidth = Infinity) {
   while (size > 13) {
-    ctx.font = `${weight} ${size}px Helvetica, Arial, sans-serif`;
+    ctx.font = `400 ${size}px "HStack Type", monospace`;
     if (ctx.measureText(text).width <= maxWidth) break;
     size--;
   }
-  ctx.font = `${weight} ${size}px Helvetica, Arial, sans-serif`;
+  ctx.font = `400 ${size}px "HStack Type", monospace`;
   ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillStyle = color;
   ctx.fillText(text, x, y);
 }
 
 function mono(ctx, text, x, y, size, color = C.muted, align = 'left', maxWidth = Infinity) {
   while (size > 13) {
-    ctx.font = `600 ${size}px Menlo, Monaco, monospace`;
+    ctx.font = `400 ${size}px "HStack Type", monospace`;
     if (ctx.measureText(text).width <= maxWidth) break;
     size--;
   }
-  ctx.font = `600 ${size}px Menlo, Monaco, monospace`;
+  ctx.font = `400 ${size}px "HStack Type", monospace`;
   ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillStyle = color;
   ctx.fillText(text, x, y);
 }
@@ -57,6 +58,18 @@ function glowDot(ctx, x, y, radius, color, alpha = 1) {
   ctx.restore();
 }
 
+function leaf(ctx, x, y, r, color) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(-0.55);
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.moveTo(0, -r);
+  ctx.quadraticCurveTo(r, -r * 0.2, 0, r);
+  ctx.quadraticCurveTo(-r, -r * 0.2, 0, -r);
+  ctx.fill();
+  ctx.strokeStyle = '#0a120e'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0, -r); ctx.lineTo(0, r); ctx.stroke();
+  ctx.restore();
+}
+
 const versions = [
   { v: 'V1', tools: ['Herdr', 'OpenCode', 'Freebuff', 'Ego Lite'], step: 'One project, one chain' },
   { v: 'V2', tools: ['Herdr', '+ Codex', 'OpenCode / Freebuff', 'Ego Lite'], step: 'Still one project' },
@@ -66,21 +79,16 @@ const versions = [
 ];
 
 const paidTiers = [
-  { title: 'WORKERS', models: 'Haiku  ·  Luna  ·  free models', color: C.mint },
+  { title: 'WORKERS', models: 'Haiku  ·  Luna  ·  OpenCode Go or free', color: C.mint },
   { title: 'SUPERVISORS', models: 'Sonnet  ·  Terra  ·  OpenCode Go', color: C.blue },
   { title: 'DIRECTORS', models: 'Opus  ·  GPT Sol  ·  OpenCode Go', color: C.gold },
   { title: 'HIGH MODE', models: 'Fable  ·  Astra', color: C.coral },
 ];
 
 function draw(ctx, _width, _height, t) {
-  const bg = ctx.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, '#101914'); bg.addColorStop(0.55, C.bg); bg.addColorStop(1, '#101720');
-  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-  // Fine grid and restrained ambient lights.
-  ctx.save(); ctx.globalAlpha = 0.12; ctx.strokeStyle = '#76907b'; ctx.lineWidth = 1;
-  for (let x = 0; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-  for (let y = 0; y < H; y += 80) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-  ctx.restore();
+  // Clear, then a soft wash: the banner's world shows through behind the cards.
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(15,21,19,0.6)'; ctx.fillRect(0, 0, W, H);
 
   // Header
   label(ctx, 'FROM V1 TO V5', 88, 88, 34, C.gold, 800);
@@ -162,6 +170,16 @@ function draw(ctx, _width, _height, t) {
     polygon(ctx, [[tx1, y], [tx2, y], [x2, y + tierH - 8], [x1, y + tierH - 8]], fill, tier.color, 3);
     label(ctx, tier.title, paidCx, y + 57, 27, tier.color, 800, 'center');
     label(ctx, tier.models, paidCx, y + 111, 22, C.cream, 600, 'center', wb - 42);
+    if (tier.title === 'HIGH MODE') {
+      // Subtle green cue: a leaf and slow smoke, so "high" reads as weed-high.
+      leaf(ctx, tx2 - 38, y + 48, 17, C.mint);
+      for (let k = 0; k < 3; k++) {
+        const life = (t * 0.45 + k / 3) % 1;
+        ctx.save(); ctx.globalAlpha = 0.16 * (1 - life); ctx.fillStyle = C.mint;
+        ctx.beginPath(); ctx.arc(tx2 - 38 + life * 16, y + 32 - life * 50, 6 + life * 9, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      }
+    }
   });
 
   const freeTiers = [
@@ -212,14 +230,12 @@ function draw(ctx, _width, _height, t) {
   // Caveat footer
   round(ctx, 90, 2026, 1420, 112, 18, '#111b16', '#34483a', 2);
   label(ctx, 'FREE MODELS CAN BE EXCELLENT.', 118, 2062, 23, C.mint, 800);
-  label(ctx, 'OpenCode Go can direct; Freebuff full mode directs in the free stack. Limits vary; humans keep command.', 118, 2102, 20, C.muted, 500, 'left', 1360);
+  label(ctx, 'OpenCode Go can direct, supervise or work; Freebuff full mode directs in the free stack. Limits vary; humans keep command.', 118, 2102, 20, C.muted, 500, 'left', 1360);
 }
 
-export async function build({ scene }) {
+export async function build({ scene, camera }) {
   const screen = new CanvasScreen(W, H, draw);
-  const texture = screen.texture;
-  const material = new THREE.MeshBasicMaterial({ map: texture, toneMapped: false });
-  const plane = new THREE.Mesh(new THREE.PlaneGeometry(16, 22), material);
-  scene.add(plane);
-  return (t) => screen.draw(t);
+  const world = heroBackdrop(scene, { traces: false, seed: 19, radius: 11 });
+  flatOverlay(scene, camera, screen, 16, 22);
+  return (t) => { world(t); screen.draw(t); };
 }

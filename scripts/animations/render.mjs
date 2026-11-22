@@ -22,6 +22,7 @@ export const SCENES = {
   'tier-pyramid': { w: 1600, h: 1200, frames: 96, fps: 24, outW: 800 },
   'tier-pyramid-free': { w: 1600, h: 1560, frames: 96, fps: 24, outW: 800 },
   'evolution-explainer': { w: 1600, h: 2200, frames: 96, fps: 24, outW: 800 },
+  'stoner-mode': { w: 1600, h: 1200, frames: 96, fps: 24, outW: 800 },
   'architecture': { w: 1600, h: 3558, frames: 72, fps: 24, outW: 800 },
 };
 
