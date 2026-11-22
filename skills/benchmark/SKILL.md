@@ -5,6 +5,8 @@ description: "Use when the user asks to benchmark H Stack or its skills: measure
 
 # Benchmark the stack
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Measure before claiming improvement. This skill separates **skill checks** (does a skill work?) from **stack benchmarks** (does the whole setup perform better?), and keeps the two reports apart.
 
 ## HStack V5 role

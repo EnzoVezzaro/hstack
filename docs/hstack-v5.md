@@ -10,7 +10,7 @@ H Stack is a **multi-repo infrastructure**: Orca coordinates distinct projects, 
 
 ## Operating contract
 
-Every published skill follows the [HStack execution contract](skill-contract.md). V5 roles and model tiers define responsibilities, **not** proof of active Orca sessions, connected tools, or available models. See the [complete catalog audit](skill-audit-2026-11-22.md) for the current 60 routes and the scope of static versus runtime verification.
+Every published skill follows the [HStack execution contract](skill-contract.md). V5 roles and model tiers define responsibilities, **not** proof of active Orca sessions, connected tools, or available models. See the [catalog audit](skill-audit-2026-11-22.md) for the 60 routes it covered and the scope of static versus runtime verification; `/benchmark` and `/resume-all` were added afterwards.
 
 ## Evolution
 

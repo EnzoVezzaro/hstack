@@ -5,6 +5,8 @@ description: "Use when the user asks to check every Orca project, resume the ses
 
 # Resume all Orca work
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 A portfolio pass, not a blanket restart. Snapshot every Orca project, keep only the work that is genuinely interrupted, and move each to a model of equal capability when the original is exhausted, then continue with a handoff and a probe.
 
 ## HStack V5 role

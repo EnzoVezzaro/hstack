@@ -12,7 +12,7 @@ for (const folder of readdirSync(skillsDir).sort()) {
   if (!existsSync(path)) { errors.push(`Missing SKILL.md: ${folder}`); continue; }
   paths.push(path);
 }
-const expected = 60;
+const expected = 62;
 if (paths.length !== expected) {
   errors.push(`Expected ${expected} published skills; found ${paths.length}. Update the catalog count and this test intentionally when adding/removing a route.`);
 }
