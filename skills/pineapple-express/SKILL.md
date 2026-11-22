@@ -1,11 +1,33 @@
 ---
 name: pineapple-express
-description: "Use when the user types /pineapple-express or wants to wrap everything up and go home: close every task that can be closed now, park the rest with a clear handoff, stop leftover processes, and leave a short summary. Nothing outward-facing happens without one batch approval."
+description: "Use when the user types /pineapple-express or wants to wrap everything up and go home."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer2]
 ---
 
 # Pineapple Express: close it all and go home
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /pineapple-express or wants to wrap everything up and go home.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/pineapple-express <project>` — name the target project and keep the work bounded.
 
 The end-of-day sweep. Finish what is nearly finished, park what is not, and leave nothing running that should not be.
 

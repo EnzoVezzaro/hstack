@@ -1,11 +1,33 @@
 ---
 name: let-me-watch
-description: "Use when the user types /let-me-watch or wants to see the project running: opens the local web app in a browser, the desktop app window, or a mobile emulator with the current build, starting the dev server first if it isn't running. It is for the user to watch; it does not test anything."
+description: "Use when the user types /let-me-watch or wants to see the project running: opens the local web app in a browser. Not for unrelated work."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Let me watch
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /let-me-watch or wants to see the project running: opens the local web app in a browser.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/let-me-watch <project>` — name the target project and keep the work bounded.
 
 Put the running project in front of the user and leave it running.
 

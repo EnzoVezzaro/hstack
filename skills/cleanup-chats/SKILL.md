@@ -1,11 +1,33 @@
 ---
 name: cleanup-chats
-description: "Use when the user types /cleanup-chats or wants to clean up Codex or ChatGPT conversations: merge the loose ends of finished threads into one carry-over brief per project, then archive as many threads as possible. Archives instead of deleting, and never touches a thread an active automation still uses."
+description: "Use when the user types /cleanup-chats or wants to clean up Codex or ChatGPT conversations."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer1]
 ---
 
 # Clean up chats
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /cleanup-chats or wants to clean up Codex or ChatGPT conversations.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/cleanup-chats <project>` — name the target project and keep the work bounded.
 
 "Let's clean up, merge what you can, and close as much as possible", applied to Codex threads and ChatGPT chats.
 

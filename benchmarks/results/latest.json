@@ -1,38 +1,38 @@
 {
-  "timestamp": "2026-11-22T15:59:48+00:00",
+  "timestamp": "2026-11-22T16:56:52+00:00",
   "versions": {
     "python": "3.14.7",
     "skillevaluator": "skillevaluator, version 1.0.1"
   },
   "envs": {
     "A-baseline": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/A-baseline",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/A-baseline/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/A-baseline/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline/workspace",
       "skills_installed": 0,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "B-skills": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/B-skills",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/B-skills/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/B-skills/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "C-skills-mcp": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/C-skills-mcp",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/C-skills-mcp/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/C-skills-mcp/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "D-full-stack": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/D-full-stack",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/D-full-stack/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/D-full-stack/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
@@ -42,509 +42,508 @@
     "aggregate": {
       "skills": 62,
       "scored": 62,
-      "mean": 83.8,
-      "median": 83.2,
-      "min": 78.2,
-      "max": 88.5,
+      "mean": 99.9,
+      "median": 100.0,
+      "min": 95.0,
+      "max": 100.0,
       "grades": {
-        "B": 57,
-        "C": 5
+        "A": 62
       }
     },
     "skills": [
       {
         "skill": "420",
-        "score": 79.8,
-        "grade": "C",
-        "warnings": 12,
+        "score": 95.0,
+        "grade": "A",
+        "warnings": 2,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "a-new-day",
-        "score": 84.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "acc-context",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "ace-workspace",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "antislop-review",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "benchmark",
-        "score": 87.8,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "blocker-radar",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "break-it-down",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "check-github",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "cleanup-chats",
-        "score": 84.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "cleanup-disk-space",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "cleanup-orca",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "cleanup-refactor",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "cleanup-worktrees-branches",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "coordinate-agents",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "deploy",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "docs-content",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "fix-ci",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "get-stoned",
-        "score": 82.2,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "haf",
-        "score": 83.5,
-        "grade": "B",
-        "warnings": 10,
+        "score": 97.5,
+        "grade": "A",
+        "warnings": 1,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "handoff",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "horizon",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "horizon-loop",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "horizon-loop-ego-lite",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "horizon-loop-test",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "hstack",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "humanize",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "implement-feature",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "interface-check",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "let-me-watch",
-        "score": 84.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "motion-graphic",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "patch-patrol",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "pineapple-express",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "plan-horizon",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "proagent-equip",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "product-hunt-launch",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "protect-repo",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "publish-git",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "puff-puff-pass",
-        "score": 79.5,
-        "grade": "C",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "reconcile-branches",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "relay-room",
-        "score": 84.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "release",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "reposell-release",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "research-explain",
-        "score": 78.2,
-        "grade": "C",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "resume-all",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "resume-work",
-        "score": 78.2,
-        "grade": "C",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "run-local",
-        "score": 83.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "save-point",
-        "score": 87.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "security-backend",
-        "score": 84.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "seo-audit",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "set-analytics",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "setup-hstack",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "setup-install",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "skill-workbench",
-        "score": 87.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "stoner",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "take-one-dude",
-        "score": 87.2,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "token-balancer",
-        "score": 86.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "ui-design",
-        "score": 82.0,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "verify-and-fix",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 9,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "visual-test",
-        "score": 88.5,
-        "grade": "B",
-        "warnings": 8,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "wrap-day",
-        "score": 79.5,
-        "grade": "C",
-        "warnings": 11,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       },
       {
         "skill": "write-readme-opensource",
-        "score": 80.8,
-        "grade": "B",
-        "warnings": 10,
+        "score": 100.0,
+        "grade": "A",
+        "warnings": 0,
         "errors": 0,
         "passed": true
       }
@@ -554,40 +553,30 @@
     "entries": [
       {
         "harness": "claude-code",
-        "status": "degraded",
+        "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
-        "findings": [
-          {
-            "effect": "degraded",
-            "message": "The 62 skills in this folder have 14,611 description chars; Claude Code's skill list fits 8,000 (1% of the context window at 4 chars per token; 8,000 if the window is unknown), so descriptions get shortened."
-          }
-        ]
+        "findings": []
       },
       {
         "harness": "codex",
-        "status": "degraded",
+        "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
-        "findings": [
-          {
-            "effect": "degraded",
-            "message": "The 62 skills in this folder have 14,611 description chars; Codex's skill list fits about 8,000 (2% of the context window at 4 bytes per token; 8,000 chars if unknown), so descriptions get shortened, then removed, then skills left out."
-          }
-        ]
+        "findings": []
       },
       {
         "harness": "copilot-cli",
         "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
         "findings": [
@@ -606,7 +595,7 @@
         "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
         "findings": []
@@ -616,7 +605,7 @@
         "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
         "findings": []
@@ -626,7 +615,7 @@
         "status": "loads",
         "catalog": {
           "size": 62,
-          "desc_chars": 14611,
+          "desc_chars": 7856,
           "folder": "/Users/mac/Desktop/Github/hstack/skills"
         },
         "findings": [
@@ -638,9 +627,9 @@
       }
     ],
     "catalog_size": 62,
-    "description_chars": 14611,
-    "loads": 4,
-    "degraded": 2,
+    "description_chars": 7856,
+    "loads": 6,
+    "degraded": 0,
     "not_loaded": 0
   },
   "route": {

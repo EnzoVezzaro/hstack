@@ -1,11 +1,33 @@
 ---
 name: docs-content
-description: "Use when the user asks to update the README, docs, product data, affiliate links, or marketing copy. Changes only what is out of date and verifies every fact and link."
+description: "Use when the user asks to update the README, docs, product data, affiliate links, or marketing copy."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Docs, content and products
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user asks to update the README, docs, product data, affiliate links, or marketing copy.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/docs-content <project>` — name the target project and keep the work bounded.
 
 ## HStack V5 role
 

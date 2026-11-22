@@ -1,11 +1,33 @@
 ---
 name: resume-all
-description: "Use when the user asks to check every Orca project, resume the sessions that can be resumed, switch them to an equally capable model, and continue interrupted work."
+description: "Use when the user asks to check every Orca project, resume the sessions that can be resumed."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer2]
 ---
 
 # Resume all Orca work
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user asks to check every Orca project, resume the sessions that can be resumed.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/resume-all <project>` — name the target project and keep the work bounded.
 
 A portfolio pass, not a blanket restart. Snapshot every Orca project, keep only the work that is genuinely interrupted, and move each to a model of equal capability when the original is exhausted, then continue with a handoff and a probe.
 

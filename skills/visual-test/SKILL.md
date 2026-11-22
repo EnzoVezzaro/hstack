@@ -1,11 +1,33 @@
 ---
 name: visual-test
-description: "Use when a running web app or native desktop app needs a person-style visual pass. Drives a website in Ego Lite or a native window through computer use, follows the main flows, screenshots each failure, and hands those failures to verify-and-fix. It tests and reports only; it does not fix code. Replaces the old /visual-test-ego-lite and /visual-test-computer-use names."
+description: "Use when a running web app or native desktop app needs a person-style visual pass. Drives a website in Ego Lite or a native window through computer use, follows the main flows, screenshots."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer5]
 ---
 
 # Visual test · browser or desktop
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when a running web app or native desktop app needs a person-style visual pass.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/visual-test <project>` — name the target project and keep the work bounded.
 
 One pass over the real screen, on the platform the app actually runs on. Choose the mode before you start: a browser mode for websites and a desktop mode for native windows. The two modes are not interchangeable, and neither one proves anything from a source diff.
 

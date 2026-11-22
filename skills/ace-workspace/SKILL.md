@@ -1,11 +1,33 @@
 ---
 name: ace-workspace
-description: "Use when the user asks to set up a crew workspace with a governor, supervisors, and workers across several projects, or mentions ACE. Inspects the repo and installs an ACE workspace with the ace-proagents CLI, dry-run first."
+description: "Use when the user asks to set up a crew workspace with a governor, supervisors, and workers across several projects, or mentions ACE."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer2]
 ---
 
 # Crew workspace with ACE
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user asks to set up a crew workspace with a governor, supervisors, and workers across several projects, or mentions ACE.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/ace-workspace <project>` — name the target project and keep the work bounded.
 
 Uses [ACE](https://github.com/EnzoVezzaro/ace-proagents), which writes a crew arrangement down as data: terminal spaces, one browser space per project, a governor over a worker budget, and one supervisor with workers per project.
 

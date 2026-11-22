@@ -12,8 +12,9 @@ This document records the user's V5 multi-agent setup. It describes intended res
 | --- | --- | --- |
 | Personal assistant | Codex / ChatGPT | Work with the user on goals, decisions, priorities, and reports. |
 | Orchestrator | Orca | Coordinate agent sessions, routing, and work allocation. |
-| Directors | Claude Code, Codex, OpenCode Go; in free mode Freebuff full mode or a strong OpenCode model | Frame project work, make technical and product decisions, and define acceptance criteria. |
-| Supervisors and workers | OpenCode free models, Claude Code, Codex; Freebuff free tiers (suspended for now) | Own bounded implementation tasks, delegate when useful, verify results, and report back. |
+| Directors | Claude Code, Codex, OpenCode Go; in free mode a strong OpenCode model or Freebuff full mode (currently suspended) | Frame project work, make technical and product decisions, and define acceptance criteria. |
+| Supervisors | OpenCode Go or free models, Claude Code, Codex; Freebuff free tiers (suspended for now) | Break work into bounded tasks, track progress and evidence, and report to directors. |
+| Workers | OpenCode Go or free models, Claude Code, Codex; Freebuff free tiers (suspended for now) | Implement, debug, test, research, and return evidence for bounded tasks. |
 | Browser operator | Ego Lite | Perform browser-based work when the task requires it. |
 | Computer operator | Computer use (Orca, Codex, Claude desktop) | Operate native desktop apps and windows that browser tools cannot reach. |
 

@@ -1,11 +1,33 @@
 ---
 name: setup-hstack
-description: "Use when the user types /setup-hstack, installs HStack for the first time, or asks which models or agents HStack should use per tier. Detects the agents and models available on this machine and writes an 'hstack models' tier map to AGENTS.md after the user confirms."
+description: "Use when the user types /setup-hstack, installs HStack for the first time, or asks which models or agents HStack should use per tier."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer1]
 ---
 
 # Set up HStack models
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /setup-hstack, installs HStack for the first time, or asks which models or agents HStack should use per tier.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/setup-hstack` — name the target project and keep the work bounded.
 
 This skill configures the tiers in [model-routing.md](../../docs/model-routing.md).
 

@@ -1,11 +1,33 @@
 ---
 name: patch-patrol
-description: "Independent code and change review. Use when the owner says /patch-patrol, before handing back a meaningful implementation, when the owner asks whether a change is safe, or when a PR needs review and CI follow-through. Composes the installed review family: review, review-bugbot and review-security, with autopilot only for requested PR follow-through."
+description: "Independent code and change review. Use when the owner says /patch-patrol, before handing back a meaningful implementation."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer3]
 ---
 
 # Patch patrol — independent diff review
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Independent code and change review.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/patch-patrol <project>` — name the target project and keep the work bounded.
 
 ## HStack V5 role
 

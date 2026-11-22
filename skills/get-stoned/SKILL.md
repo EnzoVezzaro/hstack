@@ -1,11 +1,33 @@
 ---
 name: get-stoned
-description: "Use when the user types /get-stoned or asks to think outside the box: new ideas for a product, feature, or problem, or unusual solutions to something that is stuck. Generates many ideas on purpose, including strange ones, then scores them and picks a few worth prototyping. Read-only."
+description: "Use when the user types /get-stoned or asks to think outside the box: new ideas for a product, feature, or problem."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Get stoned: divergent thinking
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /get-stoned or asks to think outside the box: new ideas for a product, feature, or problem.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/get-stoned` — name the target project and keep the work bounded.
 
 Structured idea generation. Go wide first, judge later, and keep the strange ideas long enough to see whether one of them is the good one.
 

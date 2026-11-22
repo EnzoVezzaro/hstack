@@ -1,6 +1,6 @@
 # H Stack benchmark results
 
-Generated 2026-11-22T15:59:48+00:00. Runner: `scripts/benchmark/hstack_bench.py`. Tool versions: `python 3.14.7`, `skillevaluator skillevaluator, version 1.0.1`.
+Generated 2026-11-22T16:56:52+00:00. Runner: `scripts/benchmark/hstack_bench.py`. Tool versions: `python 3.14.7`, `skillevaluator skillevaluator, version 1.0.1`.
 
 ## What was measured
 
@@ -8,99 +8,97 @@ Four fresh environments were created in a temporary root. Each has an empty home
 
 | Configuration | Skills | MCP | Multi-agent | Environment |
 | --- | --- | --- | --- | --- |
-| A-baseline | Off | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/A-baseline` |
-| B-skills | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/B-skills` |
-| C-skills-mcp | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/C-skills-mcp` |
-| D-full-stack | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-3_ith717/D-full-stack` |
+| A-baseline | Off | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline` |
+| B-skills | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills` |
+| C-skills-mcp | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp` |
+| D-full-stack | On | On (reserved) | On (reserved) | `/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack` |
 
 Isolation checks: no `AGENTS.md` in any fresh environment = True; all outside the repo = True.
 
 ## Skill quality (NVIDIA SkillEvaluator, keyless tier 1 quality)
 
-- Skills scored: **62/62**; mean **83.8**, median **83.2**, range **78.2–88.5** out of 100.
-- Grades: B: 57, C: 5.
+- Skills scored: **62/62**; mean **99.9**, median **100.0**, range **95.0–100.0** out of 100.
+- Grades: A: 62.
 
 | Skill | Score | Grade | Warnings | Errors |
 | --- | ---: | --- | ---: | ---: |
-| `420` | 79.8 | C | 12 | 0 |
-| `a-new-day` | 84.8 | B | 10 | 0 |
-| `acc-context` | 83.2 | B | 9 | 0 |
-| `ace-workspace` | 80.8 | B | 10 | 0 |
-| `antislop-review` | 84.5 | B | 8 | 0 |
-| `benchmark` | 87.8 | B | 8 | 0 |
-| `blocker-radar` | 83.2 | B | 9 | 0 |
-| `break-it-down` | 80.8 | B | 10 | 0 |
-| `check-github` | 80.8 | B | 10 | 0 |
-| `cleanup-chats` | 84.8 | B | 10 | 0 |
-| `cleanup-disk-space` | 82.0 | B | 9 | 0 |
-| `cleanup-orca` | 86.0 | B | 9 | 0 |
-| `cleanup-refactor` | 80.8 | B | 10 | 0 |
-| `cleanup-worktrees-branches` | 82.0 | B | 9 | 0 |
-| `coordinate-agents` | 84.5 | B | 8 | 0 |
-| `deploy` | 84.5 | B | 8 | 0 |
-| `docs-content` | 80.8 | B | 10 | 0 |
-| `fix-ci` | 84.5 | B | 8 | 0 |
-| `get-stoned` | 82.2 | B | 10 | 0 |
-| `haf` | 83.5 | B | 10 | 0 |
-| `handoff` | 82.0 | B | 9 | 0 |
-| `horizon` | 86.0 | B | 9 | 0 |
-| `horizon-loop` | 86.0 | B | 9 | 0 |
-| `horizon-loop-ego-lite` | 83.2 | B | 9 | 0 |
-| `horizon-loop-test` | 83.2 | B | 9 | 0 |
-| `hstack` | 88.5 | B | 8 | 0 |
-| `humanize` | 82.0 | B | 9 | 0 |
-| `implement-feature` | 84.5 | B | 8 | 0 |
-| `interface-check` | 86.0 | B | 9 | 0 |
-| `let-me-watch` | 84.8 | B | 10 | 0 |
-| `motion-graphic` | 82.0 | B | 9 | 0 |
-| `patch-patrol` | 88.5 | B | 8 | 0 |
-| `pineapple-express` | 86.0 | B | 9 | 0 |
-| `plan-horizon` | 86.0 | B | 9 | 0 |
-| `proagent-equip` | 83.2 | B | 9 | 0 |
-| `product-hunt-launch` | 82.0 | B | 9 | 0 |
-| `protect-repo` | 83.2 | B | 9 | 0 |
-| `publish-git` | 82.0 | B | 9 | 0 |
-| `puff-puff-pass` | 79.5 | C | 10 | 0 |
-| `reconcile-branches` | 88.5 | B | 8 | 0 |
-| `relay-room` | 84.8 | B | 10 | 0 |
-| `release` | 80.8 | B | 10 | 0 |
-| `reposell-release` | 83.2 | B | 9 | 0 |
-| `research-explain` | 78.2 | C | 10 | 0 |
-| `resume-all` | 88.5 | B | 8 | 0 |
-| `resume-work` | 78.2 | C | 10 | 0 |
-| `run-local` | 83.2 | B | 9 | 0 |
-| `save-point` | 87.2 | B | 9 | 0 |
-| `security-backend` | 84.5 | B | 8 | 0 |
-| `seo-audit` | 80.8 | B | 10 | 0 |
-| `set-analytics` | 88.5 | B | 8 | 0 |
-| `setup-hstack` | 86.0 | B | 9 | 0 |
-| `setup-install` | 80.8 | B | 10 | 0 |
-| `skill-workbench` | 87.2 | B | 9 | 0 |
-| `stoner` | 88.5 | B | 8 | 0 |
-| `take-one-dude` | 87.2 | B | 9 | 0 |
-| `token-balancer` | 86.0 | B | 9 | 0 |
-| `ui-design` | 82.0 | B | 9 | 0 |
-| `verify-and-fix` | 80.8 | B | 9 | 0 |
-| `visual-test` | 88.5 | B | 8 | 0 |
-| `wrap-day` | 79.5 | C | 11 | 0 |
-| `write-readme-opensource` | 80.8 | B | 10 | 0 |
+| `420` | 95.0 | A | 2 | 0 |
+| `a-new-day` | 100.0 | A | 0 | 0 |
+| `acc-context` | 100.0 | A | 0 | 0 |
+| `ace-workspace` | 100.0 | A | 0 | 0 |
+| `antislop-review` | 100.0 | A | 0 | 0 |
+| `benchmark` | 100.0 | A | 0 | 0 |
+| `blocker-radar` | 100.0 | A | 0 | 0 |
+| `break-it-down` | 100.0 | A | 0 | 0 |
+| `check-github` | 100.0 | A | 0 | 0 |
+| `cleanup-chats` | 100.0 | A | 0 | 0 |
+| `cleanup-disk-space` | 100.0 | A | 0 | 0 |
+| `cleanup-orca` | 100.0 | A | 0 | 0 |
+| `cleanup-refactor` | 100.0 | A | 0 | 0 |
+| `cleanup-worktrees-branches` | 100.0 | A | 0 | 0 |
+| `coordinate-agents` | 100.0 | A | 0 | 0 |
+| `deploy` | 100.0 | A | 0 | 0 |
+| `docs-content` | 100.0 | A | 0 | 0 |
+| `fix-ci` | 100.0 | A | 0 | 0 |
+| `get-stoned` | 100.0 | A | 0 | 0 |
+| `haf` | 97.5 | A | 1 | 0 |
+| `handoff` | 100.0 | A | 0 | 0 |
+| `horizon` | 100.0 | A | 0 | 0 |
+| `horizon-loop` | 100.0 | A | 0 | 0 |
+| `horizon-loop-ego-lite` | 100.0 | A | 0 | 0 |
+| `horizon-loop-test` | 100.0 | A | 0 | 0 |
+| `hstack` | 100.0 | A | 0 | 0 |
+| `humanize` | 100.0 | A | 0 | 0 |
+| `implement-feature` | 100.0 | A | 0 | 0 |
+| `interface-check` | 100.0 | A | 0 | 0 |
+| `let-me-watch` | 100.0 | A | 0 | 0 |
+| `motion-graphic` | 100.0 | A | 0 | 0 |
+| `patch-patrol` | 100.0 | A | 0 | 0 |
+| `pineapple-express` | 100.0 | A | 0 | 0 |
+| `plan-horizon` | 100.0 | A | 0 | 0 |
+| `proagent-equip` | 100.0 | A | 0 | 0 |
+| `product-hunt-launch` | 100.0 | A | 0 | 0 |
+| `protect-repo` | 100.0 | A | 0 | 0 |
+| `publish-git` | 100.0 | A | 0 | 0 |
+| `puff-puff-pass` | 100.0 | A | 0 | 0 |
+| `reconcile-branches` | 100.0 | A | 0 | 0 |
+| `relay-room` | 100.0 | A | 0 | 0 |
+| `release` | 100.0 | A | 0 | 0 |
+| `reposell-release` | 100.0 | A | 0 | 0 |
+| `research-explain` | 100.0 | A | 0 | 0 |
+| `resume-all` | 100.0 | A | 0 | 0 |
+| `resume-work` | 100.0 | A | 0 | 0 |
+| `run-local` | 100.0 | A | 0 | 0 |
+| `save-point` | 100.0 | A | 0 | 0 |
+| `security-backend` | 100.0 | A | 0 | 0 |
+| `seo-audit` | 100.0 | A | 0 | 0 |
+| `set-analytics` | 100.0 | A | 0 | 0 |
+| `setup-hstack` | 100.0 | A | 0 | 0 |
+| `setup-install` | 100.0 | A | 0 | 0 |
+| `skill-workbench` | 100.0 | A | 0 | 0 |
+| `stoner` | 100.0 | A | 0 | 0 |
+| `take-one-dude` | 100.0 | A | 0 | 0 |
+| `token-balancer` | 100.0 | A | 0 | 0 |
+| `ui-design` | 100.0 | A | 0 | 0 |
+| `verify-and-fix` | 100.0 | A | 0 | 0 |
+| `visual-test` | 100.0 | A | 0 | 0 |
+| `wrap-day` | 100.0 | A | 0 | 0 |
+| `write-readme-opensource` | 100.0 | A | 0 | 0 |
 
 ## Harness compatibility (62-skill catalog)
 
-- Catalog: **62 skills**, **14611 description characters**.
-- Loads: **4**, degraded: **2**, not loaded: **0**.
+- Catalog: **62 skills**, **7856 description characters**.
+- Loads: **6**, degraded: **0**, not loaded: **0**.
 
 | Harness | Status |
 | --- | --- |
-| claude-code | degraded |
-| codex | degraded |
+| claude-code | loads |
+| codex | loads |
 | copilot-cli | loads |
 | hermes | loads |
 | openclaw | loads |
 | opencode | loads |
 
-- `claude-code`: The 62 skills in this folder have 14,611 description chars; Claude Code's skill list fits 8,000 (1% of the context window at 4 chars per token; 8,000 if the window is unknown), so descriptions get shortened.
-- `codex`: The 62 skills in this folder have 14,611 description chars; Codex's skill list fits about 8,000 (2% of the context window at 4 bytes per token; 8,000 chars if unknown), so descriptions get shortened, then removed, then skills left out.
 - `copilot-cli`: 62 skills here: Copilot gives full descriptions to the first 32 only; the rest are listed by name.
 - `copilot-cli`: New skills appear only after `/skills reload` or a restart; edits to existing skills apply at once.
 - `opencode`: Skill list and text are cached at startup; edits need a restart.

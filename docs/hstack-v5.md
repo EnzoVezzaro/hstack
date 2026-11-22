@@ -34,8 +34,9 @@ The scope moved in three steps: V1–V2 ran one project, V3 mixed one-project an
 | --- | --- | --- | --- | --- |
 | 1 | Codex / ChatGPT Plus | Personal assistant | Voice commands, conversation, planning, project tracking, reports to the owner | Paid |
 | 2 | Orca (open source) | Orchestrator | Agent sessions, context, routing, coordination, work allocation | Free (tool) |
-| 3 | Claude Code / Codex / OpenCode Go; in free mode Freebuff full mode or a strong OpenCode model | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid, or free mode when available |
-| 4 | OpenCode free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
+| 3 | Claude Code / Codex / OpenCode Go; in free mode Freebuff full mode (currently suspended) or a strong OpenCode model | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid, or free mode when available |
+| 4 | OpenCode Go or free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Supervisors | Break work into bounded tasks, check progress and evidence, and return results to directors | Free or paid, by task |
+| 4 | OpenCode Go or free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Workers | Implement, debug, test, research, and execute bounded tasks | Free models for routine work |
 | 5 | Ego Lite (open source) | Browser operator | Navigate websites and web apps, collect information, test real workflows | Free (tool) |
 | 5 | Computer use (Orca `orca computer`, Codex Computer Use, Claude desktop) | Computer operator | Drive native desktop apps and windows a browser tool cannot reach | Included with the tools above |
 
@@ -78,7 +79,74 @@ Prices are as stated in the post. Verify current pricing before relying on them.
 
 ## Command map by role
 
-Each HStack skill runs in one layer. Routine execution goes to layer 4 on free models; decisions and acceptance go to layer 3 or to the owner. Read the table by layer: layer 3 rows are director commands (planning, review, acceptance), layer 4 rows are worker and supervisor commands (implementation, tests, checks). OpenCode Go can run a director or supervisor role, not a worker role; in the free stack, Freebuff's full-mode models and a strong OpenCode model can direct.
+The catalog separates commands by the layer that primarily runs them. Director commands cover planning, decisions, review, and acceptance; supervisor commands coordinate bounded tasks and check evidence; worker commands perform bounded execution and probes. Cross-layer workflows appear in their own table so a handoff between director and worker stays explicit. Assistant, Orca, and browser or desktop operator commands have a separate table. OpenCode Go can serve at any tier; in free mode, capable OpenCode free models and Freebuff full-mode models can also direct when available. Freebuff is currently suspended for this stack.
+
+### Director commands · Layer 3
+
+| Skill | Command | Layer that runs it | Decision owner |
+| --- | --- | --- | --- |
+| [seo-audit](../skills/seo-audit/SKILL.md) | `/seo-audit` | 3 | Owner |
+| [product-hunt-launch](../skills/product-hunt-launch/SKILL.md) | `/product-hunt-launch` | 3 drafts | Owner approves posting |
+| [publish-git](../skills/publish-git/SKILL.md) | `/publish-git` | 3 | Owner approves push and merge |
+| [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves destination platform, target, and version |
+| [security-backend](../skills/security-backend/SKILL.md) | `/security-backend` | 3 | Owner |
+| [break-it-down](../skills/break-it-down/SKILL.md) | `/break-it-down` | 3 | Layer 3 |
+| [release](../skills/release/SKILL.md) | `/release` | 3 | Owner approves the tag |
+
+### Supervisor commands · Layer 4
+
+| Skill | Command | Layer that runs it | Decision owner |
+| --- | --- | --- | --- |
+| [verify-and-fix](../skills/verify-and-fix/SKILL.md) | `/verify-and-fix` | 4 supervisor | Layer 3 |
+
+### Worker commands · Layer 4
+
+| Skill | Command | Layer that runs it | Decision owner |
+| --- | --- | --- | --- |
+| [implement-feature](../skills/implement-feature/SKILL.md) | `/implement-feature` | 4 worker | Layer 3 approves the acceptance check |
+| [save-point](../skills/save-point/SKILL.md) | `/save-point` | 4 | Layer 3 |
+| [run-local](../skills/run-local/SKILL.md) | `/run-local` | 4 | Layer 3 |
+| [antislop-review](../skills/antislop-review/SKILL.md) | `/antislop-review` | 4 | Layer 3 |
+| [motion-graphic](../skills/motion-graphic/SKILL.md) | `/motion-graphic` | 4 | Layer 3 |
+| [docs-content](../skills/docs-content/SKILL.md) | `/docs-content` | 4 drafts, 1 checks facts | Owner |
+| [humanize](../skills/humanize/SKILL.md) | `/humanize` | 4 | Owner |
+| [write-readme-opensource](../skills/write-readme-opensource/SKILL.md) | `/write-readme-opensource` | 4 | Owner |
+| [setup-install](../skills/setup-install/SKILL.md) | `/setup-install` | 4 | Layer 3 |
+| [fix-ci](../skills/fix-ci/SKILL.md) | `/fix-ci` | 4 | Layer 3 |
+| [cleanup-refactor](../skills/cleanup-refactor/SKILL.md) | `/cleanup-refactor` | 4 | Layer 3 |
+| [cleanup-disk-space](../skills/cleanup-disk-space/SKILL.md) | `/cleanup-disk-space` | 4 measures | Owner confirms deletions |
+| [horizon-loop](../skills/horizon-loop/SKILL.md) | `/horizon-loop` | 4 | Layer 3 |
+| [horizon-loop-test](../skills/horizon-loop-test/SKILL.md) | `/horizon-loop-test` | 4 | Layer 3 |
+| [check-github](../skills/check-github/SKILL.md) | `/check-github` | 4 | Layer 3 |
+| [let-me-watch](../skills/let-me-watch/SKILL.md) | `/let-me-watch` | 4 starts, 5 shows | Owner |
+| [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |
+| [protect-repo](../skills/protect-repo/SKILL.md) | `/protect-repo` | 4 | Owner merges the PR |
+### Cross-layer workflows
+
+| Skill | Command | Layer that runs it | Decision owner |
+| --- | --- | --- | --- |
+| [resume-all](../skills/resume-all/SKILL.md) | `/resume-all` | 2 scans, 3 approves model and batch | Owner approves resumed agents; see [orca-resume-scan.md](orca-resume-scan.md) |
+| [patch-patrol](../skills/patch-patrol/SKILL.md) | `/patch-patrol` | 3 reviews 4's diff | Layer 3 |
+| [research-explain](../skills/research-explain/SKILL.md) | `/research-explain` | 4 researches, 3 decides | Layer 3 |
+| [interface-check](../skills/interface-check/SKILL.md) | `/interface-check` | 5 with 3 | Layer 3 |
+| [ui-design](../skills/ui-design/SKILL.md) | `/ui-design` | 3 designs, 4 implements | Layer 3 |
+| [set-analytics](../skills/set-analytics/SKILL.md) | `/set-analytics` | 4 installs, 3 plans events | Owner provides keys and approves |
+| [reconcile-branches](../skills/reconcile-branches/SKILL.md) | `/reconcile-branches` | 4 rehearses, 3 decides | Owner approves the merge into main |
+| [cleanup-orca](../skills/cleanup-orca/SKILL.md) | `/cleanup-orca` | 2 with 4 | Owner approves one batch |
+| [cleanup-chats](../skills/cleanup-chats/SKILL.md) | `/cleanup-chats` | 1 with 4 | Owner approves the archive list |
+| [stoner](../skills/stoner/SKILL.md) | `/stoner` | 2 scans, 3 ranks, 4 works | Owner approves merges unless a standing rule allows them |
+| [horizon-loop-ego-lite](../skills/horizon-loop-ego-lite/SKILL.md) | `/horizon-loop-ego-lite` | 5 with 4 | Layer 3 |
+| [get-stoned](../skills/get-stoned/SKILL.md) | `/get-stoned` | 4 generates, 3 judges | Layer 3 |
+| [haf](../skills/haf/SKILL.md) | `/haf` | 5 browses, 3 picks | Layer 3 |
+| [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |
+| [pineapple-express](../skills/pineapple-express/SKILL.md) | `/pineapple-express` | 2 lists, 4 closes | Owner approves one batch |
+| [benchmark](../skills/benchmark/SKILL.md) | `/benchmark` | 4 checks, 3 interprets | Owner approves spend and publishing; see [benchmark.md](benchmark.md) |
+| [reposell-release](../skills/reposell-release/SKILL.md) | `/reposell-release` | 4 with 3 | Owner approves publishing |
+| [proagent-equip](../skills/proagent-equip/SKILL.md) | `/proagent-equip` | 3 picks, 4 runs | Layer 3 |
+| [ace-workspace](../skills/ace-workspace/SKILL.md) | `/ace-workspace` | 2 with 3 | Owner confirms setup |
+| [skill-workbench](../skills/skill-workbench/SKILL.md) | `/skill-workbench` | 1 with 3 | Owner |
+
+### Assistant, Orca, and operator commands · Layers 1, 2, and 5
 
 | Skill | Command | Layer that runs it | Decision owner |
 | --- | --- | --- | --- |
@@ -90,61 +158,14 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [coordinate-agents](../skills/coordinate-agents/SKILL.md) | `/coordinate-agents` | 2 Orca | Layer 3 |
 | [relay-room](../skills/relay-room/SKILL.md) | `/relay-room` | 2 | Layer 3 |
 | [resume-work](../skills/resume-work/SKILL.md) | `/resume-work` | 2 | Layer 3 |
-| [resume-all](../skills/resume-all/SKILL.md) | `/resume-all` | 2 scans, 3 approves model and batch | Owner approves resumed agents; see [orca-resume-scan.md](orca-resume-scan.md) |
 | [handoff](../skills/handoff/SKILL.md) | `/handoff` | 2 | Layer 3 |
-| [implement-feature](../skills/implement-feature/SKILL.md) | `/implement-feature` | 4 worker | Layer 3 approves the acceptance check |
 | [take-one-dude](../skills/take-one-dude/SKILL.md) | `/take-one-dude <project>` | 1 routes; execution follows the task skill | Owner gets probe evidence |
-| [verify-and-fix](../skills/verify-and-fix/SKILL.md) | `/verify-and-fix` | 4 supervisor | Layer 3 |
-| [patch-patrol](../skills/patch-patrol/SKILL.md) | `/patch-patrol` | 3 reviews 4's diff | Layer 3 |
-| [save-point](../skills/save-point/SKILL.md) | `/save-point` | 4 | Layer 3 |
-| [research-explain](../skills/research-explain/SKILL.md) | `/research-explain` | 4 researches, 3 decides | Layer 3 |
-| [run-local](../skills/run-local/SKILL.md) | `/run-local` | 4 | Layer 3 |
 | [visual-test](../skills/visual-test/SKILL.md) | `/visual-test` | 5 Ego Lite or computer use | Layer 3 |
-| [interface-check](../skills/interface-check/SKILL.md) | `/interface-check` | 5 with 3 | Layer 3 |
-| [ui-design](../skills/ui-design/SKILL.md) | `/ui-design` | 3 designs, 4 implements | Layer 3 |
-| [antislop-review](../skills/antislop-review/SKILL.md) | `/antislop-review` | 4 | Layer 3 |
-| [motion-graphic](../skills/motion-graphic/SKILL.md) | `/motion-graphic` | 4 | Layer 3 |
-| [docs-content](../skills/docs-content/SKILL.md) | `/docs-content` | 4 drafts, 1 checks facts | Owner |
-| [humanize](../skills/humanize/SKILL.md) | `/humanize` | 4 | Owner |
-| [write-readme-opensource](../skills/write-readme-opensource/SKILL.md) | `/write-readme-opensource` | 4 | Owner |
-| [seo-audit](../skills/seo-audit/SKILL.md) | `/seo-audit` | 3 | Owner |
-| [set-analytics](../skills/set-analytics/SKILL.md) | `/set-analytics` | 4 installs, 3 plans events | Owner provides keys and approves |
-| [product-hunt-launch](../skills/product-hunt-launch/SKILL.md) | `/product-hunt-launch` | 3 drafts | Owner approves posting |
-| [setup-install](../skills/setup-install/SKILL.md) | `/setup-install` | 4 | Layer 3 |
-| [fix-ci](../skills/fix-ci/SKILL.md) | `/fix-ci` | 4 | Layer 3 |
-| [cleanup-refactor](../skills/cleanup-refactor/SKILL.md) | `/cleanup-refactor` | 4 | Layer 3 |
 | [cleanup-worktrees-branches](../skills/cleanup-worktrees-branches/SKILL.md) | `/cleanup-worktrees-branches` | 2 | Owner confirms deletions |
-| [reconcile-branches](../skills/reconcile-branches/SKILL.md) | `/reconcile-branches` | 4 rehearses, 3 decides | Owner approves the merge into main |
-| [cleanup-orca](../skills/cleanup-orca/SKILL.md) | `/cleanup-orca` | 2 with 4 | Owner approves one batch |
-| [cleanup-chats](../skills/cleanup-chats/SKILL.md) | `/cleanup-chats` | 1 with 4 | Owner approves the archive list |
-| [cleanup-disk-space](../skills/cleanup-disk-space/SKILL.md) | `/cleanup-disk-space` | 4 measures | Owner confirms deletions |
-| [publish-git](../skills/publish-git/SKILL.md) | `/publish-git` | 3 | Owner approves push and merge |
-| [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves destination platform, target, and version |
-| [security-backend](../skills/security-backend/SKILL.md) | `/security-backend` | 3 | Owner |
-| [stoner](../skills/stoner/SKILL.md) | `/stoner` | 2 scans, 3 ranks, 4 works | Owner approves merges unless a standing rule allows them |
-| [break-it-down](../skills/break-it-down/SKILL.md) | `/break-it-down` | 3 | Layer 3 |
 | [horizon](../skills/horizon/SKILL.md) | `/horizon` | 1 designs, 2 or Codex runs | Owner activates the schedule |
-| [horizon-loop](../skills/horizon-loop/SKILL.md) | `/horizon-loop` | 4 | Layer 3 |
-| [horizon-loop-test](../skills/horizon-loop-test/SKILL.md) | `/horizon-loop-test` | 4 | Layer 3 |
-| [horizon-loop-ego-lite](../skills/horizon-loop-ego-lite/SKILL.md) | `/horizon-loop-ego-lite` | 5 with 4 | Layer 3 |
-| [release](../skills/release/SKILL.md) | `/release` | 3 | Owner approves the tag |
-| [check-github](../skills/check-github/SKILL.md) | `/check-github` | 4 | Layer 3 |
 | [420](../skills/420/SKILL.md) | `/420` | 1 sets up, 2 opens the workspace | Owner |
-| [let-me-watch](../skills/let-me-watch/SKILL.md) | `/let-me-watch` | 4 starts, 5 shows | Owner |
-| [get-stoned](../skills/get-stoned/SKILL.md) | `/get-stoned` | 4 generates, 3 judges | Layer 3 |
-| [haf](../skills/haf/SKILL.md) | `/haf` | 5 browses, 3 picks | Layer 3 |
-| [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |
-| [pineapple-express](../skills/pineapple-express/SKILL.md) | `/pineapple-express` | 2 lists, 4 closes | Owner approves one batch |
-| [benchmark](../skills/benchmark/SKILL.md) | `/benchmark` | 4 checks, 3 interprets | Owner approves spend and publishing; see [benchmark.md](benchmark.md) |
 | [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
 | [token-balancer](../skills/token-balancer/SKILL.md) | `/token-balancer` | 1 reads, 2 may compare | Owner applies recommendation |
-| [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |
-| [protect-repo](../skills/protect-repo/SKILL.md) | `/protect-repo` | 4 | Owner merges the PR |
-| [reposell-release](../skills/reposell-release/SKILL.md) | `/reposell-release` | 4 with 3 | Owner approves publishing |
-| [proagent-equip](../skills/proagent-equip/SKILL.md) | `/proagent-equip` | 3 picks, 4 runs | Layer 3 |
-| [ace-workspace](../skills/ace-workspace/SKILL.md) | `/ace-workspace` | 2 with 3 | Owner confirms setup |
-| [skill-workbench](../skills/skill-workbench/SKILL.md) | `/skill-workbench` | 1 with 3 | Owner |
-
 ## Tools
 
 - Orca (orchestrator): <https://github.com/stablyai/orca>

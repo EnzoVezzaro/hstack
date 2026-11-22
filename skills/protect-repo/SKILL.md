@@ -1,11 +1,33 @@
 ---
 name: protect-repo
-description: "Use when the user asks to protect a repo from AI training, add a license and AI-training notice, 'shield' repos, or prepare a repo before making it public. Opens a Repo Shield protection pull request for each repo with the rs CLI."
+description: "Use when the user asks to protect a repo from AI training, add a license and AI-training notice, 'shield' repos."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Protect a repo with Repo Shield
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user asks to protect a repo from AI training, add a license and AI-training notice, 'shield' repos.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/protect-repo <project>` — name the target project and keep the work bounded.
 
 Uses [Repo Shield](https://github.com/EnzoVezzaro/repo-shield): a signed LICENSE, an explicit AI-training NOTICE, a machine-readable policy, and a weekly watch workflow. It deters; it cannot block scrapers. Say that plainly if the user expects more.
 

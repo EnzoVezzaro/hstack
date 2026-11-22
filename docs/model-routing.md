@@ -14,12 +14,12 @@ H Stack coordinates a **multi-repo** setup. Name the target `<project>` for ever
 | --- | --- | --- | --- | --- | --- |
 | You | Owner | | | | Approve, decide, own the product. Nothing ships without you |
 | ChatGPT | Main coordinator and assistant | | | | Talks to you, plans the day, routes work down |
-| **T3** | High mode | Fable | Astra | | Architecture, security, anything irreversible, and briefs that failed lower down |
+| **T3** | High mode | Fable | Astra | | Architecture, security, extra high powers, and briefs that failed lower down |
 | **T2** | Directors | Opus | GPT Sol | OpenCode Go (optional) | Planning, acceptance criteria, reviews, decisions |
 | **T1** | Supervisors | Sonnet | Terra | OpenCode Go (optional) | Debugging, multi-file changes, checking the workers |
-| **T0** | Workers | Haiku | Luna | OpenCode free, other free models | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts |
+| **T0** | Workers | Haiku | Luna | OpenCode Go or free models | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts |
 
-OpenCode Go is a director or supervisor option, not a worker model. Keep it out of the worker row: free models do the typing there. These are the defaults. `/setup-hstack` detects which of them you actually have and writes your own map.
+OpenCode Go can be assigned at any tier: director, supervisor or worker. Pick the cheapest capable tier; a paid model is not required just because it is Go. These are the defaults. `/setup-hstack` detects which of them you actually have and writes your own map.
 
 ### Any provider fits the same shape
 
@@ -31,7 +31,7 @@ The tiers describe jobs, not brands. GLM (Z.ai), DeepSeek, Kimi, or any other pr
 
 | Tier | Name | Models | Notes |
 | --- | --- | --- | --- |
-| **T3** | High mode | You | No free model gets the decisions you can't undo |
+| **T3** | High mode | You | For the times you need extra high powers, the call stays with you |
 | **T2** | Directors | Freebuff: DeepSeek V4 Pro, Kimi K2.7 Code; OpenCode: strong free model | Freebuff full mode only |
 | **T1** | Supervisors | Freebuff: MiMo 2.5 Pro, MiniMax M3 | Freebuff full mode only |
 | **T0** | Workers | Freebuff: DeepSeek V4 Flash, MiMo 2.5; OpenCode free models (`big-pickle`, `space-bunny-free`) | Also in Freebuff's limited mode |

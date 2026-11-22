@@ -1,11 +1,31 @@
 ---
 name: benchmark
-description: "Use when the user asks to benchmark H Stack or its skills: measure skill quality, harness loading, and routing in fresh environments, or set up a controlled A/B matrix with SkillsBench, SkillEvaluator, Harness Benchmark, or Terminal-Bench."
+description: "Use when the user asks to benchmark H Stack or its skills: measure skill quality, harness loading."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Benchmark the stack
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user asks to benchmark H Stack or its skills: measure skill quality, harness loading.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
 
 Measure before claiming improvement. This skill separates **skill checks** (does a skill work?) from **stack benchmarks** (does the whole setup perform better?), and keeps the two reports apart.
 

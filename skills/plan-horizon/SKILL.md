@@ -1,11 +1,33 @@
 ---
 name: plan-horizon
-description: "Time-horizon planning from verified state. Use for /plan-day, /plan-week, /plan-month, or when the owner asks to plan a time horizon. Builds a feasible plan from current Orca work and commitments, separating confirmed work from proposals."
+description: "Time-horizon planning from verified state. Use for /plan-day, /plan-week, /plan-month, or when the owner asks to plan a time horizon."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer1]
 ---
 
 # Plan horizon — evidence-based project plan
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Time-horizon planning from verified state.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/plan-horizon` — name the target project and keep the work bounded.
 
 ## HStack V5 role
 

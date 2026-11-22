@@ -1,11 +1,33 @@
 ---
 name: hstack
-description: "Default entry point for HSTACK. Use at the start of any non-trivial engineering task, or when the user types /hstack, says 'continue', or is unsure which skill fits. Reads the request, picks the one HSTACK skill that fits (or splits mixed work into ordered steps), and applies the shared rules: real repo first, one owner per task, verify before reporting, and no outward-facing action without approval."
+description: "Default entry point for HSTACK. Use at the start of any non-trivial engineering task, or when the user types /hstack, says 'continue', or is unsure which skill fits."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer1]
 ---
 
 # HSTACK
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Default entry point for HSTACK.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/hstack <project>` — name the target project and keep the work bounded.
 
 The front door to a **multi-repo** agent setup. Read the request, identify the exact project or projects, pick a skill from the table, then read only that skill and the source skills it names. If the work is mixed, split it into ordered steps and route each one.
 

@@ -41,6 +41,15 @@ python3 scripts/benchmark/hstack_bench.py all \
 
 Outputs: `docs/benchmark-results.md` (human report) and `benchmarks/results/latest.json` (compact data).
 
+## Keeping the catalog clean
+
+Two local scripts keep the keyless scores reproducible:
+
+- `python3 scripts/quality/normalize_skills.py` adds the metadata and short reference sections that SkillEvaluator checks. It is idempotent and never rewrites a skill's procedure.
+- `python3 scripts/quality/shorten_descriptions.py` trims trigger-first descriptions so the whole catalog fits the ~8,000-character listing budget of Claude Code and Codex. This trades long descriptions for full harness loading; keep the trigger and the negative boundary phrase.
+
+The only remaining static findings are the public names `420` and `haf`, which the evaluator considers unconventional or short. Renaming them would break published slash commands, so they stay as documented exceptions.
+
 ## Controlled A/B matrix for live runs
 
 Change one layer at a time; keep model, prompt, context, tools, and budget fixed.

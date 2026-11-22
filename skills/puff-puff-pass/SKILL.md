@@ -1,11 +1,33 @@
 ---
 name: puff-puff-pass
-description: "Use when the user types /puff-puff-pass or wants something implemented cheaply and then reviewed by a more powerful model. A free-tier worker builds it, a stronger and different model reviews it, the worker fixes what the review proves, and the result goes back for a final check."
+description: "Use when the user types /puff-puff-pass or wants a feature implemented cheaply and then reviewed by a more powerful model."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer4]
 ---
 
 # Puff, puff, pass: build cheap, review strong
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /puff-puff-pass or wants a feature implemented cheaply and then reviewed by a more powerful model.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/puff-puff-pass <project>` — name the target project and keep the work bounded.
 
 The V5 rule in one command: a cheap model writes the change, an expensive model only reads it.
 

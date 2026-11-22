@@ -1,11 +1,33 @@
 ---
 name: take-one-dude
-description: "Use when the user types /take-one-dude or wants one agent to take ownership of a named project task, move quickly, choose whether to iterate or use more effort, and prove the result with concrete probes."
+description: "Use when the user types /take-one-dude or wants one agent to take ownership of a named project task, move quickly. Not for unrelated work."
+metadata:
+  author: Enzo Vezzaro
+  tags: [hstack, layer1]
 ---
 
 # Take One Dude
 
 **Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
+## Purpose
+
+Use when the user types /take-one-dude or wants one agent to take ownership of a named project task, move quickly.
+
+## Prerequisites
+
+Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
+
+## Limitations
+
+A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
+
+## Troubleshooting
+
+If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
+
+
+**Example:** `/take-one-dude <project>` — name the target project and keep the work bounded.
 
 One agent takes the task from prompt to evidence. Bring the speed and useful capabilities of H Stack to a single clear outcome, without skipping the probe that proves it.
 
