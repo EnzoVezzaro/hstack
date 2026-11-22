@@ -21,11 +21,25 @@
   <sub>by <a href="https://github.com/EnzoVezzaro">Enzo Vezzaro</a></sub>
 </p>
 
-I run a small crew of AI agents for $40 a month, or $50 with optional OpenCode Go for director work. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
+I run a small crew of AI agents for $40 a month, or $50 with optional OpenCode Go for director work. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm. Now I just enjoy it with some green while I talk to Codex / ChatGPT.
 
-HSTACK (read "high stack") is that setup, written down as 62 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
+HSTACK (read "high stack") is my setup, written down as 62 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
 The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
+
+## Quick start
+
+Two steps, with a real project named:
+
+```bash
+npx skills add EnzoVezzaro/hstack        # pick the skills you want
+```
+
+```text
+/hstack <project> The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.
+```
+
+Use the actual Orca project or repo name in place of `<project>`; for work across repos, name each one. `/hstack` resolves the target worktree, routes to one skill, and keeps the expensive models out of the boring parts. Run `/setup-hstack <project>` once per project so the skills know which agents and models you actually have.
 
 ## Install
 
@@ -33,7 +47,7 @@ The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills
 npx skills add EnzoVezzaro/hstack
 ```
 
-The [`skills` CLI](https://skills.sh) shows you the full list. Pick the skills you want, pick your agents, and you're done. Add `-g` to install them for every project instead of just this one.
+The [`skills` CLI](https://skills.sh) lists them; pick the skills and agents you want. Add `-g` to install them for every project instead of just this one.
 
 <details>
 <summary>Rather copy the files by hand?</summary>
@@ -44,7 +58,18 @@ cp -R hstack/skills/* ~/.claude/skills/   # Claude Code
 cp -R hstack/skills/* ~/.codex/skills/    # Codex
 ```
 
-Restart your agent so it notices the new skills.
+Restart your agent so it notices the new skills. Every skill folder carries its required contract, V5 roles and model-routing references in `references/`, generated from this repository's docs and drift-checked, so a plain copy works without any adjacent docs folder.
+
+For a checked payload, including a single skill, use the installer from a clone:
+
+```bash
+git clone https://github.com/EnzoVezzaro/hstack.git
+cd hstack
+scripts/install/install.sh --all --skills-root ~/.claude/skills
+scripts/install/install.sh interface-check --skills-root ~/.claude/skills
+```
+
+Installing a skill does **not** install the other skills it mentions, or any external tool. The full per-route list, with bundled, external and optional capabilities and how to obtain them, is in [docs/source-skills.md](docs/source-skills.md). Helper scripts for `/benchmark`, `/token-balancer`, `/resume-all` and validation require this checkout; they are not installed into the skills directory.
 
 </details>
 
@@ -96,7 +121,7 @@ H Stack is for **multi-repo work**. Name the target project in every request; fo
 /hstack <project> The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.
 ```
 
-[`/hstack`](skills/hstack/SKILL.md) resolves the named repo/worktree, picks the skill that fits, splits big jobs into steps, and keeps the expensive models away from the boring parts. A cross-repo request names each `<project>` separately. When you already know which skill you want, call it by name and include the project. Run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once per project, so it knows which agents and models you actually have.
+[`/hstack`](skills/hstack/SKILL.md) resolves the named repo/worktree, picks the skill that fits, splits big jobs into steps, and keeps the expensive models away from the boring parts. A cross-repo request names each `<project>` separately. Run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once per project, so it knows which agents and models you actually have.
 
 <details>
 <summary>How do skills get picked up?</summary>
@@ -128,12 +153,12 @@ One voice goes in at the top, and a whole crew answers across your repositories.
 | 🧠 Assistant | Codex / ChatGPT | Talks with me, plans the day, remembers what I forgot | $20/mo |
 | 🐋 Orchestrator | ORCA | Routes sessions, context, and work between agents | Free, open source |
 | 🎯 Directors | Claude Code / Codex; optional OpenCode Go. Free mode can use capable OpenCode free models or Freebuff full mode (currently suspended) | Decide, design, and accept or reject the work | $20/mo + optional $10/mo |
-| 🧭 Supervisors | OpenCode Go, OpenCode free models, Claude Code, Codex; Freebuff free tiers ([benched](#a-note-to-the-freebuff-team)) | Split work into bounded tasks and check progress and evidence | Included or free |
+| 🧭 Supervisors | Prefer capable free OpenCode models for routine supervision; Freebuff free tiers when available ([benched](#a-note-to-the-freebuff-team)); paid OpenCode Go / Claude Code / Codex only when the task needs it | Split work into bounded tasks and check progress and evidence | Free first, paid when needed |
 | ⚙️ Workers | OpenCode, ~~Freebuff~~ ([benched](#a-note-to-the-freebuff-team)), Claude Code, Codex | Write code, debug, test, and research on cheap or free models | Included or free |
 | 🌐 Browser | Ego Lite | Clicks through real websites | Free, open source |
 | 🖥️ Desktop | Computer use (Orca, Codex, Claude desktop) | Drives native apps | Included |
 
-That's $40 a month for the whole crew, or $50 with optional OpenCode Go for director work. Subscription and free-tier limits apply. API costs, hosting, and the model you forgot to switch off are not included. The long version, including how V1 turned into V5, lives in [docs/hstack-v5.md](docs/hstack-v5.md).
+That's $40 a month for the whole crew, or $50 with optional OpenCode Go for director work. Subscription and free-tier limits apply. API costs, hosting, and the model you forgot to switch off are not included. Costs and the V1-to-V5 history are in [docs/hstack-v5.md](docs/hstack-v5.md).
 
 ### How V1 became V5
 
@@ -155,16 +180,9 @@ The house rules:
 
 ### A note to the Freebuff team
 
-@jahooma, @brandonkachen, @victorxheng, and everyone at @CodebuffAI: thank you, genuinely. Freebuff carried a big share of the free T0 work in this stack, and it was good at it. Ads and all, I was a fan.
+Freebuff carried a lot of the free worker load, and the account was suspended mid-run. The full Thank-you, the suspension notice, and what took its place are in [docs/hstack-v5.md](docs/hstack-v5.md#a-note-to-the-freebuff-team). The short version: OpenCode's free models and NVIDIA's free tier picked up that share.
 
-Then, right in the middle of the best agent run of my week, with the whole crew humming and the coffee still warm, you pulled the plug:
-
-```text
-This account is suspended. To appeal, visit https://freebuff.com/account?tab=standing.
-If this is a mistake, contact support@freebuff.com.
-```
-
-Great timing. I honestly don't know what my robots did; they're mostly polite. If it's a mistake, I'd love my workers back, because the bench is cold. Until then, Freebuff's share of the work goes to OpenCode's free models and NVIDIA's free tier, and the crew costs $40 a month, or $50 with optional OpenCode Go for director work.
+Prices and model availability change; the figures here describe my setup, not a guarantee of what yours will cost. See [docs/hstack-v5.md](docs/hstack-v5.md) for the economics and [docs/model-routing.md](docs/model-routing.md) for the tier rules.
 
 ## The whole map
 
@@ -174,7 +192,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
-    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom, on camo block platforms: you (my mascot) at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, my own tools, and deploy targets GitHub, Vercel, AWS, Google Cloud, and Cloudflare. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom, on camo block platforms: you (my mascot) at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code, Codex, and optional OpenCode Go as directors (T2), with high mode (T3) on call above them; layer 4 with supervisors (T1: Sonnet, Terra, optional OpenCode Go) and workers (T0: Haiku, Luna, free models, OpenCode Go when it fits) on OpenCode, NVIDIA's free tier, Claude Code, and Codex, with Freebuff stamped suspended; layer 5 with Ego Lite and computer use; and what ships at the bottom: logo cubes for GitHub, Vercel, AWS, Google Cloud, Cloudflare, Netlify, npm, and PostHog, plus my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
   </picture>
 </p>
 
@@ -199,12 +217,19 @@ Every skill starts on the cheapest model that can do the job, and says which tie
 | ChatGPT | Main coordinator and assistant | | | Talks to you, plans the day, routes work down |
 | T3 | High mode | Fable | Astra | |
 | T2 | Directors | Opus | GPT Sol | OpenCode Go (optional) |
-| T1 | Supervisors | Sonnet | Terra | OpenCode Go (optional) |
+| T1 | Supervisors | Sonnet | Terra | Capable free OpenCode models (prefer); OpenCode Go (optional, paid) |
 | T0 | Workers | Haiku | Luna | OpenCode Go or free models |
 
-OpenCode Go can work at any tier: director, supervisor or worker. Use the cheapest capable tier for the task. In the free stack, Freebuff's full-mode models direct alongside a strong OpenCode model, and workers use free tiers.
+OpenCode Go can work at any tier: director, supervisor or worker. Use the cheapest capable tier for the task. For routine supervision prefer a capable free OpenCode model, check availability live, and use paid supervision only when the task needs it. Freebuff free models are an option when that account is active, but it is currently suspended for me; in the free stack, workers use free tiers and a strong OpenCode model can direct.
 
 The shape matters more than the brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider fits the same pyramid: their biggest model at the top, their fast one at the bottom.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/providers.png">
+    <img src="assets/animations/providers.gif" alt="Four camo block cubes on a gold trace, each carrying a provider logo: GLM (Z.ai), DeepSeek, Kimi, and a gold plus for any other provider" width="90%">
+  </picture>
+</p>
 
 A job moves up one tier when the same brief fails twice, or when it touches architecture, security, money, or deleting things. Once the smarter model has written the plan, the job goes back down, because thinking is expensive and typing is cheap. Whoever checks the work is never the one who wrote it, since everybody grades their own homework an A.
 
@@ -215,7 +240,7 @@ A job moves up one tier when the same brief fails twice, or when it touches arch
   </picture>
 </p>
 
-That's the rule in motion: a task fails twice with the workers, rides up, fails again, gets a plan from the directors, and comes back down to be finished by a worker. High mode naps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
+A task fails twice with the workers, rides up, fails again, gets a plan from the directors, and comes back down to be finished by a worker. High mode naps through all of it. The full rules are in [docs/model-routing.md](docs/model-routing.md).
 
 <details>
 <summary><b>The zero-dollar version: OpenCode and Freebuff only</b></summary>
@@ -269,13 +294,11 @@ It pushes fixes to each PR's own branch without asking, because that's the job y
 - stop after: 8 hours
 ```
 
-Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconcile-branches` taking turns, with every task escalating by the tier rules above. It stops when you tell it to, when the budget runs out, or when there's genuinely nothing left to do. Then it waits quietly and checks again.
+`coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconcile-branches` take turns, escalating by the tier rules. It stops when you tell it to, when the budget runs out, or when there's genuinely nothing left to do. Then it waits quietly and checks again.
 
 <p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
 ## Skills
-
-`/hstack` routes to every one of these. Name the `<project>` whenever the task concerns a repository; for multi-repo work, list each project. The tables are for when you already know what you want.
 
 <p align="center">
   <picture>
@@ -545,7 +568,7 @@ It needs Google Chrome (or `CHROME=/path/to/chrome`), ffmpeg, Python 3 with nump
 
 ## Credits
 
-Huge thanks to [Theo](https://github.com/t3dotgg), for [tstack](https://github.com/t3dotgg/tstack), and to [Poteto](https://github.com/poteto), for [pstack](https://github.com/backnotprop/pstack), for everything they share with the rest of us, and for being great engineers who helped pioneer vibe coding, better known these days as agentic coding.
+Huge thanks to [Theo](https://github.com/t3dotgg), for [tstack](https://github.com/t3dotgg/tstack), and to [Poteto](https://github.com/poteto), for [pstack](https://github.com/cursor/plugins/tree/main/pstack), for everything they share with the rest of us, and for being great engineers who helped pioneer vibe coding, better known these days as agentic coding.
 
 ## License
 

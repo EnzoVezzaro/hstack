@@ -36,8 +36,26 @@ Use the consumer project's confirmed `## hstack models` mapping and [model routi
 
 ## 5. Authority and safety gates
 
-- Reading and proposing are distinct from acting. Do not commit or push unrelated changes.
-- Require the owner's explicit authorization before pushing, merging, releasing, publishing, deploying, deleting data or worktrees, purchases, external messages or posts, or modifying consequential account settings. A request to open a PR authorizes the scoped branch/commits/PR, **not** merge or deployment.
+### Action scope
+
+Reading and proposing are distinct from acting, and file edits do not imply permission to commit. Every request carries an action scope. Name it before acting and stop at its boundary:
+
+| Scope | What it authorizes | What it does not authorize |
+| --- | --- | --- |
+| `inspect` | Read, classify, propose, prepare a reviewable plan | Any change to files or external state |
+| `local` | Local edits and a **local commit only** | Push, PR, merge, deploy, release, deletion |
+| `push` | `local` plus pushing the named commits to the named remote/branch | PR merge, deploy, release |
+| `pr` | `push` plus opening/updating the named PR | Merging or closing the PR |
+| `merge` | `pr` plus merging the named PR into the named target | Deploy, release, deletion |
+| `deploy` | Deploying the named revision to the named environment | Release, publication |
+| `release` | Publishing the named release/version | Unrelated deployment or publication |
+| `delete` | Deleting only the named data, branch or worktree | Anything outside that list |
+
+- `commit` means `local`. It ends after the local commit; do not push "while you are there".
+- Push, PR, merge, deploy, release, deletion, purchases, external messages or posts, and consequential account changes need authorization **for that scope**. A request to open a PR authorizes the scoped branch/commits/PR, **not** merge or deployment.
+- A standing rule written by the owner (for example a `## stoner` block in the consumer project's `AGENTS.md`) or an authorization already given in the session **is** authorization for the scope it names. Do not ask again for the same scope; do not widen it. Record where the standing grant came from.
+- Technical readiness is never an authority grant. Green checks, an approved PR, or a passing probe do not turn `local` into `push` or `pr` into `merge`. A standing `auto-merge: green-and-approved` rule is an explicit `merge` grant bounded by its own conditions, not a general permission to merge.
+- Prepare concrete, reviewable work first when the outstanding scope is unclear; present it and stop before the irreversible step.
 - Protect secrets and user data. Never put credentials in prompts, logs or reports.
 - On missing tooling, inaccessible state, failed checks, uncertain ownership, or unmet acceptance criteria, stop that action; finish any safe part and report the precise blocker.
 

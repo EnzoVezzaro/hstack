@@ -2,7 +2,7 @@
 
 For the V5 roles and the economics behind these skills, see [hstack-v5.md](hstack-v5.md).
 
-Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode, and Freebuff prompts, plus the commands added for work the analysis did not cover. Counts and flows are approximate; they come from keyword classification.
+Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode, and Freebuff prompts, plus the commands added for work the analysis did not cover. Counts and flows are approximate; they come from keyword classification. The W1–W12 labels are historical taxonomy, not active instructions inside skills.
 
 ## Core workflows
 
@@ -25,6 +25,15 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 
 | Skill | Command | Extends |
 |---|---|---|
+| `a-new-day` | `/a-new-day` | Daily operations |
+| `blocker-radar` | `/any-blockers` | Daily operations |
+| `plan-horizon` | `/plan-day`, `/plan-week`, `/plan-month` | Daily operations |
+| `wrap-day` | `/wrap-day` | Daily operations |
+| `relay-room` | `/relay-room` | W3 Coordinar agentes |
+| `patch-patrol` | `/patch-patrol` | W2 Verificar y arreglar |
+| `interface-check` | `/interface-check` | W2 Verificar y arreglar |
+| `save-point` | `/save-point` | W2 Verificar y arreglar |
+| `skill-workbench` | `/skill-workbench` | W12 Otros / general |
 | `visual-test` | `/visual-test` | W2 Verificar y arreglar |
 | `product-hunt-launch` | `/product-hunt-launch` | W7 Contenido, productos y docs |
 | `set-analytics` | `/set-analytics` | W11 Seguridad, datos y backend |
@@ -67,11 +76,24 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `benchmark` | `/benchmark` | Skill quality, harness loading and routing checks; see [benchmark.md](benchmark.md) |
 | `resume-all` | `/resume-all` | Portfolio-wide Orca resume with same-capability model mapping |
 
-## Routing
+## Routing: canonical procedures and small overrides
 
-- Not sure which one applies? Use `/hstack`. It classifies the work and hands each step to the right skill.
-- `coordinate-agents` coordinates; it hands verification to `verify-and-fix` and publishing to `publish-git`.
-- Nothing is committed, merged, published, deployed, or deleted outside the code unless the owner asks.
+The router [`/hstack`](../skills/hstack/SKILL.md) classifies work and names one skill. It is a front door, not a step inside every workflow; skills do not route back to it mid-task. Public slash commands stay unchanged.
+
+| Job family | Canonical procedure | Explicit override |
+|---|---|---|
+| Build a feature | `implement-feature`: acceptance check first, smallest change, then `verify-and-fix` | `take-one-dude` adds one owner and concrete finish probes but uses the same build/verify procedure. `puff-puff-pass` adds a tier rule: cheap builder, different stronger reviewer. Neither invents a second build method |
+| Something is broken | `verify-and-fix`: reproduce root cause, fix, rerun the exact path | `save-point` when the contract is "it worked in an older version"; `fix-ci` when the failing check is CI |
+| Review a change | `patch-patrol` for an independent diff review | `antislop-review` for generic writing/style patterns; `interface-check` for screen layout and accessibility; `visual-test` for real browser or desktop flows. These inspect different artifacts and do not replace each other |
+| Change or design UI | `ui-design` for design work; `interface-check` for a screen-level pass; `visual-test` for real interaction | `haf` is inspiration research only; it does not design, implement, or verify |
+| Coordinate agents | `relay-room` for one live Orca project; `coordinate-agents` for several workers | `stoner` is a standing long-horizon loop over many repos, not a one-off coordination call |
+| Ship | `publish-git` prepares and commits; `deploy`, `release`, and `product-hunt-launch` handle their named targets | Authorization is scoped per action; see the shared [execution contract](skill-contract.md) |
+
+Handoffs are one-way: a skill may hand verification to `verify-and-fix`, review to `patch-patrol`, or preparation to `publish-git`, and then stops owning that step. Avoid chains that hand a task back to the skill that produced it; that is circular routing and unbounded recursive handoff.
+
+## Authorization
+
+Readiness is a technical gate, never an authority grant. `commit` ends at a local commit; `push`, PR, `merge`, `deploy`, `release`, and deletion each need their own scope of authorization. A standing rule in the consumer project's `AGENTS.md` (for example `stoner`'s scoped PR-branch push) is authorization already supplied and must not be asked for again. See [skill-contract.md](skill-contract.md#5-authority-and-safety-gates).
 
 ## Make them yours
 

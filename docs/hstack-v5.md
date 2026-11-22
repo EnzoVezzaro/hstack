@@ -35,7 +35,7 @@ The scope moved in three steps: V1–V2 ran one project, V3 mixed one-project an
 | 1 | Codex / ChatGPT Plus | Personal assistant | Voice commands, conversation, planning, project tracking, reports to the owner | Paid |
 | 2 | Orca (open source) | Orchestrator | Agent sessions, context, routing, coordination, work allocation | Free (tool) |
 | 3 | Claude Code / Codex / OpenCode Go; in free mode Freebuff full mode (currently suspended) or a strong OpenCode model | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid, or free mode when available |
-| 4 | OpenCode Go or free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Supervisors | Break work into bounded tasks, check progress and evidence, and return results to directors | Free or paid, by task |
+| 4 | Prefer capable free OpenCode models for routine supervision; Freebuff free models when available (currently suspended for this user); paid supervision with OpenCode Go / Claude Code / Codex only when the task needs it | Supervisors | Break work into bounded tasks, check progress and evidence, and return results to directors | Free first, paid when needed |
 | 4 | OpenCode Go or free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Workers | Implement, debug, test, research, and execute bounded tasks | Free models for routine work |
 | 5 | Ego Lite (open source) | Browser operator | Navigate websites and web apps, collect information, test real workflows | Free (tool) |
 | 5 | Computer use (Orca `orca computer`, Codex Computer Use, Claude desktop) | Computer operator | Drive native desktop apps and windows a browser tool cannot reach | Included with the tools above |
@@ -166,6 +166,21 @@ The catalog separates commands by the layer that primarily runs them. Director c
 | [420](../skills/420/SKILL.md) | `/420` | 1 sets up, 2 opens the workspace | Owner |
 | [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
 | [token-balancer](../skills/token-balancer/SKILL.md) | `/token-balancer` | 1 reads, 2 may compare | Owner applies recommendation |
+## A note to the Freebuff team
+
+@jahooma, @brandonkachen, @victorxheng, and everyone at @CodebuffAI: thank you, genuinely. Freebuff carried a big share of the free T0 work in this stack, and it was good at it. Ads and all, I was a fan.
+
+Then, right in the middle of the best agent run of my week, with the whole crew humming and the coffee still warm, you pulled the plug:
+
+```text
+This account is suspended. To appeal, visit https://freebuff.com/account?tab=standing.
+If this is a mistake, contact support@freebuff.com.
+```
+
+Great timing. I honestly don't know what my robots did; they're mostly polite. If it's a mistake, I'd love my workers back, because the bench is cold. Until then, Freebuff's share of the work goes to OpenCode's free models and NVIDIA's free tier, and the crew costs $40 a month, or $50 with optional OpenCode Go for director work.
+
+That figure is a description of one setup, not a forecast: subscription prices, free-tier rules, and model availability change. Verify current prices and limits before relying on it.
+
 ## Tools
 
 - Orca (orchestrator): <https://github.com/stablyai/orca>
@@ -189,5 +204,5 @@ The post lists seven short links. Their destinations could not be confirmed from
 ## Caveats
 
 - Subscription and free-tier limits apply. Free models change; check availability before routing work to them.
-- Routine work goes to free models in layer 4. Use paid intelligence only when the task needs it.
+- Routine supervision goes to a capable free OpenCode model when one is available; check live availability first. Freebuff free models are an option when that account is active, but it is currently suspended for this user. Use paid supervision only when the task needs it.
 - Nothing outward-facing (publishing, deploying, pushing, merging, deleting) happens without the owner's approval, whatever the layer.
