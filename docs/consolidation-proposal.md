@@ -210,7 +210,7 @@ Why this one:
 - The only semantic difference is the driver. The merged file keeps both drivers as explicit, non-interchangeable modes and preserves the mode-specific constraints: logged-in sessions in Ego Lite; programmatic-first, exact build relaunch, accessibility tree, and no system settings or secrets in computer use.
 - Capability and provenance are preserved. The old names survive as aliases in the description and in this proposal; the upstream `ego-browser` / `orca-computer-use` sources remain named in the body and in `docs/source-skills.md` / `README.md`, "Not shipped here".
 
-References updated: the router in `skills/hstack/SKILL.md`, `README.md` (badge, menu, examples, co-install table, all skill counts), `docs/hstack-v5.md`, `docs/workflows.md`, `skills/stoner/SKILL.md`, and the two animation source scenes that print skill names. No rendered GIF/PNG was regenerated; those assets are unchanged.
+References updated: the router in `skills/hstack/SKILL.md`, `README.md` (badge, menu, examples, co-install table, all skill counts), `docs/hstack-v5.md`, `docs/workflows.md`, `skills/stoner/SKILL.md`, and the two animation source scenes that print skill names. A follow-up commit in this branch regenerated the three catalog assets so the rendered skill names match the sources; dimensions and frame counts are unchanged from `main` (800×1779, 72 frames; 800×1779 still; 800×450, 96 frames).
 
 ### After-baseline and checks run for this branch
 
@@ -226,6 +226,6 @@ Checks actually run:
 - `grep -R 'visual-test-ego-lite\|visual-test-computer-use' --exclude-dir=.git .` → only the alias line in `skills/visual-test/SKILL.md` and historical notes in this proposal; no live route or link points at a removed file.
 - `grep -R '61 skills\|skills-61\|all 61\|61 instruction' README.md` → no matches.
 - Local Markdown relative-link check over every `*.md`: 307 links resolved, 0 broken.
-- `node --check` on both changed animation scenes → OK. No rendered GIF/PNG was regenerated.
+- `node --check` on both changed animation scenes → OK. The three regenerated assets were checked with `file`, `sips`, and a GIF frame-count check; no visual regression suite was run.
 - `git diff --check` → clean.
 - No runtime test suite exists in this repository; no tests were claimed or run.
