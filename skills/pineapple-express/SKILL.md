@@ -22,7 +22,8 @@ Layer 2 (Orca) lists sessions, agents, and worktrees; Layer 4 workers close task
 4. Park the rest: write a `handoff` brief for each, so tomorrow starts cold without guessing.
 5. Stop dev servers, watchers, and background jobs that this session or its agents started. Leave alone anything the user started.
 6. Show one list of outward-facing actions waiting for approval (push, merge, close PRs, pause schedules). Do them only after one yes; skip the rest.
-7. Finish with `wrap-day` so the day's summary is on record.
+7. For a deeper sweep, run `cleanup-orca` for workspaces and `cleanup-chats` for conversations.
+8. Finish with `wrap-day` so the day's summary is on record.
 
 ## Report
 

@@ -4,34 +4,34 @@
 </picture>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=24&duration=3000&pause=900&color=FFC44A&center=true&vCenter=true&width=760&lines=Coding+with+AI%2C+coffee%2C+and+a+little+weed.;Expensive+intelligence+makes+decisions.;Cheap+intelligence+does+the+work.;Agents+delegate%2C+verify%2C+report+back.;You+stay+in+control." alt="Typing animation: coding with AI, coffee, and a little weed; expensive intelligence makes decisions; cheap intelligence does the work; agents delegate, verify, report back; you stay in control">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=24&duration=3000&pause=900&color=FFC44A&center=true&vCenter=true&width=760&lines=Coding+with+AI%2C+coffee%2C+and+a+little+weed.;Expensive+models+decide.+Cheap+models+type.;Every+agent+shows+its+work.;Nothing+ships+without+a+yes." alt="Typing animation: coding with AI, coffee, and a little weed; expensive models decide, cheap models type; every agent shows its work; nothing ships without a yes">
 </p>
 
 <p align="center">
-  <img alt="52 skills" src="https://img.shields.io/badge/skills-52-3b5336?style=for-the-badge">
+  <img alt="59 skills" src="https://img.shields.io/badge/skills-59-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
 </p>
 
-# hstack
+# HSTACK
 
-i've been running multi-agent coding setups for a while, trying to build more, spend less, and not become a full-time babysitter for AI agents. five versions later, this is the playbook.
+I run a small crew of AI agents for $40 a month. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
-**hstack** (read "high stack") is 52 agent skills for one idea: **expensive intelligence makes decisions, cheap intelligence does the work.** one assistant talks to you. it hands work down to directors, who hand bounded tasks to free-model workers. the workers prove what they did and report back. you only show up for the calls that matter.
+HSTACK (read "high stack") is that setup, written down as 59 agent skills. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
-they're plain [Agent Skills](https://agentskills.io): a folder of `skills/<name>/SKILL.md` files. they work in Claude Code, Codex, OpenCode, Cursor, and any agent that reads them.
+The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
 
-## install
+## Install
 
 ```bash
 npx skills add EnzoVezzaro/hstack
 ```
 
-the [`skills` CLI](https://skills.sh) lists every skill. pick the ones you want, then pick your agents. add `-g` to install for every project instead of just this one.
+The [`skills` CLI](https://skills.sh) shows you the full list. Pick the skills you want, pick your agents, and you're done. Add `-g` to install them for every project instead of just this one.
 
 <details>
-<summary>no npx? copy them by hand</summary>
+<summary>Rather copy the files by hand?</summary>
 
 ```bash
 git clone https://github.com/EnzoVezzaro/hstack.git
@@ -39,333 +39,393 @@ cp -R hstack/skills/* ~/.claude/skills/   # Claude Code
 cp -R hstack/skills/* ~/.codex/skills/    # Codex
 ```
 
-restart the agent so it finds them.
+Restart your agent so it notices the new skills.
 
 </details>
 
-## get started
-
-two steps:
-
-1. install.
-2. type [`/hstack`](skills/hstack/SKILL.md), then your task.
-
-```
-/hstack the signup button does nothing on mobile. repro it, fix it, and show me it works.
-```
-
-that's it. `/hstack` reads the request, picks the right skill, and splits mixed work into steps. reach for a specific skill when you already know which one you want.
-
 <p align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/build-h.png">
-    <img src="assets/animations/build-h.gif" alt="A camo voxel H stacks itself layer by layer, then its code, notes, brain, and game panels light up" width="85%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/install-terminal.png">
+    <img src="assets/animations/install-terminal.gif" alt="A floating terminal runs npx skills add EnzoVezzaro/hstack while skill cards fly out of the screen and slot into a shelf" width="90%">
   </picture>
 </p>
 
+## Getting started
+
+Type `/hstack` and describe the job:
+
+```
+/hstack The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.
+```
+
+[`/hstack`](skills/hstack/SKILL.md) picks the skill that fits, splits big jobs into steps, and keeps the expensive models away from the boring parts. When you already know which skill you want, call it by name. Run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once, so it knows which agents and models you actually have.
+
 <details>
-<summary>how do skills actually trigger?</summary>
+<summary>How do skills get picked up?</summary>
 
-your agent doesn't read all 52 skills up front. at startup it only sees each skill's name and one-line description. the full instructions load when a skill is used, in one of two ways:
+Your agent doesn't read 59 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
 
-- **you call it.** type `/hstack`, `/humanize`, `/fix-ci`, and so on.
-- **the agent matches it.** describe the task ("CI is failing on main") and the agent loads the skill whose description fits.
+- You call it by name, like `/fix-ci`.
+- The agent recognizes the job. Say "CI is red again" and it loads the skill whose description matches.
 
-so installing all of them costs you almost nothing until one is needed.
+So installing all 59 costs almost nothing until you use one.
 
 </details>
 
 <p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
-## the stack (V5)
-
-one voice in, a whole crew out. watch the gold pulse go down the layers:
+## The stack
 
 <p align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/flow-v5.png">
-    <img src="assets/animations/flow-v5.gif" alt="Six camo voxel towers for the V5 layers: assistant, orchestrator, directors, workers, Ego Lite, and computer use. A gold pulse travels from one to the next" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/stack-office.png">
+    <img src="assets/animations/stack-office.gif" alt="An isometric night office: an assistant robot with a headset at a desk with three monitors, an Orca server rack sending glowing packets along floor cables to worker robots at laptops, and a carrier robot bringing a crate to a gold director robot who approves it with a green check" width="100%">
   </picture>
 </p>
 
-| layer | who | does | costs |
+One voice goes in at the top, and a whole crew answers at the bottom:
+
+| Layer | Who | What it does | Cost |
 |---|---|---|---|
-| 🧠 assistant | Codex / ChatGPT | talks with you, plans, keeps track of everything | $20/mo |
-| 🐋 orchestrator | ORCA | routes sessions, context, and work | free, open source |
-| 🎯 directors | Claude Code / Codex | decide, design, accept the work | $20/mo |
-| ⚙️ workers | OpenCode / Freebuff / Claude Code / Codex | code, debug, test, research on free models | free |
-| 🌐 browser | Ego Lite | clicks through real websites | free, open source |
-| 🖥️ desktop | computer use (Orca, Codex, Claude desktop) | drives native apps | included |
+| 🧠 Assistant | Codex / ChatGPT | Talks with me, plans the day, remembers what I forgot | $20/mo |
+| 🐋 Orchestrator | ORCA | Routes sessions, context, and work between agents | Free, open source |
+| 🎯 Directors | Claude Code / Codex | Decide, design, and accept or reject the work | $20/mo |
+| ⚙️ Workers | OpenCode, Freebuff, Claude Code, Codex | Write code, debug, test, and research on free models | Free |
+| 🌐 Browser | Ego Lite | Clicks through real websites | Free, open source |
+| 🖥️ Desktop | Computer use (Orca, Codex, Claude desktop) | Drives native apps | Included |
 
-**$40/month for the whole crew.** subscription and free-tier limits apply; API costs and hosting aren't included. the full write-up, including how it got here from V1, is in [docs/hstack-v5.md](docs/hstack-v5.md).
+That's $40 a month for the whole crew. Subscription and free-tier limits apply. API costs, hosting, and the model you forgot to switch off are not included. The long version, including how V1 turned into V5, lives in [docs/hstack-v5.md](docs/hstack-v5.md).
 
-the rules the crew runs on:
+The house rules:
 
-- expensive intelligence makes decisions. cheap intelligence handles execution.
-- agents delegate, verify, and report back. a claim without evidence goes back for checking.
-- humans stay in control. nothing gets pushed, merged, deployed, published, or deleted without a yes.
-- more agents is not more intelligence. shared context and verified results are.
+- Expensive intelligence makes decisions; cheap intelligence does the execution.
+- Agents delegate, verify, and report back. "Trust me, it works" gets sent back for proof.
+- Humans stay in control. Pushes, merges, deploys, launches, and deletes wait for a yes.
+- More agents is not more intelligence. A big crew that shares nothing is just a loud one.
 
-### cheap first, smart when it matters
-
-every skill starts on the cheapest model that can do the job, and says so in its `SKILL.md`:
-
-| tier | who | gets |
-|---|---|---|
-| **T0** free worker | OpenCode free models, NVIDIA free tier, Freebuff | tests, docs, cleanup, setup, first drafts |
-| **T1** strong free worker | bigger free models (GLM, Nemotron Ultra, DeepSeek Pro) | debugging, multi-file changes, checking T0's work |
-| **T2** director | Codex, Claude Code | plans, reviews, decisions |
-| **T3** top reasoning | Codex high effort, Claude Opus | architecture, security, anything irreversible |
-
-a task moves **up** one tier when the same brief fails verification twice, or when it touches architecture, security, money, or deleting data. it moves back **down** once the higher tier has written the plan: thinking is expensive, typing is cheap. whoever checks the work is never the one who wrote it.
-
-run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once. it finds the agents and models on your machine and writes your own tier map to `AGENTS.md`. the rules: [docs/model-routing.md](docs/model-routing.md).
-
-<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
-
-## skills
-
-`/hstack` routes to all of these for you. the tables are for when you want one directly.
+## Cheap first, smart when it matters
 
 <p align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/coordinate-bots.png">
-    <img src="assets/animations/coordinate-bots.gif" alt="Three voxel worker bots walk between glowing gold stations on a camo platform" width="85%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-elevator.png">
+    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors labeled T0 to T3 and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the director on T2, and rides back down to T0 where it passes with a green check" width="100%">
+  </picture>
+</p>
+
+Every skill starts on the cheapest model that can do the job, and says which one in its `SKILL.md`:
+
+| Tier | Who | Gets |
+|---|---|---|
+| T0 · free worker | OpenCode free models, NVIDIA free tier, Freebuff | Tests, docs, cleanup, setup, first drafts |
+| T1 · strong free worker | Bigger free models, such as GLM, Nemotron Ultra, or DeepSeek Pro | Debugging, multi-file changes, checking T0's work |
+| T2 · director | Codex, Claude Code | Plans, reviews, decisions |
+| T3 · top reasoning | Codex on high effort, Claude Opus | Architecture, security, anything you can't undo |
+
+A job moves up one tier when the same brief fails twice, or when it touches architecture, security, money, or deleting things. Once the smarter model has written the plan, the job goes back down, because thinking is expensive and typing is cheap. Whoever checks the work is never the one who wrote it, since everybody grades their own homework an A.
+
+That is the whole animation above: a task fails twice on T0, rides up, fails again, gets a plan from the director, and comes back down to be finished on a free model. T3 sleeps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
+
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
+
+## Stoner mode
+
+Some days you want to point the crew at your repos and go do something else. [`/stoner`](skills/stoner/SKILL.md) is for those days. It scans every Orca repo, checks the open PRs on each one, ranks the work, and keeps agents on it until the queue is empty. Then it checks the PRs again, because by then someone has opened a new one.
+
+```mermaid
+flowchart LR
+    A["🐋 Scan Orca repos"] --> B["🔀 Check open PRs"]
+    B --> C["📋 Rank the work"]
+    C --> D["⚙️ Work the queue<br/>until it's empty"]
+    D -->|"queue empty"| A
+    D -.->|"needs a yes"| E["🙋 Ask the owner once"]
+```
+
+It pushes fixes to each PR's own branch without asking, because that's the job you gave it. It doesn't merge into main, close PRs, delete branches, or deploy unless you say yes or leave a standing rule in `AGENTS.md`:
+
+```markdown
+## stoner
+- max workers: 3
+- auto-merge: green-and-approved
+- idle wait: 30
+- stop after: 8 hours
+```
+
+Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconcile-branches` taking turns, with every task escalating by the tier rules above. It stops when you tell it to, when the budget runs out, or when there's genuinely nothing left to do. Then it waits quietly and checks again.
+
+<p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
+
+## Skills
+
+`/hstack` routes to every one of these. The tables are for when you already know what you want.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/ship-pipeline.png">
+    <img src="assets/animations/ship-pipeline.gif" alt="An isometric assembly line: code crates ride a conveyor through build, where a robot arm welds sparks, test, where a laser scanner turns green, review, where a director stamps a check, and release, where a v5.1.0 tag is printed, before leaving through a glowing portal" width="100%">
   </picture>
 </p>
 
 <details open>
-<summary><b>🌅 daily rhythm</b></summary>
+<summary><b>🌅 Daily rhythm</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/a-new-day`](skills/a-new-day/SKILL.md) | you're starting the day and want live Orca state, recent work, and the first move. |
-| [`/plan-horizon`](skills/plan-horizon/SKILL.md) | you want a plan that fits a day, week, or month (`/plan-day`, `/plan-week`, `/plan-month`). |
-| [`/wrap-day`](skills/wrap-day/SKILL.md) | you're done for the day and want verified progress, blockers, and tomorrow's first step. |
-| [`/blocker-radar`](skills/blocker-radar/SKILL.md) | something is stuck and you want who owns it and the smallest next move (`/any-blockers`). |
+| [`/a-new-day`](skills/a-new-day/SKILL.md) | It's morning. Pulls live Orca state and recent work, and hands you the first move of the day. |
+| [`/plan-horizon`](skills/plan-horizon/SKILL.md) | You want a plan that actually fits in a day, a week, or a month (`/plan-day`, `/plan-week`, `/plan-month`). |
+| [`/wrap-day`](skills/wrap-day/SKILL.md) | You're logging off and want to know what really got done, what's stuck, and where tomorrow starts. |
+| [`/blocker-radar`](skills/blocker-radar/SKILL.md) | Something is stuck and you'd like a name and a next step rather than a vibe (`/any-blockers`). |
 
 </details>
 
 <details open>
-<summary><b>🎛️ running the crew</b></summary>
+<summary><b>🎛️ Running the crew</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/relay-room`](skills/relay-room/SKILL.md) | the work belongs to a live Orca project and a director needs a bounded brief. |
-| [`/coordinate-agents`](skills/coordinate-agents/SKILL.md) | several agents need tasks, and their reports need checking against evidence, not vibes. |
-| [`/resume-work`](skills/resume-work/SKILL.md) | you said "continue". it checks what was really done before picking up the next step. |
-| [`/handoff`](skills/handoff/SKILL.md) | another agent should take over. writes a brief they can pick up cold. |
-| [`/setup-hstack`](skills/setup-hstack/SKILL.md) | first install, or you want to change which models each tier uses. |
+| [`/relay-room`](skills/relay-room/SKILL.md) | The work belongs to a live Orca project and a director needs a short, clear brief. |
+| [`/coordinate-agents`](skills/coordinate-agents/SKILL.md) | Several agents need work, and every "all done!" they send back needs checking. |
+| [`/resume-work`](skills/resume-work/SKILL.md) | You typed "continue". It checks what actually got done before it believes anyone. |
+| [`/handoff`](skills/handoff/SKILL.md) | Another agent should take over. Writes a brief they can pick up cold, with no backstory required. |
+| [`/setup-hstack`](skills/setup-hstack/SKILL.md) | It's your first install. Finds your agents and models and writes your tier map to `AGENTS.md`. |
+
+</details>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/horizon-loop.png">
+    <img src="assets/animations/horizon-loop.gif" alt="A floating island with a running track: a robot runs laps while a tower screen charts a Lighthouse score rising toward a goal of 95; when it crosses, a checkered flag rises and confetti falls" width="85%">
+  </picture>
+</p>
+
+<details open>
+<summary><b>🌀 Long-horizon work</b></summary>
+
+| Skill | Use it when |
+|---|---|
+| [`/stoner`](skills/stoner/SKILL.md) | You want to walk away. Checks every Orca repo's PRs, works the queue until it's empty, then starts over. See [Stoner mode](#stoner-mode). |
+| [`/break-it-down`](skills/break-it-down/SKILL.md) | The task is too big for one session. Splits it into small pieces that can each be checked, with an order and a tier for each. |
+| [`/horizon`](skills/horizon/SKILL.md) | The job takes weeks. Sets up a schedule (a Codex automation by default) with an end date and a progress log. |
+| [`/horizon-loop`](skills/horizon-loop/SKILL.md) | You want something repeated until a number is hit. Measure, change one thing, and keep it only if it helped. |
+| [`/horizon-loop-test`](skills/horizon-loop-test/SKILL.md) | The test suite needs to get green and stay green. One failure at a time, and no test gets quietly "adjusted". |
+| [`/horizon-loop-ego-lite`](skills/horizon-loop-ego-lite/SKILL.md) | Real browser flows have to pass N times in a row in Ego Lite before anyone calls it fixed. |
+
+</details>
+
+<details>
+<summary><b>🛠️ Build and fix</b></summary>
+
+| Skill | Use it when |
+|---|---|
+| [`/implement-feature`](skills/implement-feature/SKILL.md) | You want a feature. Writes the acceptance check first, then the smallest change that passes it. |
+| [`/verify-and-fix`](skills/verify-and-fix/SKILL.md) | Something broke, or a change needs proving. Reproduces it, fixes the cause, and reruns the exact same path. |
+| [`/save-point`](skills/save-point/SKILL.md) | It worked last week. Compares with the last good version and repairs whatever changed. |
+| [`/patch-patrol`](skills/patch-patrol/SKILL.md) | A diff needs a second pair of eyes that didn't write it. |
+| [`/check-github`](skills/check-github/SKILL.md) | You want repos, code, or issues found on GitHub and compared, with links. |
+| [`/research-explain`](skills/research-explain/SKILL.md) | You have a question about a library, a market, or why this code is the way it is. |
+| [`/fix-ci`](skills/fix-ci/SKILL.md) | CI is red. Reads the failing step and fixes the cause. Disabling the check doesn't count. |
+| [`/setup-install`](skills/setup-install/SKILL.md) | A project needs installing or configuring, and your secrets should stay out of files and chat. |
+| [`/cleanup-refactor`](skills/cleanup-refactor/SKILL.md) | Dead code has to go, in small steps, with the tests run after each one. |
+
+</details>
+
+<details>
+<summary><b>👀 Eyes on real screens</b></summary>
+
+| Skill | Use it when |
+|---|---|
+| [`/run-local`](skills/run-local/SKILL.md) | You want it running on localhost and the URL back, minus the "works on my machine" speech. |
+| [`/visual-test-ego-lite`](skills/visual-test-ego-lite/SKILL.md) | A website needs clicking through the way a person would, in Ego Lite. |
+| [`/visual-test-computer-use`](skills/visual-test-computer-use/SKILL.md) | Same idea for native apps: Mac apps, Electron or Tauri builds, the ChatGPT or Claude desktop app. |
+| [`/interface-check`](skills/interface-check/SKILL.md) | A screen needs a UI pass at desktop and phone widths, with screenshots instead of opinions. |
+
+</details>
+
+<details>
+<summary><b>🚀 Ship it</b></summary>
+
+| Skill | Use it when |
+|---|---|
+| [`/reconcile-branches`](skills/reconcile-branches/SKILL.md) | Several branches and worktrees want into main. Tests every merge first, plans the order, rehearses it, and lands it after your yes. |
+| [`/release`](skills/release/SKILL.md) | It's release time. Picks the next version, writes the changelog from what actually changed, tags it, and publishes the GitHub release. |
+| [`/publish-git`](skills/publish-git/SKILL.md) | Commit, push, merge. Asks before anything leaves your machine. |
+| [`/deploy`](skills/deploy/SKILL.md) | `/deploy <deployment-source>`. Confirms the target and version, deploys, then checks the live site runs that version. |
+| [`/set-analytics`](skills/set-analytics/SKILL.md) | You'd like to know if anyone uses the thing. Installs PostHog (by default), plans the first events, adds a proxy and consent, and checks real events arrive. |
+| [`/product-hunt-launch`](skills/product-hunt-launch/SKILL.md) | It's launch day. Drafts the listing and the assets, and posts only when you say go. |
 
 </details>
 
 <details open>
-<summary><b>🌀 long horizon</b></summary>
+<summary><b>🧹 Housekeeping</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/break-it-down`](skills/break-it-down/SKILL.md) | a task is too big for one agent. splits it into small checkable units with order, tiers, and what can run in parallel. |
-| [`/horizon`](skills/horizon/SKILL.md) | work has to keep going for days or weeks. sets up a schedule (a Codex automation by default) with an end date and a progress log. |
-| [`/horizon-loop`](skills/horizon-loop/SKILL.md) | you want something repeated until a number is hit. measure, change one thing, keep it only if it helped. |
-| [`/horizon-loop-test`](skills/horizon-loop-test/SKILL.md) | the test suite needs to get to green, or to a coverage number, or to zero flakes. one failure at a time, never weakening a test. |
-| [`/horizon-loop-ego-lite`](skills/horizon-loop-ego-lite/SKILL.md) | real browser flows need to pass N times in a row in Ego Lite. |
+| [`/cleanup-orca`](skills/cleanup-orca/SKILL.md) | Your Orca sidebar looks like a browser with 80 tabs. Merges what it can, closes what's done, and keeps anything with unmerged work. |
+| [`/cleanup-chats`](skills/cleanup-chats/SKILL.md) | Codex and ChatGPT are full of finished threads. Carries the loose ends into one brief per project, then archives the rest. |
+| [`/cleanup-worktrees-branches`](skills/cleanup-worktrees-branches/SKILL.md) | You want everything merged to main and the leftover worktrees and branches gone. |
+| [`/cleanup-disk-space`](skills/cleanup-disk-space/SKILL.md) | Your disk is full. (Mine filled up while these animations were rendering.) Measures first and deletes only what you approve. |
 
 </details>
 
 <details>
-<summary><b>🛠️ build and fix</b></summary>
+<summary><b>✍️ Words, design, and quality</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/implement-feature`](skills/implement-feature/SKILL.md) | you want a feature built. acceptance check first, then the smallest change. |
-| [`/verify-and-fix`](skills/verify-and-fix/SKILL.md) | something is broken, or a change needs proving. repro, fix the cause, rerun the same path. |
-| [`/save-point`](skills/save-point/SKILL.md) | it worked last week. compares with the last good version and repairs the cause. |
-| [`/patch-patrol`](skills/patch-patrol/SKILL.md) | a diff needs a second pair of eyes that didn't write it. |
-| [`/check-github`](skills/check-github/SKILL.md) | you want repos, code, or issues found on GitHub and compared. |
-| [`/research-explain`](skills/research-explain/SKILL.md) | you have a question about a library, a repo, a market, or why code works this way. |
-| [`/fix-ci`](skills/fix-ci/SKILL.md) | CI is red. reads the failing step, fixes the cause, never just disables the check. |
-| [`/setup-install`](skills/setup-install/SKILL.md) | a project needs installing or configuring, without secrets leaking into files or chat. |
-| [`/cleanup-refactor`](skills/cleanup-refactor/SKILL.md) | dead code needs to go, in small steps with tests after each one. |
-
-</details>
-
-<details>
-<summary><b>👀 eyes on real screens</b></summary>
-
-| skill | use it when |
-|---|---|
-| [`/run-local`](skills/run-local/SKILL.md) | you want the app running on localhost and the URL back. |
-| [`/visual-test-ego-lite`](skills/visual-test-ego-lite/SKILL.md) | a website needs clicking through like a person would, in Ego Lite. |
-| [`/visual-test-computer-use`](skills/visual-test-computer-use/SKILL.md) | a native desktop app needs the same: Mac apps, Electron, Tauri, the ChatGPT or Claude app. |
-| [`/interface-check`](skills/interface-check/SKILL.md) | a screen needs an evidence-based UI pass at desktop and phone widths. |
-
-</details>
-
-<details>
-<summary><b>🚀 ship it</b></summary>
-
-| skill | use it when |
-|---|---|
-| [`/release`](skills/release/SKILL.md) | it's release time. next version, changelog from the real changes, tag, GitHub release. |
-| [`/publish-git`](skills/publish-git/SKILL.md) | commit, push, merge. asks before anything leaves your machine. |
-| [`/deploy`](skills/deploy/SKILL.md) | `/deploy <deployment-source>`. confirms target and version, deploys, checks the live version. |
-| [`/cleanup-worktrees-branches`](skills/cleanup-worktrees-branches/SKILL.md) | you want everything merged to main and the leftover worktrees and branches gone. |
-| [`/cleanup-disk-space`](skills/cleanup-disk-space/SKILL.md) | your disk is full. measures first, deletes only what you approve. |
-| [`/product-hunt-launch`](skills/product-hunt-launch/SKILL.md) | you're launching. drafts the listing and assets, posts only when you say so. |
-
-</details>
-
-<details>
-<summary><b>✍️ words, design, and quality</b></summary>
-
-| skill | use it when |
-|---|---|
-| [`/ui-design`](skills/ui-design/SKILL.md) | you want a UI, landing page, or logo designed or fixed. |
-| [`/antislop-review`](skills/antislop-review/SKILL.md) | something looks or reads like generic AI output. |
-| [`/motion-graphic`](skills/motion-graphic/SKILL.md) | you want an animated explainer or short video, built with HyperFrames. |
-| [`/humanize`](skills/humanize/SKILL.md) | text sounds like a chatbot wrote it. rewrites it, keeps every fact. |
-| [`/docs-content`](skills/docs-content/SKILL.md) | docs, product data, or links are out of date. |
-| [`/write-readme-opensource`](skills/write-readme-opensource/SKILL.md) | a project is going public and needs a README and CONTRIBUTING written from the real code. |
-| [`/seo-audit`](skills/seo-audit/SKILL.md) | you want to know why search can't find you, ranked by impact. |
-| [`/security-backend`](skills/security-backend/SKILL.md) | auth, endpoints, migrations, infra, or a leaked key need a serious look. |
-| [`/skill-workbench`](skills/skill-workbench/SKILL.md) | you keep asking for the same thing. turns it into a new skill. |
+| [`/ui-design`](skills/ui-design/SKILL.md) | You want a UI, a landing page, or a logo designed or fixed. |
+| [`/antislop-review`](skills/antislop-review/SKILL.md) | It looks like every other AI-generated landing page, gradient included. |
+| [`/motion-graphic`](skills/motion-graphic/SKILL.md) | You want an animated explainer or a short video, built with HyperFrames. |
+| [`/humanize`](skills/humanize/SKILL.md) | The text reads like a chatbot on its third espresso. Rewrites it and keeps every fact. |
+| [`/docs-content`](skills/docs-content/SKILL.md) | Docs, product data, or links have drifted away from reality. |
+| [`/write-readme-opensource`](skills/write-readme-opensource/SKILL.md) | A project is going public and needs a README and CONTRIBUTING written from the real code. |
+| [`/seo-audit`](skills/seo-audit/SKILL.md) | Search can't find you, and you'd like to know why, ranked by how much it hurts. |
+| [`/security-backend`](skills/security-backend/SKILL.md) | Auth, endpoints, migrations, infra, or a key that ended up somewhere it shouldn't. Starts on a top-tier model. |
+| [`/skill-workbench`](skills/skill-workbench/SKILL.md) | You keep asking for the same thing. Turns it into a skill so you can stop asking. |
 
 </details>
 
 <details open>
-<summary><b>💡 ideas, review, and wind-down</b></summary>
+<summary><b>🎧 Coding, weed, and music</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/get-stoned`](skills/get-stoned/SKILL.md) | you need new ideas or a strange solution to something stuck. generates wide, flips assumptions, scores the ideas, picks two or three to prototype. |
-| [`/haf`](skills/haf/SKILL.md) | you want unusual UI inspiration. hunts Awwwards, Codrops, Dribbble, Pinterest, and CodePen, and comes back with annotated references and design directions. |
-| [`/puff-puff-pass`](skills/puff-puff-pass/SKILL.md) | you want it built on a cheap model and reviewed by a stronger, different one before it ships. |
-| [`/pineapple-express`](skills/pineapple-express/SKILL.md) | you're done for the day. closes what can be closed, parks the rest with handoffs, stops leftover processes. |
+| [`/420`](skills/420/SKILL.md) | It's time for a new sesh. Starts your music (Apple Music or YouTube), opens the ChatGPT app with [Oreja](https://github.com/EnzoVezzaro/oreja) so the music steps aside whenever ChatGPT talks, and lines up the first task. |
+| [`/let-me-watch`](skills/let-me-watch/SKILL.md) | You want to see it running. Opens the local site, the desktop app, or an emulator with the project already up. |
+| [`/get-stoned`](skills/get-stoned/SKILL.md) | You need new ideas or a strange way out of something stuck. Flips the assumptions, scores every idea, and picks a few worth prototyping. |
+| [`/haf`](skills/haf/SKILL.md) | You want unusual UI inspiration. Hunts Awwwards, Codrops, Dribbble, Pinterest, and CodePen, and comes back with annotated references. |
+| [`/puff-puff-pass`](skills/puff-puff-pass/SKILL.md) | You want it built on a cheap model and reviewed by a stronger, different one before it ships. |
+| [`/pineapple-express`](skills/pineapple-express/SKILL.md) | You're done for the day. Closes what can be closed, parks the rest with handoffs, and stops the processes your agents left running. |
 
 </details>
 
 <details open>
-<summary><b>🧩 my own tools, wired in</b></summary>
+<summary><b>🧩 My own tools, wired in</b></summary>
 
-| skill | use it when |
+| Skill | Use it when |
 |---|---|
-| [`/acc-context`](skills/acc-context/SKILL.md) | the repo uses [ACC](https://github.com/EnzoVezzaro/agents-code-context), or should. agents get focused context and shared memory instead of rediscovering the codebase. |
-| [`/protect-repo`](skills/protect-repo/SKILL.md) | a repo is going public. [Repo Shield](https://github.com/EnzoVezzaro/repo-shield) opens a PR with a license, an AI-training notice, and a weekly watch. |
-| [`/reposell-release`](skills/reposell-release/SKILL.md) | you want to sell a repo. [reposell](https://github.com/EnzoVezzaro/reposell) runs the audit and gates, then publishes when you say yes. |
-| [`/proagent-equip`](skills/proagent-equip/SKILL.md) | a cheap worker needs to act like a specialist. [ProAgents](https://github.com/EnzoVezzaro/proagents) gives it a professional profile. |
-| [`/ace-workspace`](skills/ace-workspace/SKILL.md) | you're spinning up a crew across several projects. [ACE](https://github.com/EnzoVezzaro/ace-proagents) sets up the governor, supervisors, workers, and budget. |
+| [`/acc-context`](skills/acc-context/SKILL.md) | The repo uses [ACC](https://github.com/EnzoVezzaro/agents-code-context), or should. Agents get focused context and shared memory instead of relearning your codebase every morning. |
+| [`/protect-repo`](skills/protect-repo/SKILL.md) | A repo is going public. [Repo Shield](https://github.com/EnzoVezzaro/repo-shield) opens a PR with a license, an AI-training notice, and a weekly watch. |
+| [`/reposell-release`](skills/reposell-release/SKILL.md) | You want to sell a repo. [reposell](https://github.com/EnzoVezzaro/reposell) runs the audit and the gates, and publishes when you say yes. |
+| [`/proagent-equip`](skills/proagent-equip/SKILL.md) | A cheap worker needs to act like a specialist. [ProAgents](https://github.com/EnzoVezzaro/proagents) gives it a professional profile. |
+| [`/ace-workspace`](skills/ace-workspace/SKILL.md) | You're setting up a crew across several projects. [ACE](https://github.com/EnzoVezzaro/ace-proagents) creates the governor, supervisors, workers, and budget. |
 
 </details>
 
-### examples
+### Examples
 
 ```
-bug:          /hstack the scroll jumps every few seconds on the feed. repro first, then fix and verify.
-crew:         /coordinate-agents check what the opencode workers did overnight and give them the next tasks.
+bug:          /hstack The feed jumps every few seconds. Reproduce it first, then fix and verify.
+crew:         /coordinate-agents Check what the OpenCode workers did overnight and give them the next tasks.
 continue:     /resume-work
-handoff:      /handoff give this branch to a freebuff worker, they finish the tests.
-web test:     /visual-test-ego-lite walk the checkout on mobile and tell me where a person gets stuck.
-desktop test: /visual-test-computer-use kill the old builds, install the new one, and test the settings window.
-ci:           /fix-ci
-ship:         /cleanup-worktrees-branches merge all worktrees to main and close the stale PRs.
-deploy:       /deploy main
-launch:       /product-hunt-launch draft everything for tuesday. don't post.
-words:        /humanize the launch post.
-open source:  /write-readme-opensource
-big task:     /break-it-down migrate the store to the new API.
-long run:     /horizon review the reposell backlog every morning until december 15. stay quiet if nothing changed.
-loop:         /horizon-loop get the landing page lighthouse score above 95.
-tests:        /horizon-loop-test get every test green and keep it green 5 runs in a row.
-browser loop: /horizon-loop-ego-lite run signup and checkout until each passes 10 times in a row.
+handoff:      /handoff Give this branch to a Freebuff worker so they can finish the tests.
+stoner:       /stoner Work through every open PR. Don't merge anything into main without me.
+big task:     /break-it-down Migrate the store to the new API.
+long run:     /horizon Review the reposell backlog every morning until December 15. Stay quiet if nothing changed.
+loop:         /horizon-loop Get the landing page Lighthouse score above 95.
+tests:        /horizon-loop-test Get every test green and keep it green for five runs in a row.
+browser:      /visual-test-ego-lite Walk the checkout on mobile and tell me where a person gets stuck.
+desktop:      /visual-test-computer-use Kill the old builds, install the new one, and test the settings window.
+merge:        /reconcile-branches Get every open worktree that's ready into main.
+orca:         /cleanup-orca Merge what you can and close as much as possible.
+chats:        /cleanup-chats Archive the finished Codex threads and keep the open items.
 release:      /release
-ideas:        /get-stoned how could onboarding work without a signup form?
-inspiration: /haf scroll-driven landing pages with 3D type, for a dev tool.
-build+review: /puff-puff-pass add rate limiting to the public API.
+deploy:       /deploy main
+analytics:    /set-analytics PostHog, EU region, session replay only after cookie consent.
+launch:       /product-hunt-launch Draft everything for Tuesday. Don't post.
+words:        /humanize the launch post.
+ideas:        /get-stoned How could onboarding work without a signup form?
+inspiration:  /haf Scroll-driven landing pages with 3D type, for a developer tool.
+review:       /puff-puff-pass Add rate limiting to the public API.
+new sesh:     /420
+watch:        /let-me-watch The mobile app, on the Android emulator.
 wind down:    /pineapple-express
-github:       /check-github best open source voice-to-text libraries for electron.
-daily:        /a-new-day
-models:       /setup-hstack
-sell:         /reposell-release v1.2.0 at $29. audit first, don't publish yet.
-specialist:   /proagent-equip security-engineer, then review the auth changes.
 ```
 
 <p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
-## some skills call others
+## Some skills call others
 
-install these together:
+Install these together:
 
-| skill | also install |
+| Skill | Also install |
 |---|---|
 | `implement-feature` | `verify-and-fix` |
 | `verify-and-fix` | `patch-patrol`, `save-point` |
-| `coordinate-agents` | `relay-room`, `verify-and-fix`, `publish-git` |
+| `coordinate-agents` | `relay-room`, `verify-and-fix`, `publish-git`, `proagent-equip`, `ace-workspace` |
 | `publish-git`, `deploy`, `fix-ci`, `cleanup-refactor`, `security-backend` | `verify-and-fix` |
-| `cleanup-worktrees-branches` | `publish-git` |
+| `reconcile-branches` | `verify-and-fix`, `cleanup-worktrees-branches` |
+| `cleanup-worktrees-branches` | `reconcile-branches` |
+| `cleanup-orca` | `reconcile-branches`, `handoff` |
+| `cleanup-chats` | `acc-context` (when a repo has `.acc/`) |
+| `pineapple-express` | `handoff`, `wrap-day`, `cleanup-orca`, `cleanup-chats` |
 | `visual-test-ego-lite`, `visual-test-computer-use` | `run-local`, `verify-and-fix` |
-| `ui-design` | `interface-check` |
 | `horizon` | `break-it-down` |
 | `horizon-loop-test`, `horizon-loop-ego-lite` | `horizon-loop`, `verify-and-fix` |
-| `horizon-loop-ego-lite` | `run-local` |
 | `release` | `verify-and-fix`, `humanize` |
-| `product-hunt-launch` | `humanize`, `motion-graphic`, `ui-design` |
-| `write-readme-opensource` | `security-backend`, `protect-repo` |
-| `implement-feature`, `resume-work`, `handoff` | `acc-context` (when the repo has `.acc/`) |
-| `reposell-release` | `protect-repo` |
-| `coordinate-agents` | `proagent-equip`, `ace-workspace` |
 | `puff-puff-pass` | `implement-feature`, `patch-patrol`, `publish-git` |
-| `haf` | `ui-design`, `motion-graphic` |
-| `get-stoned` | `break-it-down` |
-| `pineapple-express` | `handoff`, `wrap-day`, `publish-git` |
-| `hstack` | everything it routes to |
+| `ui-design`, `haf` | `interface-check`, `ui-design` |
+| `product-hunt-launch` | `humanize`, `motion-graphic`, `ui-design` |
+| `write-readme-opensource`, `reposell-release` | `protect-repo` |
+| `implement-feature`, `resume-work`, `handoff` | `acc-context` (when a repo has `.acc/`) |
+| `stoner` | `coordinate-agents`, `fix-ci`, `verify-and-fix`, `puff-puff-pass`, `reconcile-branches`, `break-it-down`, `handoff`, `horizon` |
+| `420` | `resume-work`, `let-me-watch` |
+| `let-me-watch` | `run-local` |
+| `set-analytics` | `run-local`, `publish-git` |
+| `hstack` | Everything it routes to |
 
-## not shipped here
+## Not shipped here
 
-a few skills lean on skills that live elsewhere. a missing one is reported, not faked:
+A few skills lean on skills that live elsewhere. When one is missing, the skill says so instead of faking it:
 
 - `ego-browser` (Ego Lite), `orca-cli`, `orchestration`, and `orca-computer-use` for the crew and the screens.
-- the `antislop` family and `impeccable` for design and writing checks.
-- the `hyperframes` family and `media-use` for `motion-graphic`.
-- `humanizer` for `humanize`. without it, `humanize` falls back to the `antislop-copywriting` rules.
+- The `antislop` family and `impeccable` for design and writing checks.
+- The `hyperframes` family and `media-use` for `motion-graphic`.
+- `humanizer` for `humanize`, plus `copywriting` and `copy-editing` from [marketingskills](https://github.com/coreyhaines31/marketingskills) for launch copy.
 - `skill-creator` for `skill-workbench`.
-- the `acc`, `rs`, `reposell`, `proagent`, and `ace-proagents` CLIs for my own tools. each skill installs its CLI from npm when it's missing.
+- The PostHog wizard (`npx @posthog/wizard@latest`), or the PostHog MCP when it's connected, for `set-analytics`.
+- The `acc`, `rs`, `reposell`, `proagent`, and `ace-proagents` CLIs for my own tools. Each skill installs its CLI from npm when it's missing.
 
-where each one was found, and what it adds: [docs/source-skills.md](docs/source-skills.md).
+Where each one was found, and what it adds: [docs/source-skills.md](docs/source-skills.md).
 
 <p align="center"><img src="assets/animations/divider.gif" alt="" width="100%"></p>
 
-## make it yours
+## Make it yours
 
-this is my setup. yours won't be.
+This is my setup. Yours will have different agents, different models, and probably a different snack drawer.
 
-- put your crew in `CLAUDE.md` or `AGENTS.md`: which agents you run, which free models, which deploy targets. the skills read it, and you can update them without losing it.
-- running one agent, no Orca? most skills still work. the crew and daily ones need Orca; the rest just need a repo.
-- keep asking for the same thing? type `/skill-workbench` and turn it into a skill.
-- want the animations for your own README? `python3 scripts/generate_hstack_animations.py` regenerates them.
+- Write your crew into `CLAUDE.md` or `AGENTS.md`: which agents, which free models, which deploy targets, what budget. The skills read it, so you can update HSTACK without losing your settings.
+- Running one agent without Orca? Most skills still work. The crew and daily ones want Orca; the rest only need a repo.
+- If you catch yourself asking for the same thing three times, `/skill-workbench` turns it into a skill.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/ship-launch.png">
-    <img src="assets/animations/ship-launch.gif" alt="A gold voxel rocket block lifts off a camo tower, leaving a trail of sparks" width="60%">
-  </picture>
-</p>
+### How the animations are made
 
-## docs
+Every animation on this page is rendered from code. Each scene is a small Three.js file in [`scripts/animations/src/scenes`](scripts/animations/src/scenes), drawn in headless Chrome with soft shadows and bloom, then encoded to GIF with ffmpeg and gifsicle. To render them yourself:
 
-- [docs/hstack-v5.md](docs/hstack-v5.md): roles, economics, and which layer runs each skill.
+```bash
+cd scripts/animations
+npm install
+npm run render            # every scene
+npm run render -- tier-elevator --frames 48   # one scene, shorter
+```
+
+It needs Google Chrome (or `CHROME=/path/to/chrome`), ffmpeg, Python 3 with numpy and Pillow, and optionally gifsicle. The code on the monitors is real; it's the routing logic from this README.
+
+## Docs
+
+- [docs/hstack-v5.md](docs/hstack-v5.md): roles, economics, my own tools, and which layer runs each skill.
+- [docs/model-routing.md](docs/model-routing.md): the tiers and when a job moves up or down.
 - [docs/workflows.md](docs/workflows.md): the workflows these skills came from.
 - [docs/role-model.md](docs/role-model.md): the short version of the roles.
-- [docs/workflow-map.md](docs/workflow-map.md) and [docs/skill-usage.md](docs/skill-usage.md): the evidence behind them.
+- [docs/workflow-map.md](docs/workflow-map.md) and [docs/skill-usage.md](docs/skill-usage.md): the evidence behind all of it.
 
-## credits
+## Credits
 
-structure borrowed with love from [tstack](https://github.com/t3dotgg/tstack) (the "use it when" tables and the dependency note) and [pstack](https://github.com/backnotprop/pstack) (one front door that routes to everything).
+The structure is borrowed, with thanks and an MIT license, from [tstack](https://github.com/t3dotgg/tstack) (the "use it when" tables and the dependency note) and [pstack](https://github.com/backnotprop/pstack) (one front door that routes to everything).
 
-## license
+## License
 
 [MIT](LICENSE)
 
 <p align="center">
   <img src="assets/animations/divider.gif" alt="" width="60%"><br>
-  <sub>built with AI, coffee, and a little weed.</sub>
+  <sub>Built with AI, coffee, and a little weed.</sub>
 </p>

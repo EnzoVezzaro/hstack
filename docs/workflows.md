@@ -28,6 +28,7 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `visual-test-ego-lite` | `/visual-test-ego-lite` | W2 Verificar y arreglar |
 | `visual-test-computer-use` | `/visual-test-computer-use` | W2 Verificar y arreglar |
 | `product-hunt-launch` | `/product-hunt-launch` | W7 Contenido, productos y docs |
+| `set-analytics` | `/set-analytics` | W11 Seguridad, datos y backend |
 | `fix-ci` | `/fix-ci` | W5 Publicar y git |
 | `deploy` | `/deploy` | W5 Publicar y git |
 | `antislop-review` | `/antislop-review` | W10 Diseño UI / landing |
@@ -37,8 +38,12 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `write-readme-opensource` | `/write-readme-opensource` | W7 Contenido, productos y docs |
 | `cleanup-worktrees-branches` | `/cleanup-worktrees-branches` | W5 Publicar y git |
 | `cleanup-disk-space` | `/cleanup-disk-space` | W9 Limpieza y refactor |
+| `reconcile-branches` | `/reconcile-branches` | W5 Publicar y git |
+| `cleanup-orca` | `/cleanup-orca` | W9 Limpieza y refactor |
+| `cleanup-chats` | `/cleanup-chats` | W9 Limpieza y refactor |
 | `resume-work` | `/resume-work` | W3 Coordinar agentes |
 | `handoff` | `/handoff` | W3 Coordinar agentes |
+| `stoner` | `/stoner` | Long-horizon loops (W3 + W2 + W5) |
 | `break-it-down` | `/break-it-down` | W3 Coordinar agentes |
 | `horizon` | `/horizon` | Long-horizon scheduling |
 | `horizon-loop` | `/horizon-loop` | Long-horizon loops |
@@ -46,6 +51,8 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `horizon-loop-ego-lite` | `/horizon-loop-ego-lite` | W2 Verificar y arreglar |
 | `release` | `/release` | W5 Publicar y git |
 | `check-github` | `/check-github` | W4 Investigar y explicar |
+| `420` | `/420` | W6 Correr y probar en local (session start) |
+| `let-me-watch` | `/let-me-watch` | W6 Correr y probar en local |
 | `get-stoned` | `/get-stoned` | W4 Investigar y explicar |
 | `haf` | `/haf` | W10 Diseño UI / landing |
 | `puff-puff-pass` | `/puff-puff-pass` | W1 Implementar funcionalidad |
