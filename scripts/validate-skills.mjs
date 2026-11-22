@@ -21,7 +21,7 @@ for (const file of paths) {
   const body = readFileSync(file, 'utf8');
   const fm = body.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
   if (!fm) { errors.push(`Missing YAML frontmatter: ${name}`); continue; }
-  const declared = fm[1].match(/^name:\s*([a-z0-9-]+)\s*$/m)?.[1];
+  const declared = fm[1].match(/^name:\s*["']?([a-z0-9-]+)["']?\s*$/m)?.[1];
   if (declared !== name) errors.push(`Name mismatch: ${name}, frontmatter=${declared}`);
   const description = fm[1].match(/^description:\s*(.+)$/m)?.[1] || '';
   if (!description || !/use|entry point/i.test(description)) errors.push(`Missing trigger-focused description: ${name}`);
