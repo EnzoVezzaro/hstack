@@ -14,7 +14,7 @@ Layer 3 drafts the listing; the owner approves before anything is posted. See [h
 **Model tier:** T0 drafts; T2 edits; the owner approves. See [model-routing.md](../../docs/model-routing.md).
 
 1. Read the product's README, landing page, and current status. Note what is real today and what is planned.
-2. Draft the tagline (under 60 characters), description, first comment, maker intro, and gallery list. Apply `antislop-copywriting` and `humanize` to the drafts.
+2. Draft the tagline (under 60 characters), description, first comment, maker intro, and gallery list. Write them with `copywriting` from [marketingskills](https://github.com/coreyhaines31/marketingskills) if it is installed, then apply `antislop-copywriting` and `humanize`.
 3. Check the assets: logo, thumbnail, screenshots at the required sizes. Create missing ones with `motion-graphic` or `ui-design` only if asked.
 4. Verify every link and claim. Remove any claim that cannot be shown.
 5. Show the full draft to the user. Post or schedule only after explicit approval, since it is public.
