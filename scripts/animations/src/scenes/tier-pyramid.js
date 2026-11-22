@@ -23,7 +23,6 @@ export async function build(ctx) {
       use: 'Talks to you, plans the day, routes work down',
     },
     title: 'The model pyramid',
-    subtitle: 'Same shape with GLM (Z.ai), DeepSeek, Kimi, or any provider.',
     napTop: true,
     tiers: [
       {

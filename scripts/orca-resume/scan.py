@@ -30,18 +30,65 @@ def orca(*args):
     return data.get("result")
 
 
-def git_state(path):
-    out = {"dirty": None, "branch": None, "ahead": None, "error": None}
+def _git(path, *args):
+    """Run one read-only git command. Return (stdout, error) and never assume success."""
     try:
-        p = subprocess.run(["git", "-C", path, "status", "--porcelain"], capture_output=True, text=True, timeout=20)
-        out["dirty"] = len([x for x in p.stdout.splitlines() if x.strip()])
-        p = subprocess.run(["git", "-C", path, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, timeout=20)
-        out["branch"] = p.stdout.strip() or None
-        base = "main" if out["branch"] != "main" else "master"
-        p = subprocess.run(["git", "-C", path, "rev-list", "--count", f"{base}..HEAD"], capture_output=True, text=True, timeout=20)
-        out["ahead"] = int(p.stdout.strip()) if p.returncode == 0 and p.stdout.strip().isdigit() else 0
-    except (OSError, subprocess.TimeoutExpired, ValueError) as exc:
-        out["error"] = str(exc)[:120]
+        p = subprocess.run(["git", "-C", str(path), *args], capture_output=True, text=True, timeout=20)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return None, str(exc)[:120]
+    if p.returncode != 0:
+        detail = (p.stderr or p.stdout or "").strip().splitlines()
+        return None, (detail[-1] if detail else f"git {args[0]} failed with {p.returncode}")[:120]
+    return p.stdout.strip(), None
+
+
+def _base_ref(path, branch):
+    """Derive the real comparison ref instead of guessing 'master'."""
+    for args in (
+        ("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{upstream}"),
+        ("symbolic-ref", "--quiet", "--short", "refs/remotes/origin/HEAD"),
+    ):
+        value, err = _git(path, *args)
+        if value and not err:
+            return value, None
+    for candidate in ("main", "master"):
+        value, err = _git(path, "rev-parse", "--verify", "--quiet", candidate)
+        if value and not err:
+            return candidate, None
+    return None, "no upstream, origin/HEAD, main or master ref found"
+
+
+def git_state(path):
+    """Read-only git snapshot. Failed or missing git evidence stays unknown."""
+    out = {"dirty": None, "branch": None, "ahead": None, "base": None, "error": None}
+    path = pathlib.Path(path)
+    if not path.is_dir():
+        out["error"] = f"repository path missing: {path}"
+        return out
+    inside, err = _git(path, "rev-parse", "--is-inside-work-tree")
+    if err or inside != "true":
+        out["error"] = err or "not a git work tree"
+        return out
+    status, err = _git(path, "status", "--porcelain")
+    if err:
+        out["error"] = err
+        return out
+    out["dirty"] = len([line for line in status.splitlines() if line.strip()])
+    branch, err = _git(path, "rev-parse", "--abbrev-ref", "HEAD")
+    if err or not branch:
+        out["error"] = err or "could not resolve current branch"
+        return out
+    out["branch"] = branch
+    base, err = _base_ref(path, branch)
+    if err or not base:
+        out["error"] = err or "could not resolve base ref"
+        return out
+    out["base"] = base
+    count, err = _git(path, "rev-list", "--count", f"{base}..HEAD")
+    if err or not count.isdigit():
+        out["error"] = err or f"unexpected ahead count: {count}"
+        return out
+    out["ahead"] = int(count)
     return out
 
 
@@ -64,10 +111,15 @@ def classify(w, git, deep):
         a for a in agents
         if a.get("interrupted") or (a.get("mainAgent") or {}).get("outcome") == "failure"
     ]
+    git_unknown = bool(git.get("error")) or git.get("dirty") is None or git.get("ahead") is None
+    # Live working/broken agents are stronger evidence than git state, but a
+    # failed or missing git read must never be converted into completion.
     if working:
         group = "working"
     elif broken:
         group = "interrupted"
+    elif git_unknown:
+        group = "unknown"
     elif (git.get("dirty") or 0) > 0 or (git.get("ahead") or 0) > 0:
         group = "unfinished"
     else:
@@ -91,6 +143,7 @@ def classify(w, git, deep):
         "group": group,
         "working_agents": len(working),
         "candidates": candidates,
+        "git_unknown": git_unknown,
         "workspace_status": w.get("workspaceStatus"),
         "status": w.get("status"),
         "is_archived": bool(w.get("isArchived")),
@@ -108,7 +161,8 @@ def render(data):
         f"Groups: " + ", ".join(f"{k} **{v}**" for k, v in s["groups"].items()) + ".",
         "",
         "`interrupted` means a failure/cancellation outcome or an interrupted flag. `unfinished` "
-        "means dirty or unmerged changes with no failed agent: review it, do not auto-resume.",
+        "means dirty or unmerged changes with no failed agent: review it, do not auto-resume. "
+        "`unknown` means git state failed or was missing; it is never completion.",
         "",
         f"Session search index: enabled={data['search_index'].get('enabled')}, "
         f"phase={data['search_index'].get('phase')}. "
@@ -121,8 +175,10 @@ def render(data):
         g = w["assessment"]
         git = w["git"]
         lines.append(
-            f"| {w['repo']} | {w['workspace']} | `{git.get('branch') or '-'}` | {g['group']} | "
-            f"{g['working_agents']} | {len(g['candidates'])} | {git.get('dirty')} / {git.get('ahead')} |"
+            f"| {w['repo']} | {w['workspace']} | `{git.get('branch') or '-'}` (base `{git.get('base') or '-'}`) | {g['group']} | "
+            f"{g['working_agents']} | {len(g['candidates'])} | "
+            f"{git.get('dirty') if git.get('dirty') is not None else '-'} / "
+            f"{git.get('ahead') if git.get('ahead') is not None else '-'} |"
         )
     lines += ["", "## Candidate sessions", ""]
     any_candidate = False

@@ -67,6 +67,12 @@ def fresh_env(root, label, skills_dir, install):
         dest = home / ".agents" / "skills"
         shutil.copytree(skills_dir, dest, dirs_exist_ok=True)
         installed = len(discover(dest))
+        # The distributed payload must be self-contained; no adjacent root docs.
+        required = ("skill-contract.md", "hstack-v5.md", "model-routing.md")
+        for skill in discover(dest):
+            for name in required:
+                if not (skill / "references" / name).is_file():
+                    raise RuntimeError(f"installed payload missing required reference: {skill.name}/references/{name}")
     manifest = {
         "path": str(base),
         "home": str(home),
@@ -87,17 +93,47 @@ def make_envs(root, skills_dir):
 
 
 def quality(evaluator, skills_dir, limit):
-    rows = []
-    for skill in discover(skills_dir)[:limit] if limit else discover(skills_dir):
+    """Run the evaluator against the intended payload; never invent a score."""
+    rows, failures = [], []
+    skills = discover(skills_dir)
+    selected = skills[:limit] if limit else skills
+    for skill in selected:
         with tempfile.TemporaryDirectory() as tmp:
-            p = run([evaluator, "quality-check", skill, "-r", "json", "-o", tmp])
+            try:
+                p = run([evaluator, "quality-check", skill, "-r", "json", "-o", tmp])
+            except (OSError, subprocess.TimeoutExpired) as exc:
+                message = f"evaluator unavailable: {str(exc)[:120]}"
+                rows.append({"skill": skill.name, "error": message})
+                failures.append(f"{skill.name}: {message}")
+                continue
+            if p.returncode != 0:
+                message = (p.stderr or p.stdout or f"exit {p.returncode}").strip().splitlines()[-1][:160]
+                rows.append({"skill": skill.name, "error": f"evaluator exit {p.returncode}: {message}"})
+                failures.append(f"{skill.name}: evaluator exit {p.returncode}")
+                continue
             report = pathlib.Path(tmp) / "skillevaluator-quality.json"
             if not report.exists():
-                rows.append({"skill": skill.name, "error": (p.stderr or p.stdout).strip()[:200]})
+                rows.append({"skill": skill.name, "error": "no quality report produced"})
+                failures.append(f"{skill.name}: no quality report")
                 continue
-            data = json.loads(report.read_text(encoding="utf-8"))
+            try:
+                data = json.loads(report.read_text(encoding="utf-8"))
+            except (OSError, ValueError) as exc:
+                rows.append({"skill": skill.name, "error": f"unreadable quality report: {str(exc)[:100]}"})
+                failures.append(f"{skill.name}: unreadable quality report")
+                continue
             result = next((r for r in data.get("results", []) if r.get("validator") == "QUALITY"), {})
+            if result.get("passed") is False:
+                message = "QUALITY validator reported passed=false"
+                rows.append({"skill": skill.name, "error": message})
+                failures.append(f"{skill.name}: {message}")
+                continue
             q = result.get("quality") or {}
+            if not isinstance(q, dict) or not isinstance(q.get("overall_score"), (int, float)):
+                message = "QUALITY report has no valid quality schema/score"
+                rows.append({"skill": skill.name, "error": message})
+                failures.append(f"{skill.name}: {message}")
+                continue
             summary = result.get("summary") or {}
             rows.append({
                 "skill": skill.name,
@@ -117,20 +153,31 @@ def quality(evaluator, skills_dir, limit):
         "max": max(scores) if scores else None,
         "grades": {g: sum(1 for r in rows if r.get("grade") == g) for g in sorted({r.get("grade") for r in rows if r.get("grade")})},
     }
-    return {"aggregate": aggregate, "skills": rows}
+    return {"aggregate": aggregate, "skills": rows, "failures": failures, "skills_dir": str(skills_dir)}
 
 
 def harness(evaluator, skills_dir):
     with tempfile.TemporaryDirectory() as tmp:
         out = pathlib.Path(tmp) / "harness.json"
-        run([evaluator, "harness-check", skills_dir, "--json", out])
+        try:
+            p = run([evaluator, "harness-check", skills_dir, "--json", out])
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return {"error": f"evaluator unavailable: {str(exc)[:120]}", "skills_dir": str(skills_dir)}
+        if p.returncode != 0:
+            return {"error": f"harness-check exit {p.returncode}: {(p.stderr or p.stdout)[:160]}", "skills_dir": str(skills_dir)}
         if not out.exists():
-            return {"error": "harness-check produced no JSON"}
-        data = json.loads(out.read_text(encoding="utf-8"))
+            return {"error": "harness-check produced no JSON", "skills_dir": str(skills_dir)}
+        try:
+            data = json.loads(out.read_text(encoding="utf-8"))
+        except ValueError as exc:
+            return {"error": f"unreadable harness report: {str(exc)[:120]}", "skills_dir": str(skills_dir)}
+    compatibility = data.get("harness_compatibility") if isinstance(data, dict) else None
+    if not isinstance(compatibility, dict) or not compatibility:
+        return {"error": "harness report is missing or empty harness_compatibility", "skills_dir": str(skills_dir)}
     # The JSON is keyed by each checked path. Per-skill paths report a
     # one-skill catalog; keep the entry that reflects the whole catalog.
     seen = {}
-    for rows in data.get("harness_compatibility", {}).values():
+    for rows in compatibility.values():
         for row in rows:
             name = row.get("harness")
             size = (row.get("catalog") or {}).get("size", 0)
@@ -146,8 +193,13 @@ def harness(evaluator, skills_dir):
                 }
     entries = list(seen.values())
     catalogs = [e["catalog"] for e in entries if e.get("catalog")]
+    if not entries or not catalogs or not catalogs[0].get("size"):
+        return {"error": "harness report has no usable catalog entries", "skills_dir": str(skills_dir)}
+    if not any(e.get("status") == "loads" for e in entries):
+        return {"error": "harness report has no loaded harness", "skills_dir": str(skills_dir)}
     return {
         "entries": entries,
+        "skills_dir": str(skills_dir),
         "catalog_size": catalogs[0].get("size") if catalogs else None,
         "description_chars": catalogs[0].get("desc_chars") if catalogs else None,
         "loads": sum(1 for e in entries if e.get("status") == "loads"),
@@ -171,16 +223,32 @@ def router_table(router_path):
     return table
 
 
+def installed_payload(manifests, label):
+    """Resolve one configuration's own installed skills payload, or explain why not."""
+    home = (manifests.get(label) or {}).get("home")
+    if not home:
+        return None, "no fresh environment home for this configuration"
+    payload = pathlib.Path(home) / ".agents" / "skills"
+    if not payload.is_dir():
+        return None, f"missing installed skills payload: {payload}"
+    if not (payload / "hstack" / "SKILL.md").is_file():
+        return None, f"router missing from installed payload: {payload}"
+    return payload, None
+
+
 def route_probe(manifests, cases_path):
-    skill_dir = pathlib.Path(manifests["B-skills"]["home"]) / ".agents" / "skills"
+    """Probe each configuration independently. Missing payloads fail explicitly."""
     cases = json.loads(pathlib.Path(cases_path).read_text(encoding="utf-8"))
     out = {}
     for label in CONFIGS:
         if label == "A-baseline":
-            out[label] = {"passed": 0, "total": len(cases), "reason": "no skills installed"}
+            out[label] = {"passed": 0, "total": len(cases), "reason": "no skills installed by design"}
             continue
-        router = skill_dir / "hstack" / "SKILL.md"
-        table = router_table(router)
+        skill_dir, error = installed_payload(manifests, label)
+        if error:
+            out[label] = {"passed": 0, "total": len(cases), "error": error}
+            continue
+        table = router_table(skill_dir / "hstack" / "SKILL.md")
         passed, misses = 0, []
         for case in cases:
             reach = table.get(case["expected"], "")
@@ -192,10 +260,19 @@ def route_probe(manifests, cases_path):
             "passed": passed,
             "total": len(cases),
             "router_rows": len(table),
+            "payload": str(skill_dir),
             "misses": misses,
             "note": "deterministic router contract check, not a model task benchmark",
         }
     return out
+
+
+LAYER_FLAGS = {
+    "A-baseline": (False, False),
+    "B-skills": (False, False),
+    "C-skills-mcp": (True, False),
+    "D-full-stack": (True, True),
+}
 
 
 def render(results):
@@ -213,32 +290,49 @@ def render(results):
         "",
         "Four fresh environments were created in a temporary root. Each has an empty home and "
         "workspace, no `AGENTS.md`, and no prior session state. A starts with no skills; B, C and D "
-        "receive a fresh copy of every skill. C and D reserve the tool/orchestration layers for a "
-        "live run; they are identical to B in this keyless pass.",
+        "receive a fresh copy of every skill. This keyless runner does not provide MCP or "
+        "multi-agent execution; those layers are only configured for a live run.",
         "",
         "| Configuration | Skills | MCP | Multi-agent | Environment |",
         "| --- | --- | --- | --- | --- |",
     ]
     for label in CONFIGS:
         m = results["envs"].get(label, {})
-        lines.append(f"| {label} | {'On' if m.get('skills_installed') else 'Off'} | On (reserved) | On (reserved) | `{m.get('path')}` |")
+        mcp, multi = LAYER_FLAGS[label]
+        mcp_label = "Off" if not mcp else "Reserved, not exercised"
+        multi_label = "Off" if not multi else "Reserved, not exercised"
+        lines.append(f"| {label} | {'On' if m.get('skills_installed') else 'Off'} | {mcp_label} | {multi_label} | `{m.get('path')}` |")
+    checks = results.get("checks") or {}
     lines += [
         "",
+        f"Quality/harness inspected `{checks.get('skills_dir', 'n/a')}` — "
+        + ("fresh installed payload" if checks.get("payload_used") else "explicit source directory, not an installed payload")
+        + ".",
         "Isolation checks: no `AGENTS.md` in any fresh environment = "
         f"{all(m.get('no_agents_md') for m in results['envs'].values())}; "
         f"all outside the repo = {all(m.get('isolated_from_repo') for m in results['envs'].values())}.",
         "",
         "## Skill quality (NVIDIA SkillEvaluator, keyless tier 1 quality)",
         "",
-        f"- Skills scored: **{q.get('scored', 0)}/{q.get('skills', 0)}**; mean **{q.get('mean')}**, median **{q.get('median')}**, "
-        f"range **{q.get('min')}–{q.get('max')}** out of 100.",
-        f"- Grades: {', '.join(f'{g}: {n}' for g, n in (q.get('grades') or {}).items()) or 'none'}.",
-        "",
-        "| Skill | Score | Grade | Warnings | Errors |",
-        "| --- | ---: | --- | ---: | ---: |",
     ]
-    for row in results.get("quality", {}).get("skills", []):
-        lines.append(f"| `{row['skill']}` | {row.get('score', 'n/a')} | {row.get('grade', 'n/a')} | {row.get('warnings', 'n/a')} | {row.get('errors', 'n/a')} |")
+    evaluator = (results.get("versions") or {}).get("skillevaluator", "unknown")
+    qfails = (results.get("quality") or {}).get("failures") or []
+    if evaluator in ("not installed", "unknown") or qfails:
+        lines.append(
+            f"- **NOT RUN / unavailable**: evaluator reports `{evaluator}`; {len(qfails)} required check failures were recorded. "
+            "No quality scores are invented and the run exits non-zero."
+        )
+    else:
+        lines += [
+            f"- Skills scored: **{q.get('scored', 0)}/{q.get('skills', 0)}**; mean **{q.get('mean')}**, median **{q.get('median')}**, "
+            f"range **{q.get('min')}–{q.get('max')}** out of 100.",
+            f"- Grades: {', '.join(f'{g}: {n}' for g, n in (q.get('grades') or {}).items()) or 'none'}.",
+            "",
+            "| Skill | Score | Grade | Warnings | Errors |",
+            "| --- | ---: | --- | ---: | ---: |",
+        ]
+        for row in results.get("quality", {}).get("skills", []):
+            lines.append(f"| `{row['skill']}` | {row.get('score', 'n/a')} | {row.get('grade', 'n/a')} | {row.get('warnings', 'n/a')} | {row.get('errors', 'n/a')} |")
     lines += [
         "",
         f"## Harness compatibility ({h.get('catalog_size', 'n/a')}-skill catalog)",
@@ -276,6 +370,9 @@ def render(results):
     for label in CONFIGS:
         x = r.get(label, {})
         lines.append(f"| {label} | {x.get('passed', 'n/a')}/{x.get('total', 'n/a')} | {x.get('router_rows', 0)} |")
+    route_errors = [f"{label}: {x['error']}" for label, x in r.items() if x.get("error")]
+    if route_errors:
+        lines += ["", "Explicit payload failures: " + "; ".join(route_errors) + "."]
     misses = (r.get("B-skills") or {}).get("misses", [])
     if misses:
         lines += ["", "Misses: " + ", ".join(f"`{m['case']}` → `{m['expected']}`" for m in misses) + "."]
@@ -325,17 +422,40 @@ def main():
     }
 
     if args.command in ("env", "all"):
-        results["envs"] = make_envs(root, skills_dir)
+        envs = make_envs(root, skills_dir)
     else:
-        results["envs"] = {label: {"path": str(pathlib.Path(root) / label)} for label in CONFIGS}
+        envs = {label: {"path": str(pathlib.Path(root) / label)} for label in CONFIGS}
+    results["envs"] = envs
+
+    # Quality and harness checks inspect the fresh installed payload when one
+    # exists; a direct --skills-dir run is labelled as source inspection.
+    checks = {"source_dir": str(skills_dir), "skills_dir": str(skills_dir), "payload_used": False, "errors": []}
+    payload_dir = skills_dir
+    if args.command in ("env", "all") or envs.get("B-skills", {}).get("home"):
+        candidate, error = installed_payload(envs, "B-skills")
+        if error:
+            checks["errors"].append(f"B-skills payload: {error}")
+        else:
+            payload_dir = candidate
+            checks["skills_dir"] = str(candidate)
+            checks["payload_used"] = True
+    results["checks"] = checks
 
     if args.command in ("quality", "all"):
-        results["quality"] = quality(args.evaluator, skills_dir, args.limit)
+        results["quality"] = quality(args.evaluator, payload_dir, args.limit)
     if args.command in ("harness", "all"):
-        results["harness"] = harness(args.evaluator, skills_dir)
+        results["harness"] = harness(args.evaluator, payload_dir)
     if args.command in ("route", "all"):
-        envs = results["envs"] if results["envs"].get("B-skills", {}).get("home") else make_envs(root, skills_dir)
         results["route"] = route_probe(envs, args.cases)
+
+    failures = list(checks["errors"])
+    for label, probe in (results.get("route") or {}).items():
+        if probe.get("error"):
+            failures.append(f"route {label}: {probe['error']}")
+    failures += (results.get("quality") or {}).get("failures", [])
+    if (results.get("harness") or {}).get("error"):
+        failures.append(f"harness: {results['harness']['error']}")
+    results["failures"] = failures
 
     artifacts = pathlib.Path(args.artifacts)
     artifacts.parent.mkdir(parents=True, exist_ok=True)
@@ -344,10 +464,14 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(render(results), encoding="utf-8")
     print(f"wrote {out} and {artifacts}")
+    if failures:
+        print(f"FAILED required checks ({len(failures)}); first: {'; '.join(failures[:3])}", file=sys.stderr)
     if own_root and not args.keep_envs:
         shutil.rmtree(root, ignore_errors=True)
     elif not own_root:
         print(f"environments left at {root}")
+    if failures:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

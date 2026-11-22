@@ -22,7 +22,7 @@ function standee(scene, tex, pos, size = 1.0) {
 
 // Crew member: a camo cube with its role glyph.
 function crewCube(scene, kind, accent, smoking) {
-  const icon = kind === 'director' ? 'crown' : kind === 'assistant' ? 'headset' : 'laptop';
+  const icon = { director: 'crown', assistant: 'headset', supervisor: 'eye', high: 'brain' }[kind] ?? 'laptop';
   const panels = [{ face: 'z', v: 0.25, icon, color: accent, size: 0.44 }];
   if (smoking) panels.push({ face: 'x', v: 0.25, icon: 'leaf', color: 0x7fa86a, size: 0.44, glow: 0.8 });
   const g = tower({ nx: 1, ny: 1, nz: 1, cell: 0.5, seed: 21, panels });
@@ -159,7 +159,18 @@ export async function build({ scene, camera, sun, hemi }) {
     svgImg('openai', '#e8d6b4'), svgImg('claude', '#ffffff'), svgImg('anthropic', '#e8d6b4'), svgImg('nvidia', '#ffffff'),
     svgImg('googlegemini', '#ffffff'), svgImg('xiaomi', '#ffffff'), svgImg('github', '#e8d6b4'), svgImg('posthog', '#0a120e'), svgImg('freebuff', '#ffffff'),
   ]);
+  // Hosting and release targets for "what ships" (marks from Simple Icons, CC0).
+  const [vercel, aws, gcloud, cloudflare, netlify, npm] = await Promise.all([
+    svgImg('vercel', '#ffffff'), svgImg('aws', '#ff9900'), svgImg('googlecloud', '#ffffff'),
+    svgImg('cloudflare', '#ffffff'), svgImg('netlify', '#ffffff'), svgImg('npm', '#ffffff'),
+  ]);
   const T = {
+    vercel: tile({ img: vercel, bg: '#000000', ring: '#3a4640' }),
+    aws: tile({ img: aws, bg: '#232f3e', ring: '#ff9900' }),
+    gcloud: tile({ img: gcloud, bg: '#4285f4', ring: '#8ab4f8' }),
+    cloudflare: tile({ img: cloudflare, bg: '#f38020', ring: '#fbad41' }),
+    netlify: tile({ img: netlify, bg: '#0e1e25', ring: '#32e6e2' }),
+    npm: tile({ img: npm, bg: '#cb3837', ring: '#e8706f' }),
     chatgpt: Object.assign(tile({ img: chatgpt, full: true, bg: '#ffffff' }), { glow: 0.5 }),
     codex: tile({ img: openai, bg: '#0a0a0a', ring: '#3a4640' }),
     oreja: Object.assign(tile({ img: oreja, full: true, bg: '#f2e6c9' }), { glow: 0.6 }),
@@ -298,26 +309,22 @@ export async function build({ scene, camera, sun, hemi }) {
     },
   });
   layer(3, {
-    tag: 'LAYER 3', titleText: 'Directors', sub: 'Claude Code and Codex decide, design, and accept the work',
-    logos: [T.claude, T.anthropic, T.codex],
-    modelRows: [['T3', PAL.coral, 'High mode: Fable · Astra'], ['T2', PAL.gold, 'Directors: Opus · GPT Sol · OpenCode Go']],
-    robots: [['director', PAL.gold, -1.3, 'inspect'], ['director', PAL.gold, 1.3, 'idle', true]],
+    tag: 'LAYER 3', titleText: 'Directors', sub: 'Claude Code, Codex, optional OpenCode Go · decide, design, accept',
+    logos: [T.claude, T.codex, T.opencode],
+    // T2 is this layer's own tier; T3 high mode runs on the same tools, only when called.
+    modelRows: [['T2', PAL.gold, 'Directors: Opus · GPT Sol · OpenCode Go (optional)'], ['T3', PAL.coral, 'High mode, on call above T2: Fable · Astra']],
+    robots: [['director', PAL.gold, -1.3, 'inspect'], ['high', PAL.coral, 0, 'idle', true], ['director', PAL.gold, 1.3, 'idle']],
   });
   layer(4, {
-    tag: 'LAYER 4', titleText: 'Workers', sub: 'OpenCode, Claude Code, Codex · free models first · Freebuff benched',
-    logos: [T.opencode, T.freebuff, T.nvidia, T.mimo, T.gemini],
+    tag: 'LAYER 4', titleText: 'Supervisors and workers', sub: 'OpenCode Go or free models, Claude Code, Codex · free first',
+    logos: [T.opencode, T.nvidia, T.claude, T.codex, T.freebuff],
+    // T1 supervisors check; T0 workers execute. OpenCode Go works at T0 only when a less capable model fits.
     modelRows: [
-      ['T1', PAL.blue, 'Supervisors: Sonnet · Terra · OpenCode Go'],
-      ['T0', PAL.mint, 'Workers: Haiku · Luna · OpenCode Go or free'],
-      ['OFF', PAL.red, 'Freebuff (suspended): MiMo · DeepSeek V4 · Kimi K2.7'],
+      ['T1', PAL.blue, 'Supervisors: Sonnet · Terra · OpenCode Go (optional)'],
+      ['T0', PAL.mint, 'Workers: Haiku · Luna · free models · OpenCode Go when it fits'],
+      ['OFF', PAL.red, 'Freebuff (suspended): its free models covered T0 to T2'],
     ],
-    extra: (pos) => {
-      [T.deepseek, T.kimi, T.glm].forEach((tex, i) => {
-        const p = pos.clone().add(R.clone().multiplyScalar(-1.0 + i * 1.0)).add(TOWARD.clone().multiplyScalar(0.55));
-        standee(scene, tex, p, 0.55, 0.12);
-      });
-    },
-    robots: [['worker', PAL.mint, -1.7, 'type'], ['worker', PAL.mint, 1.7, 'type']],
+    robots: [['supervisor', PAL.blue, -1.7, 'inspect'], ['worker', PAL.mint, 0, 'type'], ['worker', PAL.mint, 1.7, 'type']],
   });
   layer(5, {
     tag: 'LAYER 5', titleText: 'Operators', sub: 'Ego Lite for websites · computer use for desktop apps',
@@ -330,8 +337,21 @@ export async function build({ scene, camera, sun, hemi }) {
     const s = sec.out;
     const pos = at(PLATFORM_X, s.top - 2.2);
     platPos.out = pos;
-    platform(scene, pos, s.color, 5.0, 2.8);
-    [T.github, T.posthog].forEach((tex, i) => standee(scene, tex, pos.clone().add(R.clone().multiplyScalar(-0.9 + i * 1.8)).add(TOWARD.clone().multiplyScalar(-0.4))));
+    platform(scene, pos, s.color, 6.0, 3.5);
+    // Two rows of targets: code and hosting at the back, more hosts and analytics in front.
+    const rows = [[T.github, T.vercel, T.aws, T.gcloud], [T.cloudflare, T.netlify, T.npm, T.posthog]];
+    // The back row stands on camo risers so it shows above the front row.
+    const size = 0.95, cell = size * 0.82;
+    rows.forEach((row, r) => row.forEach((tex, i) => {
+      const p = pos.clone().add(R.clone().multiplyScalar(-2.0 + i * 1.3)).add(TOWARD.clone().multiplyScalar(r ? 0.3 : -0.9));
+      if (!r) {
+        const riser = tower({ nx: 1, ny: 1, nz: 1, cell, seed: 60 + i });
+        riser.position.copy(p);
+        scene.add(riser);
+        p.y += cell;
+      }
+      standee(scene, tex, p, size);
+    }));
     const crates = [];
     for (let i = 0; i < 3; i++) {
       const c = new THREE.Group();
@@ -343,13 +363,13 @@ export async function build({ scene, camera, sun, hemi }) {
     }
     updates.push((t) => crates.forEach((c, i) => {
       const k = (t + i / 3) % 1;
-      c.position.copy(pos.clone().add(R.clone().multiplyScalar(-1.6 + k * 3.2)).add(TOWARD.clone().multiplyScalar(0.75)));
+      c.position.copy(pos.clone().add(R.clone().multiplyScalar(-1.9 + k * 3.8)).add(TOWARD.clone().multiplyScalar(1.2)));
       c.scale.setScalar(Math.max(0.001, Math.min(1, k * 8, (1 - k) * 8)));
     }));
     screens.push(panel(scene, camera, s, (ctx, w) => {
       let y = header(ctx, 40, 36, 'OUT', 'What ships', 'Merged PRs, releases, deploys, analytics, and my own tools', s.color);
       ctx.fillStyle = '#ffc44a'; ctx.font = '400 25px "HStack Type", monospace';
-      ctx.fillText('DEPLOY TO: GitHub · Vercel · AWS · Google Cloud · Cloudflare', 40, y + 14);
+      ctx.fillText('DEPLOY TO: GitHub · Vercel · AWS · Google Cloud · Cloudflare · Netlify · npm · any host', 40, y + 14, w - 80);
       const items = ['GitHub PRs and releases', 'PostHog analytics', 'ACC · agent code context', 'Repo Shield · AI-training notice', 'reposell · paid releases', 'ProAgents · specialist profiles', 'ACE · crew workspaces', 'Oreja · music that steps aside'];
       skillGridPlain(ctx, 40, y + 56, w, items, s.color);
     }));

@@ -98,7 +98,7 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     ctx.fillStyle = '#ffc44a'; ctx.font = '400 74px "HStack Type", monospace';
     ctx.fillText(cfg.title, 750, 80);
     ctx.fillStyle = '#9fb3a6'; ctx.font = '400 36px "HStack Type", monospace';
-    ctx.fillText(cfg.subtitle, 750, 140);
+    if (cfg.subtitle) ctx.fillText(cfg.subtitle, 750, 140);
     title.texture.needsUpdate = true;
   }
 

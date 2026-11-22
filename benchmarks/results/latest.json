@@ -1,38 +1,38 @@
 {
-  "timestamp": "2026-11-22T16:56:52+00:00",
+  "timestamp": "2026-11-22T22:28:32+00:00",
   "versions": {
     "python": "3.14.7",
-    "skillevaluator": "skillevaluator, version 1.0.1"
+    "skillevaluator": "not installed"
   },
   "envs": {
     "A-baseline": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/A-baseline/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/A-baseline",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/A-baseline/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/A-baseline/workspace",
       "skills_installed": 0,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "B-skills": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/B-skills/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "C-skills-mcp": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/C-skills-mcp/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/C-skills-mcp",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/C-skills-mcp/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/C-skills-mcp/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
     },
     "D-full-stack": {
-      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack",
-      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack/home",
-      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-66ke4f5u/D-full-stack/workspace",
+      "path": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/D-full-stack",
+      "home": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/D-full-stack/home",
+      "workspace": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/D-full-stack/workspace",
       "skills_installed": 62,
       "no_agents_md": true,
       "isolated_from_repo": true
@@ -41,607 +41,344 @@
   "quality": {
     "aggregate": {
       "skills": 62,
-      "scored": 62,
-      "mean": 99.9,
-      "median": 100.0,
-      "min": 95.0,
-      "max": 100.0,
-      "grades": {
-        "A": 62
-      }
+      "scored": 0,
+      "mean": null,
+      "median": null,
+      "min": null,
+      "max": null,
+      "grades": {}
     },
     "skills": [
       {
         "skill": "420",
-        "score": 95.0,
-        "grade": "A",
-        "warnings": 2,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "a-new-day",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "acc-context",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "ace-workspace",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "antislop-review",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "benchmark",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "blocker-radar",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "break-it-down",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "check-github",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "cleanup-chats",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "cleanup-disk-space",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "cleanup-orca",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "cleanup-refactor",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "cleanup-worktrees-branches",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "coordinate-agents",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "deploy",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "docs-content",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "fix-ci",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "get-stoned",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "haf",
-        "score": 97.5,
-        "grade": "A",
-        "warnings": 1,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "handoff",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "horizon",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "horizon-loop",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "horizon-loop-ego-lite",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "horizon-loop-test",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "hstack",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "humanize",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "implement-feature",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "interface-check",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "let-me-watch",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "motion-graphic",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "patch-patrol",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "pineapple-express",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "plan-horizon",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "proagent-equip",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "product-hunt-launch",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "protect-repo",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "publish-git",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "puff-puff-pass",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "reconcile-branches",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "relay-room",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "release",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "reposell-release",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "research-explain",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "resume-all",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "resume-work",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "run-local",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "save-point",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "security-backend",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "seo-audit",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "set-analytics",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "setup-hstack",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "setup-install",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "skill-workbench",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "stoner",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "take-one-dude",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "token-balancer",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "ui-design",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "verify-and-fix",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "visual-test",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "wrap-day",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       },
       {
         "skill": "write-readme-opensource",
-        "score": 100.0,
-        "grade": "A",
-        "warnings": 0,
-        "errors": 0,
-        "passed": true
-      }
-    ]
-  },
-  "harness": {
-    "entries": [
-      {
-        "harness": "claude-code",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": []
-      },
-      {
-        "harness": "codex",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": []
-      },
-      {
-        "harness": "copilot-cli",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": [
-          {
-            "effect": "advisory",
-            "message": "62 skills here: Copilot gives full descriptions to the first 32 only; the rest are listed by name."
-          },
-          {
-            "effect": "advisory",
-            "message": "New skills appear only after `/skills reload` or a restart; edits to existing skills apply at once."
-          }
-        ]
-      },
-      {
-        "harness": "hermes",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": []
-      },
-      {
-        "harness": "openclaw",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": []
-      },
-      {
-        "harness": "opencode",
-        "status": "loads",
-        "catalog": {
-          "size": 62,
-          "desc_chars": 7856,
-          "folder": "/Users/mac/Desktop/Github/hstack/skills"
-        },
-        "findings": [
-          {
-            "effect": "advisory",
-            "message": "Skill list and text are cached at startup; edits need a restart."
-          }
-        ]
+        "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
       }
     ],
-    "catalog_size": 62,
-    "description_chars": 7856,
-    "loads": 6,
-    "degraded": 0,
-    "not_loaded": 0
+    "failures": [
+      "420: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "a-new-day: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "acc-context: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "ace-workspace: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "antislop-review: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "benchmark: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "blocker-radar: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "break-it-down: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "check-github: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "cleanup-chats: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "cleanup-disk-space: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "cleanup-orca: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "cleanup-refactor: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "cleanup-worktrees-branches: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "coordinate-agents: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "deploy: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "docs-content: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "fix-ci: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "get-stoned: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "haf: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "handoff: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "horizon: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "horizon-loop: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "horizon-loop-ego-lite: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "horizon-loop-test: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "hstack: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "humanize: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "implement-feature: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "interface-check: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "let-me-watch: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "motion-graphic: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "patch-patrol: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "pineapple-express: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "plan-horizon: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "proagent-equip: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "product-hunt-launch: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "protect-repo: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "publish-git: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "puff-puff-pass: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "reconcile-branches: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "relay-room: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "release: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "reposell-release: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "research-explain: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "resume-all: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "resume-work: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "run-local: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "save-point: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "security-backend: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "seo-audit: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "set-analytics: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "setup-hstack: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "setup-install: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "skill-workbench: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "stoner: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "take-one-dude: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "token-balancer: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "ui-design: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "verify-and-fix: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "visual-test: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "wrap-day: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+      "write-readme-opensource: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
+    ],
+    "skills_dir": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/home/.agents/skills"
+  },
+  "harness": {
+    "error": "evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "skills_dir": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/home/.agents/skills"
   },
   "route": {
     "A-baseline": {
       "passed": 0,
       "total": 12,
-      "reason": "no skills installed"
+      "reason": "no skills installed by design"
     },
     "B-skills": {
       "passed": 12,
       "total": 12,
       "router_rows": 61,
+      "payload": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/home/.agents/skills",
       "misses": [],
       "note": "deterministic router contract check, not a model task benchmark"
     },
@@ -649,6 +386,7 @@
       "passed": 12,
       "total": 12,
       "router_rows": 61,
+      "payload": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/C-skills-mcp/home/.agents/skills",
       "misses": [],
       "note": "deterministic router contract check, not a model task benchmark"
     },
@@ -656,8 +394,80 @@
       "passed": 12,
       "total": 12,
       "router_rows": 61,
+      "payload": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/D-full-stack/home/.agents/skills",
       "misses": [],
       "note": "deterministic router contract check, not a model task benchmark"
     }
-  }
+  },
+  "checks": {
+    "source_dir": "/Users/mac/Desktop/Github/hstack/skills",
+    "skills_dir": "/var/folders/lt/lfbc4_451gg2pb0vvbz8lc4m0000gn/T/hstack-bench-6gaaa9ho/B-skills/home/.agents/skills",
+    "payload_used": true,
+    "errors": []
+  },
+  "failures": [
+    "420: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "a-new-day: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "acc-context: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "ace-workspace: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "antislop-review: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "benchmark: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "blocker-radar: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "break-it-down: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "check-github: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "cleanup-chats: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "cleanup-disk-space: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "cleanup-orca: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "cleanup-refactor: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "cleanup-worktrees-branches: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "coordinate-agents: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "deploy: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "docs-content: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "fix-ci: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "get-stoned: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "haf: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "handoff: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "horizon: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "horizon-loop: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "horizon-loop-ego-lite: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "horizon-loop-test: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "hstack: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "humanize: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "implement-feature: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "interface-check: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "let-me-watch: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "motion-graphic: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "patch-patrol: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "pineapple-express: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "plan-horizon: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "proagent-equip: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "product-hunt-launch: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "protect-repo: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "publish-git: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "puff-puff-pass: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "reconcile-branches: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "relay-room: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "release: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "reposell-release: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "research-explain: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "resume-all: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "resume-work: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "run-local: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "save-point: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "security-backend: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "seo-audit: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "set-analytics: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "setup-hstack: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "setup-install: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "skill-workbench: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "stoner: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "take-one-dude: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "token-balancer: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "ui-design: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "verify-and-fix: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "visual-test: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "wrap-day: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "write-readme-opensource: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'",
+    "harness: evaluator unavailable: [Errno 2] No such file or directory: 'skillevaluator'"
+  ]
 }

@@ -24,6 +24,7 @@ export const SCENES = {
   'evolution-explainer': { w: 1600, h: 2200, frames: 96, fps: 24, outW: 800 },
   'stoner-mode': { w: 1600, h: 1200, frames: 96, fps: 24, outW: 800 },
   'architecture': { w: 1600, h: 3558, frames: 72, fps: 24, outW: 800 },
+  'providers': { w: 1600, h: 560, frames: 48, fps: 24, outW: 800 },
 };
 
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
