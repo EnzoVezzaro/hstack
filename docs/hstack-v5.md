@@ -2,6 +2,8 @@
 
 HStack is the multi-agent setup described in the V5 post ("My AI Degen Stack V5"). This document is the reference for that setup: the roles, the economics, the principles, and which skill does what in it. [role-model.md](role-model.md) holds the short operating model; this file adds the detail.
 
+![The whole HSTACK V5 map: you, five layers with their tools, models, and skills, and what ships](../assets/animations/architecture.gif)
+
 The skills in this repo are local `SKILL.md` files. Nothing here proves that a given agent or model is running right now. Check live assignments in Orca before treating the roles as the current runtime.
 
 ## Evolution

@@ -719,7 +719,8 @@ export async function boot(mod, width, height, outWidth = width) {
   sun.castShadow = true;
   sun.shadow.mapSize.set(4096, 4096);
   const sc = sun.shadow.camera;
-  sc.left = -16; sc.right = 16; sc.top = 16; sc.bottom = -16; sc.near = 1; sc.far = 80;
+  const ss = mod.shadowSize ?? 16;
+  sc.left = -ss; sc.right = ss; sc.top = ss; sc.bottom = -ss; sc.near = 1; sc.far = mod.shadowFar ?? 80;
   sun.shadow.bias = -0.00035;
   sun.shadow.normalBias = 0.025;
   scene.add(sun, sun.target);

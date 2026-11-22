@@ -19,9 +19,10 @@ export const SCENES = {
   'horizon-loop': { w: 1600, h: 1000, frames: 120, fps: 24, outW: 800 },
   'install-terminal': { w: 1600, h: 900, frames: 96, fps: 24, outW: 800 },
   'divider': { w: 1600, h: 160, frames: 48, fps: 24, outW: 800 },
+  'architecture': { w: 1600, h: 3620, frames: 72, fps: 24, outW: 800 },
 };
 
-const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json' };
+const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
 
 function serve() {
   const server = http.createServer((req, res) => {

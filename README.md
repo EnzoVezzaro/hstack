@@ -103,6 +103,22 @@ The house rules:
 - Humans stay in control. Pushes, merges, deploys, launches, and deletes wait for a yes.
 - More agents is not more intelligence. A big crew that shares nothing is just a loud one.
 
+## The whole map
+
+<details open>
+<summary><b>Every layer, every model, and all 59 skills, top to bottom</b></summary>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, Freebuff, NVIDIA, MiMo, Gemini, DeepSeek, Kimi, and GLM as workers and their T0 and T1 models; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, and my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+  </picture>
+</p>
+
+<sub>Logos belong to their owners and are only here to show which tool does what.</sub>
+
+</details>
+
 ## Cheap first, smart when it matters
 
 <p align="center">
@@ -407,7 +423,7 @@ npm run render            # every scene
 npm run render -- tier-elevator --frames 48   # one scene, shorter
 ```
 
-It needs Google Chrome (or `CHROME=/path/to/chrome`), ffmpeg, Python 3 with numpy and Pillow, and optionally gifsicle. The code on the monitors is real; it's the routing logic from this README.
+It needs Google Chrome (or `CHROME=/path/to/chrome`), ffmpeg, Python 3 with numpy and Pillow, and optionally gifsicle. The code on the monitors is real; it's the routing logic from this README. Brand marks in the map come from [Simple Icons](https://simpleicons.org) (CC0) or from each app's own icon, and they belong to their owners.
 
 ## Docs
 
@@ -419,7 +435,7 @@ It needs Google Chrome (or `CHROME=/path/to/chrome`), ffmpeg, Python 3 with nump
 
 ## Credits
 
-The structure is borrowed, with thanks and an MIT license, from [tstack](https://github.com/t3dotgg/tstack) (the "use it when" tables and the dependency note) and [pstack](https://github.com/backnotprop/pstack) (one front door that routes to everything).
+Huge thanks to [Theo](https://github.com/t3dotgg), for [tstack](https://github.com/t3dotgg/tstack), and to [Poteto](https://github.com/poteto), for [pstack](https://github.com/backnotprop/pstack), for everything they share with the rest of us, and for being great engineers who helped pioneer vibe coding, better known these days as agentic coding.
 
 ## License
 
