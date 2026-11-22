@@ -107,6 +107,10 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [horizon-loop-ego-lite](../skills/horizon-loop-ego-lite/SKILL.md) | `/horizon-loop-ego-lite` | 5 with 4 | Layer 3 |
 | [release](../skills/release/SKILL.md) | `/release` | 3 | Owner approves the tag |
 | [check-github](../skills/check-github/SKILL.md) | `/check-github` | 4 | Layer 3 |
+| [get-stoned](../skills/get-stoned/SKILL.md) | `/get-stoned` | 4 generates, 3 judges | Layer 3 |
+| [haf](../skills/haf/SKILL.md) | `/haf` | 5 browses, 3 picks | Layer 3 |
+| [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |
+| [pineapple-express](../skills/pineapple-express/SKILL.md) | `/pineapple-express` | 2 lists, 4 closes | Owner approves one batch |
 | [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
 | [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |
 | [protect-repo](../skills/protect-repo/SKILL.md) | `/protect-repo` | 4 | Owner merges the PR |

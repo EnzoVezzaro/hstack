@@ -46,6 +46,10 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `horizon-loop-ego-lite` | `/horizon-loop-ego-lite` | W2 Verificar y arreglar |
 | `release` | `/release` | W5 Publicar y git |
 | `check-github` | `/check-github` | W4 Investigar y explicar |
+| `get-stoned` | `/get-stoned` | W4 Investigar y explicar |
+| `haf` | `/haf` | W10 Diseño UI / landing |
+| `puff-puff-pass` | `/puff-puff-pass` | W1 Implementar funcionalidad |
+| `pineapple-express` | `/pineapple-express` | W3 Coordinar agentes |
 | `setup-hstack` | `/setup-hstack` | Model routing |
 | `acc-context` | `/acc-context` | W4 Investigar y explicar |
 | `protect-repo` | `/protect-repo` | W5 Publicar y git |

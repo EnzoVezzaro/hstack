@@ -55,6 +55,10 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Run browser flows until they pass N times in a row | [horizon-loop-ego-lite](../horizon-loop-ego-lite/SKILL.md) |
 | Cut a new release | [release](../release/SKILL.md) |
 | Search GitHub for repos, code, or issues | [check-github](../check-github/SKILL.md) |
+| New ideas, or a strange solution to something stuck | [get-stoned](../get-stoned/SKILL.md) |
+| Unusual UI inspiration from Awwwards, Codrops, Dribbble, and similar | [haf](../haf/SKILL.md) |
+| Build it on a cheap model, then have a stronger model review it | [puff-puff-pass](../puff-puff-pass/SKILL.md) |
+| Close everything that can be closed and wrap up for the day | [pineapple-express](../pineapple-express/SKILL.md) |
 | Pick which models and agents each tier uses | [setup-hstack](../setup-hstack/SKILL.md) |
 | The repo has ACC, or needs it | [acc-context](../acc-context/SKILL.md) |
 | Protect a repo from AI training before it goes public | [protect-repo](../protect-repo/SKILL.md) |

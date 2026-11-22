@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img alt="48 skills" src="https://img.shields.io/badge/skills-48-3b5336?style=for-the-badge">
+  <img alt="52 skills" src="https://img.shields.io/badge/skills-52-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
@@ -18,7 +18,7 @@
 
 i've been running multi-agent coding setups for a while, trying to build more, spend less, and not become a full-time babysitter for AI agents. five versions later, this is the playbook.
 
-**hstack** (read "high stack") is 48 agent skills for one idea: **expensive intelligence makes decisions, cheap intelligence does the work.** one assistant talks to you. it hands work down to directors, who hand bounded tasks to free-model workers. the workers prove what they did and report back. you only show up for the calls that matter.
+**hstack** (read "high stack") is 52 agent skills for one idea: **expensive intelligence makes decisions, cheap intelligence does the work.** one assistant talks to you. it hands work down to directors, who hand bounded tasks to free-model workers. the workers prove what they did and report back. you only show up for the calls that matter.
 
 they're plain [Agent Skills](https://agentskills.io): a folder of `skills/<name>/SKILL.md` files. they work in Claude Code, Codex, OpenCode, Cursor, and any agent that reads them.
 
@@ -66,7 +66,7 @@ that's it. `/hstack` reads the request, picks the right skill, and splits mixed 
 <details>
 <summary>how do skills actually trigger?</summary>
 
-your agent doesn't read all 48 skills up front. at startup it only sees each skill's name and one-line description. the full instructions load when a skill is used, in one of two ways:
+your agent doesn't read all 52 skills up front. at startup it only sees each skill's name and one-line description. the full instructions load when a skill is used, in one of two ways:
 
 - **you call it.** type `/hstack`, `/humanize`, `/fix-ci`, and so on.
 - **the agent matches it.** describe the task ("CI is failing on main") and the agent loads the skill whose description fits.
@@ -233,6 +233,18 @@ run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once. it finds the agents an
 </details>
 
 <details open>
+<summary><b>💡 ideas, review, and wind-down</b></summary>
+
+| skill | use it when |
+|---|---|
+| [`/get-stoned`](skills/get-stoned/SKILL.md) | you need new ideas or a strange solution to something stuck. generates wide, flips assumptions, scores the ideas, picks two or three to prototype. |
+| [`/haf`](skills/haf/SKILL.md) | you want unusual UI inspiration. hunts Awwwards, Codrops, Dribbble, Pinterest, and CodePen, and comes back with annotated references and design directions. |
+| [`/puff-puff-pass`](skills/puff-puff-pass/SKILL.md) | you want it built on a cheap model and reviewed by a stronger, different one before it ships. |
+| [`/pineapple-express`](skills/pineapple-express/SKILL.md) | you're done for the day. closes what can be closed, parks the rest with handoffs, stops leftover processes. |
+
+</details>
+
+<details open>
 <summary><b>🧩 my own tools, wired in</b></summary>
 
 | skill | use it when |
@@ -266,6 +278,10 @@ loop:         /horizon-loop get the landing page lighthouse score above 95.
 tests:        /horizon-loop-test get every test green and keep it green 5 runs in a row.
 browser loop: /horizon-loop-ego-lite run signup and checkout until each passes 10 times in a row.
 release:      /release
+ideas:        /get-stoned how could onboarding work without a signup form?
+inspiration: /haf scroll-driven landing pages with 3D type, for a dev tool.
+build+review: /puff-puff-pass add rate limiting to the public API.
+wind down:    /pineapple-express
 github:       /check-github best open source voice-to-text libraries for electron.
 daily:        /a-new-day
 models:       /setup-hstack
@@ -297,6 +313,10 @@ install these together:
 | `implement-feature`, `resume-work`, `handoff` | `acc-context` (when the repo has `.acc/`) |
 | `reposell-release` | `protect-repo` |
 | `coordinate-agents` | `proagent-equip`, `ace-workspace` |
+| `puff-puff-pass` | `implement-feature`, `patch-patrol`, `publish-git` |
+| `haf` | `ui-design`, `motion-graphic` |
+| `get-stoned` | `break-it-down` |
+| `pineapple-express` | `handoff`, `wrap-day`, `publish-git` |
 | `hstack` | everything it routes to |
 
 ## not shipped here
