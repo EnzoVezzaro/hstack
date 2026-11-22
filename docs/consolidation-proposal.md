@@ -2,8 +2,6 @@
 
 This is a proposal, not a release plan. It proposes a smaller set of user-facing workflows for H Stack while keeping the current capability, source provenance, multi-repo routing, and Orca-first behavior. One low-risk consolidation is implemented in this branch; the rest is left for the owner to accept or reject.
 
-Fewer pots, same garden.
-
 ## Evidence boundary
 
 - I read every `skills/*/SKILL.md` file on this branch, plus `AGENTS.md`, `CONTRIBUTING.md`, `README.md`, `docs/hstack-v5.md`, `docs/workflows.md`, `docs/workflow-map.md`, `docs/source-skills.md`, `docs/skill-usage.md`, and `docs/model-routing.md`. Classification below is based on the instructions themselves, not on skill names.
@@ -37,7 +35,7 @@ What the comparison shows:
 
 1. **T Stack keeps one canonical flow and makes variants thin.** `tstack/skills/full-stop/SKILL.md` explicitly directs the reader to `../full-send/SKILL.md` and then lists only its overrides; it does not restate the parent workflow. H Stack instead duplicates shared skeletons in separate top-level files. The two platform variants in H Stack are the clearest example (see the similarity data below).
 2. **T Stack publishes an explicit composition graph.** `tstack/README.md` has a short "Some skills call others" section. H Stack has the same idea at `README.md`, "Some skills call others", but pairs it with a much larger flat menu.
-3. **P Stack separates references from invocable workflows.** `pstack/README.md`, "principles", describes 24 short `principle-*` files indexed inline by `skills/poteto-mode/SKILL.md`; `pstack/skills/principle-fix-root-causes/SKILL.md` carries `disable-model-invocation: true`. P Stack reaches 61 files while keeping small rules out of the user-facing menu. H Stack has 61 files and zero reference-only markers: every micro-step is a top-level skill.
+3. **P Stack has one clear front door and small principles alongside its playbooks.** The official [`cursor/plugins/pstack`](https://github.com/cursor/plugins/tree/main/pstack) catalog lists 24 short `principle-*` files; they are referenced by `/poteto-mode` and carry `disable-model-invocation: true` so they do not compete for automatic routing. They remain in the README catalog and can still be invoked directly; P Stack does not hide them from users. H Stack has 61 files and zero reference-only markers: every micro-step is a top-level skill.
 4. **P Stack does not fill gaps with invented workflows.** `pstack/README.md`, "why are there no planning skills?", declines to add a category when the harness already covers it. H Stack's `docs/workflow-map.md` makes the same move with `field-notes`, `launch-runway`, and `portfolio-radio`. This proposal therefore does not introduce new route names; it only regroups existing ones.
 
 Consequence: the useful structural lesson is *thin variants + reference-only steps*, not "copy the other stack's catalog" and not "reduce to their skill counts". H Stack's role tiers, Orca routing, and `<project>` rule are its own and stay intact.
