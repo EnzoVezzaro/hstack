@@ -18,10 +18,10 @@ const TRACK_X = LX / 2 + 0.8;
 const floorZ = (i) => -STEP * i;
 const station = (i) => new THREE.Vector3(TRACK_X, i * H + 0.02, floorZ(i) + 0.75);
 const TIERS = [
-  { name: 'T0', title: 'free workers', color: PAL.mint },
-  { name: 'T1', title: 'strong free', color: PAL.blue },
-  { name: 'T2', title: 'director', color: PAL.gold },
-  { name: 'T3', title: 'top reasoning', color: PAL.coral },
+  { name: 'T0', title: 'workers', color: PAL.mint },
+  { name: 'T1', title: 'supervisors', color: PAL.blue },
+  { name: 'T2', title: 'directors', color: PAL.gold },
+  { name: 'T3', title: 'gods mode', color: PAL.coral },
 ];
 
 const smooth = (k) => k * k * (3 - 2 * k);
@@ -39,15 +39,15 @@ function carLevel(t) {
 }
 
 const STEPS = [
-  [0.0, 'T0', 'attempt 1 on a free model', 'busy'],
+  [0.0, 'T0', 'attempt 1 on a worker model', 'busy'],
   [0.1, 'T0', 'attempt 1 failed verification', 'fail'],
   [0.2, 'T0', 'attempt 2 failed · escalate', 'fail'],
-  [0.26, 'T1', 'riding up to a stronger free model', 'move'],
+  [0.26, 'T1', 'riding up to a supervisor', 'move'],
   [0.4, 'T1', 'attempt 3 failed · escalate', 'fail'],
   [0.48, 'T2', 'riding up to the director', 'move'],
   [0.6, 'T2', 'plan written · acceptance check set', 'plan'],
   [0.71, 'T0', 'plan goes back down to T0', 'move'],
-  [0.86, 'T0', 'done on a free model ✓', 'pass'],
+  [0.86, 'T0', 'done on a worker model ✓', 'pass'],
 ];
 
 function taskCard() {

@@ -19,6 +19,7 @@ Layer 1 (assistant) detects and proposes; the owner approves the map. Runs at T0
    - OpenCode: `model` and providers in `~/.config/opencode/opencode.json`, and the models most used in `~/.local/share/opencode/opencode.db`.
    - Freebuff: `freebuffModel` in `~/.config/manicode/settings.json`.
    - Orca, Ego Lite, and computer use: check that each is installed.
+   - If an agent reports a suspended or locked account (Freebuff did once), leave it out of the map and say so.
 2. Propose a map for T0 to T3, using the defaults in `model-routing.md` as a starting point. Mark any tier with no available model.
 3. Ask about a monthly budget and any model the user never wants used.
 4. After the user confirms, write the map under a `## hstack models` heading in the project's `AGENTS.md`, or in `~/.claude/AGENTS.md` for every project. Replace an existing block; do not duplicate it.
