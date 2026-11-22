@@ -5,6 +5,8 @@ description: "Use when the user types /cleanup-chats or wants to clean up Codex 
 
 # Clean up chats
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 "Let's clean up, merge what you can, and close as much as possible", applied to Codex threads and ChatGPT chats.
 
 ## HStack V5 role

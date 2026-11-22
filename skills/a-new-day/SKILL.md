@@ -1,9 +1,11 @@
 ---
 name: a-new-day
-description: "Retro morning boot sequence. Use when Enzo says /a-new-day, asks for a morning project brief, or wants to resume the day across projects. Checks live Orca projects, yesterday's completed work, current state, and today's next steps."
+description: "Morning briefing workflow. Use when the owner says /a-new-day, asks for a morning project brief, or wants to resume the day across projects. Checks live Orca projects, yesterday's completed work, current state, and today's next steps."
 ---
 
-# A new day · morning boot sequence
+# A new day — evidence-based morning brief
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
@@ -27,6 +29,6 @@ A compact project-by-project brief:
 - **Yesterday:** completed work and evidence.
 - **Now:** live agent and worktree state.
 - **Next today:** the stated next step and its owner.
-- **Needs Enzo:** only decisions or approvals genuinely waiting.
+- **Needs the owner:** only decisions or approvals genuinely waiting.
 
 End with a short proposed focus order. Do not create tasks, send instructions, merge, publish, deploy, or change priorities without an explicit request.

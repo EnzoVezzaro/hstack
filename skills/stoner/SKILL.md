@@ -5,6 +5,8 @@ description: "Use when the user types /stoner or asks for stoner mode: a hands-o
 
 # Stoner mode
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Set it and walk away. One cycle: **scan Orca repos → check PRs on each → prioritize → work the queue until it's empty → check PRs again.** The loop keeps going until you stop it, the budget runs out, or there is nothing left to do.
 
 ## HStack V5 role

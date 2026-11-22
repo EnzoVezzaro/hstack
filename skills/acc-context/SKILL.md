@@ -5,6 +5,8 @@ description: "Use when a repo has AGENTS.md plus a .acc/ folder, when the user a
 
 # ACC context
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Uses [ACC](https://github.com/EnzoVezzaro/agents-code-context), the convention that makes a repo explain itself to agents through `AGENTS.md` and `.acc/`.
 
 ## HStack V5 role

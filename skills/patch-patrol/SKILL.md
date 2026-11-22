@@ -1,9 +1,11 @@
 ---
 name: patch-patrol
-description: "Retro night watch for changes. Use when Enzo says /patch-patrol, before handing back a meaningful implementation, when Enzo asks whether a change is safe, or when a PR needs review and CI follow-through. Composes the installed review family: review, review-bugbot and review-security, with autopilot only for requested PR follow-through."
+description: "Independent code and change review. Use when the owner says /patch-patrol, before handing back a meaningful implementation, when the owner asks whether a change is safe, or when a PR needs review and CI follow-through. Composes the installed review family: review, review-bugbot and review-security, with autopilot only for requested PR follow-through."
 ---
 
-# Patch patrol · walk the diff with a flashlight
+# Patch patrol — independent diff review
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
@@ -11,7 +13,7 @@ Layer 3 reviews a diff independently, separate from the worker who wrote it. See
 
 **Model tier:** T2 reviews, using a different model from the author. See [model-routing.md](../../docs/model-routing.md).
 
-New H Stack composition. Source skills: `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
+Optional upstream references (use only when installed): `review`, `review-bugbot`, `review-security`; optional `autopilot` for PR follow-through.
 
 ## Fix the target
 
@@ -33,4 +35,4 @@ New H Stack composition. Source skills: `review`, `review-bugbot`, `review-secur
 
 ## PR follow-through
 
-Use `autopilot` only when Enzo asks to track a PR through CI or review milestones. Re-check new commits because they change the reviewed revision. Never merge, publish, or deploy unless asked.
+Use `autopilot` only when the owner asks to track a PR through CI or review milestones. Re-check new commits because they change the reviewed revision. Never merge, publish, or deploy unless asked.

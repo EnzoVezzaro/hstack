@@ -5,7 +5,7 @@ description: "Use when the user asks to merge work into main and remove the left
 
 # Clean up worktrees and branches
 
-This skill extends the **W5 Publicar y git** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

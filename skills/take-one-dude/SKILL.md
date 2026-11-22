@@ -5,11 +5,13 @@ description: "Use when the user types /take-one-dude or wants one agent to take 
 
 # Take One Dude
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 One agent takes the task from prompt to evidence. Bring the speed and useful capabilities of H Stack to a single clear outcome, without skipping the probe that proves it.
 
 The skill is portable across agents. “Superpowers” means focused routing, appropriate effort, and evidence; it does not grant extra tools, permissions, or access.
 
-## H Stack V5 role
+## HStack V5 role
 
 Layer 1 chooses the execution path; the agent uses the relevant H Stack skills and model-routing rules. Keep work scoped to the named project or explicitly listed projects. See [hstack-v5.md](../../docs/hstack-v5.md) and [model-routing.md](../../docs/model-routing.md).
 

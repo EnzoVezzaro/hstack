@@ -5,6 +5,8 @@ description: "Use when the user asks to protect a repo from AI training, add a l
 
 # Protect a repo with Repo Shield
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Uses [Repo Shield](https://github.com/EnzoVezzaro/repo-shield): a signed LICENSE, an explicit AI-training NOTICE, a machine-readable policy, and a weekly watch workflow. It deters; it cannot block scrapers. Say that plainly if the user expects more.
 
 ## HStack V5 role

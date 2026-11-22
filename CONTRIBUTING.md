@@ -10,6 +10,8 @@ H Stack's workflows are small operating procedures. A useful change makes a real
 
 ## Changing a workflow
 
+Read [the shared execution contract](docs/skill-contract.md) before changing any skill. Keep live project/session discovery, scope, evidence, model tier and approval gates compatible with it. Run `node scripts/validate-skills.mjs` after editing. Do not reintroduce gaming/retro metaphors into engineering routes.
+
 - Keep one clear trigger, a short sequence, concrete stop conditions, and an honest report format.
 - Name source skills only when the workflow depends on them; keep their instructions in their own upstream files.
 - Keep irreversible actions behind an explicit user instruction.

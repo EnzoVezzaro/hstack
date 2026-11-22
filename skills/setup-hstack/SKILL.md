@@ -5,6 +5,8 @@ description: "Use when the user types /setup-hstack, installs HStack for the fir
 
 # Set up HStack models
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 This skill configures the tiers in [model-routing.md](../../docs/model-routing.md).
 
 ## HStack V5 role

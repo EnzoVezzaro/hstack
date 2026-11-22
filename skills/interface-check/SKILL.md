@@ -1,9 +1,11 @@
 ---
 name: interface-check
-description: "Retro inspection bay for user-facing interfaces. Use when Enzo says /interface-check, reports visual disorder, broken UI, responsive defects, inaccessible interaction, or asks for a real browser or app review. Composes impeccable, antislop-ui, antislop-human, orca-computer-use and orchestrated-visual-remediation; a diff alone never counts as a visual pass."
+description: "Real runtime inspection for user-facing interfaces. Use when the owner says /interface-check, reports visual disorder, broken UI, responsive defects, inaccessible interaction, or asks for a real browser or app review. Composes impeccable, antislop-ui, antislop-human, orca-computer-use and orchestrated-visual-remediation; a diff alone never counts as a visual pass."
 ---
 
-# Interface check · inspection bay
+# Interface check — observed interface defects
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
@@ -11,7 +13,7 @@ Layer 5 (Ego Lite or computer use) inspects the real screen; Layer 3 decides the
 
 **Model tier:** T1 inspects; T2 decides design fixes. See [model-routing.md](../../docs/model-routing.md).
 
-New H Stack composition. Source skills: `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
+Optional upstream references (use only when installed): `impeccable`, `antislop-ui`, `antislop-human`, `orca-computer-use`, `orchestrated-visual-remediation`.
 
 ## Inspect before editing
 

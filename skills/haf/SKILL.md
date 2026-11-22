@@ -5,6 +5,8 @@ description: "Use when the user types /haf or wants unusual UI or design inspira
 
 # HAF: hunt for weird UI inspiration
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Goes looking for interfaces that are stranger and better than the usual, and comes back with references you can actually use.
 
 ## HStack V5 role

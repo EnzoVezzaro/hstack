@@ -5,7 +5,7 @@ description: "Use when the user asks for a motion graphic, animated explainer, t
 
 # Motion graphics
 
-This skill extends the **W10 Diseño UI / landing** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

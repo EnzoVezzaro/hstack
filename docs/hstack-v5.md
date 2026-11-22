@@ -8,6 +8,10 @@ The skills in this repo are local `SKILL.md` files. Nothing here proves that a g
 
 H Stack is a **multi-repo infrastructure**: Orca coordinates distinct projects, repositories, and worktrees. Every code task names its `<project>`; multi-repo tasks list all projects and keep their context, ownership, and acceptance checks separate. Subscription limits and model recommendations are observations per provider/account, then matched to each project's next task; see [`token-balancer`](../skills/token-balancer/SKILL.md).
 
+## Operating contract
+
+Every published skill follows the [HStack execution contract](skill-contract.md). V5 roles and model tiers define responsibilities, **not** proof of active Orca sessions, connected tools, or available models. See the [complete catalog audit](skill-audit-2026-11-22.md) for the current 60 routes and the scope of static versus runtime verification.
+
 ## Evolution
 
 The diagram below tells the story at two scales: the scope grows from one project to many repos, and the tools and workflows grow with it. V5 then splits routine work across a broad free-model base while reserving stronger paid models for the hardest decisions. The history table records the tool chains and project scope; the skills progression is a conceptual summary of how repeatable work became reusable, routed procedures, not a claim about exact skill counts in each historical version.

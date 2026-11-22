@@ -5,6 +5,8 @@ description: "Use when the user types /reconcile-branches, or before merging sev
 
 # Reconcile branches
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Get every branch and worktree to a known state, then land the ones that are ready in an order that works. This is the engine behind `cleanup-orca` and `cleanup-worktrees-branches`.
 
 ## HStack V5 role

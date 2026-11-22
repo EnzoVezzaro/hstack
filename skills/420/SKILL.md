@@ -5,6 +5,8 @@ description: "Use when the user types /420 or says it's time for a new sesh: sta
 
 # 420: new sesh
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Music on, ChatGPT open, Oreja listening, project up, first task picked. Then get out of the way.
 
 ## HStack V5 role

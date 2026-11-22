@@ -5,6 +5,8 @@ description: "Use when a running web app or native desktop app needs a person-st
 
 # Visual test · browser or desktop
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 One pass over the real screen, on the platform the app actually runs on. Choose the mode before you start: a browser mode for websites and a desktop mode for native windows. The two modes are not interchangeable, and neither one proves anything from a source diff.
 
 ## HStack V5 role

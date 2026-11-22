@@ -5,7 +5,7 @@ description: "Use when the user asks to install dependencies, set up a project, 
 
 # Install and configure
 
-This skill covers the **W8 Instalar y configurar** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

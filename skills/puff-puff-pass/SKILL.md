@@ -5,6 +5,8 @@ description: "Use when the user types /puff-puff-pass or wants something impleme
 
 # Puff, puff, pass: build cheap, review strong
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 The V5 rule in one command: a cheap model writes the change, an expensive model only reads it.
 
 ## HStack V5 role

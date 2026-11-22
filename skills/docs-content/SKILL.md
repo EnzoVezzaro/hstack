@@ -5,7 +5,7 @@ description: "Use when the user asks to update the README, docs, product data, a
 
 # Docs, content and products
 
-This skill covers the **W7 Contenido, productos y docs** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
