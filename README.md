@@ -50,13 +50,15 @@ Restart your agent so it notices the new skills.
   </picture>
 </p>
 
-## What's new in v5.2.0
+## What's new in v6.0.0
 
-- The model pyramid now starts with you and ChatGPT on top, then gods mode (Fable, Astra), directors (Opus, GPT Sol), supervisors (Sonnet, Terra, OpenCode Go), and workers (Haiku, Luna, OpenCode Go or free models).
-- A zero-dollar pyramid for OpenCode and Freebuff only, with its limits written out.
-- The routing doc, the map, and the elevator use the same tier names.
+- H Stack is explicitly multi-repo: name `<project>` in each request, and name every repo when work spans projects.
+- `/take-one-dude` turns a request into a fast, end-to-end run, choosing focused or repeated execution when useful and proving the result with concrete probes.
+- `/token-balancer` periodically reviews Orca subscription limits and recommends a model using remaining capacity and observed performance.
+- Browser and desktop visual passes now share `/visual-test`; this replaces `/visual-test-ego-lite` and `/visual-test-computer-use`.
+- The catalog audit records proposed future consolidation separately from shipped changes.
 
-Full notes, with the Freebuff suspension and the skill list: [release v5.2.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v5.2.0).
+Full notes: [release v6.0.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v6.0.0).
 
 ## Getting started
 
