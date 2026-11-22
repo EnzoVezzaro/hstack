@@ -5,7 +5,11 @@ description: "Default entry point for HSTACK. Use at the start of any non-trivia
 
 # HSTACK
 
-The front door. Read the request, pick a skill from the table, then read only that skill and the source skills it names. If the work is mixed, split it into ordered steps and route each one.
+The front door to a **multi-repo** agent setup. Read the request, identify the exact project or projects, pick a skill from the table, then read only that skill and the source skills it names. If the work is mixed, split it into ordered steps and route each one.
+
+## Project-first routing
+
+H Stack coordinates work across many repositories. Every task that reads or changes code, configuration, docs, or releases must name its target as `<project>` (prefer the Orca project/repo name; resolve it to the exact repo and worktree before acting). Examples use `/hstack <project> <task>`. If the user has not identified a project and the current context does not make it unambiguous, ask which project before inspecting or changing files. For work spanning repositories, list every `<project>` and give each one a separate owner, scope, and acceptance check. Never let a multi-repo request silently collapse into whichever repo happens to be open.
 
 ## HStack V5 role
 
@@ -20,6 +24,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Starting the day, planning a horizon, closing the day, or hunting blockers | [a-new-day](../a-new-day/SKILL.md), [plan-horizon](../plan-horizon/SKILL.md), [wrap-day](../wrap-day/SKILL.md), [blocker-radar](../blocker-radar/SKILL.md) |
 | The work belongs to a live Orca project or needs a director briefed | [relay-room](../relay-room/SKILL.md) |
 | Several agents need tasks, or their reports need checking | [coordinate-agents](../coordinate-agents/SKILL.md) |
+| Check subscription quotas and choose a model for the next work across projects | [token-balancer](../token-balancer/SKILL.md) |
 | "Continue where you left off" | [resume-work](../resume-work/SKILL.md) |
 | Another agent should take over | [handoff](../handoff/SKILL.md) |
 | Build or change a feature | [implement-feature](../implement-feature/SKILL.md) |
@@ -77,7 +82,7 @@ Nothing fits? Ask one question before doing anything.
 
 ## Shared rules
 
-1. Find the real repository and active worktree. Read project instructions and inspect existing changes before editing anything.
+1. Resolve `<project>` to the real repository and active worktree. For multi-repo work, resolve every named project. Read project instructions and inspect existing changes before editing anything.
 2. Use Orca for Orca-owned sessions, directors, supervisors, workers, and worktrees. Never invent a live role from a document or an old session title.
 3. Preserve unrelated work. One owner per delegated task, with stated file boundaries.
 4. Keep implementation, review, and verification separate. Report only checks observed on the revision being handed back.

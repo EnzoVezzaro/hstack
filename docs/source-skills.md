@@ -5,6 +5,7 @@ H Stack workflows **compose** installed skills; they are not those skills and we
 | H Stack workflow | Installed source skill | Local source (verified) | What it contributes |
 | --- | --- | --- | --- |
 | relay-room | `activate-project-director` | `~/.codex/skills/activate-project-director/SKILL.md` | Find and brief the established director; verify receipt. |
+| token-balancer | H Stack composition | — | Read Orca quota surfaces and task outcomes, then recommend a model per named project; use horizon for an approved periodic schedule. |
 | relay-room | `orca-cli` | `~/.claude/skills/orca-cli/SKILL.md` | Worktrees, agents, terminals, sessions, Orca browser. |
 | relay-room | `orchestration` | `~/.claude/skills/orchestration/SKILL.md` | Bounded worker runs, receipts, integration status. |
 | interface-check | `impeccable` | `~/.claude/skills/impeccable/SKILL.md` | Design direction, critique, bounded visual passes. |

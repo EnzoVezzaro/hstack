@@ -232,7 +232,7 @@ export async function build({ scene, camera, sun, hemi }) {
     '✓ hstack          ✓ verify-and-fix',
     '✓ horizon-loop    ✓ puff-puff-pass',
     '✓ Done. Restart your agent.',
-    '$ /hstack fix the signup button',
+    '$ /hstack <project> fix the signup button',
     '◇ routing → verify-and-fix (T1)',
     '✓ repro · fix · rerun: green',
   ], { title: 'zsh · hstack' });

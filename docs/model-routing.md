@@ -4,6 +4,8 @@ HStack runs on one rule from V5: **expensive intelligence makes decisions, cheap
 
 Your own map lives in your `AGENTS.md` (or `CLAUDE.md`) under a `## hstack models` heading. Run [`/setup-hstack`](../skills/setup-hstack/SKILL.md) to detect your agents and write it. Without that block, skills use the defaults below.
 
+H Stack coordinates a **multi-repo** setup. Name the target `<project>` for every task, resolve it to the exact Orca repo/worktree, and keep each repo's instructions, model map, quota observations, and worktree state separate. For tasks spanning repos, list each project explicitly. Use [`/token-balancer`](../skills/token-balancer/SKILL.md) for read-only, evidence-based quota and model recommendations across a named project set.
+
 ## Tiers
 
 ![The model pyramid: you and ChatGPT on top, then gods mode, directors, supervisors, and workers at the base](../assets/animations/tier-pyramid.gif)

@@ -63,6 +63,7 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `reposell-release` | `/reposell-release` | W5 Publicar y git |
 | `proagent-equip` | `/proagent-equip` | W3 Coordinar agentes |
 | `ace-workspace` | `/ace-workspace` | W3 Coordinar agentes |
+| `token-balancer` | `/token-balancer` | Model routing and recurring quota review |
 
 ## Routing
 

@@ -31,7 +31,7 @@ const at = (sx, sy) => R.clone().multiplyScalar(sx).add(new THREE.Vector3(0, sy 
 
 const LOGO = 'assets/logos/';
 const SKILLS = {
-  1: ['hstack', '420', 'a-new-day', 'plan-horizon', 'wrap-day', 'blocker-radar', 'horizon', 'cleanup-chats', 'setup-hstack', 'skill-workbench'],
+  1: ['hstack', '420', 'a-new-day', 'plan-horizon', 'wrap-day', 'blocker-radar', 'horizon', 'cleanup-chats', 'setup-hstack', 'skill-workbench', 'token-balancer'],
   2: ['coordinate-agents', 'relay-room', 'stoner', 'handoff', 'resume-work', 'cleanup-orca', 'cleanup-worktrees-branches', 'pineapple-express', 'ace-workspace'],
   3: ['break-it-down', 'patch-patrol', 'security-backend', 'ui-design', 'release', 'publish-git', 'deploy', 'seo-audit', 'product-hunt-launch', 'proagent-equip'],
   4: ['implement-feature', 'verify-and-fix', 'fix-ci', 'puff-puff-pass', 'reconcile-branches', 'horizon-loop', 'horizon-loop-test', 'research-explain', 'check-github', 'get-stoned', 'save-point', 'setup-install', 'cleanup-refactor', 'cleanup-disk-space', 'run-local', 'let-me-watch', 'docs-content', 'humanize', 'antislop-review', 'motion-graphic', 'write-readme-opensource', 'set-analytics', 'acc-context', 'protect-repo', 'reposell-release'],
@@ -203,13 +203,13 @@ export async function build({ scene, camera, sun, hemi }) {
       r.scale.setScalar(0.5 + k * 1.1);
       r.material.opacity = (1 - k) * 0.7;
     }));
-    const quote = '/hstack fix the signup bug';
+    const quote = '/hstack <project> fix bug';
     screens.push(panel(scene, camera, s, (ctx, w, h, t) => {
       let y = header(ctx, 40, 36, 'YOU', 'The owner', 'Talks, decides, approves. Nothing ships without a yes.', s.color);
       const k = Math.min(1, t * 1.6);
       ctx.fillStyle = '#16221c'; roundRect(ctx, 40, y + 4, w - 80, 70, 16); ctx.fill();
       ctx.fillStyle = '#ffc44a'; ctx.font = '600 32px Menlo, monospace';
-      const shown = quote.slice(0, Math.floor(k * quote.length));
+      const shown = quote.slice(0, Math.ceil(k * quote.length));
       ctx.fillText(shown, 64, y + 50);
       if (Math.floor(t * 12) % 2 === 0) { const tw = ctx.measureText(shown).width; ctx.fillRect(66 + tw, y + 22, 14, 34); }
     }));

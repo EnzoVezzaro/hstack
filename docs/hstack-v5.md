@@ -6,6 +6,8 @@ HStack is the multi-agent setup described in the V5 post ("My AI Degen Stack V5"
 
 The skills in this repo are local `SKILL.md` files. Nothing here proves that a given agent or model is running right now. Check live assignments in Orca before treating the roles as the current runtime.
 
+H Stack is a **multi-repo infrastructure**: Orca coordinates distinct projects, repositories, and worktrees. Every code task names its `<project>`; multi-repo tasks list all projects and keep their context, ownership, and acceptance checks separate. Subscription limits and model recommendations are observations per provider/account, then matched to each project's next task; see [`token-balancer`](../skills/token-balancer/SKILL.md).
+
 ## Evolution
 
 | Version | Chain |
@@ -122,6 +124,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |
 | [pineapple-express](../skills/pineapple-express/SKILL.md) | `/pineapple-express` | 2 lists, 4 closes | Owner approves one batch |
 | [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
+| [token-balancer](../skills/token-balancer/SKILL.md) | `/token-balancer` | 1 reads, 2 may compare | Owner applies recommendation |
 | [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |
 | [protect-repo](../skills/protect-repo/SKILL.md) | `/protect-repo` | 4 | Owner merges the PR |
 | [reposell-release](../skills/reposell-release/SKILL.md) | `/reposell-release` | 4 with 3 | Owner approves publishing |

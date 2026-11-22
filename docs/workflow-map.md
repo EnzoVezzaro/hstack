@@ -12,6 +12,7 @@ H Stack groups the recurring work into three shelves. The map separates behavior
 
 ## Routing rules
 
+- H Stack serves work across multiple repositories. Identify the `<project>` or explicitly list all projects before routing; never assume the currently open repo is the target.
 - For a code change, start at **HSTACK (`/hstack`)**. It routes to project coordination, interface work, regression recovery, independent review, or skill authoring.
 - For a repeated task worth capturing, use **Skill Workbench**. It builds a skill from recorded evidence rather than from assumed preferences.
 - For personal daily operations, choose the smallest fit: **A New Day**, **Plan Horizon**, **Wrap Day**, or **Blocker Radar**.

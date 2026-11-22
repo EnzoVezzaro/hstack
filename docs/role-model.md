@@ -1,5 +1,7 @@
 # H Stack operating model
 
+H Stack is a multi-repo setup. Every project task names its `<project>` and resolves to an exact Orca repo/worktree. A request that spans repos names each one and keeps ownership, context, and acceptance checks distinct.
+
 Full V5 reference, with the economics, the skill-to-layer map, and the links: [hstack-v5.md](hstack-v5.md).
 
 This document records the user's V5 multi-agent setup. It describes intended responsibilities, not proof that a particular agent or model is currently available.

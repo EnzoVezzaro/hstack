@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img alt="59 skills" src="https://img.shields.io/badge/skills-59-3b5336?style=for-the-badge">
+  <img alt="60 skills" src="https://img.shields.io/badge/skills-60-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
@@ -18,7 +18,7 @@
 
 I run a small crew of AI agents for $40 a month. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
-HSTACK (read "high stack") is that setup, written down as 59 agent skills. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
+HSTACK (read "high stack") is that setup, written down as 60 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
 The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
 
@@ -60,23 +60,23 @@ Full notes, with the Freebuff suspension and the skill list: [release v5.2.0](ht
 
 ## Getting started
 
-Type `/hstack` and describe the job:
+H Stack is for **multi-repo work**. Name the target project in every request; for work across repos, name each project. `<project>` is a placeholder for the actual Orca project/repo name:
 
 ```
-/hstack The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.
+/hstack <project> The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.
 ```
 
-[`/hstack`](skills/hstack/SKILL.md) picks the skill that fits, splits big jobs into steps, and keeps the expensive models away from the boring parts. When you already know which skill you want, call it by name. Run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once, so it knows which agents and models you actually have.
+[`/hstack`](skills/hstack/SKILL.md) resolves the named repo/worktree, picks the skill that fits, splits big jobs into steps, and keeps the expensive models away from the boring parts. A cross-repo request names each `<project>` separately. When you already know which skill you want, call it by name and include the project. Run [`/setup-hstack`](skills/setup-hstack/SKILL.md) once per project, so it knows which agents and models you actually have.
 
 <details>
 <summary>How do skills get picked up?</summary>
 
-Your agent doesn't read 59 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
+Your agent doesn't read 60 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
 
 - You call it by name, like `/fix-ci`.
 - The agent recognizes the job. Say "CI is red again" and it loads the skill whose description matches.
 
-So installing all 59 costs almost nothing until you use one.
+So installing all 60 costs almost nothing until you use one.
 
 </details>
 
@@ -91,7 +91,7 @@ So installing all 59 costs almost nothing until you use one.
   </picture>
 </p>
 
-One voice goes in at the top, and a whole crew answers at the bottom:
+One voice goes in at the top, and a whole crew answers across your repositories. Orca keeps project context and worktrees distinct; each task must name its target repo:
 
 | Layer | Who | What it does | Cost |
 |---|---|---|---|
@@ -127,7 +127,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 ## The whole map
 
 <details open>
-<summary><b>Every layer, every model, and all 59 skills, top to bottom</b></summary>
+<summary><b>Every layer, every model, and all 60 skills, top to bottom</b></summary>
 
 <p align="center">
   <picture>
@@ -224,7 +224,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 
 ## Skills
 
-`/hstack` routes to every one of these. The tables are for when you already know what you want.
+`/hstack` routes to every one of these. Name the `<project>` whenever the task concerns a repository; for multi-repo work, list each project. The tables are for when you already know what you want.
 
 <p align="center">
   <picture>
@@ -255,6 +255,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 | [`/resume-work`](skills/resume-work/SKILL.md) | You typed "continue". It checks what actually got done before it believes anyone. |
 | [`/handoff`](skills/handoff/SKILL.md) | Another agent should take over. Writes a brief they can pick up cold, with no backstory required. |
 | [`/setup-hstack`](skills/setup-hstack/SKILL.md) | It's your first install. Finds your agents and models and writes your tier map to `AGENTS.md`. |
+| [`/token-balancer`](skills/token-balancer/SKILL.md) | Checks available Orca subscription limits across named projects and recommends a model for the next task, with evidence. |
 
 </details>
 
@@ -381,30 +382,31 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 ### Examples
 
 ```
-bug:          /hstack The feed jumps every few seconds. Reproduce it first, then fix and verify.
-crew:         /coordinate-agents Check what the OpenCode workers did overnight and give them the next tasks.
+bug:          /hstack <project> The feed jumps every few seconds. Reproduce it first, then fix and verify.
+multi-repo:   /hstack <project-a>, <project-b> Update the shared API contract, then verify each consumer repo separately.
+crew:         /coordinate-agents <project-a>, <project-b> Check each project's workers and give them the next tasks.
 continue:     /resume-work
-handoff:      /handoff Give this branch to an OpenCode worker so they can finish the tests.
+handoff:      /handoff <project> Give this branch to an OpenCode worker so they can finish the tests.
 stoner:       /stoner Work through every open PR. Don't merge anything into main without me.
-big task:     /break-it-down Migrate the store to the new API.
-long run:     /horizon Review the reposell backlog every morning until December 15. Stay quiet if nothing changed.
-loop:         /horizon-loop Get the landing page Lighthouse score above 95.
-tests:        /horizon-loop-test Get every test green and keep it green for five runs in a row.
-browser:      /visual-test-ego-lite Walk the checkout on mobile and tell me where a person gets stuck.
-desktop:      /visual-test-computer-use Kill the old builds, install the new one, and test the settings window.
+big task:     /break-it-down <project> Migrate the store to the new API.
+long run:     /horizon <project> Review the backlog every morning until December 15. Stay quiet if nothing changed.
+loop:         /horizon-loop <project> Get the landing page Lighthouse score above 95.
+tests:        /horizon-loop-test <project> Get every test green and keep it green for five runs in a row.
+browser:      /visual-test-ego-lite <project> Walk the checkout on mobile and tell me where a person gets stuck.
+desktop:      /visual-test-computer-use <project> Kill the old builds, install the new one, and test the settings window.
 merge:        /reconcile-branches Get every open worktree that's ready into main.
 orca:         /cleanup-orca Merge what you can and close as much as possible.
 chats:        /cleanup-chats Archive the finished Codex threads and keep the open items.
-release:      /release
-deploy:       /deploy main
-analytics:    /set-analytics PostHog, EU region, session replay only after cookie consent.
-launch:       /product-hunt-launch Draft everything for Tuesday. Don't post.
-words:        /humanize the launch post.
-ideas:        /get-stoned How could onboarding work without a signup form?
-inspiration:  /haf Scroll-driven landing pages with 3D type, for a developer tool.
-review:       /puff-puff-pass Add rate limiting to the public API.
+release:      /release <project>
+deploy:       /deploy <project> main
+analytics:    /set-analytics <project> PostHog, EU region, session replay only after cookie consent.
+launch:       /product-hunt-launch <project> Draft everything for Tuesday. Don't post.
+words:        /humanize <project> the launch post.
+ideas:        /get-stoned <project> How could onboarding work without a signup form?
+inspiration:  /haf <project> Scroll-driven landing pages with 3D type, for a developer tool.
+review:       /puff-puff-pass <project> Add rate limiting to the public API.
 new sesh:     /420
-watch:        /let-me-watch The mobile app, on the Android emulator.
+watch:        /let-me-watch <project> The mobile app, on the Android emulator.
 wind down:    /pineapple-express
 ```
 
