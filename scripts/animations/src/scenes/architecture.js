@@ -35,7 +35,7 @@ const SKILLS = {
   2: ['coordinate-agents', 'relay-room', 'stoner', 'handoff', 'resume-work', 'cleanup-orca', 'cleanup-worktrees-branches', 'pineapple-express', 'ace-workspace'],
   3: ['break-it-down', 'patch-patrol', 'security-backend', 'ui-design', 'release', 'publish-git', 'deploy', 'seo-audit', 'product-hunt-launch', 'proagent-equip'],
   4: ['implement-feature', 'verify-and-fix', 'fix-ci', 'puff-puff-pass', 'reconcile-branches', 'horizon-loop', 'horizon-loop-test', 'research-explain', 'check-github', 'get-stoned', 'save-point', 'setup-install', 'cleanup-refactor', 'cleanup-disk-space', 'run-local', 'let-me-watch', 'docs-content', 'humanize', 'antislop-review', 'motion-graphic', 'write-readme-opensource', 'set-analytics', 'acc-context', 'protect-repo', 'reposell-release'],
-  5: ['visual-test-ego-lite', 'visual-test-computer-use', 'interface-check', 'horizon-loop-ego-lite', 'haf'],
+  5: ['visual-test', 'interface-check', 'horizon-loop-ego-lite', 'haf'],
 };
 
 const COLORS = { you: PAL.cream, 1: PAL.blue, 2: PAL.violet, 3: PAL.gold, 4: PAL.mint, 5: PAL.coral, out: PAL.cream };

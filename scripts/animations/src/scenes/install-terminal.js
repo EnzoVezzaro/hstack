@@ -12,7 +12,7 @@ export const exposure = 1.3;
 const SKILLS = [
   ['hstack', PAL.gold], ['verify-and-fix', PAL.mint], ['coordinate-agents', PAL.blue], ['horizon-loop', PAL.violet],
   ['puff-puff-pass', PAL.mint], ['reconcile-branches', PAL.blue], ['cleanup-orca', PAL.coral], ['humanize', PAL.cream],
-  ['release', PAL.gold], ['visual-test-ego-lite', PAL.mint], ['get-stoned', PAL.violet], ['pineapple-express', PAL.coral],
+  ['release', PAL.gold], ['visual-test', PAL.mint], ['get-stoned', PAL.violet], ['pineapple-express', PAL.coral],
 ];
 const FLY_START = 0.36;
 const FLY_END = 0.86;

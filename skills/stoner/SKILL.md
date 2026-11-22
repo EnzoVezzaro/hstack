@@ -40,7 +40,7 @@ Read an optional `## stoner` block in `AGENTS.md` (project or `~/.claude/AGENTS.
    - failing checks → `fix-ci`;
    - review comments and unfinished changes → `implement-feature` or `verify-and-fix`, reviewed with `puff-puff-pass`;
    - conflicts and merge-ready sets → `reconcile-branches`;
-   - UI changes → `visual-test-ego-lite` or `visual-test-computer-use` before they count as done.
+   - UI changes → `visual-test` with the matching platform mode before they count as done.
    A task is done only with evidence: green checks, resolved threads, a passing run. Push the fix to the PR's own branch. Escalate a task that fails twice; park it with a `handoff` brief if it fails at T2.
 6. **Merge only what is allowed.** Merge-ready PRs go into one list for the owner. Merge without asking only when `auto-merge: green-and-approved` is set and the PR is green, approved, and conflict-free. Never force-push, never merge into a protected branch against its rules.
 7. **Restart.** When the queue is empty or everything left waits on the owner, go back to step 1. If nothing changed since the last cycle, wait `idle wait` minutes first and stay quiet.

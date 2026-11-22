@@ -87,8 +87,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [save-point](../skills/save-point/SKILL.md) | `/save-point` | 4 | Layer 3 |
 | [research-explain](../skills/research-explain/SKILL.md) | `/research-explain` | 4 researches, 3 decides | Layer 3 |
 | [run-local](../skills/run-local/SKILL.md) | `/run-local` | 4 | Layer 3 |
-| [visual-test-ego-lite](../skills/visual-test-ego-lite/SKILL.md) | `/visual-test-ego-lite` | 5 Ego Lite | Layer 3 |
-| [visual-test-computer-use](../skills/visual-test-computer-use/SKILL.md) | `/visual-test-computer-use` | 5 computer use | Layer 3 |
+| [visual-test](../skills/visual-test/SKILL.md) | `/visual-test` | 5 Ego Lite or computer use | Layer 3 |
 | [interface-check](../skills/interface-check/SKILL.md) | `/interface-check` | 5 with 3 | Layer 3 |
 | [ui-design](../skills/ui-design/SKILL.md) | `/ui-design` | 3 designs, 4 implements | Layer 3 |
 | [antislop-review](../skills/antislop-review/SKILL.md) | `/antislop-review` | 4 | Layer 3 |
