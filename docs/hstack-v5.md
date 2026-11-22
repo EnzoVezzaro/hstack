@@ -45,6 +45,7 @@ Every skill starts at the cheapest tier that can do the work and moves up one ti
 | [reposell](https://github.com/EnzoVezzaro/reposell) | Signed paid releases and listings with Stripe Payment Links | `reposell-release` |
 | [ProAgents](https://github.com/EnzoVezzaro/proagents) | Professional profiles that make a cheap worker act like a specialist | `proagent-equip` |
 | [ACE](https://github.com/EnzoVezzaro/ace-proagents) | Crew workspaces: governor, supervisors, workers, budget | `ace-workspace` |
+| [Oreja](https://github.com/EnzoVezzaro/oreja) | Pauses or lowers the music while ChatGPT or another chosen app is talking | `420` |
 
 ## Economics (from the post)
 
@@ -91,15 +92,20 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [humanize](../skills/humanize/SKILL.md) | `/humanize` | 4 | Owner |
 | [write-readme-opensource](../skills/write-readme-opensource/SKILL.md) | `/write-readme-opensource` | 4 | Owner |
 | [seo-audit](../skills/seo-audit/SKILL.md) | `/seo-audit` | 3 | Owner |
+| [set-analytics](../skills/set-analytics/SKILL.md) | `/set-analytics` | 4 installs, 3 plans events | Owner provides keys and approves |
 | [product-hunt-launch](../skills/product-hunt-launch/SKILL.md) | `/product-hunt-launch` | 3 drafts | Owner approves posting |
 | [setup-install](../skills/setup-install/SKILL.md) | `/setup-install` | 4 | Layer 3 |
 | [fix-ci](../skills/fix-ci/SKILL.md) | `/fix-ci` | 4 | Layer 3 |
 | [cleanup-refactor](../skills/cleanup-refactor/SKILL.md) | `/cleanup-refactor` | 4 | Layer 3 |
 | [cleanup-worktrees-branches](../skills/cleanup-worktrees-branches/SKILL.md) | `/cleanup-worktrees-branches` | 2 | Owner confirms deletions |
+| [reconcile-branches](../skills/reconcile-branches/SKILL.md) | `/reconcile-branches` | 4 rehearses, 3 decides | Owner approves the merge into main |
+| [cleanup-orca](../skills/cleanup-orca/SKILL.md) | `/cleanup-orca` | 2 with 4 | Owner approves one batch |
+| [cleanup-chats](../skills/cleanup-chats/SKILL.md) | `/cleanup-chats` | 1 with 4 | Owner approves the archive list |
 | [cleanup-disk-space](../skills/cleanup-disk-space/SKILL.md) | `/cleanup-disk-space` | 4 measures | Owner confirms deletions |
 | [publish-git](../skills/publish-git/SKILL.md) | `/publish-git` | 3 | Owner approves push and merge |
 | [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves target and version |
 | [security-backend](../skills/security-backend/SKILL.md) | `/security-backend` | 3 | Owner |
+| [stoner](../skills/stoner/SKILL.md) | `/stoner` | 2 scans, 3 ranks, 4 works | Owner approves merges unless a standing rule allows them |
 | [break-it-down](../skills/break-it-down/SKILL.md) | `/break-it-down` | 3 | Layer 3 |
 | [horizon](../skills/horizon/SKILL.md) | `/horizon` | 1 designs, 2 or Codex runs | Owner activates the schedule |
 | [horizon-loop](../skills/horizon-loop/SKILL.md) | `/horizon-loop` | 4 | Layer 3 |
@@ -107,6 +113,8 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [horizon-loop-ego-lite](../skills/horizon-loop-ego-lite/SKILL.md) | `/horizon-loop-ego-lite` | 5 with 4 | Layer 3 |
 | [release](../skills/release/SKILL.md) | `/release` | 3 | Owner approves the tag |
 | [check-github](../skills/check-github/SKILL.md) | `/check-github` | 4 | Layer 3 |
+| [420](../skills/420/SKILL.md) | `/420` | 1 sets up, 2 opens the workspace | Owner |
+| [let-me-watch](../skills/let-me-watch/SKILL.md) | `/let-me-watch` | 4 starts, 5 shows | Owner |
 | [get-stoned](../skills/get-stoned/SKILL.md) | `/get-stoned` | 4 generates, 3 judges | Layer 3 |
 | [haf](../skills/haf/SKILL.md) | `/haf` | 5 browses, 3 picks | Layer 3 |
 | [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |

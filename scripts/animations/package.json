@@ -1,0 +1,13 @@
+{
+  "name": "hstack-animations",
+  "private": true,
+  "type": "module",
+  "description": "Renders the isometric README animations with Three.js in headless Chrome, then encodes GIFs with ffmpeg.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.65.1",
+    "three": "^0.170.0"
+  }
+}

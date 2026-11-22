@@ -37,7 +37,11 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Commit, push, merge | [publish-git](../publish-git/SKILL.md) |
 | Deploy from a given source | [deploy](../deploy/SKILL.md) |
 | Launch on Product Hunt | [product-hunt-launch](../product-hunt-launch/SKILL.md) |
+| Add analytics to the product (PostHog by default) | [set-analytics](../set-analytics/SKILL.md) |
 | Merge to main and clear worktrees and branches | [cleanup-worktrees-branches](../cleanup-worktrees-branches/SKILL.md) |
+| Get many branches and worktrees ready to merge into main, in the right order | [reconcile-branches](../reconcile-branches/SKILL.md) |
+| Clean up the Orca space: merge what you can, close as much as possible | [cleanup-orca](../cleanup-orca/SKILL.md) |
+| Clean up Codex or ChatGPT chats: carry over loose ends, archive the rest | [cleanup-chats](../cleanup-chats/SKILL.md) |
 | Free disk space | [cleanup-disk-space](../cleanup-disk-space/SKILL.md) |
 | Design or adjust UI, a landing page, or a logo | [ui-design](../ui-design/SKILL.md) |
 | Check UI, copy, or code for generic AI patterns | [antislop-review](../antislop-review/SKILL.md) |
@@ -48,6 +52,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | SEO audit | [seo-audit](../seo-audit/SKILL.md) |
 | Auth, endpoints, migrations, infra, or exposed keys | [security-backend](../security-backend/SKILL.md) |
 | A repeated task deserves its own skill | [skill-workbench](../skill-workbench/SKILL.md) |
+| Hands-off mode: check every repo's PRs, work the queue until it's empty, repeat | [stoner](../stoner/SKILL.md) |
 | Too big for one agent or one session | [break-it-down](../break-it-down/SKILL.md) |
 | Work that must keep running for days or weeks on a schedule | [horizon](../horizon/SKILL.md) |
 | Repeat until a metric or goal is reached | [horizon-loop](../horizon-loop/SKILL.md) |
@@ -55,6 +60,8 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Run browser flows until they pass N times in a row | [horizon-loop-ego-lite](../horizon-loop-ego-lite/SKILL.md) |
 | Cut a new release | [release](../release/SKILL.md) |
 | Search GitHub for repos, code, or issues | [check-github](../check-github/SKILL.md) |
+| New sesh: music on, ChatGPT open, first task lined up | [420](../420/SKILL.md) |
+| Open the running project so the user can watch it | [let-me-watch](../let-me-watch/SKILL.md) |
 | New ideas, or a strange solution to something stuck | [get-stoned](../get-stoned/SKILL.md) |
 | Unusual UI inspiration from Awwwards, Codrops, Dribbble, and similar | [haf](../haf/SKILL.md) |
 | Build it on a cheap model, then have a stronger model review it | [puff-puff-pass](../puff-puff-pass/SKILL.md) |
