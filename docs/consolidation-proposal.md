@@ -183,6 +183,8 @@ Fifteen top-level workflows. Existing files become named modes or references ins
 | `setup` | `setup-hstack`, mode `deps` (setup-install) | — |
 | `workbench` | — | `skills/skill-workbench/SKILL.md` |
 
+The `ship` workflow must name its destination platform before any outward action: GitHub, Vercel, AWS, Google Cloud, Cloudflare, npm, or the host the project documents. Modes only choose the work (ci, deploy, cleanup, release); the target and version still need the owner's confirmation.
+
 ### Counts and risk
 
 | | Before | After (proposed) |

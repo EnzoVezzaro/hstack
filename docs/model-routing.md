@@ -8,31 +8,31 @@ H Stack coordinates a **multi-repo** setup. Name the target `<project>` for ever
 
 ## Tiers
 
-![The model pyramid: you and ChatGPT on top, then gods mode, directors, supervisors, and workers at the base](../assets/animations/tier-pyramid.gif)
+![The model pyramid: you and ChatGPT on top, then high mode, directors (optionally OpenCode Go), supervisors, and workers at the base](../assets/animations/tier-pyramid.gif)
 
 | Tier | Name | Anthropic | OpenAI | Others | Use it for |
 | --- | --- | --- | --- | --- | --- |
 | You | Owner | | | | Approve, decide, own the product. Nothing ships without you |
 | ChatGPT | Main coordinator and assistant | | | | Talks to you, plans the day, routes work down |
-| **T3** | Gods mode | Fable | Astra | | Architecture, security, anything irreversible, and briefs that failed lower down |
-| **T2** | Directors | Opus | GPT Sol | | Planning, acceptance criteria, reviews, decisions |
+| **T3** | High mode | Fable | Astra | | Architecture, security, anything irreversible, and briefs that failed lower down |
+| **T2** | Directors | Opus | GPT Sol | OpenCode Go (optional) | Planning, acceptance criteria, reviews, decisions |
 | **T1** | Supervisors | Sonnet | Terra | OpenCode Go (optional) | Debugging, multi-file changes, checking the workers |
-| **T0** | Workers | Haiku | Luna | OpenCode Go, or free models | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts |
+| **T0** | Workers | Haiku | Luna | OpenCode free, other free models | Routine execution: tests, docs, cleanup, setup, data gathering, first drafts |
 
-These are the defaults. `/setup-hstack` detects which of them you actually have and writes your own map.
+OpenCode Go is a director or supervisor option, not a worker model. Keep it out of the worker row: free models do the typing there. These are the defaults. `/setup-hstack` detects which of them you actually have and writes your own map.
 
 ### Any provider fits the same shape
 
-The tiers describe jobs, not brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider works the same way: the provider's strongest model goes in gods mode, its flagship in directors, a mid-size model in supervisors, and its fast or flash model in workers. Mixing providers is fine, as long as the model that checks a change is not the one that wrote it.
+The tiers describe jobs, not brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider works the same way: the provider's strongest model goes in high mode, its flagship in directors, a mid-size model in supervisors, and its fast or flash model in workers. Mixing providers is fine, as long as the model that checks a change is not the one that wrote it.
 
 ### The zero-dollar version
 
-![The zero-dollar pyramid: only OpenCode and Freebuff, with you as gods mode](../assets/animations/tier-pyramid-free.gif)
+![The zero-dollar pyramid: only OpenCode and Freebuff, with you as high mode](../assets/animations/tier-pyramid-free.gif)
 
 | Tier | Name | Models | Notes |
 | --- | --- | --- | --- |
-| **T3** | Gods mode | You | No free model gets the decisions you can't undo |
-| **T2** | Directors | Freebuff: DeepSeek V4 Pro, Kimi K2.7 Code | Freebuff full mode only |
+| **T3** | High mode | You | No free model gets the decisions you can't undo |
+| **T2** | Directors | Freebuff: DeepSeek V4 Pro, Kimi K2.7 Code; OpenCode: strong free model | Freebuff full mode only |
 | **T1** | Supervisors | Freebuff: MiMo 2.5 Pro, MiniMax M3 | Freebuff full mode only |
 | **T0** | Workers | Freebuff: DeepSeek V4 Flash, MiMo 2.5; OpenCode free models (`big-pickle`, `space-bunny-free`) | Also in Freebuff's limited mode |
 

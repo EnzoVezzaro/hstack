@@ -1,0 +1,74 @@
+[
+  {
+    "id": "route-01",
+    "prompt": "The signup button does nothing on mobile. Reproduce it, fix it, and show me it works.",
+    "expected": "verify-and-fix",
+    "keywords": ["Something is broken"]
+  },
+  {
+    "id": "route-02",
+    "prompt": "CI is red again.",
+    "expected": "fix-ci",
+    "keywords": ["CI is red"]
+  },
+  {
+    "id": "route-03",
+    "prompt": "It's release time; pick the version and cut the release.",
+    "expected": "release",
+    "keywords": ["release"]
+  },
+  {
+    "id": "route-04",
+    "prompt": "Install PostHog in the product.",
+    "expected": "set-analytics",
+    "keywords": ["analytics", "PostHog"]
+  },
+  {
+    "id": "route-05",
+    "prompt": "Check the subscription limits and recommend a model for the next task.",
+    "expected": "token-balancer",
+    "keywords": ["subscription quotas", "model"]
+  },
+  {
+    "id": "route-06",
+    "prompt": "One agent should own this project task end to end and prove it is done.",
+    "expected": "take-one-dude",
+    "keywords": ["One agent"]
+  },
+  {
+    "id": "route-07",
+    "prompt": "Walk the checkout on mobile like a person would.",
+    "expected": "visual-test",
+    "keywords": ["website", "native desktop app"]
+  },
+  {
+    "id": "route-08",
+    "prompt": "I want to walk away while the crew works through every open PR.",
+    "expected": "stoner",
+    "keywords": ["Hands-off mode"]
+  },
+  {
+    "id": "route-09",
+    "prompt": "Same brief failed twice; a stronger model should plan it and a worker should finish it.",
+    "expected": "puff-puff-pass",
+    "keywords": ["cheap model", "stronger model"]
+  },
+  {
+    "id": "route-10",
+    "prompt": "Pick which models and agents each tier uses.",
+    "expected": "setup-hstack",
+    "keywords": ["models and agents"]
+  },
+  {
+    "id": "route-11",
+    "prompt": "A repeated task deserves its own skill.",
+    "expected": "skill-workbench",
+    "keywords": ["deserves its own skill"]
+  },
+  {
+    "id": "route-12",
+    "prompt": "Benchmark our skills and the whole stack in fresh environments.",
+    "expected": "benchmark",
+    "keywords": ["benchmark"]
+  }
+]

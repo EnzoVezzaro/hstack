@@ -225,7 +225,7 @@ export async function buildPyramid({ scene, camera, sun, hemi }, cfg) {
     scene.add(dot);
   });
 
-  // ---- the head: you, then ChatGPT as the main coordinator and assistant, above gods mode
+  // ---- the head: you, then ChatGPT as the main coordinator and assistant, above high mode
   if (cfg.head) {
     const c0 = at(PYR_X, 0);
     const hy = layerY(3) + LAYER_H + GAP * 0.5;

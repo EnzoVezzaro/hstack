@@ -1,0 +1,568 @@
+{
+  "timestamp": "2026-11-22T15:57:48+00:00",
+  "summary": {
+    "projects": 18,
+    "worktrees": 23,
+    "groups": {
+      "working": 2,
+      "interrupted": 4,
+      "unfinished": 10,
+      "complete-or-idle": 7
+    }
+  },
+  "search_index": {
+    "enabled": true,
+    "phase": "current"
+  },
+  "worktrees": [
+    {
+      "repo": "hstack",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/hstack",
+      "worktree_id": "afb2a158-d910-42fb-8b3d-d0020a6e4fcc::/Users/mac/Desktop/Github/hstack",
+      "git": {
+        "dirty": 39,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "working",
+        "working_agents": 1,
+        "candidates": [
+          {
+            "session_id": "c9fa1891-3c40-49ee-98c2-1542cbd051ca",
+            "agent": "claude",
+            "title": "Skill usage report for the last 30 days",
+            "prompt": "en los skills de orca necesitamos un \"token balancer\" que revisa periodicamente los limites de las subscripciones en orca y recominenda un model based on performance and token balance left.",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": "Voy a localizar todos los ejemplos sin proyecto en README, docs, skills y en las animaciones."
+            }
+          },
+          {
+            "session_id": "104bacf3-3511-433b-8a58-14c15112b7b2",
+            "agent": "codex",
+            "title": "Create PostHog Analytics Setup Skill",
+            "prompt": "la seccion de los workers y los comandos de los workers estan mezclados con los comandos de los directores. Y tambien los directores pueden ser opencode, o junto con freebuff en el free mode del stack",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": "El render revel\u00f3 que el GIF sal\u00eda est\u00e1tico: el callback del lienzo recibe ancho y alto antes del tiempo de animaci\u00f3n, y la escena estaba leyendo el ancho como si fuera el tiempo. Ya encontr\u00e9 la causa y la corrijo; luego comprobar\u00e9 que las im\u00e1genes s\u00ed tengan varios fotogramas distintos antes de darlo por terminado."
+            }
+          }
+        ],
+        "workspace_status": "in-progress",
+        "status": "working",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/ifm",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/Desktop/Github/ifm",
+      "git": {
+        "dirty": 30,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "interrupted",
+        "working_agents": 0,
+        "candidates": [
+          {
+            "session_id": "c99fed92-9c04-468a-93e5-523bcc63ed6d",
+            "agent": "codex",
+            "title": "IFM Multi-Model Review and Upgrade",
+            "prompt": "update the code, remove old implementations, remove legacy code at this point, make sure it all works e2e with all test passing and visually passing tests too. reconcile all and get main clean and upd",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": "I\u2019ve integrated the parallel changes into the clean `main` checkout and am reconciling the remaining migration gaps now. I\u2019m removing obsolete media transport and crypto fallback paths, then I\u2019ll run the full available Rust/SDK/WASM checks and the browser-facing visual flow; I\u2019ll report any environment limit separately from actual failures."
+            }
+          }
+        ],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "web-channel-backpressure",
+      "path": "/Users/mac/orca/workspaces/ifm/web-channel-backpressure",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/orca/workspaces/ifm/web-channel-backpressure",
+      "git": {
+        "dirty": 12,
+        "branch": "EnzoVezzaro/web-channel-backpressure",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "active",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "signaling-peer-auth",
+      "path": "/Users/mac/orca/workspaces/ifm/signaling-peer-auth",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/orca/workspaces/ifm/signaling-peer-auth",
+      "git": {
+        "dirty": 3,
+        "branch": "EnzoVezzaro/signaling-peer-auth",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "interrupted",
+        "working_agents": 0,
+        "candidates": [
+          {
+            "session_id": "71118b30-d4dc-418d-8fad-cb805e1013f8",
+            "agent": "codex",
+            "title": "Implement signed signaling registration proof",
+            "prompt": "You are working inside Orca, a multi-agent IDE. Your task ID is: task_f412f2065fcf === TASK === Implement the first-claim signaling peer ownership proof in /Users/mac/orca/workspaces/ifm/signaling-pee",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": null
+            }
+          }
+        ],
+        "workspace_status": "in-progress",
+        "status": "active",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "autoarb",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/autoarb",
+      "worktree_id": "b1926fde-2a63-4a86-8b61-a0e143068776::/Users/mac/Desktop/Github/autoarb",
+      "git": {
+        "dirty": 20,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "active",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ai-auth",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/ai-auth",
+      "worktree_id": "2c892e85-558e-4b4b-a801-3a4af212deb3::/Users/mac/Desktop/Github/ai-auth",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ai-explainer-skill",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/ai-explainer-skill",
+      "worktree_id": "eb8ba8f3-d22d-4602-8798-812d804cfb18::/Users/mac/Desktop/Github/ai-explainer-skill",
+      "git": {
+        "dirty": 27,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ai-garage",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/ai-garage",
+      "worktree_id": "15860d88-759e-4a0d-aeac-4620b4c4dc99::/Users/mac/Desktop/Github/ai-garage",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "alive",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/alive",
+      "worktree_id": "276b8e75-43a5-4bfc-8239-e40587da679c::/Users/mac/Desktop/Github/alive",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "awesome-homebrew-games",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/awesome-homebrew-games",
+      "worktree_id": "2ae5848b-cf43-4112-9ab0-338f890f565f::/Users/mac/Desktop/Github/awesome-homebrew-games",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "entropic-time-theory",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/entropic-time-theory",
+      "worktree_id": "a1bca6f0-a73b-4e97-82b3-aeb927481b9b::/Users/mac/Desktop/Github/entropic-time-theory",
+      "git": {
+        "dirty": 1,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "working",
+        "working_agents": 1,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "working",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "faceless-channel-buildai",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/faceless-channel-buildai",
+      "worktree_id": "14f665c1-afcb-40a9-9e79-87c43049926d::/Users/mac/Desktop/Github/faceless-channel-buildai",
+      "git": {
+        "dirty": 131,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "interrupted",
+        "working_agents": 0,
+        "candidates": [
+          {
+            "session_id": "a4945480-6dd0-4e13-b346-c6b194ac9721",
+            "agent": "claude",
+            "title": "Explainer video: how AI will change coding",
+            "prompt": "ahora crea un nuevo video para ver como sale",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": "Voy con un video nuevo en el estilo vox, usando el set original de Codex. El tema: **\"Vice City vuelve: tres veces en 40 a\u00f1os\"**, de GTA Vice City (2002) a Vice City Stories (2006) y GTA 6 (2026), m\u00e1s la inspiraci\u00f3n en el Miami Beach Art Deco real. Primero verifico los datos."
+            }
+          },
+          {
+            "session_id": "5f84f22a-bdea-4b5b-87c6-b4b544de6380",
+            "agent": "codex",
+            "title": "Publish GTA 6 Explainer Videos",
+            "prompt": "> Publication scope: six unpublished videos currently pass QC and have owner approved disclosure; ten others are already scheduled. One has a QC warning, two lack disclosure classification, and the ne",
+            "outcome": "failure",
+            "interrupted": false,
+            "read": {
+              "state": null,
+              "last_message": "The first upload, the vertical NOVA y CERO video, is public and verified. YouTube rejected the next upload because its package description is invalid, so the batch stopped before creating that video; the LIVE flag was restored. I\u2019m checking description lengths and will shorten only the affected packages before resuming without duplicating the first upload."
+            }
+          }
+        ],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "formo",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/formo",
+      "worktree_id": "2105bed9-9f07-4993-a710-9ca68794abf4::/Users/mac/Desktop/Github/formo",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "completed",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ohana",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/ohana",
+      "worktree_id": "b2bfe085-7d0c-45f0-87f5-d8889406d7ff::/Users/mac/Desktop/Github/ohana",
+      "git": {
+        "dirty": 14,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "interrupted",
+        "working_agents": 0,
+        "candidates": [
+          {
+            "session_id": "3d9187e6-2151-434a-8ebd-1604a50e4d14",
+            "agent": "opencode2",
+            "title": "Director",
+            "prompt": "install the latest version on this computer",
+            "outcome": "cancellation",
+            "interrupted": true,
+            "read": {
+              "state": null,
+              "last_message": "Sigo activo como director interino de OHANA para esta tarea. Auditor\u00eda completada en la capa que este entorno permite (lectura, b\u00fasqueda y edici\u00f3n). Estado honesto: **no hay ejecuci\u00f3n ni evidencia visual**, por los bloqueos al final.\n\n## Hallazgos priorizados (con evidencia)\n\n| # | Severidad | Hallazgo | Evidencia |\n|---|---|---|---|\n| 1 | **Alta** | El spec MCP contradice el c\u00f3digo e incumple el invariado 12 (docs e implementaci\u00f3n deben coincidir). Dec\u00eda \"MCP no existe\" y 6 herramientas; el MVP existe y expone 8 (`mcp/components`, `mcp/component_action` son nuevas). | `docs/specifications/mcp-control-plane.md:5,28,122,136` vs `crates/ohana-node/src/mcp.rs:1,25-32`, `lib.rs:1091,1552`; ADR-015. Referencias de l\u00ednea tambi\u00e9n desplazadas (`ControlRequest` est\u00e1 en `lib.rs:1222`, no 961). |\n| 2 | **Alta** | Brecha end-to-end conocida: tipos de dominio declarados sin cablear en rutas de producci\u00f3n. `Federation`, `FederationMembership`, `RemoteConnection`, `AuditRecord`: cero uso fuera de sus archivos/tests; `CallerIdentity` y `Policy`: solo en `inference/mod.rs`, no en MCP ni remoto. | `grep` de 38 coincidencias en 6 archivos; `ARCHITECTURE.md:155` ya lo registra como pendiente. Federaci\u00f3n/remote no pueden funcionar de extremo a extremo hoy. |\n| 3 | Media | `REQ-MCP-001` (\"exactamente seis herramientas\") qued\u00f3 normativamente desactualizado; requiere aprobaci\u00f3n del operador para cambiarlo. | `mcp.rs:25-32` vs spec `:136`. |\n| 4 | Media | Accesibilidad: el selector de agente del panel de contexto no anuncia qu\u00e9 agente est\u00e1 seleccionado; el resto del app usa `aria-pressed` para el mismo patr\u00f3n. | `RuntimeContextPanels.vue:44` vs `AgentsView.vue:82`, `ResourcesView.vue:40`, `SpaceViewSwitch.vue:42`. |\n| 5 | Baja | Contraste l\u00edmite en indicadores no textuales: `--state-stopped` #8a8d83 sobre shell #f1f0e9 = **2.96:1** (WCAG 1.4.11 pide 3:1); `--state-unknown` #85877e sobre chalk = 3.61:1. Se usan como puntos de estado, no texto. | `style.css:9-10,267`; c\u00e1lculo WCAG ejecutado. Otros 6 pares medidos pasan (p. ej. foco 4.74:1, blanco/forest 8.01:1). |\n| 6 | Baja | `Store::get`/`recent` convierten timestamps corruptos a 0 con `unwrap_or_default()`, silenciando corrupci\u00f3n en el historial de ejecuciones. | `lib.rs:478-479,511-512`. No hay framework de migraci\u00f3n (`m1-runtime.md:100`). |\n\nNo encontr\u00e9 `panic!` alcanzable en producci\u00f3n; los `unwrap()` est\u00e1n en tests y los `let _ =` de `lib.rs:919-1018` son best-effort de kill/wait documentados.\n\n## Correcciones aplicadas (verificadas en disco)\n\n1. `docs/specifications/mcp-control-plane.md`: estado, non-goal, \u00a78.1, \u00a710 y \u00a712 actualizados con evidencia `Verified 2026-11-20`; se conserva el finding original como historia y se marca el delta 6\u21928 herramientas como pendiente de aprobaci\u00f3n.\n2. `apps/ohana-desktop/src/components/RuntimeContextPanels.vue:44`: a\u00f1adido `:aria-pressed` al bot\u00f3n de selecci\u00f3n, igualando el patr\u00f3n del resto del app.\n\nSin push, merge ni deploy. Cambios existentes conservados.\n\n## Checks y resultados\n\n- **S\u00ed ejecutados**: b\u00fasquedas de cableado de tipos, patrones de error, a11y y foco; lectura de c\u00f3digo y docs; c\u00e1lculo WCAG de 8 pares de tokens; relectura de los 2 archivos editados para confirmar los cambios.\n- **No ejecutados** (sin herramienta de shell en esta sesi\u00f3n): `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test --workspace`, `cargo run -p ohana-node -- version|help`, el ejemplo E2E con provider echo (`docs/operations/m1-runtime.md:11-40`), `npm run ci:check`, `acc check`, `node orchestration/selftest.mjs`, Playwright. **No afirmo que pasen.**\n- **Flujo E2E**: no llevado a funcionamiento en esta sesi\u00f3n; la verificaci\u00f3n queda en el punto de reproducci\u00f3n documentado (comandos anteriores), no en un resultado observado.\n\n## Evidencia visual\n\n**Ninguna producida.** No hay herramienta de navegador/Ego Lite ni app ejecut\u00e1ndose en esta sesi\u00f3n. Seg\u00fan `docs/operations/desktop-task-workflow.md:41-50`, la tarea desktop debe quedar marcada como **bloqueada** con esta raz\u00f3n exacta, no cerrada.\n\n## Bloqueos reales\n\n1. `/Users/mac/.codex/skills/activate-project-director/SKILL.md`: `Permission denied: external_directory`; no hay copia en el repo. No pude seguir su flujo literal.\n2. L\u00edmite de modelos gratuitos de OpenCode: 3 de 4 supervisores fallaron con `Free usage limit reached`. No los reintent\u00e9 para respetar tu restricci\u00f3n.\n3. Sin shell: imposible compilar, correr tests o iniciar el nodo/app.\n4. Sin Ego Lite/navegador: imposible el recheck nativo en escritorio/m\u00f3vil exigido por el workflow.\n\n**Punto de reanudaci\u00f3n:** con shell y Ego Lite disponibles, ejecutar los comandos de `m1-runtime.md`, verificar el panel de contexto y el spec MCP corregido, y someter a aprobaci\u00f3n el cambio normativo de REQ-MCP-001 (6\u21928 tools)."
+            }
+          }
+        ],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "oreja",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/oreja",
+      "worktree_id": "4948b760-058e-4e95-ae5a-6836931c7ff1::/Users/mac/Desktop/Github/oreja",
+      "git": {
+        "dirty": 1,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "sell-ai-companion",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/sell-ai-companion",
+      "worktree_id": "9060070f-41b2-411c-8c8f-cdb3238fc1d7::/Users/mac/Desktop/Github/sell-ai-companion",
+      "git": {
+        "dirty": 23,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "Underground Engineer NYC",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/NYC/Underground Engineer NYC",
+      "worktree_id": "78aad95a-519a-474e-ac27-44ef539bec82::/Users/mac/Desktop/NYC/Underground Engineer NYC",
+      "git": {
+        "dirty": 2,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "fix-frequency-file-limits",
+      "path": "/Users/mac/orca/workspaces/ifm/fix-frequency-file-limits",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/orca/workspaces/ifm/fix-frequency-file-limits",
+      "git": {
+        "dirty": 5,
+        "branch": "EnzoVezzaro/fix-frequency-file-limits",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "IFM packet replay guard",
+      "path": "/Users/mac/orca/workspaces/ifm/ifm-packet-replay",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/orca/workspaces/ifm/ifm-packet-replay",
+      "git": {
+        "dirty": 3,
+        "branch": "EnzoVezzaro/ifm-packet-replay",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "paw-trading-ai-automation",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/paw-trading-ai-automation",
+      "worktree_id": "530d6a81-134d-47c9-8b4f-4b50b2e90496::/Users/mac/Desktop/Github/paw-trading-ai-automation",
+      "git": {
+        "dirty": 1,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "reposell",
+      "workspace": "main",
+      "path": "/Users/mac/Desktop/Github/reposell-all/reposell",
+      "worktree_id": "c70d77b7-a8b1-4738-8784-f875edef1122::/Users/mac/Desktop/Github/reposell-all/reposell",
+      "git": {
+        "dirty": 0,
+        "branch": "main",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "ifm",
+      "workspace": "fix-frequency-crypto",
+      "path": "/Users/mac/orca/workspaces/ifm/fix-frequency-crypto",
+      "worktree_id": "1eb512e4-de32-411c-a883-1a4290b6e9fe::/Users/mac/orca/workspaces/ifm/fix-frequency-crypto",
+      "git": {
+        "dirty": 15,
+        "branch": "EnzoVezzaro/fix-frequency-crypto",
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "unfinished",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    },
+    {
+      "repo": "cannabis-investigation",
+      "workspace": "cannabis-investigation",
+      "path": "/Volumes/vezzarofamily/cannabis-investigation",
+      "worktree_id": "7a07274e-45d8-4517-a048-580e0aca67c3::/Volumes/vezzarofamily/cannabis-investigation",
+      "git": {
+        "dirty": 0,
+        "branch": null,
+        "ahead": 0,
+        "error": null
+      },
+      "assessment": {
+        "group": "complete-or-idle",
+        "working_agents": 0,
+        "candidates": [],
+        "workspace_status": "in-progress",
+        "status": "inactive",
+        "is_archived": false
+      }
+    }
+  ]
+}

@@ -10,13 +10,19 @@ H Stack is a **multi-repo infrastructure**: Orca coordinates distinct projects, 
 
 ## Evolution
 
-| Version | Chain |
-| --- | --- |
-| V1 | Herdr → OpenCode / Freebuff → Ego Lite |
-| V2 | Herdr → Codex → OpenCode / Freebuff → Ego Lite |
-| V3 | ORCA → Herdr → Codex → OpenCode / Freebuff → Ego Lite |
-| V4 | ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite |
-| **V5** | **Codex → ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite + computer use** |
+The diagram below tells the story at two scales: the scope grows from one project to many repos, and the tools and workflows grow with it. V5 then splits routine work across a broad free-model base while reserving stronger paid models for the hardest decisions. The history table records the tool chains and project scope; the skills progression is a conceptual summary of how repeatable work became reusable, routed procedures, not a claim about exact skill counts in each historical version.
+
+![Animated explainer: H Stack evolves from V1's Herdr, OpenCode, Freebuff, and Ego Lite chain into V5's multi-repo tools and routed skills. A full paid-model pyramid reaches high mode, while a smaller free-model pyramid tops out at Directors; exceptional capable agents can sometimes help reach human command, which remains the decision authority.](../assets/animations/evolution-explainer.gif)
+
+| Version | Scope | Tool chain |
+| --- | --- | --- |
+| V1 | Single project | Herdr → OpenCode / Freebuff → Ego Lite |
+| V2 | Single project | Herdr → Codex → OpenCode / Freebuff → Ego Lite |
+| V3 | Mixed single / multi-project | ORCA → Herdr → Codex → OpenCode / Freebuff → Ego Lite |
+| V4 | Multi-repo (project) focused | ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite |
+| **V5** | **Multi-repo (project) focused** | **Codex → ORCA → Codex / Claude Code → OpenCode / Freebuff → Ego Lite + computer use** |
+
+The scope moved in three steps: V1–V2 ran one project, V3 mixed one-project and multi-project work, and V4–V5 focus on multi-repo work where each project is named and kept separate. Across those versions, the system's challenges called for more than a prompt and a free worker: reusable skills capture repeatable procedures, route work across repositories, and ask for probes before calling a task done. Free models can produce very good results, but reach director-level organization only sometimes. Paid models provide a more dependable path for the most demanding planning and review; Kimi, Grok, and other unusually capable paid agents are occasional exceptions, while humans retain organization and command-center authority.
 
 ## Roles
 
@@ -24,8 +30,8 @@ H Stack is a **multi-repo infrastructure**: Orca coordinates distinct projects, 
 | --- | --- | --- | --- | --- |
 | 1 | Codex / ChatGPT Plus | Personal assistant | Voice commands, conversation, planning, project tracking, reports to the owner | Paid |
 | 2 | Orca (open source) | Orchestrator | Agent sessions, context, routing, coordination, work allocation | Free (tool) |
-| 3 | Claude Code / Codex | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid |
-| 4 | OpenCode / Claude Code / Codex (Freebuff suspended for now) | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
+| 3 | Claude Code / Codex / OpenCode Go; in free mode Freebuff full mode or a strong OpenCode model | Directors | Complex reasoning, architecture, delegation, product decisions, acceptance criteria | Paid, or free mode when available |
+| 4 | OpenCode free models / Claude Code / Codex; Freebuff free tiers (suspended for now) | Supervisors and workers | Parallel coding, debugging, testing, research, execution | Free models for routine work |
 | 5 | Ego Lite (open source) | Browser operator | Navigate websites and web apps, collect information, test real workflows | Free (tool) |
 | 5 | Computer use (Orca `orca computer`, Codex Computer Use, Claude desktop) | Computer operator | Drive native desktop apps and windows a browser tool cannot reach | Included with the tools above |
 
@@ -38,7 +44,7 @@ Principles from the post:
 
 ## Escalating and downgrading
 
-Every skill starts at the cheapest of four tiers that can do the work (workers, supervisors, directors, gods mode) and moves up one tier only on repeated failure or high stakes, then hands execution back down. The tiers, defaults, and rules are in [model-routing.md](model-routing.md); `/setup-hstack` writes your own map.
+Every skill starts at the cheapest of four tiers that can do the work (workers, supervisors, directors, high mode) and moves up one tier only on repeated failure or high stakes, then hands execution back down. The tiers, defaults, and rules are in [model-routing.md](model-routing.md); `/setup-hstack` writes your own map.
 
 ## Own products in the stack
 
@@ -57,17 +63,18 @@ Every skill starts at the cheapest of four tiers that can do the work (workers, 
 | --- | --- |
 | Codex / ChatGPT Plus | $20/month |
 | Claude Code / Claude Pro | $20/month |
+| OpenCode Go (optional for director work) | $10/month additional |
 | ORCA | Open source |
 | Ego Lite | Open source |
 | OpenCode | Open source, with free models |
 | Freebuff | Account suspended for now ([the story](../README.md#a-note-to-the-freebuff-team)) |
-| **Total** | **$40/month** (subscription and free-tier limits apply; API costs, hosting, and extra usage are not included) |
+| **Total** | **$40/month base; $50/month with optional OpenCode Go** (subscription and free-tier limits apply; API costs, hosting, and extra usage are not included) |
 
 Prices are as stated in the post. Verify current pricing before relying on them.
 
 ## Command map by role
 
-Each HStack skill runs in one layer. Routine execution goes to layer 4 on free models; decisions and acceptance go to layer 3 or to the owner.
+Each HStack skill runs in one layer. Routine execution goes to layer 4 on free models; decisions and acceptance go to layer 3 or to the owner. Read the table by layer: layer 3 rows are director commands (planning, review, acceptance), layer 4 rows are worker and supervisor commands (implementation, tests, checks). OpenCode Go can run a director or supervisor role, not a worker role; in the free stack, Freebuff's full-mode models and a strong OpenCode model can direct.
 
 | Skill | Command | Layer that runs it | Decision owner |
 | --- | --- | --- | --- |
@@ -79,6 +86,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [coordinate-agents](../skills/coordinate-agents/SKILL.md) | `/coordinate-agents` | 2 Orca | Layer 3 |
 | [relay-room](../skills/relay-room/SKILL.md) | `/relay-room` | 2 | Layer 3 |
 | [resume-work](../skills/resume-work/SKILL.md) | `/resume-work` | 2 | Layer 3 |
+| [resume-all](../skills/resume-all/SKILL.md) | `/resume-all` | 2 scans, 3 approves model and batch | Owner approves resumed agents; see [orca-resume-scan.md](orca-resume-scan.md) |
 | [handoff](../skills/handoff/SKILL.md) | `/handoff` | 2 | Layer 3 |
 | [implement-feature](../skills/implement-feature/SKILL.md) | `/implement-feature` | 4 worker | Layer 3 approves the acceptance check |
 | [take-one-dude](../skills/take-one-dude/SKILL.md) | `/take-one-dude <project>` | 1 routes; execution follows the task skill | Owner gets probe evidence |
@@ -107,7 +115,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [cleanup-chats](../skills/cleanup-chats/SKILL.md) | `/cleanup-chats` | 1 with 4 | Owner approves the archive list |
 | [cleanup-disk-space](../skills/cleanup-disk-space/SKILL.md) | `/cleanup-disk-space` | 4 measures | Owner confirms deletions |
 | [publish-git](../skills/publish-git/SKILL.md) | `/publish-git` | 3 | Owner approves push and merge |
-| [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves target and version |
+| [deploy](../skills/deploy/SKILL.md) | `/deploy <deployment-source>` | 3 | Owner approves destination platform, target, and version |
 | [security-backend](../skills/security-backend/SKILL.md) | `/security-backend` | 3 | Owner |
 | [stoner](../skills/stoner/SKILL.md) | `/stoner` | 2 scans, 3 ranks, 4 works | Owner approves merges unless a standing rule allows them |
 | [break-it-down](../skills/break-it-down/SKILL.md) | `/break-it-down` | 3 | Layer 3 |
@@ -123,6 +131,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [haf](../skills/haf/SKILL.md) | `/haf` | 5 browses, 3 picks | Layer 3 |
 | [puff-puff-pass](../skills/puff-puff-pass/SKILL.md) | `/puff-puff-pass` | 4 builds, 3 reviews | Layer 3 |
 | [pineapple-express](../skills/pineapple-express/SKILL.md) | `/pineapple-express` | 2 lists, 4 closes | Owner approves one batch |
+| [benchmark](../skills/benchmark/SKILL.md) | `/benchmark` | 4 checks, 3 interprets | Owner approves spend and publishing; see [benchmark.md](benchmark.md) |
 | [setup-hstack](../skills/setup-hstack/SKILL.md) | `/setup-hstack` | 1 | Owner approves the map |
 | [token-balancer](../skills/token-balancer/SKILL.md) | `/token-balancer` | 1 reads, 2 may compare | Owner applies recommendation |
 | [acc-context](../skills/acc-context/SKILL.md) | `/acc-context` | 4 | Layer 3 |

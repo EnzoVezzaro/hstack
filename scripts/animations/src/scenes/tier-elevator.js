@@ -21,7 +21,7 @@ const TIERS = [
   { name: 'T0', title: 'workers', color: PAL.mint },
   { name: 'T1', title: 'supervisors', color: PAL.blue },
   { name: 'T2', title: 'directors', color: PAL.gold },
-  { name: 'T3', title: 'gods mode', color: PAL.coral },
+  { name: 'T3', title: 'high mode', color: PAL.coral },
 ];
 
 const smooth = (k) => k * k * (3 - 2 * k);

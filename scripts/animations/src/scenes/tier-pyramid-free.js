@@ -33,13 +33,13 @@ export async function build(ctx) {
       },
       {
         name: 'T2', title: 'Directors', color: PAL.gold, cost: 'Free',
-        lines: [['Freebuff', 'DeepSeek V4 Pro · Kimi K2.7 Code']],
+        lines: [['Freebuff', 'DeepSeek V4 Pro · Kimi K2.7 Code'], ['OpenCode', 'strong free model']],
         note: 'full mode only', noteColor: '#ffc44a',
         use: 'Plans and reviews, as good as free gets',
-        logos: [freebuff], crew: { count: 2, kind: 'director', scale: 0.36, mode: 'inspect' },
+        logos: [freebuff, opencode], crew: { count: 2, kind: 'director', scale: 0.36, mode: 'inspect' },
       },
       {
-        name: 'T3', title: 'Gods mode', color: PAL.coral, cost: 'Priceless',
+        name: 'T3', title: 'High mode', color: PAL.coral, cost: 'Priceless',
         lines: [['You', 'no free model gets this job']],
         use: "Anything you can't undo stays with you",
         logos: [], crew: { kind: 'person' },

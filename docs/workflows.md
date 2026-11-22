@@ -64,6 +64,8 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `ace-workspace` | `/ace-workspace` | W3 Coordinar agentes |
 | `token-balancer` | `/token-balancer` | Model routing and recurring quota review |
 | `take-one-dude` | `/take-one-dude <project>` | Fast task ownership with a measured finish and concrete probes |
+| `benchmark` | `/benchmark` | Skill quality, harness loading and routing checks; see [benchmark.md](benchmark.md) |
+| `resume-all` | `/resume-all` | Portfolio-wide Orca resume with same-capability model mapping |
 
 ## Routing
 

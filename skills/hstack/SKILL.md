@@ -26,6 +26,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Several agents need tasks, or their reports need checking | [coordinate-agents](../coordinate-agents/SKILL.md) |
 | Check subscription quotas and choose a model for the next work across projects | [token-balancer](../token-balancer/SKILL.md) |
 | "Continue where you left off" | [resume-work](../resume-work/SKILL.md) |
+| Check every Orca project, resume interrupted work, and move it to an equally capable model | [resume-all](../resume-all/SKILL.md) |
 | Another agent should take over | [handoff](../handoff/SKILL.md) |
 | Build or change a feature | [implement-feature](../implement-feature/SKILL.md) |
 | One agent should take a project task from prompt to a fast, probed finish | [take-one-dude](../take-one-dude/SKILL.md) |
@@ -71,6 +72,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | Unusual UI inspiration from Awwwards, Codrops, Dribbble, and similar | [haf](../haf/SKILL.md) |
 | Build it on a cheap model, then have a stronger model review it | [puff-puff-pass](../puff-puff-pass/SKILL.md) |
 | Close everything that can be closed and wrap up for the day | [pineapple-express](../pineapple-express/SKILL.md) |
+| Benchmark the skills or the whole stack in fresh environments | [benchmark](../benchmark/SKILL.md) |
 | Pick which models and agents each tier uses | [setup-hstack](../setup-hstack/SKILL.md) |
 | The repo has ACC, or needs it | [acc-context](../acc-context/SKILL.md) |
 | Protect a repo from AI training before it goes public | [protect-repo](../protect-repo/SKILL.md) |

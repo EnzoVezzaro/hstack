@@ -14,7 +14,7 @@ Layer 3 prepares the deploy; the owner approves the target and version. See [hst
 **Model tier:** T2 prepares and verifies; never below T2 for production. See [model-routing.md](../../docs/model-routing.md).
 
 1. Read the deployment source the user gave. If none was given, ask for it.
-2. Confirm the target environment and the exact version (commit SHA or tag). Deploy only after the user confirms both, since a deploy is outward-facing.
+2. Confirm the target platform and environment, plus the exact version (commit SHA or tag). The platform is not hardcoded: it can be GitHub releases/pages, Vercel, AWS, Google Cloud, Cloudflare, npm, or a project-specific host. Use the one the project documents, and deploy only after the user confirms both target and version, since a deploy is outward-facing.
 3. Run `verify-and-fix` checks on that exact version first.
 4. Deploy with the project's documented command or pipeline. Do not improvise a new one.
 5. Verify the live result: the URL responds, the main path works, and the version shown matches the one deployed.

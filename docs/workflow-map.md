@@ -16,6 +16,8 @@ H Stack groups the recurring work into three shelves. The map separates behavior
 - For a code change, start at **HSTACK (`/hstack`)**. It routes to project coordination, interface work, regression recovery, independent review, or skill authoring.
 - **Take One Dude** is a new composition for a single agent to own one named project outcome, choose a bounded execution path, and report concrete probe evidence; it is not a historic skill invocation.
 - For a repeated task worth capturing, use **Skill Workbench**. It builds a skill from recorded evidence rather than from assumed preferences.
+- **Benchmark** is a new composition for measuring skill quality, harness loading, and routing in fresh environments; it is not a historic skill invocation and does not claim live task success on its own.
+- **Resume All** is a new composition over Orca's portfolio state; it resumes only genuinely interrupted work and is not a historic skill invocation.
 - For personal daily operations, choose the smallest fit: **A New Day**, **Plan Horizon**, **Wrap Day**, or **Blocker Radar**.
 
 ## Evidence boundary

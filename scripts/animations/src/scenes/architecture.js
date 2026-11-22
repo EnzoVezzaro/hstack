@@ -32,9 +32,9 @@ const at = (sx, sy) => R.clone().multiplyScalar(sx).add(new THREE.Vector3(0, sy 
 const LOGO = 'assets/logos/';
 const SKILLS = {
   1: ['hstack', '420', 'a-new-day', 'plan-horizon', 'wrap-day', 'blocker-radar', 'horizon', 'cleanup-chats', 'setup-hstack', 'skill-workbench', 'token-balancer', 'take-one-dude'],
-  2: ['coordinate-agents', 'relay-room', 'stoner', 'handoff', 'resume-work', 'cleanup-orca', 'cleanup-worktrees-branches', 'pineapple-express', 'ace-workspace'],
+  2: ['coordinate-agents', 'relay-room', 'stoner', 'handoff', 'resume-work', 'resume-all', 'cleanup-orca', 'cleanup-worktrees-branches', 'pineapple-express', 'ace-workspace'],
   3: ['break-it-down', 'patch-patrol', 'security-backend', 'ui-design', 'release', 'publish-git', 'deploy', 'seo-audit', 'product-hunt-launch', 'proagent-equip'],
-  4: ['implement-feature', 'verify-and-fix', 'fix-ci', 'puff-puff-pass', 'reconcile-branches', 'horizon-loop', 'horizon-loop-test', 'research-explain', 'check-github', 'get-stoned', 'save-point', 'setup-install', 'cleanup-refactor', 'cleanup-disk-space', 'run-local', 'let-me-watch', 'docs-content', 'humanize', 'antislop-review', 'motion-graphic', 'write-readme-opensource', 'set-analytics', 'acc-context', 'protect-repo', 'reposell-release'],
+  4: ['implement-feature', 'verify-and-fix', 'fix-ci', 'puff-puff-pass', 'reconcile-branches', 'horizon-loop', 'horizon-loop-test', 'research-explain', 'check-github', 'get-stoned', 'save-point', 'setup-install', 'cleanup-refactor', 'cleanup-disk-space', 'run-local', 'let-me-watch', 'docs-content', 'humanize', 'antislop-review', 'motion-graphic', 'write-readme-opensource', 'set-analytics', 'acc-context', 'protect-repo', 'reposell-release', 'benchmark'],
   5: ['visual-test', 'interface-check', 'horizon-loop-ego-lite', 'haf'],
 };
 
@@ -162,7 +162,7 @@ export async function build({ scene, camera, sun, hemi }) {
     ctx.fillStyle = '#ffc44a'; ctx.font = '800 76px Helvetica, Arial, sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('HSTACK V5 · the whole map', w / 2, 82);
     ctx.fillStyle = '#9fb3a6'; ctx.font = '500 38px Menlo, monospace';
-    ctx.fillText(`${Object.values(SKILLS).flat().length} skills · 5 layers · 4 model tiers · $40/mo`, w / 2, 142);
+    ctx.fillText(`${Object.values(SKILLS).flat().length} skills · 5 layers · 4 tiers · $40/mo · $50 with Go`, w / 2, 142);
   });
   title.draw(0);
   const titleMesh = new THREE.Mesh(new THREE.PlaneGeometry(15, 1.6), new THREE.MeshStandardMaterial({ color: 0, map: title.texture, emissive: 0xffffff, emissiveMap: title.texture, emissiveIntensity: 1.0, transparent: true }));
@@ -274,7 +274,7 @@ export async function build({ scene, camera, sun, hemi }) {
   layer(3, {
     tag: 'LAYER 3', titleText: 'Directors', sub: 'Claude Code and Codex decide, design, and accept the work',
     logos: [T.claude, T.anthropic, T.codex],
-    modelRows: [['T3', PAL.coral, 'Gods mode: Fable · Astra'], ['T2', PAL.gold, 'Directors: Opus · GPT Sol']],
+    modelRows: [['T3', PAL.coral, 'High mode: Fable · Astra'], ['T2', PAL.gold, 'Directors: Opus · GPT Sol · OpenCode Go']],
     robots: [['director', PAL.gold, -1.3, 'inspect'], ['director', PAL.gold, 1.3, 'idle']],
   });
   layer(4, {
@@ -282,7 +282,7 @@ export async function build({ scene, camera, sun, hemi }) {
     logos: [T.opencode, T.freebuff, T.nvidia, T.mimo, T.gemini],
     modelRows: [
       ['T1', PAL.blue, 'Supervisors: Sonnet · Terra · OpenCode Go'],
-      ['T0', PAL.mint, 'Workers: Haiku · Luna · OpenCode Go or free'],
+      ['T0', PAL.mint, 'Workers: Haiku · Luna · free models'],
       ['OFF', PAL.red, 'Freebuff (suspended): MiMo · DeepSeek V4 · Kimi K2.7'],
     ],
     extra: (pos) => {
@@ -322,8 +322,10 @@ export async function build({ scene, camera, sun, hemi }) {
     }));
     screens.push(panel(scene, camera, s, (ctx, w) => {
       let y = header(ctx, 40, 36, 'OUT', 'What ships', 'Merged PRs, releases, deploys, analytics, and my own tools', s.color);
+      ctx.fillStyle = '#ffc44a'; ctx.font = '700 25px Menlo, monospace';
+      ctx.fillText('DEPLOY TO: GitHub · Vercel · AWS · Google Cloud · Cloudflare', 40, y + 14);
       const items = ['GitHub PRs and releases', 'PostHog analytics', 'ACC · agent code context', 'Repo Shield · AI-training notice', 'reposell · paid releases', 'ProAgents · specialist profiles', 'ACE · crew workspaces', 'Oreja · music that steps aside'];
-      skillGridPlain(ctx, 40, y + 34, w, items, s.color);
+      skillGridPlain(ctx, 40, y + 56, w, items, s.color);
     }));
   }
 

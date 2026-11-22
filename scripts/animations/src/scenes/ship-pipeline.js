@@ -59,6 +59,24 @@ function tagLabel() {
   return s;
 }
 
+function destinationSign() {
+  const s = new CanvasScreen(560, 200, (ctx, w, h) => {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(8,16,12,0.94)';
+    roundRect(ctx, 6, 6, w - 12, h - 12, 26); ctx.fill();
+    ctx.strokeStyle = hex(PAL.coral); ctx.lineWidth = 6; ctx.stroke();
+    ctx.fillStyle = hex(PAL.gold); ctx.font = '800 36px Menlo, monospace';
+    ctx.fillText('SHIPPED TO', 28, 50);
+    ctx.fillStyle = '#e8d6b4'; ctx.font = '700 26px Menlo, monospace';
+    ctx.fillText('GitHub · Vercel · AWS · npm', 28, 100);
+    ctx.fillText('Google Cloud · Cloudflare', 28, 144);
+    ctx.fillStyle = '#9fb3a6'; ctx.font = '500 20px Helvetica, Arial, sans-serif';
+    ctx.fillText('target + version confirmed by you', 28, 180);
+  });
+  s.draw(0);
+  return s;
+}
+
 function testScreen() {
   return new CanvasScreen(320, 200, (ctx, w, h, t) => {
     ctx.fillStyle = '#07100c'; ctx.fillRect(0, 0, w, h);
@@ -237,6 +255,15 @@ export async function build({ scene, camera, sun, hemi }) {
     disc.material.opacity = 0.25 + Math.sin(t * TAU * 2) * 0.1;
     disc.rotation.z = t * TAU;
   });
+
+  // ---- the portal leads to a named destination platform, not into the void
+  const destTex = destinationSign();
+  const dest = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 1.0), new THREE.MeshStandardMaterial({ color: 0, map: destTex.texture, emissive: 0xffffff, emissiveMap: destTex.texture, emissiveIntensity: 1.15, transparent: true }));
+  dest.position.set(6.1, 4.35, BELT_Z - 0.2);
+  dest.quaternion.copy(camera.quaternion);
+  scene.add(dest);
+  const link = place(box(0.05, 1.75, 0.05, glowMat(PAL.coral, 2.2), { r: 0.02, shadow: false }), 6.1, 2.98, BELT_Z - 0.2);
+  updates.push((t) => { link.material.emissiveIntensity = 1.6 + Math.sin(t * TAU * 3) * 0.6; });
 
   // ---- factory dressing: truss with hanging lamps, pallets, shipped counter
   const trussMat = mat(PAL.metalDark, { m: 0.6, r: 0.35 });

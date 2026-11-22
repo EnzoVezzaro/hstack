@@ -7,6 +7,8 @@ H Stack workflows **compose** installed skills; they are not those skills and we
 | relay-room | `activate-project-director` | `~/.codex/skills/activate-project-director/SKILL.md` | Find and brief the established director; verify receipt. |
 | token-balancer | — | H Stack routes | Read Orca quota surfaces and task outcomes, then recommend a model per named project; use horizon for an approved periodic schedule. |
 | take-one-dude | — | `hstack`, `implement-feature`, `verify-and-fix`, `horizon-loop`, `model-routing` | A fast, one-agent execution path: choose one finish condition, apply the smallest fitting H Stack workflow, and prove completion with a concrete probe. |
+| benchmark | — | H Stack composition; upstream references [NVIDIA SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator), [SkillsBench](https://github.com/benchflow-ai/skillsbench), [Harness Benchmark](https://github.com/Heretek-AI/harness-benchmark), [Terminal-Bench](https://github.com/harbor-framework/terminal-bench) | Fresh-environment skill checks and a controlled A/B matrix; frameworks are references, not installed H Stack source skills. |
+| resume-all | — | `resume-work`, `token-balancer`, `orca-cli` | Portfolio classification of Orca worktrees, real session resume where available, and same-tier model mapping from each project's own map. |
 | relay-room | `orca-cli` | `~/.claude/skills/orca-cli/SKILL.md` | Worktrees, agents, terminals, sessions, Orca browser. |
 | relay-room | `orchestration` | `~/.claude/skills/orchestration/SKILL.md` | Bounded worker runs, receipts, integration status. |
 | interface-check | `impeccable` | `~/.claude/skills/impeccable/SKILL.md` | Design direction, critique, bounded visual passes. |

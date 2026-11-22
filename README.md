@@ -8,17 +8,17 @@
 </p>
 
 <p align="center">
-  <img alt="60 skills" src="https://img.shields.io/badge/skills-60-3b5336?style=for-the-badge">
+  <img alt="62 skills" src="https://img.shields.io/badge/skills-62-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
-  <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
+  <img alt="$50 a month with optional OpenCode Go" src="https://img.shields.io/badge/whole%20crew-%2450%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
 </p>
 
 # HSTACK
 
-I run a small crew of AI agents for $40 a month. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
+I run a small crew of AI agents for $40 a month, or $50 with optional OpenCode Go for director work. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
-HSTACK (read "high stack") is that setup, written down as 60 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
+HSTACK (read "high stack") is that setup, written down as 62 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
 The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
 
@@ -50,15 +50,18 @@ Restart your agent so it notices the new skills.
   </picture>
 </p>
 
-## What's new in v6.0.0
+## What's new in v5.3.0
 
 - H Stack is explicitly multi-repo: name `<project>` in each request, and name every repo when work spans projects.
-- `/take-one-dude` turns a request into a fast, end-to-end run, choosing focused or repeated execution when useful and proving the result with concrete probes.
+- `/take-one-dude` drives a request to completion, choosing focused or repeated execution when useful and proving the result with concrete probes.
 - `/token-balancer` periodically reviews Orca subscription limits and recommends a model using remaining capacity and observed performance.
-- Browser and desktop visual passes now share `/visual-test`; this replaces `/visual-test-ego-lite` and `/visual-test-computer-use`.
+- Browser and desktop visual passes now share `/visual-test`, replacing `/visual-test-ego-lite` and `/visual-test-computer-use`.
+- OpenCode Go is an optional Director model for an additional $10/month, bringing the crew from $40 to $50/month.
+- An animated V1-to-V5 history shows the toolchain, the shift from single-project to mixed to multi-repo scope, and why the final system combines free execution with paid decision models.
+- `/benchmark` checks skills and the stack in fresh environments; the first keyless results are in [docs/benchmark-results.md](docs/benchmark-results.md).
 - The catalog audit records proposed future consolidation separately from shipped changes.
 
-Full notes: [release v6.0.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v6.0.0).
+Release notes: [v5.3.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v5.3.0).
 
 ## Getting started
 
@@ -73,12 +76,12 @@ H Stack is for **multi-repo work**. Name the target project in every request; fo
 <details>
 <summary>How do skills get picked up?</summary>
 
-Your agent doesn't read 60 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
+Your agent doesn't read 62 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
 
 - You call it by name, like `/fix-ci`.
 - The agent recognizes the job. Say "CI is red again" and it loads the skill whose description matches.
 
-So installing all 60 costs almost nothing until you use one.
+So installing all 62 costs almost nothing until you use one.
 
 </details>
 
@@ -99,12 +102,23 @@ One voice goes in at the top, and a whole crew answers across your repositories.
 |---|---|---|---|
 | 🧠 Assistant | Codex / ChatGPT | Talks with me, plans the day, remembers what I forgot | $20/mo |
 | 🐋 Orchestrator | ORCA | Routes sessions, context, and work between agents | Free, open source |
-| 🎯 Directors | Claude Code / Codex | Decide, design, and accept or reject the work | $20/mo |
+| 🎯 Directors | Claude Code / Codex; optional OpenCode Go | Decide, design, and accept or reject the work | $20/mo + optional $10/mo |
 | ⚙️ Workers | OpenCode, ~~Freebuff~~ ([benched](#a-note-to-the-freebuff-team)), Claude Code, Codex | Write code, debug, test, and research on cheap or free models | Included or free |
 | 🌐 Browser | Ego Lite | Clicks through real websites | Free, open source |
 | 🖥️ Desktop | Computer use (Orca, Codex, Claude desktop) | Drives native apps | Included |
 
-That's $40 a month for the whole crew. Subscription and free-tier limits apply. API costs, hosting, and the model you forgot to switch off are not included. The long version, including how V1 turned into V5, lives in [docs/hstack-v5.md](docs/hstack-v5.md).
+That's $40 a month for the whole crew, or $50 with optional OpenCode Go for director work. Subscription and free-tier limits apply. API costs, hosting, and the model you forgot to switch off are not included. The long version, including how V1 turned into V5, lives in [docs/hstack-v5.md](docs/hstack-v5.md).
+
+### How V1 became V5
+
+The scope grew in steps: V1 and V2 ran a single project, V3 mixed single- and multi-project work, and V4 and V5 focus on multi-repo work where every project is named and kept separate. The tools grew with it, from a small agent chain into a routed command system. As the work got harder, repeatable procedures became reusable skills, and stronger models took on the decisions free models could not reliably handle. The human still owns the command center.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/evolution-explainer.png">
+    <img src="assets/animations/evolution-explainer.gif" alt="Animated V1-to-V5 timeline: V1-V2 are marked single project, V3 single/multi, and V4-V5 multi-repo focused. Two model pyramids follow: the paid stack reaches high mode with OpenCode Go among the directors, the free stack reaches directors with Freebuff full mode and a strong OpenCode model; Kimi, Grok, or other strong paid agents can sometimes help at the human command center, where people retain authority" width="100%">
+  </picture>
+</p>
 
 The house rules:
 
@@ -124,17 +138,17 @@ This account is suspended. To appeal, visit https://freebuff.com/account?tab=sta
 If this is a mistake, contact support@freebuff.com.
 ```
 
-Great timing. I honestly don't know what my robots did; they're mostly polite. If it's a mistake, I'd love my workers back, because the bench is cold. Until then, Freebuff's share of the work goes to OpenCode's free models and NVIDIA's free tier, and the whole crew still costs $40 a month.
+Great timing. I honestly don't know what my robots did; they're mostly polite. If it's a mistake, I'd love my workers back, because the bench is cold. Until then, Freebuff's share of the work goes to OpenCode's free models and NVIDIA's free tier, and the crew costs $40 a month, or $50 with optional OpenCode Go for director work.
 
 ## The whole map
 
 <details open>
-<summary><b>Every layer, every model, and all 60 skills, top to bottom</b></summary>
+<summary><b>Every layer, every model, and all 62 skills, top to bottom</b></summary>
 
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
-    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, and my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom: you at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code and Codex as directors and their T2 and T3 models; layer 4 with OpenCode, NVIDIA, and GLM as workers and their T0 and T1 models, with Freebuff stamped suspended and the models it provided grayed out; layer 5 with Ego Lite and computer use; and what ships at the bottom: GitHub, PostHog, my own tools, and deploy targets GitHub, Vercel, AWS, Google Cloud, and Cloudflare. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
   </picture>
 </p>
 
@@ -147,7 +161,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-pyramid.png">
-    <img src="assets/animations/tier-pyramid.gif" alt="The model pyramid, from the top: you as owner, ChatGPT as main coordinator and assistant, then four floating slabs: gods mode (Fable, Astra), napping, directors (Opus, GPT Sol), supervisors (Sonnet, Terra, OpenCode Go), and workers at the wide base (Haiku, Luna, OpenCode Go or free models). A task climbs when it fails and the plan drops back down to the workers" width="100%">
+    <img src="assets/animations/tier-pyramid.gif" alt="The model pyramid, from the top: you as owner, ChatGPT as main coordinator and assistant, then four floating slabs: high mode (Fable, Astra), napping, directors (Opus, GPT Sol, optional OpenCode Go), supervisors (Sonnet, Terra), and workers at the wide base (Haiku, Luna, free models). A task climbs when it fails and the plan drops back down to the workers" width="100%">
   </picture>
 </p>
 
@@ -157,10 +171,12 @@ Every skill starts on the cheapest model that can do the job, and says which tie
 |---|---|---|---|---|
 | You | Owner | | | Approve, decide, own the product |
 | ChatGPT | Main coordinator and assistant | | | Talks to you, plans the day, routes work down |
-| T3 | Gods mode | Fable | Astra | |
-| T2 | Directors | Opus | GPT Sol | |
+| T3 | High mode | Fable | Astra | |
+| T2 | Directors | Opus | GPT Sol | OpenCode Go (optional) |
 | T1 | Supervisors | Sonnet | Terra | OpenCode Go (optional) |
-| T0 | Workers | Haiku | Luna | OpenCode Go, or free models |
+| T0 | Workers | Haiku | Luna | OpenCode free, other free models |
+
+OpenCode Go is a director (or supervisor) model, not a worker model. In the free stack, Freebuff's full-mode models direct alongside a strong OpenCode model; workers stay on free tiers.
 
 The shape matters more than the brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider fits the same pyramid: their biggest model at the top, their fast one at the bottom.
 
@@ -169,11 +185,11 @@ A job moves up one tier when the same brief fails twice, or when it touches arch
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-elevator.png">
-    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors, T0 workers, T1 supervisors, T2 directors, and T3 gods mode, and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the directors on T2, and rides back down to T0 where it passes with a green check" width="100%">
+    <img src="assets/animations/tier-elevator.gif" alt="A terraced building with four floors, T0 workers, T1 supervisors, T2 directors, and T3 high mode, and a funicular: a task crate fails twice on T0, rides up to T1, fails again, gets a plan from the directors on T2, and rides back down to T0 where it passes with a green check" width="100%">
   </picture>
 </p>
 
-That's the rule in motion: a task fails twice with the workers, rides up, fails again, gets a plan from the directors, and comes back down to be finished by a worker. Gods mode naps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
+That's the rule in motion: a task fails twice with the workers, rides up, fails again, gets a plan from the directors, and comes back down to be finished by a worker. High mode naps through all of it, which is exactly the point. The full rules are in [docs/model-routing.md](docs/model-routing.md).
 
 <details>
 <summary><b>The zero-dollar version: OpenCode and Freebuff only</b></summary>
@@ -181,7 +197,7 @@ That's the rule in motion: a task fails twice with the workers, rides up, fails 
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/tier-pyramid-free.png">
-    <img src="assets/animations/tier-pyramid-free.gif" alt="The zero-dollar pyramid: workers on Freebuff's DeepSeek V4 Flash and MiMo 2.5 plus OpenCode free models, supervisors on MiMo 2.5 Pro and MiniMax M3, directors on DeepSeek V4 Pro and Kimi K2.7 Code, and you as gods mode, above a box listing the limits" width="100%">
+    <img src="assets/animations/tier-pyramid-free.gif" alt="The zero-dollar pyramid: workers on Freebuff's DeepSeek V4 Flash and MiMo 2.5 plus OpenCode free models, supervisors on MiMo 2.5 Pro and MiniMax M3, directors on Freebuff's DeepSeek V4 Pro and Kimi K2.7 Code plus a strong OpenCode model, and you as high mode, above a box listing the limits" width="100%">
   </picture>
 </p>
 
@@ -231,7 +247,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/ship-pipeline.png">
-    <img src="assets/animations/ship-pipeline.gif" alt="An isometric assembly line: code crates ride a conveyor through build, where a robot arm welds sparks, test, where a laser scanner turns green, review, where a director stamps a check, and release, where a v5.1.0 tag is printed, before leaving through a glowing portal" width="100%">
+    <img src="assets/animations/ship-pipeline.gif" alt="An isometric assembly line: code crates ride a conveyor through build, where a robot arm welds sparks, test, where a laser scanner turns green, review, where a director stamps a check, and release, where a v5.1.0 tag is printed, before leaving through a glowing portal toward a sign listing the destination platforms: GitHub, Vercel, AWS, Google Cloud, Cloudflare, and npm" width="100%">
   </picture>
 </p>
 
@@ -254,10 +270,12 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 |---|---|
 | [`/relay-room`](skills/relay-room/SKILL.md) | The work belongs to a live Orca project and a director needs a short, clear brief. |
 | [`/coordinate-agents`](skills/coordinate-agents/SKILL.md) | Several agents need work, and every "all done!" they send back needs checking. |
+| [`/resume-all`](skills/resume-all/SKILL.md) | Checks every Orca project, resumes only genuinely interrupted sessions on an equally capable model, and continues with a handoff and a probe; [latest scan](docs/orca-resume-scan.md). |
 | [`/resume-work`](skills/resume-work/SKILL.md) | You typed "continue". It checks what actually got done before it believes anyone. |
 | [`/handoff`](skills/handoff/SKILL.md) | Another agent should take over. Writes a brief they can pick up cold, with no backstory required. |
 | [`/setup-hstack`](skills/setup-hstack/SKILL.md) | It's your first install. Finds your agents and models and writes your tier map to `AGENTS.md`. |
 | [`/token-balancer`](skills/token-balancer/SKILL.md) | Checks available Orca subscription limits across named projects and recommends a model for the next task, with evidence. |
+| [`/benchmark`](skills/benchmark/SKILL.md) | Measures skill quality, harness loading and routing in fresh environments; [results](docs/benchmark-results.md) and the [matrix](docs/benchmark.md) stay explicit about what was not run. |
 
 </details>
 
@@ -313,6 +331,8 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 
 <details>
 <summary><b>🚀 Ship it</b></summary>
+
+Where it lands is a choice, not a built-in: GitHub releases, Vercel, AWS, Google Cloud, Cloudflare, npm, or whatever the project documents. `/deploy` confirms the target platform and the exact version before anything goes out, then checks the live result.
 
 | Skill | Use it when |
 |---|---|
