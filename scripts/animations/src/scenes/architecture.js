@@ -10,7 +10,7 @@ import {
 // Section heights (screen units) follow each panel's content, so nothing floats in empty space.
 const PANEL_W = 7.8;
 const PX = 1150 / PANEL_W; // panel canvas pixels per unit
-const content = { you: 300, 1: 461, 2: 460, 3: 590, 4: 992, 5: 372, out: 416 };
+const content = { you: 300, 1: 500, 2: 460, 3: 590, 4: 992, 5: 372, out: 416 };
 const minH = { you: 4.3, 1: 3.4, 2: 3.4, 3: 3.4, 4: 3.4, 5: 3.4, out: 3.4 };
 const ORDER = ['you', 1, 2, 3, 4, 5, 'out'];
 const TITLE_H = 2.1;
@@ -31,7 +31,7 @@ const at = (sx, sy) => R.clone().multiplyScalar(sx).add(new THREE.Vector3(0, sy 
 
 const LOGO = 'assets/logos/';
 const SKILLS = {
-  1: ['hstack', '420', 'a-new-day', 'plan-horizon', 'wrap-day', 'blocker-radar', 'horizon', 'cleanup-chats', 'setup-hstack', 'skill-workbench', 'token-balancer'],
+  1: ['hstack', '420', 'a-new-day', 'plan-horizon', 'wrap-day', 'blocker-radar', 'horizon', 'cleanup-chats', 'setup-hstack', 'skill-workbench', 'token-balancer', 'take-one-dude'],
   2: ['coordinate-agents', 'relay-room', 'stoner', 'handoff', 'resume-work', 'cleanup-orca', 'cleanup-worktrees-branches', 'pineapple-express', 'ace-workspace'],
   3: ['break-it-down', 'patch-patrol', 'security-backend', 'ui-design', 'release', 'publish-git', 'deploy', 'seo-audit', 'product-hunt-launch', 'proagent-equip'],
   4: ['implement-feature', 'verify-and-fix', 'fix-ci', 'puff-puff-pass', 'reconcile-branches', 'horizon-loop', 'horizon-loop-test', 'research-explain', 'check-github', 'get-stoned', 'save-point', 'setup-install', 'cleanup-refactor', 'cleanup-disk-space', 'run-local', 'let-me-watch', 'docs-content', 'humanize', 'antislop-review', 'motion-graphic', 'write-readme-opensource', 'set-analytics', 'acc-context', 'protect-repo', 'reposell-release'],

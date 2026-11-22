@@ -64,6 +64,7 @@ Twelve core workflows from the activity analysis of Claude Code, Codex, OpenCode
 | `proagent-equip` | `/proagent-equip` | W3 Coordinar agentes |
 | `ace-workspace` | `/ace-workspace` | W3 Coordinar agentes |
 | `token-balancer` | `/token-balancer` | Model routing and recurring quota review |
+| `take-one-dude` | `/take-one-dude <project>` | Fast task ownership with a measured finish and concrete probes |
 
 ## Routing
 

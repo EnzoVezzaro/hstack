@@ -81,6 +81,7 @@ Each HStack skill runs in one layer. Routine execution goes to layer 4 on free m
 | [resume-work](../skills/resume-work/SKILL.md) | `/resume-work` | 2 | Layer 3 |
 | [handoff](../skills/handoff/SKILL.md) | `/handoff` | 2 | Layer 3 |
 | [implement-feature](../skills/implement-feature/SKILL.md) | `/implement-feature` | 4 worker | Layer 3 approves the acceptance check |
+| [take-one-dude](../skills/take-one-dude/SKILL.md) | `/take-one-dude <project>` | 1 routes; execution follows the task skill | Owner gets probe evidence |
 | [verify-and-fix](../skills/verify-and-fix/SKILL.md) | `/verify-and-fix` | 4 supervisor | Layer 3 |
 | [patch-patrol](../skills/patch-patrol/SKILL.md) | `/patch-patrol` | 3 reviews 4's diff | Layer 3 |
 | [save-point](../skills/save-point/SKILL.md) | `/save-point` | 4 | Layer 3 |

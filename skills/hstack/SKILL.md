@@ -28,6 +28,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | "Continue where you left off" | [resume-work](../resume-work/SKILL.md) |
 | Another agent should take over | [handoff](../handoff/SKILL.md) |
 | Build or change a feature | [implement-feature](../implement-feature/SKILL.md) |
+| One agent should take a project task from prompt to a fast, probed finish | [take-one-dude](../take-one-dude/SKILL.md) |
 | Something is broken, or a change needs proving | [verify-and-fix](../verify-and-fix/SKILL.md) |
 | It used to work and now it doesn't | [save-point](../save-point/SKILL.md) |
 | A diff needs an independent review | [patch-patrol](../patch-patrol/SKILL.md) |

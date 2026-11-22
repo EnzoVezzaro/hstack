@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img alt="60 skills" src="https://img.shields.io/badge/skills-60-3b5336?style=for-the-badge">
+  <img alt="61 skills" src="https://img.shields.io/badge/skills-61-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
@@ -18,7 +18,7 @@
 
 I run a small crew of AI agents for $40 a month. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
-HSTACK (read "high stack") is that setup, written down as 60 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
+HSTACK (read "high stack") is that setup, written down as 61 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
 The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
 
@@ -71,12 +71,12 @@ H Stack is for **multi-repo work**. Name the target project in every request; fo
 <details>
 <summary>How do skills get picked up?</summary>
 
-Your agent doesn't read 60 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
+Your agent doesn't read 61 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
 
 - You call it by name, like `/fix-ci`.
 - The agent recognizes the job. Say "CI is red again" and it loads the skill whose description matches.
 
-So installing all 60 costs almost nothing until you use one.
+So installing all 61 costs almost nothing until you use one.
 
 </details>
 
@@ -127,7 +127,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 ## The whole map
 
 <details open>
-<summary><b>Every layer, every model, and all 60 skills, top to bottom</b></summary>
+<summary><b>Every layer, every model, and all 61 skills, top to bottom</b></summary>
 
 <p align="center">
   <picture>
@@ -286,6 +286,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 | Skill | Use it when |
 |---|---|
 | [`/implement-feature`](skills/implement-feature/SKILL.md) | You want a feature. Writes the acceptance check first, then the smallest change that passes it. |
+| [`/take-one-dude`](skills/take-one-dude/SKILL.md) | Give one agent a project task to own end to end: move quickly, choose a bounded loop or more effort only when needed, and prove the finish with concrete probes. |
 | [`/verify-and-fix`](skills/verify-and-fix/SKILL.md) | Something broke, or a change needs proving. Reproduces it, fixes the cause, and reruns the exact same path. |
 | [`/save-point`](skills/save-point/SKILL.md) | It worked last week. Compares with the last good version and repairs whatever changed. |
 | [`/patch-patrol`](skills/patch-patrol/SKILL.md) | A diff needs a second pair of eyes that didn't write it. |
@@ -383,6 +384,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 
 ```
 bug:          /hstack <project> The feed jumps every few seconds. Reproduce it first, then fix and verify.
+fast pass:    /take-one-dude <project> Fix the signup flow and prove it works end to end.
 multi-repo:   /hstack <project-a>, <project-b> Update the shared API contract, then verify each consumer repo separately.
 crew:         /coordinate-agents <project-a>, <project-b> Check each project's workers and give them the next tasks.
 continue:     /resume-work
