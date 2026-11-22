@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img alt="61 skills" src="https://img.shields.io/badge/skills-61-3b5336?style=for-the-badge">
+  <img alt="60 skills" src="https://img.shields.io/badge/skills-60-3b5336?style=for-the-badge">
   <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$40 a month" src="https://img.shields.io/badge/whole%20crew-%2440%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
@@ -18,7 +18,7 @@
 
 I run a small crew of AI agents for $40 a month. One of them listens to me, two of them make the decisions, and a handful of free ones do the typing. It took five versions to get here. Somewhere around the third one, I stopped babysitting terminals and started finishing my coffee while it was still warm.
 
-HSTACK (read "high stack") is that setup, written down as 61 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
+HSTACK (read "high stack") is that setup, written down as 60 agent skills for coordinating work across multiple repositories. It runs on one rule: expensive models make decisions and cheap models do the work. The paid models plan and review; the free ones write the code. Nothing gets merged, deployed, or deleted until I say yes.
 
 The skills are plain [Agent Skills](https://agentskills.io), a folder of `skills/<name>/SKILL.md` files, so they work in Claude Code, Codex, OpenCode, Cursor, and most agents that read the format.
 
@@ -71,12 +71,12 @@ H Stack is for **multi-repo work**. Name the target project in every request; fo
 <details>
 <summary>How do skills get picked up?</summary>
 
-Your agent doesn't read 61 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
+Your agent doesn't read 60 instruction files every time it starts. It reads one line per skill, a bit like skimming a menu, and loads the full instructions only when a skill is needed. That happens in one of two ways:
 
 - You call it by name, like `/fix-ci`.
 - The agent recognizes the job. Say "CI is red again" and it loads the skill whose description matches.
 
-So installing all 61 costs almost nothing until you use one.
+So installing all 60 costs almost nothing until you use one.
 
 </details>
 
@@ -127,7 +127,7 @@ Great timing. I honestly don't know what my robots did; they're mostly polite. I
 ## The whole map
 
 <details open>
-<summary><b>Every layer, every model, and all 61 skills, top to bottom</b></summary>
+<summary><b>Every layer, every model, and all 60 skills, top to bottom</b></summary>
 
 <p align="center">
   <picture>
@@ -304,8 +304,7 @@ Under the hood it's `coordinate-agents`, `fix-ci`, `puff-puff-pass`, and `reconc
 | Skill | Use it when |
 |---|---|
 | [`/run-local`](skills/run-local/SKILL.md) | You want it running on localhost and the URL back, minus the "works on my machine" speech. |
-| [`/visual-test-ego-lite`](skills/visual-test-ego-lite/SKILL.md) | A website needs clicking through the way a person would, in Ego Lite. |
-| [`/visual-test-computer-use`](skills/visual-test-computer-use/SKILL.md) | Same idea for native apps: Mac apps, Electron or Tauri builds, the ChatGPT or Claude desktop app. |
+| [`/visual-test`](skills/visual-test/SKILL.md) | A website or native app needs clicking through the way a person would: Ego Lite for browsers, computer use for Mac, Electron, Tauri, or desktop apps. |
 | [`/interface-check`](skills/interface-check/SKILL.md) | A screen needs a UI pass at desktop and phone widths, with screenshots instead of opinions. |
 
 </details>
@@ -394,8 +393,8 @@ big task:     /break-it-down <project> Migrate the store to the new API.
 long run:     /horizon <project> Review the backlog every morning until December 15. Stay quiet if nothing changed.
 loop:         /horizon-loop <project> Get the landing page Lighthouse score above 95.
 tests:        /horizon-loop-test <project> Get every test green and keep it green for five runs in a row.
-browser:      /visual-test-ego-lite <project> Walk the checkout on mobile and tell me where a person gets stuck.
-desktop:      /visual-test-computer-use <project> Kill the old builds, install the new one, and test the settings window.
+browser:      /visual-test <project> Walk the checkout on mobile in Ego Lite and tell me where a person gets stuck.
+desktop:      /visual-test <project> Use computer use: kill the old builds, install the new one, and test the settings window.
 merge:        /reconcile-branches Get every open worktree that's ready into main.
 orca:         /cleanup-orca Merge what you can and close as much as possible.
 chats:        /cleanup-chats Archive the finished Codex threads and keep the open items.
@@ -429,7 +428,7 @@ Install these together:
 | `cleanup-orca` | `reconcile-branches`, `handoff` |
 | `cleanup-chats` | `acc-context` (when a repo has `.acc/`) |
 | `pineapple-express` | `handoff`, `wrap-day`, `cleanup-orca`, `cleanup-chats` |
-| `visual-test-ego-lite`, `visual-test-computer-use` | `run-local`, `verify-and-fix` |
+| `visual-test` | `run-local`, `verify-and-fix` |
 | `horizon` | `break-it-down` |
 | `horizon-loop-test`, `horizon-loop-ego-lite` | `horizon-loop`, `verify-and-fix` |
 | `release` | `verify-and-fix`, `humanize` |

@@ -34,8 +34,7 @@ Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; 
 | A diff needs an independent review | [patch-patrol](../patch-patrol/SKILL.md) |
 | A question about a library, repo, market, or why code works this way | [research-explain](../research-explain/SKILL.md) |
 | Run the app locally and look at it | [run-local](../run-local/SKILL.md) |
-| Click through a website like a person | [visual-test-ego-lite](../visual-test-ego-lite/SKILL.md) |
-| Click through a native desktop app | [visual-test-computer-use](../visual-test-computer-use/SKILL.md) |
+| Click through a website or native desktop app like a person | [visual-test](../visual-test/SKILL.md) |
 | A screen needs an evidence-based UI pass | [interface-check](../interface-check/SKILL.md) |
 | CI is red | [fix-ci](../fix-ci/SKILL.md) |
 | Install, configure, or initialize a project | [setup-install](../setup-install/SKILL.md) |
