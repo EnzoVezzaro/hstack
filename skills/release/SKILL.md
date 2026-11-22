@@ -5,6 +5,8 @@ description: "Use when the user types /release or asks to make a new release: pi
 
 # Release
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 ## HStack V5 role
 
 Layer 3 prepares and checks the release; the owner approves the tag going public.

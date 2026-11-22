@@ -5,6 +5,8 @@ description: "Use when the user types /horizon-loop-ego-lite or wants real user 
 
 # Horizon loop in Ego Lite
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 A `horizon-loop` where the metric is real user flows passing in the browser.
 
 ## HStack V5 role

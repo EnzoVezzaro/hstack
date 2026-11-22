@@ -5,6 +5,8 @@ description: "Use when the user types /let-me-watch or wants to see the project 
 
 # Let me watch
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Put the running project in front of the user and leave it running.
 
 ## HStack V5 role

@@ -5,6 +5,8 @@ description: "Use when the user types /pineapple-express or wants to wrap everyt
 
 # Pineapple Express: close it all and go home
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 The end-of-day sweep. Finish what is nearly finished, park what is not, and leave nothing running that should not be.
 
 ## HStack V5 role

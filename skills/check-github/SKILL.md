@@ -5,6 +5,8 @@ description: "Use when the user types /check-github or asks to search GitHub: fi
 
 # Check GitHub
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 A focused search on GitHub. For a broader question that needs the web and an explanation, use `research-explain`.
 
 ## HStack V5 role

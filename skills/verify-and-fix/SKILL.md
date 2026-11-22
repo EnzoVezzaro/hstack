@@ -5,7 +5,7 @@ description: "Use when the user reports something broken or asks to verify that 
 
 # Verify and fix
 
-This skill covers the **W2 Verificar y arreglar** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

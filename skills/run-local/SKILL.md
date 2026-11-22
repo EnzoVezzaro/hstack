@@ -5,7 +5,7 @@ description: "Use when the user asks to run the app locally or open localhost to
 
 # Run and test locally
 
-This skill covers the **W6 Correr y probar en local** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

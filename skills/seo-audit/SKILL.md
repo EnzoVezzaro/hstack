@@ -5,7 +5,7 @@ description: "Use when the user asks for a technical SEO audit, meta tag or stru
 
 # SEO audit
 
-This skill extends the **W7 Contenido, productos y docs** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

@@ -5,6 +5,8 @@ description: "Use when the user types /get-stoned or asks to think outside the b
 
 # Get stoned: divergent thinking
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Structured idea generation. Go wide first, judge later, and keep the strange ideas long enough to see whether one of them is the good one.
 
 ## HStack V5 role

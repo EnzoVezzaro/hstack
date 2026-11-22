@@ -5,6 +5,8 @@ description: "Use when the user asks to set up a crew workspace with a governor,
 
 # Crew workspace with ACE
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Uses [ACE](https://github.com/EnzoVezzaro/ace-proagents), which writes a crew arrangement down as data: terminal spaces, one browser space per project, a governor over a worker budget, and one supervisor with workers per project.
 
 ## HStack V5 role

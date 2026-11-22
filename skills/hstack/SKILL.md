@@ -5,6 +5,8 @@ description: "Default entry point for HSTACK. Use at the start of any non-trivia
 
 # HSTACK
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 The front door to a **multi-repo** agent setup. Read the request, identify the exact project or projects, pick a skill from the table, then read only that skill and the source skills it names. If the work is mixed, split it into ordered steps and route each one.
 
 ## Project-first routing

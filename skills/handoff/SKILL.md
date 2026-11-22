@@ -5,7 +5,7 @@ description: "Use when the user asks to pass a task, branch, or chat to another 
 
 # Hand off to another agent
 
-This skill extends the **W3 Coordinar agentes** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

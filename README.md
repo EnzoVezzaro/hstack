@@ -60,6 +60,12 @@ Restart your agent so it notices the new skills.
 
 Full notes: [release v6.0.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v6.0.0).
 
+## The skill execution contract
+
+All 60 skills follow the same [HStack execution contract](docs/skill-contract.md): resolve the real project and worktree, use live Orca state only after confirming the runtime, keep one owner per bounded task, verify on the reported revision, and require explicit approval for outward-facing changes. Source-skill names do not mean those tools are installed. If Orca is unavailable, a director brief remains **unsent**, never a fabricated handoff.
+
+See the [full 60-skill audit (November 22, 2026)](docs/skill-audit-2026-11-22.md). The current slash commands are preserved; the [consolidation proposal](docs/consolidation-proposal.md) is not a migration.
+
 ## Getting started
 
 H Stack is for **multi-repo work**. Name the target project in every request; for work across repos, name each project. `<project>` is a placeholder for the actual Orca project/repo name:

@@ -5,7 +5,7 @@ description: "Use when the user asks to review auth, permissions, API endpoints,
 
 # Security, data and backend
 
-This skill covers the **W11 Seguridad, datos y backend** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

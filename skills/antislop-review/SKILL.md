@@ -5,7 +5,7 @@ description: "Use when the user asks to check a UI, copy, or code for generic AI
 
 # Antislop review
 
-This skill extends the **W10 Diseño UI / landing** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

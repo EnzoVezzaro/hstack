@@ -1,9 +1,11 @@
 ---
 name: save-point
-description: "Retro rewind workflow for regressions. Use when Enzo says /save-point, reports a feature that used to work, asks what changed, or considers a rollback. Synthesized from observed user behavior in project work; it is not an installed global skill and does not assume a single historic incident."
+description: "Regression diagnosis using a verified known-good baseline. Use when the owner says /save-point, reports a feature that used to work, asks what changed, or considers a rollback. Synthesized from observed user behavior in project work; it is not an installed global skill and does not assume a single historic incident."
 ---
 
-# Save point · rewind to the last good signal
+# Save point — restore verified behavior
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

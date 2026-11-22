@@ -5,9 +5,11 @@ description: "Use when the user asks /token-balancer, wants a periodic view of O
 
 # Token balancer
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Keep work moving across the user's Orca projects by matching each next task to a model that has enough remaining allowance and evidence of doing that kind of work well. This skill observes and recommends; it does not change Orca assignments, provider settings, or subscriptions.
 
-## H Stack V5 role
+## HStack V5 role
 
 Layer 1 summarizes the recommendation; Layer 2 (Orca) provides live project, agent, and usage state when available. Each recommendation is scoped to a named `<project>` and task. See [hstack-v5.md](../../docs/hstack-v5.md).
 

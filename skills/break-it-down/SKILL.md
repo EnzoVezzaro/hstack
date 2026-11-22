@@ -5,6 +5,8 @@ description: "Use when the user types /break-it-down, or a task is too big for o
 
 # Break it down
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 ## HStack V5 role
 
 Layer 3 (director) splits the work; Layer 4 workers take the units.

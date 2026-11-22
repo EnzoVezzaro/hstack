@@ -5,6 +5,8 @@ description: "Use when the user types /horizon or asks for a long-horizon task t
 
 # Horizon: long tasks on a schedule
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 For work that outlives one session: a monitor, a crew review, a weekly report, a slow migration. Different from `plan-horizon`, which only writes a plan.
 
 ## HStack V5 role

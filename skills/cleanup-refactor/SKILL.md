@@ -5,7 +5,7 @@ description: "Use when the user asks to remove unused code, files, or resources,
 
 # Clean up and refactor
 
-This skill covers the **W9 Limpieza y refactor** workflow.
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 

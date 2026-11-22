@@ -5,6 +5,8 @@ description: "Use when the user asks to sell a repository, set up reposell, cut 
 
 # Sell a repo with reposell
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Uses [reposell](https://github.com/EnzoVezzaro/reposell), the repository-to-repository listing protocol: signed releases, a `/sell` storefront, and Stripe Payment Links. No server, no database.
 
 ## HStack V5 role

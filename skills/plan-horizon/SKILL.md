@@ -1,9 +1,11 @@
 ---
 name: plan-horizon
-description: "Retro roadmap reel. Use for /plan-day, /plan-week, /plan-month, or when Enzo asks to plan a time horizon. Builds a feasible plan from current Orca work and commitments, separating confirmed work from proposals."
+description: "Time-horizon planning from verified state. Use for /plan-day, /plan-week, /plan-month, or when the owner asks to plan a time horizon. Builds a feasible plan from current Orca work and commitments, separating confirmed work from proposals."
 ---
 
-# Plan horizon · roadmap reel
+# Plan horizon — evidence-based project plan
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
@@ -18,7 +20,7 @@ Codex is the personal assistant for planning. The horizon arrives through `/plan
 - Check current Orca projects, live directors/supervisors/workers, worktrees, explicit blockers, and each project's stated next action.
 - Carry forward only active priorities. Confirm whether earlier plans were completed, changed, or remain open.
 - Use stated deadlines and available time. If capacity is unknown, give a priority order instead of inventing hours.
-- Distinguish commitments, dependencies, proposals, and decisions that need Enzo.
+- Distinguish commitments, dependencies, proposals, and decisions that need the owner.
 
 ## Shape the plan
 

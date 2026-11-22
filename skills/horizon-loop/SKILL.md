@@ -5,6 +5,8 @@ description: "Use when the user types /horizon-loop or wants a task repeated for
 
 # Horizon loop: repeat until the goal
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 ## HStack V5 role
 
 Layer 4 workers run the iterations; Layer 3 sets the goal and steps in on a stall.

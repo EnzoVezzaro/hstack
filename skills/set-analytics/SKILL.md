@@ -5,6 +5,8 @@ description: "Use when the user types /set-analytics or asks to add analytics, p
 
 # Set analytics (PostHog by default)
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Add analytics to the product so the numbers are real, private where they should be, and verified end to end.
 
 ## HStack V5 role

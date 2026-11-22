@@ -1,9 +1,11 @@
 ---
 name: skill-workbench
-description: "Retro burn bay for turning a repeated run into a portable workflow. Use when Enzo says /skill-workbench, asks to create a skill, encode a repeated task, or standardize a workflow from recent project history. Uses the installed skill-creator guide and local evidence; never invents preferences, tools, or successful outcomes."
+description: "Skill design from observed repeatable work. Use when the owner says /skill-workbench, asks to create a skill, encode a repeated task, or standardize a workflow from recent project history. Uses the installed skill-creator guide and local evidence; never invents preferences, tools, or successful outcomes."
 ---
 
-# Skill workbench · burn a new workflow
+# Skill workbench — evidence to reusable procedure
+
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
 
 ## HStack V5 role
 
@@ -11,7 +13,7 @@ Layer 1 (assistant) turns a repeated, evidenced task into a skill; Layer 3 revie
 
 **Model tier:** T2 drafts the skill; T0 checks the examples. See [model-routing.md](../../docs/model-routing.md).
 
-New H Stack composition. Source skill: `skill-creator`.
+Optional upstream references (use only when installed): `skill-creator`.
 
 ## Collect evidence first
 

@@ -5,6 +5,8 @@ description: "Use when the user asks to equip an agent with a professional profi
 
 # Equip a worker with ProAgents
 
+**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+
 Uses [ProAgents](https://github.com/EnzoVezzaro/proagents), which gives an existing coding agent a profession: expertise, methods, rules, tools, and verification practices.
 
 ## HStack V5 role
