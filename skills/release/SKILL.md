@@ -3,37 +3,18 @@ name: release
 description: "Use when the user types /release or asks to make a new release: pick the next version."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer3]
+  tags: "hstack,layer3"
 ---
 
 # Release
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
-
-## Purpose
-
-Use when the user types /release or asks to make a new release: pick the next version.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/release <project>` — name the target project and keep the work bounded.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## HStack V5 role
 
 Layer 3 prepares and checks the release; the owner approves the tag going public.
 
-**Model tier:** T0 gathers commits and drafts notes; T2 reviews the version and notes. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 gathers commits and drafts notes; T2 reviews the version and notes. See [model-routing.md](references/model-routing.md).
 
 1. Make sure you are on the release branch (usually `main`), up to date, with a clean tree.
 2. Find the last tag (`git describe --tags --abbrev=0`) and list what changed since: commits and merged PRs.

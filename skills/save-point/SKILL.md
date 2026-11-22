@@ -3,37 +3,22 @@ name: save-point
 description: "Regression diagnosis using a verified known-good baseline. Use when the owner says /save-point, reports a feature that used to work, asks what changed, or considers a rollback."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Save point — restore verified behavior
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
 
 Regression diagnosis using a verified known-good baseline.
 
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/save-point <project>` — name the target project and keep the work bounded.
-
 ## HStack V5 role
 
-Layer 4 compares with the last good version; Layer 3 decides the repair. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 4 compares with the last good version; Layer 3 decides the repair. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** T1. Escalate to T2 when the cause spans several releases. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T1. Escalate to T2 when the cause spans several releases. See [model-routing.md](references/model-routing.md).
 
 This workflow was **synthesized from observed user behavior** — repeated instructions to compare with a previously working version, restore the configured behavior, and verify the real user action. It is a new H Stack composition, not a historic installed skill. Evidence and its limits are in `docs/skill-usage.md`.
 

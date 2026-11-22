@@ -3,31 +3,14 @@ name: cleanup-chats
 description: "Use when the user types /cleanup-chats or wants to clean up Codex or ChatGPT conversations."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # Clean up chats
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /cleanup-chats or wants to clean up Codex or ChatGPT conversations.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/cleanup-chats <project>` — name the target project and keep the work bounded.
 
 "Let's clean up, merge what you can, and close as much as possible", applied to Codex threads and ChatGPT chats.
 
@@ -35,7 +18,7 @@ If a tool, session or required state is unavailable, stop that action and record
 
 Layer 1 (assistant) owns the conversations; Layer 4 does the sweep; the owner approves the archive list.
 
-**Model tier:** T0 to inventory and archive; T1 to write the carry-over briefs. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 to inventory and archive; T1 to write the carry-over briefs. See [model-routing.md](references/model-routing.md).
 
 1. **Inventory Codex threads, read-only:**
    - the thread list in `~/.codex/session_index.jsonl` (id, name, last update);

@@ -3,12 +3,12 @@ name: token-balancer
 description: "Use when the user asks /token-balancer, wants to know which subscription has allowance left in Orca, or needs a model picked for the next task by remaining quota and past performance, once or on a schedule."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1, layer2]
+  tags: "hstack,layer1,layer2"
 ---
 
 # Token balancer
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual projects, check live state, preserve unrelated work, and keep observed numbers separate from assumptions.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill. Resolve the actual projects, check live state, preserve unrelated work, and keep observed numbers separate from assumptions.
 
 ## Purpose
 
@@ -19,9 +19,9 @@ Keep work moving across the owner's Orca projects. Read how much of each subscri
 
 ## HStack V5 role
 
-Layer 2 (Orca) supplies live usage, accounts, worktrees, and agent state. Layer 1 turns it into a recommendation for the owner or the project's director to apply. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 2 (Orca) supplies live usage, accounts, worktrees, and agent state. Layer 1 turns it into a recommendation for the owner or the project's director to apply. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** T0 collects and formats the snapshot; use T1 when evidence conflicts or several projects compete for the same allowance. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 collects and formats the snapshot; use T1 when evidence conflicts or several projects compete for the same allowance. See [model-routing.md](references/model-routing.md).
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ Compare like with like. Session percent, weekly percent, requests, and tokens ar
 
 ## 3. Recommend
 
-For each `<project>`, take the next task and its tier from [model-routing.md](../../docs/model-routing.md), then choose in this order:
+For each `<project>`, take the next task and its tier from [model-routing.md](references/model-routing.md), then choose in this order:
 
 1. Allowed for that tier by the project's `## hstack models` mapping.
 2. Its provider is `ready`, or `tight` with a small task. Skip `hold` and `unknown`.

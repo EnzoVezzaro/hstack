@@ -3,37 +3,18 @@ name: humanize
 description: "Use when the user asks to make text sound human, to remove AI writing patterns, or to review prose before publishing."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Humanize text
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
-
-## Purpose
-
-Use when the user asks to make text sound human, to remove AI writing patterns, or to review prose before publishing.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/humanize <project>` — name the target project and keep the work bounded.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## HStack V5 role
 
-Layer 4 rewrites with the free model; the owner approves the final text. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 4 rewrites with the free model; the owner approves the final text. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** T0. Escalate to T2 for launch copy or anything legal. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0. Escalate to T2 for launch copy or anything legal. See [model-routing.md](references/model-routing.md).
 
 1. Load the `humanizer` skill and follow its rules. Where it is not installed, use the rules in `antislop-copywriting`.
 For marketing copy, also apply `copy-editing` from [marketingskills](https://github.com/coreyhaines31/marketingskills) if it is installed.

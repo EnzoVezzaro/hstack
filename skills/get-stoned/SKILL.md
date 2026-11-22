@@ -3,31 +3,14 @@ name: get-stoned
 description: "Use when the user types /get-stoned or asks to think outside the box: new ideas for a product, feature, or problem."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Get stoned: divergent thinking
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /get-stoned or asks to think outside the box: new ideas for a product, feature, or problem.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/get-stoned` — name the target project and keep the work bounded.
 
 Structured idea generation. Go wide first, judge later, and keep the strange ideas long enough to see whether one of them is the good one.
 
@@ -35,7 +18,7 @@ Structured idea generation. Go wide first, judge later, and keep the strange ide
 
 Layer 4 workers generate ideas in parallel; Layer 3 judges them and picks what to prototype.
 
-**Model tier:** generate at T0 and T1, with more than one model for variety; judge at T2. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** generate at T0 and T1, with more than one model for variety; judge at T2. See [model-routing.md](references/model-routing.md).
 
 1. State the problem in one sentence and the constraint that matters most (time, money, users, tech). If the user gave a solution instead of a problem, ask what problem it solves.
 2. List the assumptions everyone is making about the problem. Flip each one and ask what would follow.

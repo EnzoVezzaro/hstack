@@ -3,31 +3,14 @@ name: reposell-release
 description: "Use when the user asks to sell a repository, set up reposell, cut a paid release, run the reposell audit, or publish a listing."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Sell a repo with reposell
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user asks to sell a repository, set up reposell, cut a paid release, run the reposell audit, or publish a listing.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/reposell-release <project>` — name the target project and keep the work bounded.
 
 Uses [reposell](https://github.com/EnzoVezzaro/reposell), the repository-to-repository listing protocol: signed releases, a `/sell` storefront, and Stripe Payment Links. No server, no database.
 
@@ -35,7 +18,7 @@ Uses [reposell](https://github.com/EnzoVezzaro/reposell), the repository-to-repo
 
 Layer 4 runs the CLI and the checks at T0 or T1; Layer 3 reviews the audit at T2; the owner approves anything involving money or a public listing.
 
-**Model tier:** T0 or T1 runs the gates; T2 reviews the audit. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 or T1 runs the gates; T2 reviews the audit. See [model-routing.md](references/model-routing.md).
 
 1. Install the CLI if missing: `npm install -g @reposell/cli`.
 2. For a new repo: `reposell init` with the user present. The wizard asks for a Stripe Payment Link and secret key. The user enters secrets themselves; never paste them into chat, files, or commits.

@@ -3,31 +3,14 @@ name: hstack
 description: "Default entry point for HSTACK. Use at the start of any non-trivial engineering task, or when the user types /hstack, says 'continue', or is unsure which skill fits."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # HSTACK
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Default entry point for HSTACK.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/hstack <project>` — name the target project and keep the work bounded.
 
 The front door to a **multi-repo** agent setup. Read the request, identify the exact project or projects, pick a skill from the table, then read only that skill and the source skills it names. If the work is mixed, split it into ordered steps and route each one.
 
@@ -37,9 +20,9 @@ H Stack coordinates work across many repositories. Every task that reads or chan
 
 ## HStack V5 role
 
-Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; Layer 4 executes on free models where it can; Layer 5 (Ego Lite or computer use) touches real screens. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 1 (assistant) routes; Layer 2 (Orca) owns live sessions; Layer 3 decides; Layer 4 executes on free models where it can; Layer 5 (Ego Lite or computer use) touches real screens. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** Routes at T0; hands each step to the tier its skill names. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** Routes at T0; hands each step to the tier its skill names. See [model-routing.md](references/model-routing.md).
 
 ## Route
 
@@ -113,7 +96,7 @@ Nothing fits? Ask one question before doing anything.
 3. Preserve unrelated work. One owner per delegated task, with stated file boundaries.
 4. Keep implementation, review, and verification separate. Report only checks observed on the revision being handed back.
 5. Leave irreversible actions (merge, publish, deploy, release, purchase, deleting data) with the human.
-6. Pick the tier with [model-routing.md](../../docs/model-routing.md): start low, escalate one tier on repeated failure or high stakes, hand execution back down once the decision is made.
+6. Pick the tier with [model-routing.md](references/model-routing.md): start low, escalate one tier on repeated failure or high stakes, hand execution back down once the decision is made.
 7. If evidence or a capability is missing, say so and finish the parts that can be done honestly.
 
 ## Report

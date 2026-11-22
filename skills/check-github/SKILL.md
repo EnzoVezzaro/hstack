@@ -3,31 +3,14 @@ name: check-github
 description: "Use when the user types /check-github or asks to search GitHub: find repos, code, issues, or examples for a tool or technique."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Check GitHub
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /check-github or asks to search GitHub: find repos, code, issues, or examples for a tool or technique.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/check-github <project>` — name the target project and keep the work bounded.
 
 A focused search on GitHub. For a broader question that needs the web and an explanation, use `research-explain`.
 
@@ -35,7 +18,7 @@ A focused search on GitHub. For a broader question that needs the web and an exp
 
 Layer 4 searches; Layer 3 makes the recommendation when one is asked for.
 
-**Model tier:** T0 searches and reads; T2 only for a recommendation that drives a decision. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 searches and reads; T2 only for a recommendation that drives a decision. See [model-routing.md](references/model-routing.md).
 
 1. Turn the request into search terms and filters (language, stars, recent activity).
 2. Search with the GitHub CLI:

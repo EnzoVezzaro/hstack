@@ -3,39 +3,24 @@ name: take-one-dude
 description: "Use when the user types /take-one-dude or wants one agent to take ownership of a named project task, move quickly. Not for unrelated work."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # Take One Dude
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
 
-Use when the user types /take-one-dude or wants one agent to take ownership of a named project task, move quickly.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/take-one-dude <project>` — name the target project and keep the work bounded.
-
 One agent takes the task from prompt to evidence. Bring the speed and useful capabilities of H Stack to a single clear outcome, without skipping the probe that proves it.
+
+This is a thin ownership and evidence wrapper, not a second build method: for implementation and repair, use the canonical [implement-feature](../implement-feature/SKILL.md) and [verify-and-fix](../verify-and-fix/SKILL.md) procedures. The only additions are one named owner, a deliberately chosen finish probe, and an explicit stop condition.
 
 The skill is portable across agents. “Superpowers” means focused routing, appropriate effort, and evidence; it does not grant extra tools, permissions, or access.
 
 ## HStack V5 role
 
-Layer 1 chooses the execution path; the agent uses the relevant H Stack skills and model-routing rules. Keep work scoped to the named project or explicitly listed projects. See [hstack-v5.md](../../docs/hstack-v5.md) and [model-routing.md](../../docs/model-routing.md).
+Layer 1 chooses the execution path; the agent uses the relevant H Stack skills and model-routing rules. Keep work scoped to the named project or explicitly listed projects. See [hstack-v5.md](references/hstack-v5.md) and [model-routing.md](references/model-routing.md).
 
 **Model tier:** Start at the lowest tier that can complete and verify the task. Increase effort or escalate one tier when uncertainty, risk, scope, or a failed probe warrants it. Hand routine execution back down after the hard decision is made.
 

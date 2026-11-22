@@ -3,32 +3,14 @@ name: relay-room
 description: "Use /relay-room when work belongs to an existing Orca project, the current director needs a concise brief. Not for unrelated work."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer2]
+  tags: "hstack,layer2"
 ---
 
 # Relay room — brief the live Orca project
-## Purpose
 
-Use /relay-room when work belongs to an existing Orca project, the current director needs a concise brief.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill. Layer 1 receives the request; Layer 2 discovers and routes through Orca; Layer 3 decides and accepts; Layer 4 executes. A T0 agent can collect status, a T2 director owns substantive decisions, and workers use the cheapest capable tier.
 
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/relay-room <project>` — name the target project and keep the work bounded.
-
-**Purpose:** Route a concrete `<project>` task to its **existing** Orca director, or produce a handoff ready for that director when there is no accessible live session. This is project coordination, not a game, simulated room, new agent persona, or replacement for Orca.
-
-Follow the [HStack skill execution contract](../../docs/skill-contract.md), [HStack V5 roles](../../docs/hstack-v5.md) and [model routing](../../docs/model-routing.md). Layer 1 receives the request; Layer 2 discovers/routes through Orca; Layer 3 decides and accepts; Layer 4 executes. A T0 agent can collect status, a T2 director owns substantive decisions, and workers should use the cheapest capable tier.
+Route a concrete `<project>` task to its **existing** Orca director, or prepare a handoff ready for that director when there is no accessible live session. This is project coordination, not a game, simulated room, new agent persona, or replacement for Orca.
 
 ## Trigger and inputs
 

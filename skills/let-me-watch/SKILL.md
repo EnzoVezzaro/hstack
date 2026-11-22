@@ -3,31 +3,14 @@ name: let-me-watch
 description: "Use when the user types /let-me-watch or wants to see the project running: opens the local web app in a browser. Not for unrelated work."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # Let me watch
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /let-me-watch or wants to see the project running: opens the local web app in a browser.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/let-me-watch <project>` — name the target project and keep the work bounded.
 
 Put the running project in front of the user and leave it running.
 
@@ -35,7 +18,7 @@ Put the running project in front of the user and leave it running.
 
 Layer 4 starts what is needed; Layer 5 (Ego Lite, or the app window itself) shows it.
 
-**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0. See [model-routing.md](references/model-routing.md).
 
 1. **Find how the project runs.** Read the README, `package.json` scripts (`dev`, `start`), a Makefile, `tauri.conf.json`, the Electron entry, `app.json` (Expo), `pubspec.yaml` (Flutter), an `.xcodeproj`, or Android Gradle files. Use the documented command; don't guess one.
 2. **Reuse what is already running.** Check `orca ports --json`: workspace rows show the port and, when the dev server printed one, its `advertisedUrl`. If it's up, skip to opening it.

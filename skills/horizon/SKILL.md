@@ -1,33 +1,14 @@
 ---
 name: horizon
-description: "Use when this H Stack workflow applies. Writes a self-contained run prompt, a cadence, an end date, and a progress log, then sets up the schedule after the user confirms."
+description: "Use when work must keep running for days or weeks on a schedule: writes a self-contained run prompt, cadence, end date, and progress log, then sets up the schedule after the user confirms."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # Horizon: long tasks on a schedule
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
-
-## Purpose
-
-Use when this H Stack workflow applies.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/horizon` — name the target project and keep the work bounded.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 For work that outlives one session: a monitor, a crew review, a weekly report, a slow migration. Different from `plan-horizon`, which only writes a plan.
 
@@ -35,7 +16,7 @@ For work that outlives one session: a monitor, a crew review, a weekly report, a
 
 Layer 1 (assistant) designs the schedule with the owner; Layer 2 (Orca) or Codex runs it; each run does one bounded step on a worker.
 
-**Model tier:** runs at T0 or T1; a T2 review every few runs, or when a run reports something material. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** runs at T0 or T1; a T2 review every few runs, or when a run reports something material. See [model-routing.md](references/model-routing.md).
 
 1. Agree four things with the user: the goal, the done condition, the cadence, and the end date. No end date, no schedule.
 2. Break the goal into run-sized steps with `break-it-down` if it is not already one repeatable step.
@@ -50,7 +31,7 @@ Layer 1 (assistant) designs the schedule with the owner; Layer 2 (Orca) or Codex
    - **Codex automation** (default): `kind = "heartbeat"`, the prompt, an RFC 5545 `rrule` with `UNTIL` for the end date, and a target thread. Create it through Codex so it is bound to a thread; if you write `~/.codex/automations/<id>/automation.toml` directly, leave `status = "PAUSED"`.
    - **Claude Code**: `/schedule` for cloud runs, or `/loop` while a session stays open.
    - **Orca**: an Orca automation through `orca-cli`.
-5. Show the user the prompt, cadence, end date, and scheduler. Activate only after they confirm.
+5. Show the user the prompt, cadence, end date, and scheduler. If the request already asked you to set it up, that authorization is already supplied: activate that exact schedule without asking again. Otherwise activate only after they confirm.
 
 ## Report
 

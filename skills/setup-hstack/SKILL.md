@@ -3,39 +3,22 @@ name: setup-hstack
 description: "Use when the user types /setup-hstack, installs HStack for the first time, or asks which models or agents HStack should use per tier."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # Set up HStack models
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
 
-Use when the user types /setup-hstack, installs HStack for the first time, or asks which models or agents HStack should use per tier.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/setup-hstack` — name the target project and keep the work bounded.
-
-This skill configures the tiers in [model-routing.md](../../docs/model-routing.md).
+This skill configures the tiers in [model-routing.md](references/model-routing.md).
 
 ## HStack V5 role
 
 Layer 1 (assistant) detects and proposes; the owner approves the map. Runs at T0: it reads config files and does not need a paid model.
 
-**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0. See [model-routing.md](references/model-routing.md).
 
 1. Detect what is installed and configured. Read only; never print keys or tokens.
    - Codex: `model` and `model_reasoning_effort` in `~/.codex/config.toml`.

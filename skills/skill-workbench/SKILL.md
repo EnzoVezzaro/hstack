@@ -3,37 +3,22 @@ name: skill-workbench
 description: "Skill design from observed repeatable work. Use when the owner says /skill-workbench, asks to create a skill, encode a repeated task."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # Skill workbench — evidence to reusable procedure
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
 
 Skill design from observed repeatable work.
 
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/skill-workbench` — name the target project and keep the work bounded.
-
 ## HStack V5 role
 
-Layer 1 (assistant) turns a repeated, evidenced task into a skill; Layer 3 reviews it. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 1 (assistant) turns a repeated, evidenced task into a skill; Layer 3 reviews it. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** T2 drafts the skill; T0 checks the examples. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T2 drafts the skill; T0 checks the examples. See [model-routing.md](references/model-routing.md).
 
 Optional upstream references (use only when installed): `skill-creator`.
 

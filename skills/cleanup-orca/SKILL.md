@@ -3,31 +3,14 @@ name: cleanup-orca
 description: "Use when the user types /cleanup-orca or says to clean up the Orca space: merge what can be merged, close as much as possible."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer2]
+  tags: "hstack,layer2"
 ---
 
 # Clean up Orca
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /cleanup-orca or says to clean up the Orca space: merge what can be merged, close as much as possible.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/cleanup-orca <project>` — name the target project and keep the work bounded.
 
 "Let's clean up, merge what you can, and close as much as possible." The goal is an Orca sidebar that only shows work that is still alive.
 
@@ -35,7 +18,7 @@ If a tool, session or required state is unavailable, stop that action and record
 
 Layer 2 (Orca) is the source of truth for workspaces and agents; Layer 4 does the sweep; Layer 3 decides merges; the owner approves one batch of merges and removals.
 
-**Model tier:** T0 for the inventory and the closing work; T2 for merge decisions through `reconcile-branches`. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 for the inventory and the closing work; T2 for merge decisions through `reconcile-branches`. See [model-routing.md](references/model-routing.md).
 
 1. **Snapshot first.** Save the output of these to a dated report before changing anything:
    - `orca status --json` and `orca repo list --json`;
@@ -50,7 +33,7 @@ Layer 2 (Orca) is the source of truth for workspaces and agents; Layer 4 does th
    - **unclear:** anything else.
 3. **Capture loose ends.** For each finished agent in a workspace that will close, read its last turn with `orca agent read <id> --json`. Anything unfinished goes into a `handoff` brief.
 4. **Merge what can be merged.** Run `reconcile-branches` on the ready group. It rehearses and asks the owner before anything lands on main.
-5. **Close and remove,** after one batch approval:
+5. **Close and remove.** Present the concrete batch in the report; if the cleanup request already authorized that batch in this session, use it and do not ask again. Otherwise get one batch approval before removing anything:
    - stop terminals in workspaces that are done: `orca terminal close --worktree <selector> --all --json`;
    - remove merged or empty workspaces: `orca worktree rm --worktree id:<repoId>::<path> --json`. Use `--force` only after git confirms nothing unique would be lost;
    - delete their merged local branches with `git branch -d` (never `-D`), and remote branches only with the owner's yes;

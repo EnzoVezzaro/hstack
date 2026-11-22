@@ -3,37 +3,22 @@ name: a-new-day
 description: "Morning briefing workflow. Use when the owner says /a-new-day, asks for a morning project brief, or wants to resume the day across projects. Not for unrelated work."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer1]
+  tags: "hstack,layer1"
 ---
 
 # A new day — evidence-based morning brief
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
 
 Morning briefing workflow.
 
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/a-new-day` — name the target project and keep the work bounded.
-
 ## HStack V5 role
 
-Layer 1 (assistant) opens the day from live state; the owner decides the priorities. See [hstack-v5.md](../../docs/hstack-v5.md).
+Layer 1 (assistant) opens the day from live state; the owner decides the priorities. See [hstack-v5.md](references/hstack-v5.md).
 
-**Model tier:** T0. Escalate to T2 only for a priority conflict the owner must decide. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0. Escalate to T2 only for a priority conflict the owner must decide. See [model-routing.md](references/model-routing.md).
 
 Codex is the personal assistant in this routine. Live Orca state comes first; chat history is context, not current status.
 

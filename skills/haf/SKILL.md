@@ -3,31 +3,14 @@ name: haf
 description: "Use when the user types /haf or wants unusual UI or design inspiration from the web: Awwwards, Dribbble, Pinterest, Codrops."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer5]
+  tags: "hstack,layer5"
 ---
 
 # HAF: hunt for weird UI inspiration
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when the user types /haf or wants unusual UI or design inspiration from the web: Awwwards, Dribbble, Pinterest, Codrops.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/haf` — name the target project and keep the work bounded.
 
 Goes looking for interfaces that are stranger and better than the usual, and comes back with references you can actually use.
 
@@ -35,7 +18,7 @@ Goes looking for interfaces that are stranger and better than the usual, and com
 
 Layer 5 (Ego Lite) browses and takes screenshots; Layer 4 collects and annotates; Layer 3 turns the references into design directions.
 
-**Model tier:** T0 collects; T2 writes the directions. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0 collects; T2 writes the directions. See [model-routing.md](references/model-routing.md).
 
 1. Agree the brief: what is being designed, the mood, and anything off-limits (brand colors, accessibility needs, performance budget).
 2. Search the sources that fit. Use `ego-browser` to open pages and take screenshots; use web search to find specific pieces.

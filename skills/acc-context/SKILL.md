@@ -3,31 +3,14 @@ name: acc-context
 description: "Use when a repo has AGENTS.md plus a .acc/ folder, when the user asks to install, init, check."
 metadata:
   author: Enzo Vezzaro
-  tags: [hstack, layer4]
+  tags: "hstack,layer4"
 ---
 
 # ACC context
 
-**Execution contract:** Follow the [HStack skill execution contract](../../docs/skill-contract.md). Resolve the actual project or artifact, check available tools and live state, preserve unrelated work, and distinguish observed verification from reported claims.
+Shared rules (bundled in `references/`): [execution contract](references/skill-contract.md), [V5 roles](references/hstack-v5.md), [model routing](references/model-routing.md). Links to other H Stack skills are **optional companions**, not installed with this skill.
 
 ## Purpose
-
-Use when a repo has AGENTS.md plus a .acc/ folder, when the user asks to install, init, check.
-
-## Prerequisites
-
-Resolve the named `<project>` to the real repository and worktree, read its `AGENTS.md` and current changes, and confirm the tools this workflow needs are available before acting.
-
-## Limitations
-
-A skill is a procedure, not proof that an agent, model, subscription, Orca session or browser tool is live. Do not report a check that was not run.
-
-## Troubleshooting
-
-If a tool, session or required state is unavailable, stop that action and record the exact blocker. Validate the result on the reported revision; treat errors, failed checks and unverified reports as failures, never as passes.
-
-
-**Example:** `/acc-context <project>` — name the target project and keep the work bounded.
 
 Uses [ACC](https://github.com/EnzoVezzaro/agents-code-context), the convention that makes a repo explain itself to agents through `AGENTS.md` and `.acc/`.
 
@@ -35,7 +18,7 @@ Uses [ACC](https://github.com/EnzoVezzaro/agents-code-context), the convention t
 
 Layer 4 runs the CLI at T0; Layer 3 decides what goes into durable memory. ACC context keeps briefs small, so cheaper workers can handle the task.
 
-**Model tier:** T0. See [model-routing.md](../../docs/model-routing.md).
+**Model tier:** T0. See [model-routing.md](references/model-routing.md).
 
 1. If the repo has no ACC yet and the user wants it: `npm install -g acc-code-context`, then `acc engine --init-context` (or `acc init --scan` for a manual start). Show the user what was created before committing.
 2. Before working on an area, get its context: `acc context <path> --depth 1`. Add `--include memory` to see what earlier agents recorded.
