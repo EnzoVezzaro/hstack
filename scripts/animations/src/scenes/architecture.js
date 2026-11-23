@@ -21,10 +21,9 @@ function standee(scene, tex, pos, size = 1.0) {
 }
 
 // Crew member: a camo cube with its role glyph.
-function crewCube(scene, kind, accent, smoking) {
+function crewCube(scene, kind, accent) {
   const icon = { director: 'crown', assistant: 'headset', supervisor: 'eye', high: 'brain' }[kind] ?? 'laptop';
   const panels = [{ face: 'z', v: 0.25, icon, color: accent, size: 0.44 }];
-  if (smoking) panels.push({ face: 'x', v: 0.25, icon: 'leaf', color: 0x7fa86a, size: 0.44, glow: 0.8 });
   const g = tower({ nx: 1, ny: 1, nz: 1, cell: 0.5, seed: 21, panels });
   scene.add(g);
   return g;
@@ -227,6 +226,14 @@ export async function build({ scene, camera, sun, hemi }) {
     ] });
     person.position.copy(pos);
     scene.add(person);
+    // The weed sits on the owner's platform, beside the mascot.
+    const weed = tower({ nx: 1, ny: 1, nz: 1, cell: 0.5, seed: 91, panels: [
+      { face: 'z', v: 0.25, icon: 'leaf', color: 0x7fa86a, size: 0.44, glow: 0.8 },
+      { face: 'x', v: 0.25, icon: 'leaf', color: 0x7fa86a, size: 0.44, glow: 0.8 },
+    ] });
+    weed.position.copy(pos).add(R.clone().multiplyScalar(-0.95)).add(TOWARD.clone().multiplyScalar(0.35));
+    weed.position.y = pos.y - 0.2;
+    scene.add(weed);
     const rings = [0, 1, 2].map(() => {
       const r = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.02, 8, 40), new THREE.MeshBasicMaterial({ color: new THREE.Color(PAL.gold).multiplyScalar(1.4), transparent: true, toneMapped: false }));
       r.rotation.x = Math.PI / 2;
@@ -267,8 +274,8 @@ export async function build({ scene, camera, sun, hemi }) {
       updates.push((t) => { st.position.y = base + Math.sin((t * 2 + i * 0.17) * TAU) * 0.03; });
     });
     if (extra) extra(pos);
-    robots.forEach(([kind, accent, off, mode, smoking]) => {
-      const r = crewCube(scene, kind, accent, smoking);
+    robots.forEach(([kind, accent, off]) => {
+      const r = crewCube(scene, kind, accent);
       const home = pos.clone().add(R.clone().multiplyScalar(off)).add(TOWARD.clone().multiplyScalar(0.85));
       updates.push((t) => {
         r.position.copy(home);
@@ -313,7 +320,7 @@ export async function build({ scene, camera, sun, hemi }) {
     logos: [T.claude, T.codex, T.opencode],
     // T2 is this layer's own tier; T3 high mode runs on the same tools, only when called.
     modelRows: [['T2', PAL.gold, 'Directors: Opus · GPT Sol · OpenCode Go (optional)'], ['T3', PAL.coral, 'High mode, on call above T2: Fable · Astra']],
-    robots: [['director', PAL.gold, -1.3, 'inspect'], ['high', PAL.coral, 0, 'idle', true], ['director', PAL.gold, 1.3, 'idle']],
+    robots: [['director', PAL.gold, -1.3, 'inspect'], ['high', PAL.coral, 0, 'idle'], ['director', PAL.gold, 1.3, 'idle']],
   });
   layer(4, {
     tag: 'LAYER 4', titleText: 'Supervisors and workers', sub: 'OpenCode Go or free models, Claude Code, Codex · free first',
