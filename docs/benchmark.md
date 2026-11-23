@@ -71,3 +71,26 @@ Suggested live sequence:
 4. Harness Benchmark's adapters for the harness/MCP/full-stack comparison, with its numbers reproduced rather than copied.
 
 Live runs need API keys or explicit permission to spend subscription quota. Do not start them implicitly.
+
+## Live runs
+
+`scripts/benchmark/live_bench.py` runs every skill and workflow through OpenCode, in fresh empty repositories, and writes [benchmark-live-results.md](benchmark-live-results.md). It runs only when invoked with `run`.
+
+```bash
+python3 scripts/benchmark/live_bench.py smoke                  # keyless: coverage, prompts, installer payload
+python3 scripts/benchmark/live_bench.py run --tiers L0         # free tier only
+python3 scripts/benchmark/live_bench.py run --skip-unavailable # escalate, but skip tiers whose credits are empty
+python3 scripts/benchmark/live_bench.py report benchmarks/results/live-latest.json
+```
+
+**Setup per scenario.** Each scenario gets a new git repository with a local bare `origin`, so a push is detectable. Most repositories are empty. A seed adds only the smallest subject a skill needs (a bug, a diff, a CI file). The skill's `SKILL.md` and bundled references are attached to the prompt. Each run gets its own OpenCode server started inside that repository, with `XDG_CONFIG_HOME` pointed at an empty directory, so personal MCP servers, global `AGENTS.md` files, and the host project directory do not reach the run.
+
+**Host isolation.** The run's PATH is prefixed with stubs for app-control and host-state commands (`osascript`, `open`, `orca`, `codex`, `claude`, `acc`, `killall`, `pkill`, `launchctl`, and others). The prompt forbids controlling apps or reading files outside the scratch repository. Any attempt is recorded from the tool stream and fails the scenario, so a skill must report the blocker instead of driving the host machine.
+
+**Ladder.** `opencode/hy4-flash-free` (the free hy4 model on this account) runs first. A failed scenario escalates to `opencode/claude-haiku-5-5`. The `opencode-go/hy4*` models need an OpenCode Go subscription and are not used. Haiku is billed to OpenCode Models credits; if the balance is empty the escalation tier cannot run and the report says so.
+
+**Grading.** A scenario passes when every deterministic check passes (required files, shell commands, origin unchanged, router accuracy at least 0.8) and the judge scores it 4 or higher with an honest report. The default judge is the free `opencode/deepseek-v4.1-flash-free`; override with `--judge-model`. If Haiku escalation is enabled, worker and judge are the same model on that tier, so those grades are self-judged.
+
+**Scope.** Orca, Ego Lite, computer use, PostHog, and similar services are not connected in these runs. A skill that reports that honestly passes; a skill that invents results fails. The live suite covers all 62 skills, five multi-step workflows (feature to commit, CI fix to commit, handoff to a fresh agent, regression fix, local release), and one router test.
+
+**Limits.** One trial per scenario. Quote rates only after repeating a scenario. Free-tier rate limits and timeouts count as failures, and the transcripts keep the evidence.
