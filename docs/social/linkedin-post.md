@@ -1,6 +1,8 @@
 # LinkedIn post: HSTACK
 
-Image: [linkedin-hstack.png](linkedin-hstack.png) (1600 × 1600, the top of the repo README).
+Image: [linkedin-hstack.gif](linkedin-hstack.gif) (1600 × 1600 animated GIF, the top of the repo README with the banner loop). Static fallback: [linkedin-hstack.png](linkedin-hstack.png).
+
+Caveat: LinkedIn does not reliably play GIFs in feed posts; it may show only the first frame. If the animation must be seen on LinkedIn, post it as a short MP4 video instead.
 
 Before posting: the repo is private right now, so the link below returns a 404 for everyone else. Make it public first, or swap the link.
 

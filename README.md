@@ -9,7 +9,6 @@
 
 <p align="center">
   <img alt="62 skills" src="https://img.shields.io/badge/skills-62-3b5336?style=for-the-badge">
-  <a href="https://github.com/EnzoVezzaro/hstack/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/EnzoVezzaro/hstack?style=for-the-badge&color=e2cdab&labelColor=0e1413"></a>
   <img alt="$50 a month with optional OpenCode Go" src="https://img.shields.io/badge/whole%20crew-%2450%2Fmo-ffc44a?style=for-the-badge&labelColor=0e1413">
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-0e1413?style=for-the-badge"></a>
 </p>
@@ -192,7 +191,7 @@ Prices and model availability change; the figures here describe my setup, not a 
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/animations/architecture.png">
-    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom, on camo block platforms: you (my mascot) at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code, Codex, and optional OpenCode Go as directors (T2), with high mode (T3) on call above them; layer 4 with supervisors (T1: Sonnet, Terra, optional OpenCode Go) and workers (T0: Haiku, Luna, free models, OpenCode Go when it fits) on OpenCode, NVIDIA's free tier, Claude Code, and Codex, with Freebuff stamped suspended; layer 5 with Ego Lite and computer use; and what ships at the bottom: logo cubes for GitHub, Vercel, AWS, Google Cloud, Cloudflare, Netlify, npm, and PostHog, plus my own tools. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
+    <img src="assets/animations/architecture.gif" alt="The whole HSTACK V5 map, top to bottom, on camo block platforms: you (my mascot) at the top; layer 1 with ChatGPT, Codex, and Oreja; layer 2 with Orca; layer 3 with Claude Code, Codex, and optional OpenCode Go as directors (T2), with high mode (T3) on call above them; layer 4 with supervisors (T1: Sonnet, Terra, optional OpenCode Go) and workers (T0: Haiku, Luna, free models, OpenCode Go when it fits) on OpenCode, NVIDIA's free tier, Claude Code, and Codex, with Freebuff stamped suspended; layer 5 with Ego Lite and computer use; and what ships at the bottom: the publish commands from branch to live, with deploy targets from GitHub and npm to Vercel, AWS, Google Cloud, Cloudflare and Netlify. Each layer lists its skills, and gold tasks travel down a spine while green reports travel back up." width="100%">
   </picture>
 </p>
 
@@ -222,7 +221,7 @@ Every skill starts on the cheapest model that can do the job, and says which tie
 
 OpenCode Go can work at any tier: director, supervisor or worker. Use the cheapest capable tier for the task. For routine supervision prefer a capable free OpenCode model, check availability live, and use paid supervision only when the task needs it. Freebuff free models are an option when that account is active, but it is currently suspended for me; in the free stack, workers use free tiers and a strong OpenCode model can direct.
 
-The shape matters more than the brands. GLM (Z.ai), DeepSeek, Kimi, or any other provider fits the same pyramid: their biggest model at the top, their fast one at the bottom.
+The tiers are jobs, not brands. With GLM (Z.ai), DeepSeek, Kimi or any other provider: strongest model to high mode, flagship to directors, mid-size to supervisors, fast or flash to workers. Leave a tier to a different provider if yours has no good fit there.
 
 <p align="center">
   <picture>

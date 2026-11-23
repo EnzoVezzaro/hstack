@@ -367,10 +367,10 @@ export async function build({ scene, camera, sun, hemi }) {
       c.scale.setScalar(Math.max(0.001, Math.min(1, k * 8, (1 - k) * 8)));
     }));
     screens.push(panel(scene, camera, s, (ctx, w) => {
-      let y = header(ctx, 40, 36, 'OUT', 'What ships', 'Merged PRs, releases, deploys, analytics, and my own tools', s.color);
+      let y = header(ctx, 40, 36, 'OUT', 'What ships', 'The publish commands, from branch to live', s.color);
       ctx.fillStyle = '#ffc44a'; ctx.font = '400 25px "HStack Type", monospace';
       ctx.fillText('DEPLOY TO: GitHub · Vercel · AWS · Google Cloud · Cloudflare · Netlify · npm · any host', 40, y + 14, w - 80);
-      const items = ['GitHub PRs and releases', 'PostHog analytics', 'ACC · agent code context', 'Repo Shield · AI-training notice', 'reposell · paid releases', 'ProAgents · specialist profiles', 'ACE · crew workspaces', 'Oreja · music that steps aside'];
+      const items = ['/reconcile-branches · land in order', '/release · version and tag', '/publish-git · commit and push', '/deploy · ship and verify', '/set-analytics · measure use', '/product-hunt-launch · launch day'];
       skillGridPlain(ctx, 40, y + 56, w, items, s.color);
     }));
   }
