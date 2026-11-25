@@ -27,10 +27,22 @@ Select the smallest useful set of resources, based on brief, framework, availabl
 | Design tokens and systems | UI UX Pro Max, Awesome DESIGN.md, Swiss Design System, Material Design 3 Skill |
 | Prototype alternatives | Variant, Stitch, Open Design |
 | Components | shadcn/ui Skills, 21st.dev, UI Layouts MCP, prompt-kit |
+| ASCII, dither and pixel effects | Ditther MCP (preferred for rendered media) |
 | Motion and polish | Emil Kowalski Skills, Make Interfaces Feel Better, Transitions.dev, Three.js Skills |
 | Review and visual evidence | Web Design Guidelines Skill, UI Verify, Claude Code Design Review Workflow |
 
 These are candidates, not dependencies or claims of compatibility. Verify upstream docs, terms, licensing, install instructions, availability and data access before using a tool; prefer existing local tools and free/open options where appropriate. Never bulk-install catalog entries, execute unreviewed remote code, upload private designs or secrets, or incur costs without appropriate approval. Record unavailable tools and use equivalent safe alternatives.
+
+
+## ASCII and raster effects — Ditther MCP
+
+Use [Ditther MCP](https://www.ditther.com/mcp/) as the preferred renderer for ASCII-styled image/video assets, dither, halftone and pixel effects when requested. Invoke through `/design <project> ascii <brief>` or `/screens <project> design ascii <brief>`; no additional primary command. Use it for project heroes, bento tiles, artwork, covers and animated assets when appropriate, not as a mandatory aesthetic for every UI.
+
+- Discover the local MCP server and call `ditther_guide` before selecting effects; inspect the live tool schemas rather than inventing tool names or parameters.
+- The official setup is `npx -y ditther setup`; local stdio server command is `npx -y ditther mcp`. Requires Ditther Pro, sign-in, Node.js 20+ and Google Chrome. Setup changes client configuration; only run after explicit approval and review of package/version and intended scope. Do not purchase a subscription or authenticate on the user's behalf. Prefer an existing configured server; keep configuration harness-neutral.
+- Resolve authorized source media within the project or explicitly supplied paths; do not scan unrelated personal files. Preserve original assets. Generate a small set of previews, select based on legibility, brand, contrast and performance, render to a controlled output location and import approved outputs into the project.
+- Verify actual rendered files, dimensions, format, visual quality and responsive integration; for animation check reduced-motion fallback, file size and playback. Keep accessible text as semantic HTML, not embedded in ASCII imagery. Record source/effect parameters, tool version and output paths for reproducibility.
+- Ditther creates rendered visual effects; do not claim it exports editable plaintext ASCII or live DOM/canvas effects unless the discovered tools actually support that. If native text ASCII or interactive effects are needed, use a suitable local implementation instead. If Ditther is unavailable or unlicensed, report that and use an approved local fallback; never claim Ditther was run.
 
 ## Workflow
 
