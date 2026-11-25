@@ -74,3 +74,66 @@ Use native persistent tasks, dependency graphs, dispatch attempts, decision gate
 ## Open decisions
 
 CLI language/package distribution, exact native API availability, organization isolation across multiple companies, blueprint persistence format, and whether portable runtime adapters from #9 return later. Resolve with evidence and owner approval. This RFC is a proposal, not a release or proof of working runtime.
+
+## Prompt-first autonomous engine — owner refinement
+
+The primary UX is one guided session, not a sequence of mandatory manual commands. Launch HSTACK, select an installed supported agent harness (e.g. Codex, Claude Code or OpenCode), select the target ORCA application/host/workspace, then describe the desired organization in natural language. The selected harness drives the entire workflow: discover capabilities, select or compose templates, generate and validate the blueprint, present one consolidated approval plan, and automatically provision and verify all authorized resources. Ask follow-up questions only for essential missing information. Existing CLI subcommands remain optional expert/recovery entry points. No manual bot-by-bot setup when native APIs support automation; explicitly report unsupported steps. Approval boundaries remain intact.
+
+Generate the entire organization: mission, business model, departments, CEO and Chiefs, project Directors, specialist profiles, independent SOUL/memory, role grants, model routing, HSTACK skills, projects and repositories, ACC-compliant project initialization, operating procedures, tasks, schedules, review gates, Guardian and relevant integrations. Establish actual native IDs and verify end-to-end operation. The harness is the design/provisioning agent, not a replacement for ORCA as runtime. Discover harness authentication and supported capabilities without exposing credentials. Verify target identity and scope before writes; never accidentally provision into another organization.
+
+### Initial template catalog: 50 organization archetypes
+
+Templates are composable, versioned blueprints with role/project defaults, skills, operating workflows, risk/approval policies and optional integrations; adapt to the prompt rather than blindly cloning. Initial catalog:
+
+1. SaaS
+2. Open-source project
+3. Charity/nonprofit
+4. Physical retail business
+5. Software agency
+6. IT consulting
+7. AI product studio
+8. Developer tools
+9. API platform
+10. Cybersecurity consultancy
+11. Managed IT services
+12. Data analytics consultancy
+13. E-commerce
+14. Marketplace
+15. Affiliate publishing
+16. Subscription commerce
+17. Digital products
+18. Wholesale distribution
+19. Manufacturing
+20. Consumer goods brand
+21. Restaurant
+22. Catering
+23. Hospitality
+24. Local services
+25. Repair shop
+26. Logistics
+27. Real estate services
+28. Property management
+29. Marketing agency
+30. SEO agency
+31. Creative studio
+32. Media publication
+33. Content creator business
+34. Podcast network
+35. Game studio
+36. Education platform
+37. Training consultancy
+38. Research lab
+39. Community organization
+40. Membership association
+41. Foundation
+42. Social enterprise
+43. Event production
+44. Recruitment agency
+45. Professional services
+46. Accounting practice support
+47. Financial research organization
+48. Healthcare administration support
+49. Agriculture business
+50. Hardware/robotics startup
+
+Regulated templates require appropriate human oversight and jurisdiction-specific review; do not claim legal compliance or autonomous professional authority. ACC compliance refers to the approved project knowledge contract, not regulatory certification. Template catalog is an initial proposed taxonomy; test all 50 schemas and representative end-to-end deployments across SaaS, OSS, charity and physical business. Include custom/hybrid organizations and template extension. No activation, external commitments or new spend without applicable owner authorization.
