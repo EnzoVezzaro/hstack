@@ -32,6 +32,21 @@ Package and CLI names, language, schema format and adapter mapping remain open. 
 
 Single owner per task; no delegation cycles; bounded grants, budgets and retries; dependency DAG, resource leases, idempotent dispatch, context and worktree isolation, independent verification, cancellation and crash recovery. Prefer the fewest agents necessary; create a supervisor only when complexity justifies it. External organization policies supply role topology, reporting lines, budgets and schedules. HSTACK enforces generic invariants at trusted boundaries, not only in prompts. Agentix supplies its specific hierarchy and daily cadence.
 
+## Stack bootstrap and reconciliation (V6)
+
+Provide a generic initializer consuming an explicit, versioned stack manifest (projects, external profile references, global roles, project roles, runtime selection, authority and limits). Agentix is an optional manifest/catalog provider; HSTACK remains usable with a standalone manifest and without Agentix. Proposed CLI, not an existing command: `hstack init` for the entire configured stack, `hstack init --project <id>` for a single registered project, and `--dry-run` to preview changes. Exact flags are subject to implementation review.
+
+1. Resolve manifest and project IDs/paths; discover existing registered projects and repositories only within declared scope. Validate profile versions, hierarchy, permissions, runtime capabilities and resource limits.
+2. Through the selected adapter, detect and reuse an existing runtime session/instance or open one ORCA instance when supported and authorized; do not spawn duplicate instances. Register missing projects using supported operations only.
+3. Reconcile global bots once per organization (Agentix example: CEO, CTO, CFO, CMO, CPO, COO). Then reconcile each selected project's permanent Director and explicitly configured specialist instances, with isolated workspaces, project scopes and stable parent links. Do not replicate global executives per repo.
+4. Use durable keys (organization + role/profile + project ID for project roles), persist provider IDs separately, detect ambiguous existing identities, and request explicit adoption or repair when necessary. Preview changes, create only missing authorized resources, preserve existing IDs, memory and user-owned configuration. No destructive reconciliation by default. Resume safely after partial failures.
+5. Do not pre-create or start task-scoped supervisors, workers or verifiers during initialization; create on demand through the factory and release after task completion. Respect configured concurrency and budget constraints. Keep schedules, external effects and agent execution disabled until separately authorized.
+6. Return a per-project/global reconciliation report: existing, created, skipped, conflicted, unsupported, and actual runtime status. A configured bot is not necessarily running. Unsupported ORCA launch/import/project operations produce a manual plan, not a success claim.
+
+Single-project mode affects only the selected project's desired resources, references existing global roles (or reports missing prerequisites), and leaves unrelated projects untouched. Full-stack mode handles the complete declared project registry. Neither mode may infer permission from a repo manifest.
+
+Acceptance: local adapter and verified ORCA adapter tests for full bootstrap, second-run zero duplicate creation, newly added project, isolated single-project bootstrap, partial failure/resume, preserved IDs/memory, and no task agents or schedules activated during init. Include dry-run and missing-capability checks. The command and ORCA integration remain proposed until separately implemented and tested.
+
 ## Implementation and acceptance
 
 1. Audit ORCA's native provisioning and HSTACK V6 actor contract; map supported capabilities.
