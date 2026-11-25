@@ -16,6 +16,8 @@ A versioned AgentSpec declares objective, optional role/profile reference, proje
 
 The factory resolves a pinned external profile (optional), combines explicit task requirements with permitted defaults, validates capability compatibility and policy, and produces a dry-run provisioning plan. Permission composition is restrictive: generated instructions and local overrides cannot expand authority. Generated configurations are untrusted until validated. Credentials are references, never copied into profiles, memory seeds or logs. Project-local versioned manifests can reference external profiles or specify a standalone bot; mutable state stays outside Git.
 
+Agentix's proposed Bot Profile Format v1 is tracked in https://github.com/EnzoVezzaro/agentix/pull/9 . HSTACK should import versioned external manifests (`bot.yaml`, relative soul and memory seed files, abilities, automation declarations) into its generic AgentSpec without depending on Agentix-specific roles or native ORCA storage. Validate versions, path confinement, grants, skills, and disabled schedule defaults; preserve mutable state separately. Coordinate upstream issue/PR follow-up with Agentix's CTO and verify released, installed, authorized capability before enabling automated provisioning.
+
 ## Illustrative API (not committed)
 
 - composeAgent(taskSpec, optionalProfileRef) -> AgentSpec
