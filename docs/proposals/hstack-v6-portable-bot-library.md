@@ -47,6 +47,16 @@ Single-project mode affects only the selected project's desired resources, refer
 
 Acceptance: local adapter and verified ORCA adapter tests for full bootstrap, second-run zero duplicate creation, newly added project, isolated single-project bootstrap, partial failure/resume, preserved IDs/memory, and no task agents or schedules activated during init. Include dry-run and missing-capability checks. The command and ORCA integration remain proposed until separately implemented and tested.
 
+## Task lifecycle and operational control (V6)
+
+Expose a generic task state machine and policy-driven ownership: proposed, queued, assigned, running, reported, verified, closed, blocked, paused, failed and cancelled. Keep native run status separate from task status. A durable task envelope records owner, scope, dependencies, acceptance criteria, limits, evidence, trace and idempotency keys. A policy adapter defines who can prioritize, dispatch, pause, cancel or reassign. Agentix supplies its specific CEO/COO/Director roles; do not hard-code them into the factory.
+
+Instantiate the fewest necessary task agents, optional supervisors, workers and independent verifiers on demand; release ephemeral agents and leases after recorded terminal state and cleanup. Permanent actor identity and memory survive. Verification failure permits bounded rework or escalation, never automatic success.
+
+Expose observed progress, heartbeats where supported, task age, retry counts, dependency blockers, token/cost/time budgets and worker capacity. Missing/stale telemetry is unknown, not zero. Enforce configurable ceilings and escalation at a trusted boundary; no endless retries, unauthorized spending or silent paid fallback. Support policy-authorized pause, resume, reprioritize, cancel and reassign; use checkpoint/evidence retention, fencing tokens and acknowledged stop/release before a conflicting replacement can run. Unsupported cancellation or pause must be reported explicitly. An authorized executive can intervene without bypassing hard safety/approval gates.
+
+Acceptance: simulate a stalled agent, retry exhaustion, budget exhaustion, priority preemption, cancellation races, reassignment and failed verification across adapters; assert single ownership, no duplicate dispatch, no conflicting writes, accurate evidence and resource cleanup. Exact thresholds and adapter support remain open.
+
 ## Implementation and acceptance
 
 1. Audit ORCA's native provisioning and HSTACK V6 actor contract; map supported capabilities.
