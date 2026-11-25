@@ -53,11 +53,15 @@ Ownership is for catalog coverage, not exclusive invocation. A workflow can reus
 4. Add a primary-workflows installer profile that includes all transitive skills and dependencies; legacy installation remains supported. Missing external capabilities must be diagnosed, not silently installed or faked.
 5. Add routing, workflow and compatibility tests; update README, documentation, examples and generated visuals only after validation. Keep V5 stable until owner approval and v6 release.
 
+## Design workflow: curated AI UI tools
+
+The primary `/screens` workflow gains the design mode and direct specialist alias `/design <project> <brief>`, implemented as a proposed [design skill](../skills/design/SKILL.md). Use [Awesome AI Tools for UI](https://github.com/maxbogo/awesome-ai-tools-for-ui) as the default discovery source for design jobs, with current source verification, selective tool use, original visual direction, and independent screenshot-based verification. The catalog is not an install bundle. Preserve all 62 legacy skills; the new design skill adds one specialist capability (63 total proposed), not another primary entry. Registry tests must cover both the original 62 and the new skill, including direct alias routing. Use this workflow for HSTACK's own v6 UI/UX as well as other projects.
+
 ## Acceptance gates
 
 - [ ] At most 15 primary entries including /hstack; no hidden extra primary entries.
 - [ ] 100% coverage of current skills tree and documented aliases; no existing skill file or callable behavior removed; automated registry/tree equality check and duplicate ownership check.
-- [ ] Every primary route has a realistic end-to-end fixture with conditional stage selection, evidence and finish criteria; every underlying skill has at least one exercised route or direct compatibility fixture.
+- [ ] Every primary route has a realistic end-to-end fixture with conditional stage selection, evidence and finish criteria; every underlying skill (including design) has at least one exercised route or direct compatibility fixture. Design fixtures cover greenfield, redesign, audit-only, unavailable external tools, and real visual evidence.
 - [ ] Cross-workflow reuse works, no recursion, no duplicate dispatch or irreversible action after retry/resume.
 - [ ] Multi-repo isolation, runtime capability gaps, independent review and explicit approval gates tested.
 - [ ] Legacy slash invocation and install compatibility tested across supported harnesses; native menu limitations documented; prove at least Orca and one non-Orca runtime with actual execution evidence before release.
