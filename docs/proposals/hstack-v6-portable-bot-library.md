@@ -1,63 +1,44 @@
-# RFC: HStack V6 portable bot library and organization policy
+# RFC: HStack V6 Agent Factory — dynamic agent composition and provisioning
 
-Status: proposal only; complements [the V6 actor RFC](hstack-v6-runtime-agnostic-actors.md). Agentix is a consumer and reference organization, not a hard-coded dependency: https://github.com/EnzoVezzaro/agentix/pull/9 .
+Status: proposal only; complements [the V6 actor RFC](hstack-v6-runtime-agnostic-actors.md). Agentix owns its preconfigured bot catalog and organizational policies (https://github.com/EnzoVezzaro/agentix/pull/9). HSTACK owns the generic mechanism, not that catalog. V5 remains unchanged.
 
-## Objective
+## Two distinct needs
 
-Ship a reusable, model- and harness-neutral catalog of preconfigured bots and a policy library. Users select a role, bind it to a project/runtime, preview the plan, and explicitly provision it through an adapter. Roles are durable configuration, not proof of a live process. Keep V5 skills independent and unchanged.
+Agentix Bot Library provides versioned, ready-made role profiles, including executive roles, specialists and project directors. HSTACK Agent Factory composes and creates agents on demand from a task specification or an imported external profile, attaches compatible skills, selects an allowed execution backend and manages the lifecycle. The factory supports both ephemeral task agents and persistent actors; no Agentix installation is required. Neither project has a mandatory dependency on the other. Do not embed the Agentix organizational chart or copy its profiles into HSTACK.
 
-## ORCA reference and evidence
+## ORCA reference and compatibility
 
-Official documentation: https://orca.dev/docs/bots , https://orca.dev/docs/bots/import , https://orca.dev/docs/bots/security , https://orca.dev/docs/bots/connectors . ORCA offers bot templates with a purpose and optional abilities/schedules, a selected computer and agent, persistent Markdown persona/memory (SOUL.md and MEMORY.md per https://github.com/stablyai/orca), connector permissions, separate worker worktrees, and manual approval. Template schedules initially remain off. Treat these as behavior and interoperability requirements, not a stable import API. Inspect the exact installed version, native template implementation, serialization, IDs, skill loading, automation schema and permission semantics before implementing any writer. Use supported CLI/API/import only; never mutate undocumented live state or copy credentials.
+Study ORCA templates, purpose/memory files, agent and computer selection, permissions, skills, automation, and worktree isolation: https://orca.dev/docs/bots , https://orca.dev/docs/bots/import , https://orca.dev/docs/bots/security , https://orca.dev/docs/bots/connectors . Audit exact source, installed version, schema and supported provisioning interfaces before implementing an adapter. Do not write undocumented live state. Report unsupported capabilities explicitly; schedules and external effects are disabled by default.
 
-## Proposed package contract
+## Proposed portable contract
 
-A portable profile has version, stable template ID, display name, purpose, role, parent-role constraints, skills, model/harness preferences, permission requirements, resource/budget ceilings, allowed delegation, memory policy, trigger declarations and output/verification contract. A separate instance binds an ID, project, parent instance, runtime adapter and host. Use credential references only. Default grants deny outward/destructive effects; triggers disabled at installation.
+A versioned AgentSpec declares objective, optional role/profile reference, project/repo scope, skills, model and harness preferences, allowed capabilities, delegated authority, acceptance checks, budgets, lifetime, parent/owner, memory policy and output contract. An ActorInstance separately binds stable identity, provider references, state and task/run IDs. A task-scoped instance does not outlive the task unless a separately authorized persistence policy applies. A durable definition is not evidence of a running process.
 
-Illustrative layout (not ORCA's native file format):
+The factory resolves a pinned external profile (optional), combines explicit task requirements with permitted defaults, validates capability compatibility and policy, and produces a dry-run provisioning plan. Permission composition is restrictive: generated instructions and local overrides cannot expand authority. Generated configurations are untrusted until validated. Credentials are references, never copied into profiles, memory seeds or logs. Project-local versioned manifests can reference external profiles or specify a standalone bot; mutable state stays outside Git.
 
-    bot-library/
-      schema/bot-profile.schema.json
-      profiles/ceo/bot.yaml
-      profiles/ceo/SOUL.md
-      profiles/ceo/MEMORY.md
-      profiles/ceo/skills/
-      profiles/cto/...
-      organizations/software-house.yaml
-      adapters/orca/
-      adapters/local/
+## Illustrative API (not committed)
 
-MEMORY.md in a published profile is a clean seed, never personal or live memory. Mutable memory and native provider IDs belong in local instance state. Provide versioned profiles, validation, manifest provenance, deterministic reconciliation and safe upgrades that preserve user changes. Prefer composition/inheritance with explicit policy precedence and reject cycles. No hidden provider-specific state in the canonical format.
+- composeAgent(taskSpec, optionalProfileRef) -> AgentSpec
+- validateSpec(spec, policy, runtimeCapabilities)
+- planProvision(spec, runtime) -> plan, unsupportedCapabilities
+- provision(plan, scopedGrant) -> instance receipt
+- dispatch(instance, task), inspect(instance), cancel(run), release(instance)
+- reconcile(instance) -> actual versus desired state
+- importProfile(source, pinnedVersion) -> portable profile
 
-## Initial catalog and hierarchy
+Package and CLI names, language, schema format and adapter mapping remain open. An existing standing grant may permit bounded automated provisioning; absent authority, return a proposal rather than creating an agent. Do not launch or spend resources just because a manifest exists.
 
-Software-house pack: CEO Agent; CTO, CPO, CMO, CFO, COO; Project Director, SEO, Marketing, Distribution, Social Media, Job Hunting & Income, Supervisor, Worker, Verifier. CEO is owner-facing; five heads report to CEO; Directors report to CTO, growth specialists to CMO, income specialist to CFO. Supervisors/workers are task-scoped, verifier independent of author. These are optional profiles; a generic HStack installation may retain an Assistant or use any other topology. Agentix specifically replaces its Assistant. Do not require all profiles to run or exist for simple tasks.
+## Runtime-neutral coordination
 
-## Coordination invariants
+Single owner per task; no delegation cycles; bounded grants, budgets and retries; dependency DAG, resource leases, idempotent dispatch, context and worktree isolation, independent verification, cancellation and crash recovery. Prefer the fewest agents necessary; create a supervisor only when complexity justifies it. External organization policies supply role topology, reporting lines, budgets and schedules. HSTACK enforces generic invariants at trusted boundaries, not only in prompts. Agentix supplies its specific hierarchy and daily cadence.
 
-Single task owner and one reporting parent per actor; no circular delegation; minimal agents and scoped context; independent tasks parallelize, conflicting resources serialize; explicit delegation envelope and revocable grants; deterministic state machine, resource leases, idempotency, retry budgets and independent verification. Route disputes to lowest common authority; no agent can expand its grant. Compare against single-agent baseline for correctness, cost/tokens, latency and recovery. Policy enforcement belongs at the trusted execution boundary, not only in SOUL.md.
+## Implementation and acceptance
 
-## Proposed API surface (illustrative)
+1. Audit ORCA's native provisioning and HSTACK V6 actor contract; map supported capabilities.
+2. Specify portable AgentSpec and profile interchange, composition precedence, policy and lifecycle; add validation tests.
+3. Implement minimal local and ORCA adapters only through supported interfaces.
+4. Prove on-demand creation of a novel task-scoped agent without Agentix, and import of a pinned Agentix profile without duplicating it. Verify repo-local manifests and restrictive overrides.
+5. Test both adapters for capability failures, idempotency, conflict prevention, budget/permission enforcement, independent verification, cleanup, persistent identity and offline/restart reconciliation.
+6. Benchmark against a single-agent baseline with fixed model and budget (success, latency, tokens, cost, duplication, recovery). Preserve V5 compatibility.
 
-- validateProfile(profile), resolveProfile(templateId, version)
-- planProvision(profile, binding, capabilities) -> reviewed diff and unsupported capabilities
-- provision(plan, explicitApproval) -> instance receipt
-- inspect(instance), reconcile(instance), pause/cancel(run)
-- authorize(actor, action, scope), assign(task), verify(task, evidence)
-
-CLI and package names/language remain design choices. No provisioning command should silently enable schedules, attach accounts, spend money, or expose secrets. Dry-run reports unsupported capability rather than faking success. Adapter must expose actual provider state separately from desired state.
-
-## Daily operations
-
-Optional software-house schedule pack: CEO-led standup, COO status aggregation, daily retrospective, event-driven task intake. Schedules are configurable, off by default and keyed by single durable lease. Agentix's 06:00–06:30 America/New_York cadence belongs to its organization config, not library defaults.
-
-## Implementation plan and acceptance
-
-1. Audit ORCA upstream source and installed version; map profile fields, supported creation/import, permissions, memory, triggers and lifecycle. Record capability gaps and license/provenance if reusing code.
-2. Define versioned portable schema and policy tests. Add first CEO/Director/Worker/Verifier profiles and expand catalog after a working path.
-3. Implement a local adapter and ORCA adapter using supported interfaces; no ORCA dependency for basic library use.
-4. Demonstrate the same profile/task through both adapters, dry-run, approval gating, upgrade without duplicate actors, offline/restart recovery, conflicting task rejection, independent verification and disabled schedules by default.
-5. Benchmark single-agent vs supervised execution on identical tasks/models/budgets; include sequential and parallel workloads, token/cost, latency, error propagation and recovery.
-6. Link accepted design to V6 actor contract; keep V5 unchanged until separately approved migration.
-
-This RFC creates no runtime, package release, bots, schedules or account connections. Implementation and exact adapter mapping require separate approval and verification.
+This RFC authorizes no implementation, merge, runtime activation, account connections or package release. Exact ORCA compatibility and performance remain unverified.
