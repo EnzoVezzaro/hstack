@@ -137,3 +137,15 @@ Templates are composable, versioned blueprints with role/project defaults, skill
 50. Hardware/robotics startup
 
 Regulated templates require appropriate human oversight and jurisdiction-specific review; do not claim legal compliance or autonomous professional authority. ACC compliance refers to the approved project knowledge contract, not regulatory certification. Template catalog is an initial proposed taxonomy; test all 50 schemas and representative end-to-end deployments across SaaS, OSS, charity and physical business. Include custom/hybrid organizations and template extension. No activation, external commitments or new spend without applicable owner authorization.
+
+## Organization as Code (approved product direction)
+
+The prompt-first engine must produce a portable, declarative, version-controlled organization configuration as a first-class output. Proposed default entry point: `organization.yaml`, with referenced SOUL profiles, policies and templates. The same engine must support prompt-to-code, code-to-ORCA and export of supported live ORCA configuration back to code.
+
+- Versioned schema with stable logical IDs for organization, roles, departments, projects, repositories, bot profiles, skills, model policies, permissions, schedules, task/review policies, Guardian and integrations. Pin template and skill versions; validate references and support explicit schema migrations.
+- Store configuration in Git, review changes through PRs, clone and reuse across compatible ORCA instances. Separate portable desired state from target-specific native IDs and bindings. Never export credentials, tokens, private agent memories or task histories by default; reference secrets securely and reauthorize integrations on the destination.
+- Generate a deterministic plan/diff against actual native state. Reconcile idempotently after approval; preserve existing identities and memories, distinguish adoption from creation, detect drift and conflicts, and never silently delete resources. Record partial failures and support safe resume. Configuration rollback is not a promise to reverse external side effects.
+- Proposed optional CLI commands: `hstack export`, `hstack validate`, `hstack plan`, `hstack apply`, `hstack diff`. The selected harness can drive all of these from one prompt-first session. ORCA remains the operational source of truth; the repository represents desired organization state, not a parallel runtime.
+- Acceptance: prompt generates valid configuration; commit and clone it; deploy to a second authorized compatible ORCA target; repeated apply creates no duplicates; edits produce scoped diffs; existing memories survive; secret scanning passes; unsupported native capabilities are explicitly reported. Test drift, concurrent edits, partial failures, migration and destructive-change approval.
+
+Exact file layout and command syntax remain proposed until implementation discovery. This does not authorize provisioning or activation.
