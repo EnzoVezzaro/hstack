@@ -74,7 +74,7 @@ Acceptance fixtures: mixed active and completed workspaces; dirty or unique unme
 
 ## Design workflow: curated AI UI tools
 
-The primary `/screens` workflow gains the design mode and direct specialist alias `/design <project> <brief>`, implemented as a proposed [design skill](../skills/design/SKILL.md). Use [Awesome AI Tools for UI](https://github.com/maxbogo/awesome-ai-tools-for-ui) as the default discovery source for design jobs, with current source verification, selective tool use, original visual direction, and independent screenshot-based verification. The catalog is not an install bundle. Preserve all 62 legacy skills; the new design skill adds one specialist capability (63 total proposed), not another primary entry. Registry tests must cover both the original 62 and the new skill, including direct alias routing. Use this workflow for HSTACK's own v6 UI/UX as well as other projects.
+The primary `/screens` workflow MAY gain a design mode and direct specialist alias `/design <project> <brief>` in a future implementation PR. This RFC is documentation only: it adds no 63rd skill, registers no route and changes no V5 behavior. Use [Awesome AI Tools for UI](https://github.com/maxbogo/awesome-ai-tools-for-ui) as the default discovery source for design jobs, with current source verification, selective tool use, original visual direction, and independent screenshot-based verification. The catalog is not an install bundle. Preserve all 62 legacy skills; the new design skill adds one specialist capability (63 total proposed), not another primary entry. Registry tests must cover both the original 62 and the new skill, including direct alias routing. Use this workflow for HSTACK's own v6 UI/UX as well as other projects.
 
 ## Acceptance gates
 
