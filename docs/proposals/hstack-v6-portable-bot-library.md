@@ -1,6 +1,30 @@
 # RFC: HStack V6 Agent Factory — dynamic agent composition and provisioning
 
-Status: proposal only; complements [the V6 actor RFC](hstack-v6-runtime-agnostic-actors.md). Agentix owns its preconfigured bot catalog and organizational policies (https://github.com/EnzoVezzaro/agentix/pull/9). HSTACK owns the generic mechanism, not that catalog. V5 remains unchanged.
+Status: proposal only; V5 remains the shipped baseline and this plan changes no V5 behavior. The related runtime-agnostic actor proposal is available as historical review context in [H Stack PR #9](https://github.com/EnzoVezzaro/hstack/pull/9). Agentix owns its preconfigured bot catalog and organizational policies (https://github.com/EnzoVezzaro/agentix/pull/9). HSTACK owns the generic mechanism, not that catalog.
+
+## V6 plan at a glance
+
+V6 is a staged proposal, not a released version or an implementation commitment. The workstreams below must be designed and accepted independently; a proposal, manifest, or successful dry-run is not evidence that a runtime agent was provisioned or executed.
+
+| Workstream | Proposed scope | Required boundary |
+| --- | --- | --- |
+| Portable actors and tasks | Separate stable actor identity from provider sessions; define task envelopes, ownership, dependencies, events, memory references, handoffs, and lifecycle. | Runtime IDs and mutable memory stay outside portable manifests; unsupported capabilities remain explicit. |
+| Agent Factory | Compose task-scoped AgentSpecs from explicit task requirements or pinned external profiles; validate skills, model/runtime preferences, permissions, budget, acceptance checks, and lifetime. | Restrictive permission composition; dry-run first; no credentials in specs; no unattended creation where the runtime lacks an authorized interface. |
+| Organization bootstrap | Reconcile a versioned stack manifest across global and project roles, using idempotent identities and full-stack or project-scoped initialization. | Never duplicate global roles; never touch unrelated projects; do not create task workers, schedules, or external effects during initialization. |
+| Worker pools | Assign bounded worker subtasks under one existing owner; use runtime-native worker interfaces and capability checks. | No top-level `swarm` directive, recursive pool expansion, unbounded concurrency, or automatic launch from a manifest. See the worker-pool section below. |
+| Composable workflows | Present a small set of primary end-to-end workflows over existing skills while retaining direct skills and aliases; map and validate every route before any migration. | No skill removal or V5 route change as part of this proposal; workflow composition must not become a menu that stops short of execution. |
+| Task operations and escalation | Track proposed through terminal task states, single ownership, evidence, limits, retries, verification, and a bounded escalation path. | A block names the immediate next hop and action; escalation proceeds worker → supervisor → director → chief → CEO, with no sideways or direct jump. |
+| Runtime adapters | Start with a testable local adapter and add Orca, Claude Code, Codex, and OpenCode adapters where installed interfaces prove the required capability. | No assumed parity: dispatch, model choice, isolation, observation, and cancellation are capability-gated per runtime. |
+
+### Proposed implementation sequence
+
+1. Freeze the portable AgentSpec, task envelope, capability model, permission composition, and migration boundaries; keep V5 as the compatibility baseline.
+2. Build schema validation, dry-run planning, profile pinning/import, policy checks, and a local adapter with deterministic tests.
+3. Add one runtime adapter at a time, using supported interfaces only; prove idempotent provisioning, worker dispatch, observation, cancellation, and truthful unsupported states before adding another.
+4. Add stack reconciliation and workflow composition only after the portable contracts and adapter gates pass; preserve project isolation and existing direct skills.
+5. Run acceptance across fresh initialization, repeated reconciliation, partial failure/resume, capability denial, permission/budget limits, worker cancellation, duplicate dispatch, and V5 compatibility. Publish a capability matrix and evidence for each tested runtime.
+
+No V6 runtime is declared supported until its own acceptance evidence is attached. All exact command names, schema versions, provider models, availability, and migration choices remain proposals until reviewed and tested.
 
 ## Two distinct needs
 
@@ -33,6 +57,18 @@ Package and CLI names, language, schema format and adapter mapping remain open. 
 ## Runtime-neutral coordination
 
 Single owner per task; no delegation cycles; bounded grants, budgets and retries; dependency DAG, resource leases, idempotent dispatch, context and worktree isolation, independent verification, cancellation and crash recovery. Prefer the fewest agents necessary; create a supervisor only when complexity justifies it. External organization policies supply role topology, reporting lines, budgets and schedules. HSTACK enforces generic invariants at trusted boundaries, not only in prompts. Agentix supplies its specific hierarchy and daily cadence.
+
+## Worker pools and swarm execution (V6 proposal)
+
+A **worker swarm** is an execution-time pool of task-scoped workers assigned bounded subtasks under one existing task owner. It is not a new persistent actor type, organization role, or runtime-wide mode. The coordinator remains the task owner and is outside the worker pool; a supervisor is optional and must have its own explicit task and authority. Workers do not create sibling workers, nested swarms, or additional supervisors by default.
+
+HSTACK does not introduce a top-level `swarm` directive. A task plan may describe worker assignments and a concurrency limit, but each runtime adapter translates those assignments through that runtime's native worker/subagent interface. Orca, Claude Code, Codex, and OpenCode are separate adapters, not interchangeable backends: each must report whether it can dispatch workers, choose a permitted model, isolate context/workspace, observe completion, and cancel work. Capability absence means `unsupported` and a dry-run/manual plan; it must never be simulated as a successful launch. No adapter or provider support is claimed here as verified merely because a product name appears in a plan.
+
+Each worker assignment must include a parent task ID, one bounded objective, dependencies, file/resource ownership, allowed tools and delegated authority, model/runtime preference, time/token/cost limits, acceptance checks, and a structured result contract. The scheduler enforces the requested concurrency ceiling and provider budgets at a trusted boundary. Dispatch is idempotent; overlapping write scopes require serialization or isolated worktrees. The owner aggregates worker reports, checks that each required result arrived, and obtains independent verification where the task requires it. A worker report alone does not close or verify the parent task. Cancellation, timeout, partial failure, retry exhaustion, and unavailable telemetry remain explicit states; retries cannot create duplicate owners or exceed the original grant.
+
+Illustrative allocation only, based on one requested planning scenario: five Codex workers using GPT-6 Sol/Luna, eight Claude Code workers using Opus 5.5, and ten OpenCode workers using the Hy4 Flash Free model. These counts and model labels are not defaults, availability guarantees, or permission to launch agents. A runtime must confirm model availability and capacity, and an authorized task owner must set the concurrency and spend limits before dispatch.
+
+Acceptance for this proposal: (1) dry-run shows the owner, worker assignments, capability gaps, effective concurrency, and budget without launching anything; (2) each adapter either proves native worker dispatch or returns unsupported without spawning; (3) workers cannot exceed assigned scope or recursively expand the pool; (4) duplicate dispatch, overlapping writes, cancellation races, timeouts, partial results, and budget exhaustion preserve one owner and report truthful states; and (5) parent completion requires all required results plus the configured verification. Orca, Claude Code, Codex, and OpenCode adapter acceptance remains implementation work, not evidence supplied by this RFC.
 
 ## Stack bootstrap and reconciliation (V6)
 
