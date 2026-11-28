@@ -179,26 +179,6 @@ Do not rename or remove routes based solely on this RFC. Provide a per-skill mig
 - Benchmarks record task success, cost, tokens, latency, reproducibility, and failure/recovery across a controlled matrix.
 - V5 remains usable and its existing skills keep working throughout an opt-in migration.
 
-## Escalation chain for blocked work (V6 addition)
-
-Owner directive 2026-11-27, binding for V6: a BLOCKED is an escalation, not a parked state. Every blocked item names the immediate next hop and a concrete next action. No sideways jumps and no direct jump to CEO Agent.
-
-Chain: **worker -> supervisor -> director -> chief -> CEO Agent**.
-
-- **Worker** records the block with exact command and exit evidence plus the local equivalent already attempted, then escalates to its supervisor.
-- **Supervisor** re-checks with its own commands and evidence; if unresolved, escalates to the project director.
-- **Director** decides scope and design inside its authority; if architecture or cross-project authority is needed, escalates to the chief.
-- **Chief** (CTO for technical work) owns architecture, security and cross-project resolution. It carries only genuine owner, account, budget or legal boundaries to the CEO Agent.
-- **CEO Agent** decides everything that is not owner-, budget- or account-bound. Owner answers are recorded as boundaries, never as the first escalation target.
-
-Rules:
-
-- Never disable auth, copy credentials, bypass a safety gate or fake an owner approval to clear a block.
-- A block that genuinely needs the owner gets exactly one Needs you item with a crisp question and scoped options; all other work continues in parallel.
-- V5 "Escalating and downgrading" governs model cost tiers and is separate from this responsibility chain. V6 carries both, without conflating them.
-
-Acceptance: an HStack V6 implementation must be able to show, for any BLOCKED deliverable, the chain position, the named next hop, the concrete action and the decision boundary that was reached.
-
 ## Open design questions
 
 1. Should HStack own a minimal on-disk actor registry, or expose an interface with multiple backends from day one?
