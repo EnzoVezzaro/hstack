@@ -26,8 +26,6 @@ I wrote it all down as HSTACK ("high stack"): 62 agent skills for coordinating w
 
 npx skills add EnzoVezzaro/hstack
 
-Next up is v6, and I'm designing it with the agents, in the open. The idea: Orca becomes one way to run the crew instead of the only way. Portable agent identities, runtime adapters, and the same skill working with Orca and without it. It's still an RFC, so it's the right time to argue with it.
-
 More agents isn't more intelligence. A big crew that shares nothing is just a loud one.
 
 Repo: https://github.com/EnzoVezzaro/hstack

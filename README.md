@@ -92,20 +92,6 @@ Installing a skill does **not** install the other skills it mentions, or any ext
 
 Release notes: [v5.3.0](https://github.com/EnzoVezzaro/hstack/releases/tag/v5.3.0).
 
-## Coming in v6 (in progress)
-
-I'm designing v6 with the agents, in the open: [draft PR #9](https://github.com/EnzoVezzaro/hstack/pull/9). It's an RFC for now, a document to argue with rather than code to install. V5 is still what ships, and nothing below changes how it behaves today.
-
-The idea: Orca becomes one way to run the crew, not the only way.
-
-- **Actors instead of sessions.** Each agent gets a portable identity, a role, and a policy. That identity is kept separate from whatever chat, bot, or process happens to be running it.
-- **Runtime adapters.** Orca stays a first-class, likely default adapter. Local processes and other providers plug in behind the same interface, and each adapter says what it can and can't do instead of faking it.
-- **Durable handoffs, events, and schedules.** Tasks get one owner, an idempotency key, and evidence links, so a restart picks up where it left off without spawning a second owner.
-- **Same guardrails as v5.** Bounded tasks, independent verification, and my yes before anything is merged, deployed, or deleted.
-- **The proof:** the same skill and task has to work with Orca and without it.
-
-Open questions, the phased plan, and the acceptance criteria are in the RFC. Feedback goes on the PR.
-
 ## The skill execution contract
 
 All 62 skills follow the same [HStack execution contract](docs/skill-contract.md): resolve the real project and worktree, use live Orca state only after confirming the runtime, keep one owner per bounded task, verify on the reported revision, and require explicit approval for outward-facing changes. Source-skill names do not mean those tools are installed. If Orca is unavailable, a director brief remains **unsent**, never a fabricated handoff.
