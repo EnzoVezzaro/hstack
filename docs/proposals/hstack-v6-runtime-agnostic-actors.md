@@ -8,14 +8,14 @@
 
 Orca's emerging Bots model raises a useful architectural question: should HStack support named persistent agents, bot-to-bot coordination, retained memory, integrations, and triggers without requiring Orca? **Yes, as a V6 design goal, subject to validation.** Orca should remain a first-class, potentially default adapter, but not define HStack's portable data contracts.
 
-V5 consists primarily of portable Agent Skills and operational guidance. Its [execution contract](../skill-contract.md) currently states that Layer 2 is Orca and that Orca owns the live sessions, worktrees and routing. That is appropriate for V5, but it makes a vendor-specific product the conceptual orchestrator. V6 should distinguish **HStack's logical actors, tasks, policy and desired state** from **provider-owned execution state**.
+V5 consists primarily of portable Agent Skills and operational guidance. Its [execution contract](skill-contract.md) currently states that Layer 2 is Orca and that Orca owns the live sessions, worktrees and routing. That is appropriate for V5, but it makes a vendor-specific product the conceptual orchestrator. V6 should distinguish **HStack's logical actors, tasks, policy and desired state** from **provider-owned execution state**.
 
 Reference starting points (check release/API support during implementation):
 - Orca Bots documentation: https://orca.dev/docs/bots
 - Orca connectors: https://orca.dev/docs/bots/connectors
 - Orca security: https://orca.dev/docs/bots/security
 - Agent Skills: https://agentskills.io
-- Current HStack contracts: [skill-contract.md](../skill-contract.md), [hstack-v5.md](../hstack-v5.md)
+- Current HStack contracts: [skill-contract.md](skill-contract.md), [hstack-v5.md](hstack-v5.md)
 
 **Research caveat:** Browser/UI feature availability does *not* prove a stable public CLI, SDK, webhook, or API exists. A future spike must establish the actual discoverable Orca operations; unsupported operations stay explicitly unsupported.
 
