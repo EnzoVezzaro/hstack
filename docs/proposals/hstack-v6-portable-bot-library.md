@@ -1,6 +1,6 @@
 # RFC: HStack V6 Agent Factory — dynamic agent composition and provisioning
 
-Status: proposal only; V5 remains the shipped baseline and this plan changes no V5 behavior. The related runtime-agnostic actor proposal is available as historical review context in [H Stack PR #9](https://github.com/EnzoVezzaro/hstack/pull/9). Agentix owns its preconfigured bot catalog and organizational policies (https://github.com/EnzoVezzaro/agentix/pull/9). HSTACK owns the generic mechanism, not that catalog.
+Status: proposal only; V5 remains the shipped baseline and this plan changes no V5 behavior. This proposal bundles the [runtime-agnostic actor model](hstack-v6-runtime-agnostic-actors.md), [organization engine](../rfc-v6-organization-engine.md), and [composable workflows](../v6-composable-workflows-rfc.md) for review alongside the Agent Factory. Agentix owns its preconfigured bot catalog and organizational policies (https://github.com/EnzoVezzaro/agentix/pull/9). HSTACK owns the generic mechanism, not that catalog.
 
 ## V6 plan at a glance
 
